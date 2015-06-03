@@ -1,0 +1,148 @@
+Introduction to Modulo
+===================
+
+
+#What is modulo ?
+
+Take a look at [this raw file](data/test.md). Ugly but simple, isn't it?
+It uses a markup langage called Markdown to turn a plain text file into an html document.
+
+^^modulo-aside:Accueil
+
+Modulo is an angular-based website seed that enhances a markdown document with multiple and design-rich possibilities.
+
+Modulo features :
+
+* a json-based boilerplate for making an interaction-rich textual document (by interacting with the table of contents, for instance)
+* advanced embedding functionnalities
+* scholarly-writing related functionnalities, with zotero references handling
+* a framework for building advanced and interactive figures going along with the text with iframes, embeds, and moreover, visualizations/mini-application snippets aiming at supporting your argument
+
+#Interface-related features
+
+##Table of content
+
+It is generated as a json object - use it for an aside (like in this example) or do something else with it !
+
+##Intelligent search
+
+Enhances the classical browser's way of handling search in a page (ctrl + f).
+
+##Markdown Tables powered by angular's ui grid
+
+| Col 1   | Col 2                                              |
+|======== |====================================================|
+| Plain   | Value                                              |
+| Plain1   | Value3                                              |
+| Plain2   | Value                                             |
+| Plain3   | Value4                                              |
+| Plain4   | Value                                              |
+
+##Zotero references manager
+
+1. Connect to Zotero API
+2. Insert zotero references through zotero urls
+3. do what you want with your references
+
+Here is an example of reference [^^zotero:https://www.zotero.org/cathedrale/items/HGDNGPRH]. I use reference for creating a bibliography at the end of the page.
+
+
+#Embeds in text
+
+##Google Spreadsheet table
+
+^^gspreadsheet:https://docs.google.com/spreadsheets/d/1l7HaiK1w-kYcDzMM0Jr6jWoRWDaIjitrE2PZl650b3Y/pubhtml
+
+
+
+##Vimeo embed
+
+^^vimeo:https://vimeo.com/129051743
+
+##Youtube embed
+
+^^youtube:https://www.youtube.com/watch?v=G5OicZrhkHg
+
+##Tableau visualization embedding
+
+
+##Twitter message
+##Image gallery
+
+##Slideshare embed
+
+^^slideshare://fr.slideshare.net/slideshow/embed_code/key/rGQLsk1BvwQ2Ik
+
+##PDF embed
+
+#Aside column management
+
+Modulo is designed to display rich aside content to a text.
+As its name suggests, it is meaned at being an open system.
+
+There are two ways of changing the aside content :
+* through a text hyperlink
+* through scroll-binding
+
+##Hyperlink-based aside
+
+As you can see in [this modulo view](^^modulo-href:A new era), I don't think it's worth explaining.
+
+##Scroll-based aside
+
+Here is a first aside called "a new era"
+
+^^modulo-aside:A new era
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque adipisci maiores dignissimos illo exercitationem nam voluptates similique fuga, tenetur enim, expedita repellendus temporibus maxime magni. Accusantium deserunt voluptates placeat, impedit?
+
+Here is an aside containing an iframe.
+
+^^modulo-aside:Terence Blake
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi iusto dicta corporis laborum maxime molestias impedit, quo, enim accusantium, obcaecati soluta quidem cum maiores quaerat, itaque reprehenderit adipisci iure voluptate!
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Accueil",
+    "type" : "html"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"A new era",
+    "type" : "timeline"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Terence Blake",
+    "type" : "iframe",
+    "url" : "https://terenceblake.wordpress.com/"
+}
+```
+
+
+```json
+{
+    "role" : "not-a-modulo-view",
+}
+```

@@ -1,0 +1,205 @@
+/*
+  PRIMARY LAYOUT
+*/
+.container
+{
+    font-family: 'Vollkorn', serif;
+
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.col-left,
+.col-middle,
+.col-right
+{
+    position: absolute;
+    top: 0;
+
+    overflow: hidden;
+
+    height: 100%;
+    padding: 0;
+}
+
+.col-left
+{
+    background: rgba(0,0,0,.01);
+}
+
+.col-middle
+{
+    background: white;
+}
+
+.col-right
+{
+    background: rgba(0,0,0,.02);
+}
+
+.col-0
+{
+    width: 0;
+}
+
+/*
+  SECONDARY LAYOUT
+*/
+
+.left-col-wrapper
+{
+    position: fixed;
+
+    height: 100%;
+    padding: 2em;
+}
+
+.middle-col-wrapper
+{
+    overflow: hidden;
+
+    height: 100%;
+    padding : 0;
+}
+
+.col-xs-6 .middle-col-wrapper
+{
+    padding-left: 15%;
+}
+
+.col-xs-10 .middle-col-wrapper,
+.col-xs-12 .middle-col-wrapper
+{
+    padding-right: 20%;
+    padding-left: 20%;
+}
+
+.middle-col-container
+{
+    overflow: auto;
+
+    height: 100%;
+    padding-right: 2em;
+    padding-left: 2em;
+    padding-top : 2em;
+}
+
+/*
+  TERTIARY LAYOUT
+*/
+
+.col-handler
+{
+    position: absolute;
+    top: 0;
+}
+
+.col-handler-pullleft
+{
+    left: 0;
+}
+
+.col-handler-pullright
+{
+    right: 0;
+}
+
+
+/*
+  GENERIC COMPONENTS
+*/
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:link
+{
+    text-decoration: none;
+  font-weight : 800;
+    color: inherit;
+}
+
+a.active
+{
+    background : black;
+    color : white;
+}
+
+table
+{
+    width: 100%;
+}
+
+.grid
+{
+    height: 200px;
+}
+
+.flex-container
+{
+    display: flex;
+}
+
+.animate
+{
+    -webkit-transition: all .5s ease;
+       -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+         -o-transition: all .5s ease;
+}
+
+.animate-fast
+{
+    -webkit-transition: all .1s ease;
+       -moz-transition: all .1s ease;
+        -ms-transition: all .1s ease;
+         -o-transition: all .1s ease;
+}
+
+.animate.ng-enter.ng-enter-active,
+.animate.ng-leave,
+.animate-fast.ng-enter.ng-enter-active,
+.animate-fast.ng-leave
+{
+    opacity: 1;
+}
+
+/* Remove animation */
+.animate.ng-leave.ng-leave-active,
+.animate.ng-enter,
+.animate-fast.ng-leave.ng-leave-active,
+.animate-fast.ng-enter
+{
+    opacity: 0;
+}
+
+.animate.ng-hide-add-active,
+.animate-fast.ng-hide-add-active
+{
+    opacity: 0;
+}
+.animate.ng-hide-remove-active,
+.animate-fast.ng-hide-remove-active
+{
+    opacity: 1;
+}
+
+.animate.ng-show-add-active,
+.animate-fast.ng-show-add-active
+{
+    opacity: 0;
+}
+.animate.ng-show-remove-active,
+.animate-fast.ng-show-remove-active
+{
+    opacity: 1;
+}
+
+/*
+  SPECIFIC COMPONENTS
+*/

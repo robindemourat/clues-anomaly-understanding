@@ -1,0 +1,110 @@
+<nav 
+  class="col-left animate"
+  ng-class="setColClass('left')"
+>
+
+  <!--left-col-wrapper : main content-->
+    <div 
+      class="left-col-wrapper col-xs-2 animate"
+      ng-show="showCols.left"
+    >
+      <h1 ng-bind="documentTitle">Modulo</h1>
+
+      <!--searchbox -->
+      <div class="searchbox flex-container">
+        <span class="btn btn-xs">
+          <span class="glyphicon glyphicon-search"></span>
+        </span>
+        <input type="text">
+      </div> <!--end searchbox -->
+
+      <!--table of contents-->
+      <div class="toc" du-scroll-container="middle-col-container">
+        <div 
+          ng-repeat="el in contents.toc"
+          ng-style="{'padding-left':(el.level * 5)+'px'}"
+        >
+          <a ng-href="#{{el.tag}}" du-smooth-scroll du-scrollspy="#{{el.tag}}" ng-bind="el.title"></a>
+
+        </div>
+      </div>
+      <!--end table of contents-->
+
+    </div><!--END left-colwrapper-->
+
+  <div 
+    class="btn col-handler col-handler-pullright"
+    ng-click="showCols.left = false"
+  >
+    <span class="glyphicon glyphicon-chevron-left animate"></span>
+  </div>
+</nav>
+
+<section 
+  class="col-middle animate"
+  ng-class="setColClass('middle')"
+>
+
+
+  <!--middle-col-wrapper : main content-->
+  <div 
+    class="middle-col-wrapper col-xs-12 animate"
+    id="middle-col-wrapper"
+  >
+
+    <!--middle-col-container : contents-->
+    <div class="middle-col-container"  id="middle-col-container">
+      <div>
+        <div class="middle-col-contents-main"   compile="contents.html"></div>
+      </div>
+      
+
+      <div class="middle-col-contents-bibliography">
+        <h3>Generated bibliography</h3>
+        <p ng-repeat="bib in contents.bibliography track by $index">
+          [{{$index+1}}] {{bib.data.title}} by {{bib.data.creators[0].firstName}} {{bib.data.creators[0].lastName}}
+        </p>
+      </div>
+    </div>
+    <!--<div class="middle-col-container"  btf-markdown="contents.markdown">
+      
+    </div>--> <!--END middle-col-container : contents-->
+  </div>
+  <!--END middle-col-wrapper : main content-->
+
+
+  <div 
+    class="btn col-handler col-handler-pullleft"
+    ng-click="showCols.left = true"
+    ng-show="!showCols.left"
+  >
+    <span class="glyphicon glyphicon-chevron-right animate"></span>
+  </div>
+  <div 
+    class="btn col-handler col-handler-pullright"
+    ng-click="showCols.right = true"
+    ng-show="!showCols.right"
+  >
+    <span class="glyphicon glyphicon-chevron-left" animate></span>
+  </div>
+</section>
+
+<section 
+  class="col-right animate"
+  ng-class="setColClass('right')"
+>
+  <div class="aside-content-wrapper">
+    <h1>{{aside.title}}</h1>
+
+    <code>
+      {{aside}}
+    </code>
+  </div>
+  
+  <div 
+    class="btn col-handler col-handler-pullleft"
+    ng-click="showCols.right = false"
+  >
+    <span class="glyphicon glyphicon-chevron-right animate"></span>
+  </div>
+</section>
