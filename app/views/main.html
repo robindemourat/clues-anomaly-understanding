@@ -23,8 +23,9 @@
         <div 
           ng-repeat="el in contents.toc"
           ng-style="{'padding-left':(el.level * 5)+'px'}"
+          du-scrollspy="#{{el.tag}}"
         >
-          <a ng-href="#{{el.tag}}" du-smooth-scroll du-scrollspy="#{{el.tag}}" ng-bind="el.title"></a>
+          <a ng-href="#{{el.tag}}" du-smooth-scroll ng-bind="el.title"></a>
 
         </div>
       </div><!--end table of contents-->
@@ -116,7 +117,7 @@
   <div 
     class="btn col-handler col-handler-pullright"
     ng-click="showCols.right = false"
-
+    ng-show='showCols.left && showCols.middle'
   >
     <span 
       class="glyphicon glyphicon-chevron-right animate"

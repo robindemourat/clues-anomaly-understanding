@@ -21,10 +21,10 @@ angular.module('moduloAnomaliesApp')
   	var initWatchers = function(){
       //gspreadsheet update deactivated for now, because updating everything breaks scroll-related interactions
       //todo : diff update only on changed elements
-      /*$rootScope.$on('markdownUpdate', function(e, data){
+      $rootScope.$on('markdownUpdate', function(e, data){
         $scope.contents.html = data.html;
         $scope.$apply();
-      });*/
+      });
 
       $rootScope.$on('zoteroBibliography', function(e,data){
         $scope.contents.bibliography = data;
