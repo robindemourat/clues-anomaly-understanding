@@ -20,7 +20,9 @@ angular
     'btford.markdown',
     'ui.grid',
     'times.tabletop',
-    'duScroll'
+    'duScroll',
+    'angular-carousel',
+    'pdf'
   ])
   .config(function (markdownConverterProvider) {
     /*$routeProvider
@@ -44,7 +46,11 @@ angular
                     'grid',
                     'vimeo',
                     'slideshare',
-                    'youtube'
+                    'youtube',
+                    'carousel',
+                    'twittermsgembed',
+                    'pdfembed',
+                    'tableauembed'
                   ]
     });
 

@@ -187,7 +187,7 @@ angular.module('moduloAnomaliesApp')
           item = m[1];
         }
 
-        html = html.replace(match[0], '<span zotero-url="'+match[1]+'" class="zotero-reference" id="zotero-ref-'+i+'">['+i+']</span>');
+        html = html.replace(match[0], '<a ng-href="#zotero-ref-element-'+(i)+' "zotero-url="'+match[1]+'" du-smooth-scroll class="zotero-reference" id="zotero-ref-pointer-'+i+'">['+i+']</a>');
         itemsToFetch.push(item);
       }
 

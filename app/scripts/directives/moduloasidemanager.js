@@ -1,0 +1,44 @@
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name moduloAnomaliesApp.directive:moduloasidemanager
+ * @description
+ * # moduloasidemanager
+ */
+angular.module('moduloAnomaliesApp')
+  .directive('moduloasidemanager', function () {
+    return {
+      templateUrl: 'views/modulo-aside-manager.html',
+      restrict: 'A',
+      scope : {
+      	newdata : '@asidedata'
+      },
+      link: function postLink(scope, element, attrs) {
+
+      	scope.popupMode = false;
+      	scope.first = true;
+
+      	scope.$watch('newdata', function(n, o){
+      		try{
+      			n = JSON.parse(n);
+      		}catch(e){
+
+      		}
+
+      		try{
+      			o = JSON.parse(o);
+      		}catch(e){
+      			
+      		}
+  			
+  			if(scope.first || n.title != o.title){
+  				scope.first = false;
+  				scope.data = n;
+  				//console.log('update global');
+  			}
+      	})
+        
+      }
+    };
+  });

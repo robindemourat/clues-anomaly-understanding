@@ -1,0 +1,21 @@
+<div class="aside-header">
+      <h1>{{data.title}}</h1>
+      <span 
+        class="close-popup btn btn-xs"
+        ng-show="popupMode"
+      >
+        <span class="glyphicon glyphicon-remove"></span>
+      </span>
+    </div>
+
+<div class="aside-contents-container">
+
+  <div ng-switch="data.type" class="aside-contents-switcher">
+    <div ng-switch-when="html" modulo-content='{{data}}' class='modulo-html'>
+    </div>
+    <div ng-switch-when="timeline"  class="modulo-timeline" modulo-content='{{data}}'>
+    </div>
+    <div ng-switch-when="iframe"  class="modulo-iframe" modulo-content='{{data}}'>
+    </div>
+  </div>
+</div>

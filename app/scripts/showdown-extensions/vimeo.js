@@ -1,6 +1,6 @@
 (function(){
 
-  var vimeoTemplate = ['<iframe sandbox="allow-same-origin allow-scripts allow-popups" id="foo" width="100%" height="100%" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" src="http://player.vimeo.com/video/','?api=1"> </iframe>'];
+  var vimeoTemplate = ['<iframe sandbox="allow-same-origin allow-scripts allow-popups" id="foo" width="100%" height="500px" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" src="http://player.vimeo.com/video/','?api=1"> </iframe>'];
   var vimeo = function(converter) {
     return [
       { type: 'lang', 

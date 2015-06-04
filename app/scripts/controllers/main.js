@@ -61,7 +61,6 @@ angular.module('moduloAnomaliesApp')
   	};
 
     var updateAside = function(screenYCenter){
-      console.log('relative container middle is ', screenYCenter);
       if($scope.contents.library){
         var min = Infinity, wining;
         for(var i in $scope.contents.library){
@@ -69,17 +68,23 @@ angular.module('moduloAnomaliesApp')
           //get element
           var el = $('[title="'+vis.title+'"]');//angular.element(document.querySelector('title', vis.title));
           //get scroll top
-          vis.top = el.offset().top;
-          //defining closest to screen's center
-          var dist = Math.abs(vis.top - screenYCenter);
-          if(dist < min){
-            min = dist;
-            wining = i;
+          if(el.offset()){
+            vis.top = el.offset().top;
+            //defining closest to screen's center
+            var dist = Math.abs(vis.top - screenYCenter);
+            if(dist < min){
+              min = dist;
+              wining = i;
+            }
           }
         }
+        if(wining && $scope.contents.library[wining]){
+          $scope.asideData = $scope.contents.library[wining];
+          if(!$scope.$$phase)
+            $scope.$apply();
+        }
+          
 
-        $scope.aside = $scope.contents.library[wining];
-        $scope.$apply();
         
         
       }
@@ -101,7 +106,7 @@ angular.module('moduloAnomaliesApp')
 
     		case 'middle':
     			if(cols.left && cols.right){
-    				return 'col-xs-5 col-xs-offset-2';
+    				return 'col-xs-6 col-xs-offset-2';
     			}else if(!cols.left && cols.right){
     				return 'col-xs-6';
     			}else if(cols.left && !cols.right){
@@ -113,7 +118,7 @@ angular.module('moduloAnomaliesApp')
 
     		case 'right':
     			if(cols.left && cols.middle){
-    				return 'col-xs-5 col-xs-offset-7';
+    				return 'col-xs-4 col-xs-offset-8';
     			}else if(!cols.left && cols.middle){
     				return 'col-xs-6 col-xs-offset-6'
     			}else if(cols.left && !cols.middle){

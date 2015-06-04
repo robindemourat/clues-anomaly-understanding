@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modulo-modules.css">
+
     <!-- endbuild -->
   </head>
   <body>
@@ -58,6 +61,10 @@
     <script src="bower_components/tabletop/src/tabletop.js"></script>
     <script src="bower_components/angular-tabletop/TabletopProvider.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.js"></script>
+    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
+    <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+    <script src="bower_components/pdfjs-dist/build/pdf.worker.js"></script>
+    <script src="bower_components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -69,6 +76,11 @@
         <script src="scripts/showdown-extensions/vimeo.js"></script>
         <script src="scripts/showdown-extensions/slideshare.js"></script>
         <script src="scripts/showdown-extensions/youtube.js"></script>
+        <script src="scripts/showdown-extensions/carousel.js"></script>
+        <script src="scripts/showdown-extensions/twitter-msg-oembed.js"></script>
+        <script src="scripts/showdown-extensions/pdf-embed.js"></script>
+        <script src="scripts/showdown-extensions/tableau-embed.js"></script>
+
 
 
 
@@ -81,6 +93,11 @@
         <script src="scripts/services/tabletop.js"></script>
         <script src="scripts/services/zoteroquerybuilder.js"></script>
         <script src="scripts/services/zoteroqueryhandler.js"></script>
+        <script src="scripts/directives/twittermsgoembed.js"></script>
+        <script src="scripts/directives/moduloasidemanager.js"></script>
+        <script src="scripts/directives/modulo-html.js"></script>
+        <script src="scripts/directives/modulo-iframe.js"></script>
+        <script src="scripts/directives/modulo-timeline.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -86,7 +86,13 @@
             }
 
             var grid = {
-              data : data
+              data : data,
+              enableColumnResize : true,
+              paginationPageSizes: [25, 50, 100],
+              paginationPageSize: 25,
+              useExternalPagination: true,
+              useExternalSorting: true,
+              enableGridMenu: true,
             }
             var output =  "<div ui-grid='"+JSON.stringify(grid)+"' class='grid'></div>";
             out.push(output);

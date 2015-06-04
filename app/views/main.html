@@ -27,8 +27,7 @@
           <a ng-href="#{{el.tag}}" du-smooth-scroll du-scrollspy="#{{el.tag}}" ng-bind="el.title"></a>
 
         </div>
-      </div>
-      <!--end table of contents-->
+      </div><!--end table of contents-->
 
     </div><!--END left-colwrapper-->
 
@@ -50,6 +49,7 @@
   <div 
     class="middle-col-wrapper col-xs-12 animate"
     id="middle-col-wrapper"
+     du-scroll-container="middle-col-container"
   >
 
     <!--middle-col-container : contents-->
@@ -61,8 +61,8 @@
 
       <div class="middle-col-contents-bibliography">
         <h3>Generated bibliography</h3>
-        <p ng-repeat="bib in contents.bibliography track by $index">
-          [{{$index+1}}] {{bib.data.title}} by {{bib.data.creators[0].firstName}} {{bib.data.creators[0].lastName}}
+        <p ng-repeat="bib in contents.bibliography track by $index" id="zotero-ref-element-{{$index+1}}">
+          <a ng-href="#zotero-ref-pointer-{{$index+1}}" du-smooth-scroll>[{{$index+1}}]</a> {{bib.data.title}} by {{bib.data.creators[0].firstName}} {{bib.data.creators[0].lastName}}
         </p>
       </div>
     </div>
@@ -89,16 +89,16 @@
   </div>
 </section>
 
-<section 
+<aside 
   class="col-right animate"
   ng-class="setColClass('right')"
 >
-  <div class="aside-content-wrapper">
-    <h1>{{aside.title}}</h1>
-
-    <code>
-      {{aside}}
-    </code>
+  <div 
+    class="aside-col-wrapper"
+    ng-show="showCols.right"
+    moduloasidemanager
+    asidedata='{{asideData}}'
+  >
   </div>
   
   <div 
@@ -107,4 +107,4 @@
   >
     <span class="glyphicon glyphicon-chevron-right animate"></span>
   </div>
-</section>
+</aside>
