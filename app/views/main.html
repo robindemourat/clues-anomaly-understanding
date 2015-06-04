@@ -103,8 +103,23 @@
   
   <div 
     class="btn col-handler col-handler-pullleft"
-    ng-click="showCols.right = false"
+    ng-click="showCols.middle = !showCols.middle"
+
   >
-    <span class="glyphicon glyphicon-chevron-right animate"></span>
+    <span 
+      class="glyphicon glyphicon-chevron-left animate"
+      ng-style="{
+        'transform' : (!showCols.middle)?'rotate(180deg)':''
+      }"></span>
+  </div>
+
+  <div 
+    class="btn col-handler col-handler-pullright"
+    ng-click="showCols.right = false"
+
+  >
+    <span 
+      class="glyphicon glyphicon-chevron-right animate"
+      ></span>
   </div>
 </aside>
