@@ -11,26 +11,51 @@ angular.module('moduloAnomaliesApp')
   .factory('markdownProcessor', function (markdownConverter, tabletop, $http, $rootScope, ZoteroQueryHandler, ZoteroQueryBuilder) {
     
     var matchLibElement = /```json([\s\S]*?)```/gi,
-        matchTitles = /(#+)(.*)/gi,
+        matchTitles = /\n(#+)(.*)/gi,
         matchSpreadsheets = /\^\^gspreadsheet:(.*)/gi,
         matchTitle = /(.*)\n(\=)+/gi,
-        matchZoteroUrl = /\[\^\^zotero:(.*)\]/gi;
+        matchZoteroUrl = /\[\^\^zotero:(.*)\]/gi,
+        matchModuloAside = /\^\^modulo-aside:(.*):\^\^(.*)/gi;
 
     var userId = 1142649,
         apiKey = 'CYeyCcxJpPSxcj1cxgb6fP7Q',
         query = ZoteroQueryBuilder,
         zoteroRefs = [];
 
+    //I add to the library texts which are 
+    var updateModuloAsideTags = function(text){
+      var match, views = [];
+      while(match = matchModuloAside.exec(text)){
+        var content = '^^' + match[2],
+            title = match[1];
+        var view = {
+          role : 'modulo-view',
+          title: title,
+          type : 'html',
+          html : markdownConverter.makeHtml(content)
+        }
+        text = text.replace(match[0], '^^modulo-aside:'+match[1]);
+        views.push(view);
+      }
+      return {
+        views : views,
+        text : text
+      };
+    }
+
     //I get a md file, return a json array of all the views used in the composition
     var buildLibrary = function(text){
       var match;
       var views = [], view, ok, toDelete = [];
 
+      var t = updateModuloAsideTags(text);
+      views = t.views;
+      text = t.text;
+
       while(match = matchLibElement.exec(text)){
         try{
           view  = JSON.parse(match[1]);
         }catch(e){
-
         }
         
         ok = view && view.role && view.role === 'modulo-view';

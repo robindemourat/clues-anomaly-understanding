@@ -53,8 +53,6 @@ Here is an example of reference [^^zotero:https://www.zotero.org/cathedrale/item
 
 ^^gspreadsheet:https://docs.google.com/spreadsheets/d/1l7HaiK1w-kYcDzMM0Jr6jWoRWDaIjitrE2PZl650b3Y/pubhtml
 
-
-
 ##Vimeo embed
 
 ^^vimeo:https://vimeo.com/129051743
@@ -97,6 +95,11 @@ There are two ways of changing the aside content :
 As you can see in [this modulo view](^^modulo-href:A new era), I don't think it's worth explaining.
 
 ##Scroll-based aside
+
+Here a match in modulo :
+
+^^modulo-aside:Vimeo embed:^^vimeo:https://vimeo.com/129051743
+
 
 Here is a first aside called "a new era"
 

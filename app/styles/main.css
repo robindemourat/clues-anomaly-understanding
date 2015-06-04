@@ -160,6 +160,10 @@ a.active
     color : white;
 }
 
+iframe{
+    border : none;
+}
+
 table
 {
     width: 100%;
