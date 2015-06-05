@@ -163,14 +163,10 @@ angular.module('moduloAnomaliesApp')
       for(var a in obj.columns){
         for(var b in obj.columns[a].layers){
           var view = obj.columns[a].layers[b];
-          //if(!view.dateformat)
-          //  view.dateformat = '%d/%m/%Y';
           var format = d3.time.format(view.dateformat);
           var dateformat = view.dateformat;
 
           for(var i in view.filteredData){
-            console.log(view.filteredData[i].date, dateformat);
-
             try{
               view.filteredData[i].date = {
                 original : view.filteredData[i].date,
