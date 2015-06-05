@@ -157,6 +157,39 @@ angular.module('moduloAnomaliesApp')
 
       return obj;
     }
+
+    //I take as input a timeline data, and parse dates against dateformat option to output them as modulo-date objects
+    var convertDates = function(obj){
+      for(var a in obj.columns){
+        for(var b in obj.columns[a].layers){
+          var view = obj.columns[a].layers[b];
+          //if(!view.dateformat)
+          //  view.dateformat = '%d/%m/%Y';
+          var format = d3.time.format(view.dateformat);
+          var dateformat = view.dateformat;
+
+          for(var i in view.filteredData){
+            console.log(view.filteredData[i].date, dateformat);
+
+            try{
+              view.filteredData[i].date = {
+                original : view.filteredData[i].date,
+                date : format.parse(view.filteredData[i].date)
+              }
+            }catch(e){
+              view.filteredData[i].date = {
+                original : view.filteredData[i].date,
+                date : undefined
+              }
+            }
+          }
+
+          obj.columns[a].layers[b] = view;
+        }
+      }
+
+      return obj;
+    }
     
     function csvJS(csv){
      
@@ -183,7 +216,7 @@ angular.module('moduloAnomaliesApp')
         fetchData(view, function(view, e){
           view = processFilters(view);
           view = alignModels(view);
-          console.log(view);
+          view = convertDates(view);
           return callback(view,e);
         });
       }

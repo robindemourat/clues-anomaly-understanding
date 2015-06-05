@@ -7,6 +7,9 @@ Introduction to Modulo
 Take a look at [this raw file](data/test.md). Ugly but simple, isn't it?
 It uses a markup langage called Markdown to turn a plain text file into an html document.
 
+
+Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-Formatting
+
 ```json
 {
     "role" : "modulo-view",
@@ -26,7 +29,8 @@ It uses a markup langage called Markdown to turn a plain text file into an html 
                         "end" : "END",
                         "title" : "Name",
                         "desc" : "Description"
-                    }
+                    },
+                    "dateformat" : "%m-%d-%Y"
                 },
                 {
                     "data" : "data-nogit/AIME_timeline.csv",
@@ -36,7 +40,8 @@ It uses a markup langage called Markdown to turn a plain text file into an html 
                         "end" : "End Date",
                         "title" : "Headline",
                         "desc" : "Text"
-                    }
+                    },
+                    "dateformat" : "%d/%m/%Y"
                 }
             ]
         },
@@ -46,9 +51,10 @@ It uses a markup langage called Markdown to turn a plain text file into an html 
                     "data" : "data-nogit/seattletimes.csv",
                     "type" : "events",
                     "models" : {
-                        "date" : "date",
+                        "date" : "datetext",
                         "title" : "chatter"
-                    }
+                    },
+                    "dateformat" : "%Y"
                 }
             ]
         }
