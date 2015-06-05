@@ -39,6 +39,7 @@ module.exports = function(config) {
       'bower_components/pdfjs-dist/build/pdf.js',
       'bower_components/pdfjs-dist/build/pdf.worker.js',
       'bower_components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js',
+      'bower_components/d3/d3.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

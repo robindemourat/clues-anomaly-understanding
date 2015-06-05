@@ -16,7 +16,8 @@
     "angular-tabletop": "~0.2.1",
     "angular-scroll":"0.7.1",
     "angular-carousel" : "0.3.10",
-    "angular-pdf-viewer": "0.2.6"
+    "angular-pdf-viewer": "0.2.6",
+    "d3" : "3.5.5"
 
   },
   "devDependencies": {

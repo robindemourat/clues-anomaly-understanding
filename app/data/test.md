@@ -7,7 +7,56 @@ Introduction to Modulo
 Take a look at [this raw file](data/test.md). Ugly but simple, isn't it?
 It uses a markup langage called Markdown to turn a plain text file into an html document.
 
-^^modulo-aside:Welcome
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Test timeline",
+    "type" : "timeline",
+    "columns" : [
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/nyc-opengov.csv",
+                    "filters": [
+                        "Type of Event==Website"
+                    ],
+                    "type" : "events",
+                    "models" : {
+                        "date" : "Date",
+                        "end" : "END",
+                        "title" : "Name",
+                        "desc" : "Description"
+                    }
+                },
+                {
+                    "data" : "data-nogit/AIME_timeline.csv",
+                    "type" : "events",
+                    "models" : {
+                        "date" : "Start Date",
+                        "end" : "End Date",
+                        "title" : "Headline",
+                        "desc" : "Text"
+                    }
+                }
+            ]
+        },
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/seattletimes.csv",
+                    "type" : "events",
+                    "models" : {
+                        "date" : "date",
+                        "title" : "chatter"
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
+
+^^modulo-aside:Test timeline
 
 Modulo is an angular-based website seed that enhances a markdown document with multiple and design-rich possibilities.
 
@@ -17,6 +66,7 @@ Modulo features :
 * advanced embedding functionnalities
 * scholarly-writing related functionnalities, with zotero references handling
 * a framework for building advanced and interactive figures going along with the text with iframes, embeds, and moreover, visualizations/mini-application snippets aiming at supporting your argument
+
 
 #Interface-related features
 
@@ -45,6 +95,8 @@ Enhances the classical browser's way of handling search in a page (ctrl + f).
 3. do what you want with your references
 
 Here is an example of reference [^^zotero:https://www.zotero.org/cathedrale/items/HGDNGPRH]. In this example I use references for creating a bibliography at the end of the page.
+
+^^modulo-aside:Welcome
 
 
 #Embeds in text

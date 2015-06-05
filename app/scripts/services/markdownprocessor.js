@@ -56,6 +56,8 @@ angular.module('moduloAnomaliesApp')
         try{
           view  = JSON.parse(match[1]);
         }catch(e){
+          //console.error('couldnt parse view data : ', match[1]);
+          //console.error('json parsing error : ', e);
         }
         
         ok = view && view.role && view.role === 'modulo-view';
@@ -68,7 +70,7 @@ angular.module('moduloAnomaliesApp')
       for(var i in toDelete){
         text = text.replace(toDelete[i], '');
       }
-      
+
       return {
         markdown : text,
         library : views
