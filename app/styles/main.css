@@ -162,6 +162,11 @@ a.active
 
 iframe{
     border : none;
+    width : 100%;
+}
+
+.middle-col-container .free-embed-iframe{
+    height : 1000px;
 }
 
 table

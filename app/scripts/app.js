@@ -13,7 +13,6 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    /*'ngRoute',*/
     'ngSanitize',
     'ngTouch',
     'angular-loading-bar',
@@ -25,24 +24,11 @@ angular
     'pdf'
   ])
   .config(function (markdownConverterProvider) {
-    /*$routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });*/
 
     markdownConverterProvider.config({
       extensions: ['glyphicon',
                     'moduloaside',
                     'modulohref',
-                    /*'table'*/
                     'grid',
                     'vimeo',
                     'slideshare',
@@ -50,7 +36,8 @@ angular
                     'carousel',
                     'twittermsgembed',
                     'pdfembed',
-                    'tableauembed'
+                    'tableauembed',
+                    'iframe'
                   ]
     });
 

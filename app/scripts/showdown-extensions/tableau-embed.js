@@ -4,7 +4,6 @@
       { type: 'lang', 
         regex : '\\^\\^tableau-embed:(.*)',
         replace : function(match, div){
-          console.log(match);
           return div
                   .replace(/width='(\d*)'/, "width='100%'")
                   .replace(/width: (\d*)px/, 'width:100%');

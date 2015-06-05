@@ -117,7 +117,7 @@
   <div 
     class="btn col-handler col-handler-pullright"
     ng-click="showCols.right = false"
-    ng-show='showCols.left && showCols.middle'
+    ng-show='showCols.left || showCols.middle'
   >
     <span 
       class="glyphicon glyphicon-chevron-right animate"

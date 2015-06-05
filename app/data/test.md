@@ -81,6 +81,9 @@ Here is an example of reference [^^zotero:https://www.zotero.org/cathedrale/item
 
 ^^pdf-embed:data/pdf/Mémoire - Castelletti A. (2013) - la place du public dans les nouveaux médias.pdf
 
+##Iframe embed
+^^iframe:http://www.w3schools.com/jsref/jsref_regexp_nxy.asp
+
 #Aside column management
 
 Modulo is designed to display rich aside content to a text.
