@@ -107,26 +107,78 @@ Input data model with one source :
 */
 
 angular.module('moduloAnomaliesApp')
-  .directive('moduloTimeline', function (TimelineModuloViewParser) {
+  .directive('moduloTimeline', function (TimelineModuloViewParser, $timeout) {
     return {
       restrict: 'AC',
+      templateUrl : 'views/modulo-timeline.html',
       scope : {
       	newdata : "@moduloContent"
       },
       link: function postLink($scope, $element, $attrs) {
-        $element.text('... Loading timeline data ...');
+        $scope.msg = '... Loading data timeline ...';
+
+        var mainContainer = d3.select($element[0]).select('.modulo-timeline-main-timeline'),
+        	globalScale = d3.scale.linear().range([0,100]);
+
+        var updateMainSvg = function(data){
+        	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
+        	var render = [], nbCols = data.columns.length;
+        	for(var i in data.columns){
+        		for(var j in data.columns[i].layers){
+        			for(var k in data.columns[i].layers[j].filteredData){
+        				var d = data.columns[i].layers[j].filteredData[k];
+        				d.column = +i;
+        				d.layer = +j;
+        				render.push(d);
+        			}
+        		}
+        	}
+        	var events = mainContainer
+        				.selectAll('.modulo-timeline-event')
+        				.data(render);
+
+        	var enter = events
+        					.enter()
+        					.append('circle')
+        					.attr('class', 'modulo-timeline-event')
+        					.attr('cx', function(d){
+        						return (100/nbCols)*d.column + (50/nbCols)+'%';//center
+
+        					})
+        					.attr('cy', function(d){
+        						
+        						return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
+        					})
+        					.attr('fill', 'white')
+        					.attr('stroke', 'black')
+        					.attr('r', 5)
+        					.on('click', function(d){
+        						if(!$scope.higlighted)
+        							$scope.highlighted = d;
+        						else $scope.highlighted = undefined;
+        					});
+
+        }
 
         $scope.$watch('newdata', function(nouv, old){
         	try{
-        		$scope.data = JSON.parse(nouv);
+        		$scope.temp = JSON.parse(nouv);
         		
         	}catch(e){
         		console.error('invalid json data for timeline :',nouv);
+        		scope.msg = 'Failed to load due to badly formatted json !'
         	};
-        	if($scope.data){
-        		//console.info('parsing ', $scope.data);
-        		TimelineModuloViewParser.parse($scope.data, function(d, e){
-        			$element.text('... Timeline data loaded, processing ...');
+        	if($scope.temp){
+        		TimelineModuloViewParser.parse($scope.temp, function(d, e){
+        			console.info('timeline date processed, ', d);
+        			
+        			$timeout(function(){
+        				$scope.data = d;
+        				$scope.msg = undefined;
+        				if(!$scope.$$phase)
+	        				$scope.$apply();
+	        			updateMainSvg($scope.data);
+        			});
         		});
         	}
         });

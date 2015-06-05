@@ -206,6 +206,48 @@ angular.module('moduloAnomaliesApp')
       return result;
     }
 
+    var getBoundDates = function(obj){
+      var min = Infinity, max = -Infinity, o;
+      
+      for(var i in obj.columns){
+        for(var j in obj.columns[i].layers){
+          for(var k in obj.columns[i].layers[j].filteredData){
+            o = obj.columns[i].layers[j].filteredData[k];
+            var start = o.date && o.date.date;
+            if(start){
+              var d = new Date(o.date.date);
+              if(d.getTime() < min){
+
+                min = d.getTime();
+              }
+              if(d.getTime() > max){
+                max = d.getTime();
+              }
+            }
+            var end = o.end && o.end.date;
+            if(end){
+              var d = new Date(o.end.date);
+              if(d.getTime() < min){
+                min = d.getTime();
+              }
+              if(d.getTime() > max){
+                max = d.getTime();
+              }
+            }
+          }
+        }
+      }
+      obj.minDate = {
+        date : new Date(min),
+        abs : min
+      };
+      obj.maxDate = {
+        date : new Date(max),
+        abs : max
+      }
+      return obj;
+    }
+
     // Public API here
     return {
       parse: function (view, callback) {
@@ -213,6 +255,7 @@ angular.module('moduloAnomaliesApp')
           view = processFilters(view);
           view = alignModels(view);
           view = convertDates(view);
+          view = getBoundDates(view);
           return callback(view,e);
         });
       }

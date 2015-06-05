@@ -1,15 +1,142 @@
 .aside-contents-switcher
 {
-	width : 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
-.modulo-html{
-	/*padding: 2em;*/
+.modulo-html
+{
+    /*padding: 2em;*/
 }
 
-.modulo-iframe, .modulo-iframe iframe{
-	width : 100%;
+.modulo-iframe,
+.modulo-iframe iframe
+{
+    width: 100%;
+    height: 100%;
+
+    border: none;
+}
+
+/*modulo-timeline*/
+.modulo-timeline
+{
+    height: 100%;
+
+}
+
+.modulo-timeline-main-wrapper{
+	position : absolute;
 	height : 100%;
-	border : none;
+	width : 100%;
+	overflow : hidden;
 }
 
+.modulo-timeline-columns-wrapper
+{
+    position: absolute;
+
+    display: flex;
+
+    width: 90%;
+    height: 100%;
+}
+
+.modulo-timeline-lift-wrapper
+{
+    position: absolute;
+    right: 0;
+
+    width: 10%;
+    height: 100%;
+    background: grey;
+
+}
+
+.modulo-timeline-column
+{
+    overflow: hidden;
+
+    height: 100%;
+
+    flex-grow: 1;
+}
+
+.modulo-timeline-column-header
+{
+    overflow-y: auto;
+
+    height: 10%;
+
+}
+
+.modulo-timeline-column-header h2
+{
+    font-size: .9em;
+
+    margin: 0;
+    margin-top: .2em;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.modulo-timeline-column-layers-container
+{
+    position: relative;
+
+    width: 100%;
+    height: 90%;
+
+}
+
+.modulo-timeline-layer
+{
+    position: absolute;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+
+.modulo-timeline-column-bg-line
+{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    margin-left: 50%;
+
+    border-left: 1px solid black;
+}
+
+.layer-test
+{
+    width: 100%;
+}
+
+.modulo-timeline-main-timeline{
+	position : absolute;
+	width: 90%;
+	height: 77%;
+	top : 13%;
+}
+
+.modulo-timeline-event{
+
+}
+
+
+.modulo-timeline-additional-wrapper
+{
+    position: absolute;
+
+    width: 100%;
+    height: 0;
+    overflow : hidden;
+    bottom : 0;
+
+    background: black;
+    color : white;
+    font-size : .5em;
+}

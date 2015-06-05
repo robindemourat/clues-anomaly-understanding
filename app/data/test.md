@@ -30,7 +30,8 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
                         "title" : "Name",
                         "desc" : "Description"
                     },
-                    "dateformat" : "%m-%d-%Y"
+                    "dateformat" : "%m-%d-%Y",
+                    "title" : "NYC Open Gov'"
                 },
                 {
                     "data" : "data-nogit/AIME_timeline.csv",
@@ -41,7 +42,8 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
                         "title" : "Headline",
                         "desc" : "Text"
                     },
-                    "dateformat" : "%d/%m/%Y"
+                    "dateformat" : "%d/%m/%Y",
+                    "title" : "AIME timeline"
                 }
             ]
         },
@@ -54,7 +56,8 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
                         "date" : "datetext",
                         "title" : "chatter"
                     },
-                    "dateformat" : "%Y"
+                    "dateformat" : "%Y",
+                    "title" : "seattle times"
                 }
             ]
         }
