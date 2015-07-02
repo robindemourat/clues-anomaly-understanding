@@ -58,6 +58,9 @@
     padding: 2em;
 
     overflow : auto;
+
+    z-index : 2;
+    background : white;
 }
 
 .middle-col-wrapper

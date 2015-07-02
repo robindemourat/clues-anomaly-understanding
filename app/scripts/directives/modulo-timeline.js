@@ -120,6 +120,7 @@ angular.module('moduloAnomaliesApp')
         var mainContainer = d3.select($element[0]).select('.modulo-timeline-main-timeline'),
         	globalScale = d3.scale.linear().range([0,100]);
 
+        //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
         	var render = [], nbCols = data.columns.length;

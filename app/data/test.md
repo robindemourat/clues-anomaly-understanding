@@ -65,6 +65,47 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
 }
 ```
 
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Test timeline 2",
+    "type" : "timeline",
+    "columns" : [
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/nyc-opengov.csv",
+                    "filters": [
+                        "Type of Event==Website"
+                    ],
+                    "type" : "events",
+                    "models" : {
+                        "date" : "Date",
+                        "end" : "END",
+                        "title" : "Name",
+                        "desc" : "Description"
+                    },
+                    "dateformat" : "%m-%d-%Y",
+                    "title" : "NYC Open Gov'"
+                },
+                {
+                    "data" : "data-nogit/AIME_timeline.csv",
+                    "type" : "events",
+                    "models" : {
+                        "date" : "Start Date",
+                        "end" : "End Date",
+                        "title" : "Headline",
+                        "desc" : "Text"
+                    },
+                    "dateformat" : "%d/%m/%Y",
+                    "title" : "AIME timeline"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ^^modulo-aside:Test timeline
 
 Modulo is an angular-based website seed that enhances a markdown document with multiple and design-rich possibilities.
@@ -75,7 +116,6 @@ Modulo features :
 * advanced embedding functionnalities
 * scholarly-writing related functionnalities, with zotero references handling
 * a framework for building advanced and interactive figures going along with the text with iframes, embeds, and moreover, visualizations/mini-application snippets aiming at supporting your argument
-
 
 #Interface-related features
 
@@ -131,6 +171,9 @@ Here is an example of reference [^^zotero:https://www.zotero.org/cathedrale/item
 ^^twitter-msg-oembed:https://twitter.com/Strabic/status/565086840370528256
 
 ##Image gallery
+
+^^modulo-aside:Test timeline 2
+
 
 ^^carousel:/data/images/1.png,/data/images/2.png,/data/images/3.png
 

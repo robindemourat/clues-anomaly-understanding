@@ -36,6 +36,7 @@ angular.module('moduloAnomaliesApp')
   		reloadMarkdown('data/test.md');
   	}
 
+    //I load and then process a modulo-markdown file and apply changes
   	var reloadMarkdown= function(url){
   		$http.get(url)
   		.success(function(d){

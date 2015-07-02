@@ -15,11 +15,11 @@ angular.module('moduloAnomaliesApp')
       	data : '@moduloContent'
       },
       link: function postLink(scope, element, attrs) {
-      	var tata;
 
       	scope.first = true;
 
       	var update = function(data){
+          console.log(data);
           if(data.url){
             $http
             .get(data.url)
@@ -31,13 +31,14 @@ angular.module('moduloAnomaliesApp')
             .success(function(d){
               scope.html = d;
             });
-          }
+          }else scope.html = $sce.trustAsHtml(data.html);
       	}
         
 
         scope.$watch('data', function(n,o){
         		n = JSON.parse(n);
         		o = JSON.parse(o);
+            console.log(n.html, o.html);
             if(n.html && n.html != o.html){
               scope.html = $sce.trustAsHtml(n.html);
             }else if(scope.first || n.url != o.url){
