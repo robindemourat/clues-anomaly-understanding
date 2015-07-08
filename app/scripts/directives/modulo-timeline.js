@@ -142,6 +142,9 @@ angular.module('moduloAnomaliesApp')
                 .attr('height', function(){
                     return liftHeight + 'px';
                 });
+            if($scope.extent){
+                setBrushExtent($scope.extent);
+            }
         }
 
         function brushstart() {
@@ -311,7 +314,6 @@ angular.module('moduloAnomaliesApp')
         angular.element($window).bind('resize', function() {
                liftHeight = angular.element(liftContainer[0][0]).height();
                liftScale.range([0, liftHeight]);
-               liftReverseTimeScale.range([0, liftHeight]);
                resizeBrush();
         });
 
