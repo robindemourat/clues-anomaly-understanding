@@ -59,7 +59,7 @@ angular.module('moduloAnomaliesApp')
     };
     var buildQuery = function(params, queryType, querySpecifier, additionalKey){
       var options = (params.options)?params.options:{},
-      params = getAndEvalParams(params.params);
+          params = getAndEvalParams(params.params);
 
       if(!angular.isDefined(params)){
         $log.log("couldn't perform getItems API request because specified mandatory params are not valid");

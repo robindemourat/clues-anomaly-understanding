@@ -73,7 +73,7 @@
             line = lines[--i];
           } else {
             line = lines[++i];
-            
+
             while (line.trim().match(/^[|]{1}.*[|]{1}$/)) {
               line = line.trim();
               vals = (tables.tr.apply(this, line.substring(1, line.length - 1).split('|')));
@@ -101,8 +101,8 @@
         }
         out.push(line);
       }
-      
-      
+
+
       return out.join('\n');
     };
     return [

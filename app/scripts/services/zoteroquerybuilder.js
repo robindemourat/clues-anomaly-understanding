@@ -25,6 +25,8 @@ angular.module('moduloAnomaliesApp')
         query.options.limit = 100;
         return query;
       }
+
+
       query.apiKey = function(d){
         if(arguments.length){
           query.params.key = d;

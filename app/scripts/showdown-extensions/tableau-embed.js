@@ -1,7 +1,7 @@
 (function() {
   var tableauembed = function(converter) {
     return [
-      { type: 'lang', 
+      { type: 'lang',
         regex : '\\^\\^tableau-embed:(.*)',
         replace : function(match, div){
           return div
@@ -11,7 +11,7 @@
       }
     ];
   }
-  
+
   // Client-side export
   if (typeof window !== 'undefined' && window.Showdown && window.Showdown.extensions) { window.Showdown.extensions.tableauembed = tableauembed; }
   // Server-side export

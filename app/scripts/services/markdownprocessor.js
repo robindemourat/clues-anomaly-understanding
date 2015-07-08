@@ -9,7 +9,7 @@
  */
 angular.module('moduloAnomaliesApp')
   .factory('markdownProcessor', function (markdownConverter, tabletop, $http, $rootScope, ZoteroQueryHandler, ZoteroQueryBuilder) {
-    
+
     var matchLibElement = /```json([\s\S]*?)```/gi,
         matchTitles = /\n(#+)(.*)/gi,
         matchSpreadsheets = /\^\^gspreadsheet:(.*)/gi,
@@ -22,7 +22,7 @@ angular.module('moduloAnomaliesApp')
         query = ZoteroQueryBuilder,
         zoteroRefs = [];
 
-    //I add to the library texts which are 
+    //I add to the library texts which are
     var updateModuloAsideTags = function(text){
       var match, views = [];
       while(match = matchModuloAside.exec(text)){
@@ -59,7 +59,7 @@ angular.module('moduloAnomaliesApp')
           //console.error('couldnt parse view data : ', match[1]);
           //console.error('json parsing error : ', e);
         }
-        
+
         ok = view && view.role && view.role === 'modulo-view';
         if(ok){
           toDelete.push(match[0]);
@@ -79,23 +79,27 @@ angular.module('moduloAnomaliesApp')
 
     var getSpreadsheet = function(url, match, callback){
       console.info('parsing gspreadsheet '+url);
-      Tabletop.init( 
-        { 
+      Tabletop.init(
+        {
           key: url,
-         callback: function(data, tabletop) { 
+         callback: function(data, tabletop) {
           console.info('got gspreadsheet from '+url);
           //get the first
-          var headers= [], output  = '| ';
-          for(var i in data[0]){
+          var headers= Object.key(data[0]),
+              output  = '| ';
+          /*for(var i in data[0]){
             headers.push(i);
-          }
+          }*/
           //write md table header
           for(var i in headers){
             output += headers[i] + ' | ';
           }
           output += '\n|';
+          var sep = headers.reduce(function(a, b){
+            return a + '=';
+          }, '');
           for(var i in headers){
-            output += '======== |';
+            output += sep + ' |';
           }
           output += '\n';
 
@@ -113,11 +117,13 @@ angular.module('moduloAnomaliesApp')
           });
 
         },
-         simpleSheet: true 
+         simpleSheet: true
         } );
     };
 
     var chainSpreadsheet = function(matches, index, callback){
+      if(!matches[index])
+        return;
       var match = matches[index];
       getSpreadsheet(match.url, match.toReplace, function(m){
         matches[index] = m;
@@ -128,9 +134,8 @@ angular.module('moduloAnomaliesApp')
           chainSpreadsheet(matches, index, callback);
         }
       });
-      
     }
-    
+
 
     //I take a md file, transforms ^^gspreadsheet:url by adding their content
     var extractSpreadsheets = function(text, callback){
@@ -242,8 +247,6 @@ angular.module('moduloAnomaliesApp')
           zoteroFetchingHandler(zoteroToFetch, 0, []);
           return callback(output);
         })
-
-        
       }
     };
   });

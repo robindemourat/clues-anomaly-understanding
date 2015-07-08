@@ -1,4 +1,4 @@
-<div 
+<div
 	class="modulo-timeline-main-wrapper animate"
 	ng-style="{
 	'height' : (highlighted)?'80%':'100%'
@@ -7,12 +7,12 @@
 	<div ng-bind="msg" class="animate" style="text-align : center" ng-show="data"></div>
 
 	<div class="modulo-timeline-columns-wrapper">
-		<div 
+		<div
 			class="modulo-timeline-column animate"
 			ng-repeat="column in data.columns track by $index"
 		>
 			<div class="modulo-timeline-column-header">
-				<h2 
+				<h2
 					ng-repeat="layer in column.layers track by $index"
 					ng-bind="layer.title"
 				></h2>
@@ -23,17 +23,17 @@
 		</div>
 	</div>
 	<svg class="modulo-timeline-main-timeline animate">
-			
+
 	</svg>
 	<div class="modulo-timeline-lift-wrapper">
 		<svg class="modulo-timeline-lift-content">
-			
+
 		</svg>
 	</div>
 </div>
-	
 
-<div 
+
+<div
 	class="modulo-timeline-additional-wrapper animate"
 	ng-style="{
 	'height' : (highlighted)?'20%':'0'
@@ -41,7 +41,7 @@
 >
 	<h4 ng-bind="highlighted.title"></h4>
 	<h5 ng-bind="highlighted.date.original"></h5>
-	<div 
+	<div
 		class="btn btn-xs"
 		ng-click="highlighted = undefined"
 	><span class="glyphicon glyphicon-remove"></span></div>

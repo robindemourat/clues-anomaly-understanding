@@ -54,7 +54,7 @@ angular.module('moduloAnomaliesApp')
               updateAside(screenYCenter);
             });
           });
-          
+
         }, true);
   		}).error(function(d){
 
@@ -84,10 +84,10 @@ angular.module('moduloAnomaliesApp')
           if(!$scope.$$phase)
             $scope.$apply();
         }
-          
 
-        
-        
+
+
+
       }
     }
 

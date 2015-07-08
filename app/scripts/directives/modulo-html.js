@@ -17,13 +17,13 @@ angular.module('moduloAnomaliesApp')
       link: function postLink(scope, element, attrs) {
 
       	scope.first = true;
-
       	var update = function(data){
           console.log(data);
           if(data.url){
             $http
             .get(data.url)
             .error(function(d){
+              //todo : improve that (number of trials ? dependent on error type ?)
               $timeout(function(){
                 update(data);
               }, 500);
@@ -33,9 +33,10 @@ angular.module('moduloAnomaliesApp')
             });
           }else scope.html = $sce.trustAsHtml(data.html);
       	}
-        
+
 
         scope.$watch('data', function(n,o){
+            //todo : wrap in try/catch
         		n = JSON.parse(n);
         		o = JSON.parse(o);
             console.log(n.html, o.html);

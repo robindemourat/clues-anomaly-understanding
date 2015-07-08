@@ -2,13 +2,13 @@
 
   var twittermsgembed = function(converter) {
     return [
-      { type: 'lang', 
+      { type: 'lang',
         regex : '\\^\\^twitter-msg-oembed:(.*)',
         replace : '<div twittermsgoembed src="'+'$1'+'">... Loading a twitter message ...</div>'
       }
     ];
   }
-  
+
   // Client-side export
   if (typeof window !== 'undefined' && window.Showdown && window.Showdown.extensions) { window.Showdown.extensions.twittermsgembed = twittermsgembed; }
   // Server-side export

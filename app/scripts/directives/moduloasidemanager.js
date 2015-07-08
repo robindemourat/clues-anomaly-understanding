@@ -26,20 +26,18 @@ angular.module('moduloAnomaliesApp')
 
       		}
 
-
-
       		try{
       			o = JSON.parse(o);
       		}catch(e){
-      			
+
       		}
-  			
+
   			if(scope.first || n.title != o.title){
   				scope.first = false;
   				scope.data = n;
   			}
       	})
-        
+
       }
     };
   });

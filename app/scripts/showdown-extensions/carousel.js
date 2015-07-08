@@ -7,7 +7,7 @@
 
   var carousel = function(converter) {
     return [
-      { type: 'lang', 
+      { type: 'lang',
         regex : '\\^\\^carousel:(.*)',
         replace : function(match, images){
           var htmlImages= [], el, finalEl;
@@ -29,7 +29,7 @@
   }
 
 
-  
+
   // Client-side export
   if (typeof window !== 'undefined' && window.Showdown && window.Showdown.extensions) { window.Showdown.extensions.carousel = carousel; }
   // Server-side export

@@ -22,7 +22,7 @@ angular.module('moduloAnomaliesApp')
                 console.info('got ',obj.data);
                 obj.extension = obj.data.match(matchFileExtension)[0];
                 if(obj.extension === '.csv'){
-                  obj.rawData = csvJS(d);
+                  obj.rawData = d3.csv.parse(d);
                 }else obj.rawData = d;
 
                 resolve(obj);
@@ -43,20 +43,21 @@ angular.module('moduloAnomaliesApp')
             view.data = undefined;
             return;
           }else{
-            for(var i in view.columns){
-              for(var j in view.columns[i].layers){
-                view.columns[i].layers[j].path = [i,j];
-                toDownload.push(fetchSource(view.columns[i].layers[j]));
-              }
-            }
+            view.columns.forEach(function(column, i){
+              column.layers.forEach(function(layer, j){
+                layer.path = [i,j];
+                toDownload.push(fetchSource(layer));
+              });
+            });
           }
+
           var obj = view;
           $q.all(toDownload).then(function(results) {
-           for(var i in results){
-            var o = results[i];
-            obj.columns[+o.path[0]]['layers'][+o.path[1]] = o;
-            delete obj.columns[+o.path[0]]['layers'][+o.path[1]].path;
-           }
+
+            results.forEach(function(o){
+              obj.columns[+o.path[0]]['layers'][+o.path[1]] = o;
+              delete obj.columns[+o.path[0]]['layers'][+o.path[1]].path;
+            });
            return callback(obj);
         }, function(e){
           return callback(undefined, e);
@@ -67,50 +68,52 @@ angular.module('moduloAnomaliesApp')
     var accessProp = function(obj, accessorArray){
       var i = -1;
       while(++i < accessorArray.length){
-        obj = obj[accessorArray[i]];
+        if(!angular.isDefined(obj)){
+          return obj;
+        }else obj = obj[accessorArray[i]];
       }
       return obj;
     }
 
     //I take a list of filters descriptions (string) and turn them into filter functions
     var parseFilters = function(filters){
-      for(var i in filters){
-        var f = filters[i], match;
-        while(match = parseFilter.exec(f)){
-          f = {};
-          f.path = match[1].split('.');
-          f.expression = match[2];
-          f.value = match[3];
-          if(f.expression == '=='){
-            f.filter = function(d){
-              return accessProp(d, f.path) == f.value;
-            }
-          }else if(f.expression == '!='){
-            f.filter = function(d){
-              return accessProp(d, f.path) != f.value;
-            }
-          }else if(f.expression == '<<'){
-            f.filter = function(d){
-              return +accessProp(d, f.path) < +f.value;
-            }
-          }else if(f.expression == '>>'){
-            f.filter = function(d){
-              return +accessProp(d, f.path) > +f.value;
-            }
-          }else if(f.expression == '>='){
-            f.filter = function(d){
-              return +accessProp(d, f.path) >= +f.value;
-            }
-          }else if(f.expression == '<='){
-            f.filter = function(d){
-              return +accessProp(d, f.path) <= +f.value;
-            }
-          }
-          filters[i] = f;
-        }
-      }
-      var ok = filters && filters.length;
-      return (ok)?filters:[];
+
+      return (filters && filters.length)?
+                filters.forEach(function(f, i){
+                  var match;
+                  while(match = parseFilter.exec(f)){
+                    f = {};
+                    f.path = match[1].split('.');
+                    f.expression = match[2];
+                    f.value = match[3];
+                    if(f.expression == '=='){
+                      f.filter = function(d){
+                        return accessProp(d, f.path) == f.value;
+                      }
+                    }else if(f.expression == '!='){
+                      f.filter = function(d){
+                        return accessProp(d, f.path) != f.value;
+                      }
+                    }else if(f.expression == '<<'){
+                      f.filter = function(d){
+                        return +accessProp(d, f.path) < +f.value;
+                      }
+                    }else if(f.expression == '>>'){
+                      f.filter = function(d){
+                        return +accessProp(d, f.path) > +f.value;
+                      }
+                    }else if(f.expression == '>='){
+                      f.filter = function(d){
+                        return +accessProp(d, f.path) >= +f.value;
+                      }
+                    }else if(f.expression == '<='){
+                      f.filter = function(d){
+                        return +accessProp(d, f.path) <= +f.value;
+                      }
+                    }
+                    filters[i] = f;
+                  }
+                }):[];
     }
 
     //I fetch a view's filters, and parse rawData field with each of them, returns a new filteredData field
@@ -118,9 +121,7 @@ angular.module('moduloAnomaliesApp')
       var filteredData = view.rawData.slice();
 
       for(var i in view.filters){
-        filteredData = filteredData.filter(function(d){
-          return view.filters[i].filter(d);
-        })
+        filteredData = filteredData.filter(view.filters[i].filter)
       }
       return filteredData;
     }
@@ -186,29 +187,10 @@ angular.module('moduloAnomaliesApp')
 
       return obj;
     }
-    
-    function csvJS(csv){
-     
-      var lines=csv.split("\n"),
-          result = [],
-          headers=lines[0].split(","),
-          obj,
-          currentline;
-     
-      for(var i=1;i<lines.length;i++){
-        obj = {};
-        currentline=lines[i].split(",");
-        for(var j=0;j<headers.length;j++){
-          obj[headers[j]] = currentline[j];
-        }
-        result.push(obj);
-      }
-      return result;
-    }
 
     var getBoundDates = function(obj){
       var min = Infinity, max = -Infinity, o;
-      
+
       for(var i in obj.columns){
         for(var j in obj.columns[i].layers){
           for(var k in obj.columns[i].layers[j].filteredData){
@@ -252,10 +234,10 @@ angular.module('moduloAnomaliesApp')
     return {
       parse: function (view, callback) {
         fetchData(view, function(view, e){
-          view = processFilters(view);
-          view = alignModels(view);
-          view = convertDates(view);
-          view = getBoundDates(view);
+          processFilters(view);
+          alignModels(view);
+          convertDates(view);
+          getBoundDates(view);
           return callback(view,e);
         });
       }

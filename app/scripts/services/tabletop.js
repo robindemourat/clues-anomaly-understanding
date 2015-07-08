@@ -33,7 +33,7 @@ angular.module('moduloAnomaliesApp')
   } catch (e) { }
 
   // Create a simple indexOf function for support
-  // of older browsers.  Uses native indexOf if 
+  // of older browsers.  Uses native indexOf if
   // available.  Code similar to underscores.
   // By making a separate function, instead of adding
   // to the prototype, we will not break bad for loops
@@ -41,12 +41,12 @@ angular.module('moduloAnomaliesApp')
   var indexOfProto = Array.prototype.indexOf;
   var ttIndexOf = function(array, item) {
     var i = 0, l = array.length;
-    
+
     if (indexOfProto && array.indexOf === indexOfProto) return array.indexOf(item);
     for (; i < l; i++) if (array[i] === item) return i;
     return -1;
   };
-  
+
   /*
     Initialize with Tabletop.init( { key: '0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc' } )
       OR!
@@ -60,7 +60,7 @@ angular.module('moduloAnomaliesApp')
     if(!this || !(this instanceof Tabletop)) {
       return new Tabletop(options);
     }
-    
+
     if(typeof(options) === 'string') {
       options = { key : options };
     }
@@ -82,7 +82,7 @@ angular.module('moduloAnomaliesApp')
     this.callbackContext = options.callbackContext;
     // Default to on, unless there's a proxy, in which case it's default off
     this.prettyColumnNames = typeof(options.prettyColumnNames) == 'undefined' ? !options.proxy : options.prettyColumnNames
-    
+
     if(typeof(options.proxy) !== 'undefined') {
       // Remove trailing slash, it will break the app
       this.endpoint = options.proxy.replace(/\/$/,'');
@@ -92,16 +92,16 @@ angular.module('moduloAnomaliesApp')
       // fetching straight from Google
       supportsCORS = false;
     }
-    
+
     this.parameterize = options.parameterize || false;
-    
+
     if(this.singleton) {
       if(typeof(Tabletop.singleton) !== 'undefined') {
         this.log("WARNING! Tabletop singleton already defined");
       }
       Tabletop.singleton = this;
     }
-    
+
     /* Be friendly about what you accept */
     if(/key=/.test(this.key)) {
       this.log("You passed an old Google Docs url as the key! Attempting to parse.");
@@ -130,7 +130,7 @@ angular.module('moduloAnomaliesApp')
     } else {
       this.base_json_path += 'json-in-script';
     }
-    
+
     if(!this.wait) {
       this.fetch();
     }
@@ -156,10 +156,10 @@ angular.module('moduloAnomaliesApp')
       }
       this.requestData(this.base_json_path, this.loadSheets);
     },
-    
+
     /*
       This will call the environment appropriate request method.
-      
+
       In browser it will use JSON-P, in node it will use request()
     */
     requestData: function(path, callback) {
@@ -195,7 +195,7 @@ angular.module('moduloAnomaliesApp')
       };
       xhr.send();
     },
-    
+
     /*
       Insert the URL into the page as a script tag. Once it's loaded the spreadsheet data
       it triggers the callback. This helps you avoid cross-domain errors
@@ -206,7 +206,7 @@ angular.module('moduloAnomaliesApp')
     injectScript: function(path, callback) {
       var script = document.createElement('script');
       var callbackName;
-      
+
       if(this.singleton) {
         if(callback === this.loadSheets) {
           callbackName = 'Tabletop.singleton.loadSheets';
@@ -226,9 +226,9 @@ angular.module('moduloAnomaliesApp')
         };
         callbackName = 'Tabletop.callbacks.' + callbackName;
       }
-      
+
       var url = path + "&callback=" + callbackName;
-      
+
       if(this.simple_url) {
         // We've gone down a rabbit hole of passing injectScript the path, so let's
         // just pull the sheet_id out of the path like the least efficient worker bees
@@ -240,15 +240,15 @@ angular.module('moduloAnomaliesApp')
       } else {
         script.src = this.endpoint + url;
       }
-      
+
       if (this.parameterize) {
         script.src = this.parameterize + encodeURIComponent(script.src);
       }
-      
+
       document.getElementsByTagName('script')[0].parentNode.appendChild(script);
     },
-    
-    /* 
+
+    /*
       This will only run if tabletop is being run in node.js
     */
     serverSideFetch: function(path, callback) {
@@ -261,7 +261,7 @@ angular.module('moduloAnomaliesApp')
       });
     },
 
-    /* 
+    /*
       Is this a sheet you want to pull?
       If { wanted: ["Sheet1"] } has been specified, only Sheet1 is imported
       Pulls all sheets if none are specified
@@ -273,7 +273,7 @@ angular.module('moduloAnomaliesApp')
         return (ttIndexOf(this.wanted, sheetName) !== -1);
       }
     },
-    
+
     /*
       What gets send to the callback
       if simpleSheet === true, then don't return an array of Tabletop.this.models,
@@ -303,7 +303,7 @@ angular.module('moduloAnomaliesApp')
         this.wanted.push(sheet);
       }
     },
-    
+
     /*
       Load all worksheets of the spreadsheet, turning each into a Tabletop Model.
       Need to use injectScript because the worksheet view that you're working from
@@ -376,7 +376,7 @@ angular.module('moduloAnomaliesApp')
       if(this.sheetsToLoad === 0)
         this.doCallback();
     },
-    
+
     /*
       Parse a single list-based worksheet, turning it into a Tabletop Model
 
@@ -384,7 +384,7 @@ angular.module('moduloAnomaliesApp')
     */
     loadSheet: function(data) {
       var that = this;
-      var model = new Tabletop.Model( { data: data, 
+      var model = new Tabletop.Model( { data: data,
                                         parseNumbers: this.parseNumbers,
                                         postProcess: this.postProcess,
                                         tabletop: this,
@@ -437,14 +437,14 @@ angular.module('moduloAnomaliesApp')
       this.onReady.call(this);
       return;
     }
-    
+
     for(var key in options.data.feed.entry[0]){
       if(/^gsx/.test(key))
         this.column_names.push( key.replace("gsx$","") );
     }
 
     this.original_columns = this.column_names;
-    
+
     for(i = 0, ilen =  options.data.feed.entry.length ; i < ilen; i++) {
       var source = options.data.feed.entry[i];
       var element = {};
@@ -465,7 +465,7 @@ angular.module('moduloAnomaliesApp')
         options.postProcess(element);
       this.elements.push(element);
     }
-    
+
     if(options.prettyColumnNames)
       this.fetchPrettyColumns();
     else
@@ -479,7 +479,7 @@ angular.module('moduloAnomaliesApp')
     all: function() {
       return this.elements;
     },
-    
+
     fetchPrettyColumns: function() {
       if(!this.raw.feed.link[3])
         return this.ready();
@@ -489,11 +489,11 @@ angular.module('moduloAnomaliesApp')
         that.loadPrettyColumns(data)
       });
     },
-    
+
     ready: function() {
       this.onReady.call(this);
     },
-    
+
     /*
      * Store column names as an object
      * with keys of Google-formatted "columnName"
@@ -520,7 +520,7 @@ angular.module('moduloAnomaliesApp')
       this.prettifyElements();
       this.ready();
     },
-    
+
     /*
      * Go through each row, substitutiting
      * Google-formatted "columnName"

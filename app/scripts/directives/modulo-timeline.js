@@ -41,7 +41,7 @@ Input data model with one source :
 	to : "String|AbsDate|DateObj",
 	filters : [
 		{
-			
+
 		}
 	],
 	model : {
@@ -68,7 +68,7 @@ Input data model with one source :
 					data : "String(url)|String(data)",
 					filters : [
 						{
-							
+
 						}
 					],
 					model : {
@@ -83,7 +83,7 @@ Input data model with one source :
 	to : "String|AbsDate|DateObj",
 	filters : [
 		{
-			
+
 		}
 	],
 	model : {
@@ -106,6 +106,8 @@ Input data model with one source :
 
 */
 
+
+//todo : harmonize d3 syntax
 angular.module('moduloAnomaliesApp')
   .directive('moduloTimeline', function (TimelineModuloViewParser, $timeout) {
     return {
@@ -137,7 +139,10 @@ angular.module('moduloAnomaliesApp')
         }
 
         function brushmove() {
-          var e = d3.event.target.extent();
+          var e = d3
+                    .event
+                    .target
+                    .extent();
           //circle.classed("selected", function(d) { return e[0] <= d && d <= e[1]; });
         }
 
@@ -156,13 +161,10 @@ angular.module('moduloAnomaliesApp')
 
         //brushg.select('.background').attr('height', liftContainer[0][0].offsetHeight);
 
-
-
-
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
-        	var render = [], 
+        	var render = [],
                 nbCols = data.columns.length,
                 colDisplay = (50/nbCols);
 
@@ -177,8 +179,8 @@ angular.module('moduloAnomaliesApp')
         		}
         	}
         	var events = mainContainer
-        				.selectAll('.modulo-timeline-event')
-        				.data(render);
+            				.selectAll('.modulo-timeline-event')
+            				.data(render);
 
         	var enter = events
         					.enter()
@@ -186,27 +188,20 @@ angular.module('moduloAnomaliesApp')
         					.attr('class', 'modulo-timeline-event')
         					.attr('cx', function(d){
         						return (100/nbCols)*d.column + colDisplay+'%';//center
-
         					})
         					.attr('cy', function(d){
-        						
-        						return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
+
+        						return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
         					})
                             .style('fill', function(d){
                                 return  colors(d.layer);
                             })
-        					/*.on('click', function(d){
+        					.on('click', function(d){
         						if(!$scope.higlighted)
         							$scope.highlighted = d;
         						else $scope.highlighted = undefined;
-        					})
-*/
-                            .on('mouseover', function(d){
-                                    $scope.highlighted = d;
-                            })
-                             .on('mouseout', function(d){
-                                    $scope.highlighted = undefined;
-                            });
+        					});
+
 
 
             var exit = events.exit().remove();
@@ -229,10 +224,10 @@ angular.module('moduloAnomaliesApp')
                             .attr('x1', '40%')
                             .attr('x2', '60%')
                             .attr('y1', function(d){
-                                return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
+                                return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
                             })
                             .attr('y2', function(d){
-                                return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
+                                return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
                             });
             //update
             //exit
@@ -244,7 +239,7 @@ angular.module('moduloAnomaliesApp')
         $scope.$watch('newdata', function(nouv, old){
         	try{
         		$scope.temp = JSON.parse(nouv);
-        		
+
         	}catch(e){
         		console.error('invalid json data for timeline :',nouv);
         		scope.msg = 'Failed to load due to badly formatted json !'
@@ -252,7 +247,7 @@ angular.module('moduloAnomaliesApp')
         	if($scope.temp){
         		TimelineModuloViewParser.parse($scope.temp, function(d, e){
         			console.info('timeline date processed, ', d);
-        			
+
         			$timeout(function(){
         				$scope.data = d;
         				$scope.msg = undefined;
@@ -265,7 +260,7 @@ angular.module('moduloAnomaliesApp')
         });
 
 
-        
+
       }
     };
   });

@@ -2,7 +2,7 @@
 
   var pdfembed = function(converter) {
     return [
-      { type: 'lang', 
+      { type: 'lang',
         regex : '\\^\\^pdf-embed:(.*)',
         replace : function(match, url){
           return '<pdf-viewer '
@@ -17,7 +17,7 @@
       }
     ];
   }
-  
+
   // Client-side export
   if (typeof window !== 'undefined' && window.Showdown && window.Showdown.extensions) { window.Showdown.extensions.pdfembed = pdfembed; }
   // Server-side export
