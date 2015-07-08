@@ -1,7 +1,3 @@
-
-
-
-
 <div 
 	class="modulo-timeline-main-wrapper animate"
 	ng-style="{
@@ -19,31 +15,21 @@
 				<h2 
 					ng-repeat="layer in column.layers track by $index"
 					ng-bind="layer.title"
-				>
-					
-				</h2>
+				></h2>
 			</div>
 			<div class="modulo-timeline-column-layers-container">
-			<div class="modulo-timeline-column-bg-line"></div>
-
-				<!--<div 
-					class="modulo-timeline-layer animate"
-					ng-repeat="layer in column.layers track by $index"
-				>
-					<p
-						ng-repeat="elem in layer.filteredData track by $index"
-						ng-bind="elem.title"
-						class="layer-test"
-					>
-					</p>
-				</div>-->
+				<div class="modulo-timeline-column-bg-line"></div>
 			</div>
 		</div>
 	</div>
 	<svg class="modulo-timeline-main-timeline animate">
 			
 	</svg>
-	<div class="modulo-timeline-lift-wrapper"></div>
+	<div class="modulo-timeline-lift-wrapper">
+		<svg class="modulo-timeline-lift-content">
+			
+		</svg>
+	</div>
 </div>
 	
 

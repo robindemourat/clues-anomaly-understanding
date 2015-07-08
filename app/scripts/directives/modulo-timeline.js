@@ -118,12 +118,54 @@ angular.module('moduloAnomaliesApp')
         $scope.msg = '... Loading data timeline ...';
 
         var mainContainer = d3.select($element[0]).select('.modulo-timeline-main-timeline'),
-        	globalScale = d3.scale.linear().range([0,100]);
+            liftContainer = d3.select($element[0]).select('.modulo-timeline-lift-content'),
+        	globalScale = d3.scale.linear().range([0,100]),
+            colors = d3.scale.category10();
+
+
+
+
+        var brush = d3.svg.brush()
+                    .y(globalScale)
+                    .extent([.3, .5])
+                    .on("brushstart", brushstart)
+                    .on("brush", brushmove)
+                    .on("brushend", brushend);
+
+        function brushstart() {
+          liftContainer.classed("selecting", true);
+        }
+
+        function brushmove() {
+          var e = d3.event.target.extent();
+          //circle.classed("selected", function(d) { return e[0] <= d && d <= e[1]; });
+        }
+
+        function brushend() {
+          liftContainer.classed("selecting", !d3.event.target.empty());
+        }
+
+        var brushg = liftContainer.append("g")
+        .attr("class", "brush")
+        .call(brush);
+
+        console.log(liftContainer[0][0].offsetHeight);
+
+        brushg.selectAll("rect")
+                .attr("width", '100%');
+
+        //brushg.select('.background').attr('height', liftContainer[0][0].offsetHeight);
+
+
+
 
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
-        	var render = [], nbCols = data.columns.length;
+        	var render = [], 
+                nbCols = data.columns.length,
+                colDisplay = (50/nbCols);
+
         	for(var i in data.columns){
         		for(var j in data.columns[i].layers){
         			for(var k in data.columns[i].layers[j].filteredData){
@@ -143,23 +185,61 @@ angular.module('moduloAnomaliesApp')
         					.append('circle')
         					.attr('class', 'modulo-timeline-event')
         					.attr('cx', function(d){
-        						return (100/nbCols)*d.column + (50/nbCols)+'%';//center
+        						return (100/nbCols)*d.column + colDisplay+'%';//center
 
         					})
         					.attr('cy', function(d){
         						
         						return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
         					})
-        					.attr('fill', 'white')
-        					.attr('stroke', 'black')
-        					.attr('r', 5)
-        					.on('click', function(d){
+                            .style('fill', function(d){
+                                return  colors(d.layer);
+                            })
+        					/*.on('click', function(d){
         						if(!$scope.higlighted)
         							$scope.highlighted = d;
         						else $scope.highlighted = undefined;
-        					});
+        					})
+*/
+                            .on('mouseover', function(d){
+                                    $scope.highlighted = d;
+                            })
+                             .on('mouseout', function(d){
+                                    $scope.highlighted = undefined;
+                            });
 
+
+            var exit = events.exit().remove();
+            updateLiftSvg(render);
+
+        };
+
+        var updateLiftSvg = function(render){
+
+            var events = liftContainer
+                         .selectAll('.modulo-timeline-lift-event')
+                         .data(render);
+
+
+            //enter
+            var enter =  events
+                            .enter()
+                            .append('line')
+                            .attr('class', 'modulo-timeline-lift-event')
+                            .attr('x1', '40%')
+                            .attr('x2', '60%')
+                            .attr('y1', function(d){
+                                return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
+                            })
+                            .attr('y2', function(d){
+                                return (d.date.date)?globalScale(d.date.date.getTime())+'%':0;
+                            });
+            //update
+            //exit
+            var exit = events.exit().remove();
         }
+
+
 
         $scope.$watch('newdata', function(nouv, old){
         	try{
