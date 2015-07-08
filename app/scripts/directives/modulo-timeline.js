@@ -122,7 +122,8 @@ angular.module('moduloAnomaliesApp')
         var mainContainer = d3.select($element[0]).select('.modulo-timeline-main-timeline'),
             liftContainer = d3.select($element[0]).select('.modulo-timeline-lift-content'),
             liftHeight = angular.element(liftContainer[0][0]).height(),
-        	globalScale = d3.scale.linear().range([0,100]),
+            globalScale = d3.scale.linear().range([0,100]),
+        	relativeScale = d3.scale.linear().range([0,100]),
             liftScale = d3.scale.linear().range([0,liftHeight]),
             liftTimeScale= d3.scale.linear().domain([0,1]),
             colors = d3.scale.category10();
@@ -136,6 +137,34 @@ angular.module('moduloAnomaliesApp')
                     .on("brushstart", brushstart)
                     .on("brush", brushmove)
                     .on("brushend", brushend);
+
+        var onWheel = function(){
+            var delta = (d3.event.wheelDelta);
+            if($scope.extent){
+
+                var dif= $scope.extent.end - $scope.extent.begin;
+                dif = (delta > 0)?dif:-dif;
+                if($scope.extent.begin + dif * .1 >= $scope.data.minDate.abs && $scope.extent.end + dif * .1 <= $scope.data.maxDate.abs ){
+                    $scope.extent = {
+                        begin : $scope.extent.begin + dif * .1,
+                        end : $scope.extent.end + dif * .1
+                    }
+                    setBrushExtent($scope.extent);
+                    updateMainSvg($scope.data);
+                }
+
+            }
+        }
+
+        mainContainer
+            .on("mousewheel.zoom", onWheel)
+            .on("DOMMouseScroll.zoom", onWheel) // disables older versions of Firefox
+            .on("wheel.zoom", onWheel) // disables newer versions of Firefox
+
+        liftContainer
+            .on("mousewheel.zoom", onWheel)
+            .on("DOMMouseScroll.zoom", onWheel) // disables older versions of Firefox
+            .on("wheel.zoom", onWheel) // disables newer versions of Firefox
 
         function resizeBrush(){
             liftContainer.select('.background')
@@ -155,19 +184,15 @@ angular.module('moduloAnomaliesApp')
             var extent = d3
                     .event
                     .target;
-            if(extent.empty()){
-                $scope.extent = {
-                    begin : $scope.initialExtent.begin,
-                    end : $scope.initialExtent.end
-                }
-                setBrushExtent($scope.extent);
-            }else{
+            if(!extent.empty()){
                 extent = extent.extent();
                 $scope.extent = {
                     begin : liftTimeScale(extent[0]),
                     end : liftTimeScale(extent[1])
                 };
             }
+            updateMainSvg($scope.data);
+
         }
 
         function brushend() {
@@ -181,12 +206,14 @@ angular.module('moduloAnomaliesApp')
                 }
                 setBrushExtent($scope.extent);
             }else{
+                console.log(extent.extent());
                 extent = extent.extent();
                 $scope.extent = {
                     begin : liftTimeScale(extent[0]),
                     end : liftTimeScale(extent[1])
                 };
             }
+            updateMainSvg($scope.data);
             liftContainer.classed("selecting", !d3.event.target.empty());
         }
 
@@ -215,37 +242,56 @@ angular.module('moduloAnomaliesApp')
 
 
         var parseOriginalBrush = function(data){
-            var extent = data.initialExtent;
-            $scope.initialExtent = {
-                begin : extent.begin.getTime(),
-                end : extent.end.getTime()
-            };
-            $scope.extent = {
-                begin : $scope.initialExtent.begin,
-                end : $scope.initialExtent.end
-            };
+            if(data.initialExtent){
+                var extent = data.initialExtent;
+                $scope.initialExtent = {
+                    begin : extent.begin.getTime(),
+                    end : extent.end.getTime()
+                };
+            }else{
+                $scope.initialExtent = {
+                    begin : data.minDate.abs,
+                    end : data.maxDate.abs
+                }
+
+
             //brush.extent([globalScale($scope.extent.begin)/100, globalScale($scope.extent.end)/100]);
+            }
         }
 
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
             liftTimeScale.range([data.minDate.abs, data.maxDate.abs]);
-            if(data.initialExtent)
-                parseOriginalBrush(data);
 
-            setBrushExtent($scope.extent);
+            parseOriginalBrush(data);
+            if(!$scope.extent){
+                $scope.extent = {
+                    begin : $scope.initialExtent.begin,
+                    end : $scope.initialExtent.end
+                };
+                setBrushExtent($scope.extent);
+            }
+            relativeScale.domain([$scope.extent.begin, $scope.extent.end]);
+
 
         	var render = [],
                 nbCols = data.columns.length,
-                colDisplay = (50/nbCols);
+                colDisplay = (50/nbCols),
+                date;
 
             data.columns.forEach(function(column, i){
                 column.layers.forEach(function(layer, j){
                     layer.filteredData.forEach(function(d){
                         d.column = +i;
                         d.layer = +j;
-                        render.push(d);
+                        //time filter
+                        if(d.date.date){
+                            date = d.date.date.getTime();
+                            if(date >= $scope.extent.begin && date <= $scope.extent.end){
+                                render.push(d);
+                            }
+                        }
                     })
                 })
             })
@@ -254,11 +300,15 @@ angular.module('moduloAnomaliesApp')
             				.selectAll('.modulo-timeline-event')
             				.data(render);
 
+            var exit = events.exit().remove();
+
+
         	var enter = events
         					.enter()
         					.append('circle')
         					.attr('class', 'modulo-timeline-event')
         					.attr('cx', function(d){
+
         						return (100/nbCols)*d.column + colDisplay+'%';//center
         					})
         					.attr('cy', function(d){
@@ -274,10 +324,18 @@ angular.module('moduloAnomaliesApp')
         						else $scope.highlighted = undefined;
         					});
 
+            events
+                .attr('cx', function(d){
+                        return (100/nbCols)*d.column + colDisplay+'%';//center
+                            })
+                .attr('cy', function(d){
+
+                    return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
+                });
 
 
-            var exit = events.exit().remove();
-            updateLiftSvg(render);
+
+            //updateLiftSvg(render);
 
         };
 
