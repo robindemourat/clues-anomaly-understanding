@@ -15,6 +15,9 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
     "role" : "modulo-view",
     "title" :"Test timeline",
     "type" : "timeline",
+    "dateformat" : "%d/%m/%Y",
+    "begindate" : "01/01/1980",
+    "enddate" : "01/01/1988",
     "columns" : [
         {
             "layers" : [

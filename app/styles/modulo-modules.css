@@ -55,7 +55,7 @@
 .modulo-timeline-lift-content{
     width : 100%;
     height : 100%;
-    background: red;
+    background: lightgrey;
 }
 
 .modulo-timeline-column
@@ -114,10 +114,7 @@
     border-left: 1px dashed black;
 }
 
-.layer-test
-{
-    width: 100%;
-}
+
 
 .modulo-timeline-main-timeline
 {
@@ -153,11 +150,8 @@
 }
 
 .modulo-timeline-lift-event{
-    stroke : yellow;
+    stroke : black;
 }
-
-
-
 
 .brush rect{
     width : 100%;
@@ -165,7 +159,6 @@
 .brush .background{
     /*height : 100%;*/
 }
-
 
 .selecting circle {
   fill-opacity: .2;

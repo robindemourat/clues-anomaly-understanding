@@ -109,7 +109,7 @@ Input data model with one source :
 
 //todo : harmonize d3 syntax
 angular.module('moduloAnomaliesApp')
-  .directive('moduloTimeline', function (TimelineModuloViewParser, $timeout) {
+  .directive('moduloTimeline', function (TimelineModuloViewParser, $timeout, $window) {
     return {
       restrict: 'AC',
       templateUrl : 'views/modulo-timeline.html',
@@ -121,63 +121,132 @@ angular.module('moduloAnomaliesApp')
 
         var mainContainer = d3.select($element[0]).select('.modulo-timeline-main-timeline'),
             liftContainer = d3.select($element[0]).select('.modulo-timeline-lift-content'),
+            liftHeight = angular.element(liftContainer[0][0]).height(),
         	globalScale = d3.scale.linear().range([0,100]),
+            liftScale = d3.scale.linear().range([0,liftHeight]),
+            liftTimeScale= d3.scale.linear().domain([0,1]),
             colors = d3.scale.category10();
 
 
 
 
         var brush = d3.svg.brush()
-                    .y(globalScale)
-                    .extent([.3, .5])
+                    .y(liftScale)
+                    .extent([.3, .3])
                     .on("brushstart", brushstart)
                     .on("brush", brushmove)
                     .on("brushend", brushend);
+
+        function resizeBrush(){
+            liftContainer.select('.background')
+                .attr('height', function(){
+                    return liftHeight + 'px';
+                });
+        }
 
         function brushstart() {
           liftContainer.classed("selecting", true);
         }
 
         function brushmove() {
-          var e = d3
+            var extent = d3
                     .event
-                    .target
-                    .extent();
-          //circle.classed("selected", function(d) { return e[0] <= d && d <= e[1]; });
+                    .target;
+            if(extent.empty()){
+                $scope.extent = {
+                    begin : $scope.initialExtent.begin,
+                    end : $scope.initialExtent.end
+                }
+                setBrushExtent($scope.extent);
+            }else{
+                extent = extent.extent();
+                $scope.extent = {
+                    begin : liftTimeScale(extent[0]),
+                    end : liftTimeScale(extent[1])
+                };
+            }
         }
 
         function brushend() {
-          liftContainer.classed("selecting", !d3.event.target.empty());
+            var extent = d3
+                    .event
+                    .target;
+            if(extent.empty()){
+                $scope.extent = {
+                    begin : $scope.initialExtent.begin,
+                    end : $scope.initialExtent.end
+                }
+                setBrushExtent($scope.extent);
+            }else{
+                extent = extent.extent();
+                $scope.extent = {
+                    begin : liftTimeScale(extent[0]),
+                    end : liftTimeScale(extent[1])
+                };
+            }
+            liftContainer.classed("selecting", !d3.event.target.empty());
         }
 
-        var brushg = liftContainer.append("g")
-        .attr("class", "brush")
-        .call(brush);
 
-        console.log(liftContainer[0][0].offsetHeight);
+        function setBrushExtent(extent){
+            //set brush-compatible extent from $scope.extent (in abs time)
+            var rel =[globalScale(extent.begin)/100,
+                        globalScale(extent.end)/100]
+            brush.extent(rel);
+            // now draw the brush to match our extent
+            brush(d3.select(".brush").transition());
+            // now fire the brushstart, brushmove, and brushend events
+            brush.event(d3.select(".brush").transition().delay(1000));
+        }
+
+
+        var brushg = liftContainer
+                        .append("g")
+                        .attr("class", "brush")
+                        .call(brush)
+                        .call(resizeBrush);
 
         brushg.selectAll("rect")
                 .attr("width", '100%');
 
-        //brushg.select('.background').attr('height', liftContainer[0][0].offsetHeight);
+
+
+        var parseOriginalBrush = function(data){
+            var extent = data.initialExtent;
+            $scope.initialExtent = {
+                begin : extent.begin.getTime(),
+                end : extent.end.getTime()
+            };
+            $scope.extent = {
+                begin : $scope.initialExtent.begin,
+                end : $scope.initialExtent.end
+            };
+            //brush.extent([globalScale($scope.extent.begin)/100, globalScale($scope.extent.end)/100]);
+        }
 
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
+            liftTimeScale.range([data.minDate.abs, data.maxDate.abs]);
+            if(data.initialExtent)
+                parseOriginalBrush(data);
+
+            setBrushExtent($scope.extent);
+
         	var render = [],
                 nbCols = data.columns.length,
                 colDisplay = (50/nbCols);
 
-        	for(var i in data.columns){
-        		for(var j in data.columns[i].layers){
-        			for(var k in data.columns[i].layers[j].filteredData){
-        				var d = data.columns[i].layers[j].filteredData[k];
-        				d.column = +i;
-        				d.layer = +j;
-        				render.push(d);
-        			}
-        		}
-        	}
+            data.columns.forEach(function(column, i){
+                column.layers.forEach(function(layer, j){
+                    layer.filteredData.forEach(function(d){
+                        d.column = +i;
+                        d.layer = +j;
+                        render.push(d);
+                    })
+                })
+            })
+
         	var events = mainContainer
             				.selectAll('.modulo-timeline-event')
             				.data(render);
@@ -232,9 +301,19 @@ angular.module('moduloAnomaliesApp')
             //update
             //exit
             var exit = events.exit().remove();
+            setBrushExtent($scope.extent);
         }
 
+        /*
+        TRIGGERS
+        */
 
+        angular.element($window).bind('resize', function() {
+               liftHeight = angular.element(liftContainer[0][0]).height();
+               liftScale.range([0, liftHeight]);
+               liftReverseTimeScale.range([0, liftHeight]);
+               resizeBrush();
+        });
 
         $scope.$watch('newdata', function(nouv, old){
         	try{

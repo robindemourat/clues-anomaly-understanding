@@ -161,13 +161,27 @@ angular.module('moduloAnomaliesApp')
 
     //I take as input a timeline data, and parse dates against dateformat option to output them as modulo-date objects
     var convertDates = function(obj){
-      for(var a in obj.columns){
-        for(var b in obj.columns[a].layers){
-          var view = obj.columns[a].layers[b];
+      //global begindate
+      if(obj.begindate && obj.enddate && obj.dateformat){
+        try{
+          var format = d3.time.format(obj.dateformat);
+
+          obj.initialExtent = {
+            begin : format.parse(obj.begindate),
+            end : format.parse(obj.enddate)
+          }
+        }catch(e){
+          obj.initialExtent = undefined;
+        }
+      }
+
+      //specific views
+      obj.columns.forEach(function(column, a){
+        column.layers.forEach(function(view, b){
           var format = d3.time.format(view.dateformat);
           var dateformat = view.dateformat;
 
-          for(var i in view.filteredData){
+          view.filteredData.forEach(function(d, i){
             try{
               view.filteredData[i].date = {
                 original : view.filteredData[i].date,
@@ -179,11 +193,10 @@ angular.module('moduloAnomaliesApp')
                 date : undefined
               }
             }
-          }
+          });
 
-          obj.columns[a].layers[b] = view;
-        }
-      }
+        })
+      });
 
       return obj;
     }
