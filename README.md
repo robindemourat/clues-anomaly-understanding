@@ -1,12 +1,18 @@
-# modulo-anomalies
+Modulo - *make a complex and media-rich publication from a simple text file*
+==========
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+#Todo
+##Timeline
+###TODO
+* nova layout
+* decide of quantative layers' data model
+* tooltip and event's information mode
+* set quantitative views
 
-## Build & development
+###DONE
+* set adaptative time axis
 
-Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
+##Transcription
 
-Running `grunt test` will run the unit tests with karma.
+##SankeyNav

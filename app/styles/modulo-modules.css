@@ -150,7 +150,6 @@
 }
 
 .modulo-timeline-lift-event{
-    stroke : black;
 }
 
 .brush rect{
@@ -175,11 +174,16 @@
   stroke-width: 1.5px;
 }
 
-.axis path, .axis line {
+.axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+.axis path{
+    opacity : 0;
+}
+
 
 .brush .extent {
   fill-opacity: .125;
