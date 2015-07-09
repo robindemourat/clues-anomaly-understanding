@@ -119,9 +119,9 @@ angular.module('moduloAnomaliesApp')
       link: function postLink($scope, $element, $attrs) {
         $scope.msg = '... Loading data timeline ...';
 
-        var sec = 1000,
-            min = sec * 60,
-            hour = min * 60,
+        var second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
             day = hour * 24,
             week = day * 7,
             month = day * 31,
