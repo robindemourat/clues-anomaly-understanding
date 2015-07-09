@@ -60,7 +60,8 @@ angular.module('moduloAnomaliesApp')
           //console.error('json parsing error : ', e);
         }
 
-        ok = view && view.role && view.role === 'modulo-view';
+        //ok = view && view.role && view.role === 'modulo-view';
+        ok = (view || {}).role === 'modulo-view';
         if(ok){
           toDelete.push(match[0]);
           //add to lib
@@ -87,17 +88,16 @@ angular.module('moduloAnomaliesApp')
           //get the first
           var headers= Object.key(data[0]),
               output  = '| ';
-          /*for(var i in data[0]){
-            headers.push(i);
-          }*/
+
           //write md table header
-          for(var i in headers){
-            output += headers[i] + ' | ';
-          }
+          output += headers.join(' | ');
+
           output += '\n|';
+
           var sep = headers.reduce(function(a, b){
             return a + '=';
           }, '');
+
           for(var i in headers){
             output += sep + ' |';
           }

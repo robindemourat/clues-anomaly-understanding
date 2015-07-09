@@ -30,6 +30,12 @@ Minimum model for an event view :
 - title
 - tags
 - desc
+
+Minimum model for a metrics view :
+- (if different types of objects) objectKey (string) : the column containing the identifier of objects
+- datesKey (string) : the column that contains the dates
+- dateFormat (string) : the d3 formatting instruction for dates
+- values (string | array<string>) : the column(s) that contain the metrics to be displayed
 */
 
 /*
@@ -236,7 +242,7 @@ angular.module('moduloAnomaliesApp')
             // now draw the brush to match our extent
             brush(d3.select(".brush").transition());
             // now fire the brushstart, brushmove, and brushend events
-            brush.event(d3.select(".brush").transition().delay(1000));
+            brush.event(d3.select(".brush")/*.transition().delay(1000)*/);
         }
 
 
@@ -356,25 +362,27 @@ angular.module('moduloAnomaliesApp')
         }
 
         //I update a timeline column
-        var updateColumn = function(data, columnIndex, nbCols, colDisplay){
+        var updateColumn = function(viewEvents, columnIndex, nbCols, colDisplay){
 
+
+            //events update
             var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
-            console.log(span);
-            nova(data, function(d){
+            //console.log(span);
+            nova(viewEvents, function(d){
                 return d.date.date.getTime();
             }, function(d){
                 return 1//d.date.date.getTime();
             },
             $scope.extent.begin,
             $scope.extent.end,
-            span
+            span * 50
             );
 
             var id = '#timeline-column-' + columnIndex;
             var events = mainContainer
                             .select(id)
                             .selectAll('.modulo-timeline-event')
-                            .data(data, function(d){
+                            .data(viewEvents, function(d){
                                 return d.id;
                             });
 
@@ -429,6 +437,9 @@ angular.module('moduloAnomaliesApp')
                 .attr('cy', function(d){
                     return d.x * 100 + '%';
                    // return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
+                })
+                .style('r', function(){
+                    return 5//(liftHeight * nova.nodeSize()[0] * .5) + 'px';
                 });
         }
 
@@ -458,7 +469,10 @@ angular.module('moduloAnomaliesApp')
                 .ticks(t.unit, t.span)
                 .tickFormat(d3.time.format(t.format));
 
-            axis.call(yAxis);
+            axis
+                .transition()
+                .duration(100)
+                .call(yAxis);
 
             //RENDERING
         	var nbCols = data.columns.length,
@@ -468,17 +482,19 @@ angular.module('moduloAnomaliesApp')
             data.columns.forEach(function(column, i){
                 var render = [];
                 column.layers.forEach(function(layer, j){
-                    layer.filteredData.forEach(function(d){
-                        d.column = +i;
-                        d.layer = +j;
-                        //time filter
-                        if(d.date.date){
-                            date = d.date.date.getTime();
-                            if(date >= $scope.extent.begin && date <= $scope.extent.end){
-                                render.push(d);
+                    if(layer.type === 'events'){
+                        layer.filteredData.forEach(function(d){
+                            d.column = +i;
+                            d.layer = +j;
+                            //time filter
+                            if(d.date.date){
+                                date = d.date.date.getTime();
+                                if(date >= $scope.extent.begin && date <= $scope.extent.end){
+                                    render.push(d);
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 });
                 updateColumn(render, i, nbCols, colDisplay);
             });
@@ -552,6 +568,8 @@ angular.module('moduloAnomaliesApp')
         			console.info('timeline date processed, ', d);
 
         			$timeout(function(){
+
+                        //creating columns groups
                         var columns = mainContainer.selectAll('.timeline-column')
                                         .data(d.columns);
                         columns.exit().remove();

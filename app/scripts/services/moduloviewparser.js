@@ -33,8 +33,8 @@ angular.module('moduloAnomaliesApp')
           });
         }
 
-
-      var fetchData = function(view, callback){
+    //I download the data from a view's source and return its content through a callback
+    var fetchData = function(view, callback){
         var toDownload = [];
         if(view.data){
           console.info('fetching', this.data);
@@ -65,6 +65,7 @@ angular.module('moduloAnomaliesApp')
         }
       };
 
+    //I'm an util aiming as accessing properties in complex properties
     var accessProp = function(obj, accessorArray){
       var i = -1;
       while(++i < accessorArray.length){
@@ -128,57 +129,49 @@ angular.module('moduloAnomaliesApp')
 
     //I parse filters for each view, converts them in to functions, and apply them to data
     var processFilters = function(view){
-      for(var i in view.columns){
-        for(var j in view.columns[i].layers){
-          var hasFilters = view.columns[i].layers[j].filters && view.columns[i].layers[j].filters.length;
-          view.columns[i].layers[j].filters = parseFilters(view.columns[i].layers[j].filters);
-          view.columns[i].layers[j].filteredData = applyFilters(view.columns[i].layers[j]);
-        }
-      }
+
+      view.columns.forEach(function(column, i){
+        column.layers.forEach(function(layer, j){
+          var hasFilters = layer.filters && layer.filters.length;
+          if(hasFilters){
+            layer.filters = parseFilters(layer.filters);
+            layer.filteredData = applyFilters(layer);
+          }else{
+            layer.filteredData = layer.rawData.slice();
+          }
+
+        });
+      });
+
       return view;
     }
 
-    //I convert objects to modulo-timeline standard model
+    //I convert event layers to modulo-timeline standard model
     var alignModels = function(obj){
-      for(var a in obj.columns){
-        for(var b in obj.columns[a].layers){
-          var view = obj.columns[a].layers[b];
-          if(view.models){
+
+      obj.columns.forEach(function(column, a){
+        column.layers.forEach(function(view, b){
+          if(view.models && view.type === 'events'){
             for(var modelOutput in view.models){
               var modelInput = view.models[modelOutput];
-              for(var j in view.filteredData){
-                view.filteredData[j][modelOutput] = view.filteredData[j][modelInput];
-                delete view.filteredData[j][modelInput];
-              }
+              view.filteredData.forEach(function(d, j){
+                d[modelOutput] = d[modelInput];
+                delete d[modelInput];
+              });
+          //convertLayerDates(view);
+
             }
+          }else if(view.models && view.type === "metrics"){
+            console.log(view);
           }
-          obj.columns[a].layers[b] = view;
-        }
-      }
+        })
+      });
 
       return obj;
     }
 
-    //I take as input a timeline data, and parse dates against dateformat option to output them as modulo-date objects
-    var convertDates = function(obj){
-      //global begindate
-      if(obj.begindate && obj.enddate && obj.dateformat){
-        try{
-          var format = d3.time.format(obj.dateformat);
-
-          obj.initialExtent = {
-            begin : format.parse(obj.begindate),
-            end : format.parse(obj.enddate)
-          }
-        }catch(e){
-          obj.initialExtent = undefined;
-        }
-      }
-
-      //specific views
-      obj.columns.forEach(function(column, a){
-        column.layers.forEach(function(view, b){
-          var format = d3.time.format(view.dateformat);
+    var convertLayerDates = function(view){
+      var format = d3.time.format(view.dateformat);
           var dateformat = view.dateformat;
 
           view.filteredData.forEach(function(d, i){
@@ -194,8 +187,31 @@ angular.module('moduloAnomaliesApp')
               }
             }
           });
+    };
 
-        })
+    //I take as input a timeline data, and parse dates against dateformat option to output them as modulo-date objects
+    var convertViewDates = function(obj){
+      if(obj.begindate && obj.enddate && obj.dateformat){
+        try{
+          var format = d3.time.format(obj.dateformat);
+
+          obj.initialExtent = {
+            begin : format.parse(obj.begindate),
+            end : format.parse(obj.enddate)
+          }
+        }catch(e){
+          obj.initialExtent = undefined;
+        }
+      }
+    }
+
+    var convertDates = function(obj){
+
+      //specific views
+      obj.columns.forEach(function(column, a){
+        column.layers.forEach(function(view, b){
+          convertLayerDates(view);
+        });
       });
 
       return obj;
@@ -243,14 +259,21 @@ angular.module('moduloAnomaliesApp')
       return obj;
     }
 
+    var mapMetrics = function(view){
+      console.log(view);
+      return view;
+    }
+
     // Public API here
     return {
       parse: function (view, callback) {
+        convertViewDates(view);
         fetchData(view, function(view, e){
           processFilters(view);
           alignModels(view);
           convertDates(view);
           getBoundDates(view);
+
           return callback(view,e);
         });
       }

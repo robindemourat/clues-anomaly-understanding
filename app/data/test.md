@@ -22,6 +22,17 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
         {
             "layers" : [
                 {
+                    "data" : "data-nogit/hashtags.csv",
+                    "type" : "metrics",
+                    "models" : {
+                        "objectKey" : "hash",
+                        "datesKey" : "mm-dd-yyyy",
+                        "values" : "value"
+                    },
+                    "dateformat" : "%m-%d-%Y",
+                    "title" : "Hashtags"
+                },
+                {
                     "data" : "data-nogit/nyc-opengov.csv",
                     "filters": [
                         "Type of Event==Website"

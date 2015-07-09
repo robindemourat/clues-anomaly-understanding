@@ -73,6 +73,7 @@ angular.module('moduloAnomaliesApp')
           remainder = minX%range;
 
           columnSize = size[1]/(range/span);
+          //columnSize *= 100;
 
           colN = parseInt(1/columnSize)+1;
           displacement = sX(minX + remainder%(range/colN));
@@ -121,12 +122,15 @@ angular.module('moduloAnomaliesApp')
          });
          rowSize = (maxRank > 1)?1/maxRank : .5;
 
-          sY.domain([0, maxRank]).range([rowSize, 1 - rowSize]);
+          //sY.domain([0, maxRank]).range([rowSize, 1 - rowSize]);
+          var displace = rowSize;
+          sY.domain([0, maxRank]).range([displace, 1 - displace]);
           i = -1;
-
           while(++i < nodes.length){
-            relRank = (maxRank - columns[nodes[i].col].count)/2 + nodes[i].rank;
+            relRank = (maxRank - columns[nodes[i].col].count)/2 + nodes[i].rank+.5;
+            //console.log(relRank);
             nodes[i].y = sY(relRank);
+
             if(accessorXNested){
               j = -1;
               py = nodes[i].y;
