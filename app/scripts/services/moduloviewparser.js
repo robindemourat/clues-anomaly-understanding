@@ -158,11 +158,21 @@ angular.module('moduloAnomaliesApp')
                 d[modelOutput] = d[modelInput];
                 delete d[modelInput];
               });
-          //convertLayerDates(view);
+            //convertLayerDates(view);
 
             }
           }else if(view.models && view.type === "metrics"){
-            console.log(view);
+            if(view.models.objectsKey){
+              view.filteredData.forEach(function(d){
+                d.date = d[view.models.datesKey];
+              });
+
+              view.filteredData = d3.nest().key(function(d){
+                return d[view.models.objectsKey];
+              })
+              .entries(view.filteredData);
+              //view.datesKey = view.models.datesKey;
+            }
           }
         })
       });
@@ -172,21 +182,38 @@ angular.module('moduloAnomaliesApp')
 
     var convertLayerDates = function(view){
       var format = d3.time.format(view.dateformat);
-          var dateformat = view.dateformat;
+      var dateformat = view.dateformat;
 
-          view.filteredData.forEach(function(d, i){
+      view.filteredData.forEach(function(d, i){
+        if(view.type === 'events'){
+          try{
+            d.date = {
+              original : view.filteredData[i].date,
+              date : format.parse(d.date)
+            }
+          }catch(e){
+            d.date = {
+              original : d.date,
+              date : undefined
+            }
+          }
+        }else{
+          d.values.forEach(function(datum){
             try{
-              view.filteredData[i].date = {
-                original : view.filteredData[i].date,
-                date : format.parse(view.filteredData[i].date)
+              datum.date = {
+                original : datum.date,
+                date : format.parse(datum.date)
               }
             }catch(e){
-              view.filteredData[i].date = {
-                original : view.filteredData[i].date,
+              datum.date = {
+                original : datum.date,
                 date : undefined
               }
             }
-          });
+          })
+        }
+      });
+
     };
 
     //I take as input a timeline data, and parse dates against dateformat option to output them as modulo-date objects
@@ -259,15 +286,10 @@ angular.module('moduloAnomaliesApp')
       return obj;
     }
 
-    var mapMetrics = function(view){
-      console.log(view);
-      return view;
-    }
-
     // Public API here
     return {
       parse: function (view, callback) {
-        convertViewDates(view);
+        //convertViewDates(view);
         fetchData(view, function(view, e){
           processFilters(view);
           alignModels(view);

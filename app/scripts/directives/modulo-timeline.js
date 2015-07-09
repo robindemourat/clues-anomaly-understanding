@@ -448,7 +448,8 @@ angular.module('moduloAnomaliesApp')
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
             liftTimeScale.range([data.minDate.abs, data.maxDate.abs]);
 
-            parseOriginalBrush(data);
+            parseOriginalBrush(data);//todo : just at view change
+
             if(!$scope.extent){
                 $scope.extent = {
                     begin : $scope.initialExtent.begin,
@@ -480,7 +481,7 @@ angular.module('moduloAnomaliesApp')
                 date;
 
             data.columns.forEach(function(column, i){
-                var render = [];
+                var events = [], metrics = [];
                 column.layers.forEach(function(layer, j){
                     if(layer.type === 'events'){
                         layer.filteredData.forEach(function(d){
@@ -490,13 +491,15 @@ angular.module('moduloAnomaliesApp')
                             if(d.date.date){
                                 date = d.date.date.getTime();
                                 if(date >= $scope.extent.begin && date <= $scope.extent.end){
-                                    render.push(d);
+                                    events.push(d);
                                 }
                             }
                         });
+                    }else{
+                        console.log(layer);
                     }
                 });
-                updateColumn(render, i, nbCols, colDisplay);
+                updateColumn(events, i, nbCols, colDisplay);
             });
         };
 
