@@ -154,10 +154,11 @@ angular.module('moduloAnomaliesApp')
           text = text.replace(matches[i].toReplace, matches[i].replaceWith);
         }
         updateMarkdown(text, function(output){
-            $rootScope.$broadcast('markdownUpdate', output);
+            //$rootScope.$broadcast('markdownUpdate', output);
+            return callback(output);
           });
       });
-      return text;
+      //return text;
     }
 
     var slugify = function(str){
@@ -241,11 +242,11 @@ angular.module('moduloAnomaliesApp')
 
     // Public API here
     return {
-      process: function (text, callback, extractGSpread) {
+      process: function (text, callback, callback2) {
         updateMarkdown(text, function(output, zoteroToFetch){
-          extractSpreadsheets(text);//launching non-blocking spreadsheet fetching
+          extractSpreadsheets(text, callback2);//launching non-blocking spreadsheet fetching
           zoteroFetchingHandler(zoteroToFetch, 0, []);
-          return callback(output);
+          return callback(output, callback2);
         })
       }
     };

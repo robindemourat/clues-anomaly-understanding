@@ -8,6 +8,7 @@ Modulo - *make a complex and media-rich publication from a simple text file*
 * decide of quantative layers' data model
 * tooltip and event's information mode
 * set quantitative views
+* timeline update (data, timespan only)
 
 ###DONE
 * set adaptative time axis
