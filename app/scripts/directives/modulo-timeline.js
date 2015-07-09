@@ -338,6 +338,69 @@ angular.module('moduloAnomaliesApp')
             }
         }
 
+        //I update a timeline column
+        var updateColumn = function(data, columnIndex, nbCols, colDisplay){
+
+            var id = '#timeline-column-' + columnIndex;
+            var events = mainContainer
+                            .select(id)
+                            .selectAll('.modulo-timeline-event')
+                            .data(data, function(d){
+                                return d.id;
+                            });
+
+            var exit = events
+                            .exit()
+                            .attr('r', 5)
+                            .transition()
+                            .duration(100)
+                            .attr('cy', function(d){
+                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
+                                var distToEnd = $scope.extent.end - d.date.date.getTime();
+                                if(distToBegin < distToEnd){
+                                    return '-10%';
+                                }else return '100%';
+                                //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
+                            })
+                            .attr('r', 0.01)
+                            .remove();
+
+
+            var enter = events
+                            .enter()
+                            .append('circle')
+                            .attr('class', 'modulo-timeline-event')
+                            .attr('cx', function(d){
+                                return (100/nbCols)*d.column + colDisplay+'%';//center
+                            })
+                            .attr('cy', function(d){
+                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
+                                var distToEnd = $scope.extent.end - d.date.date.getTime();
+                                if(distToBegin < distToEnd){
+                                    return '-10%';
+                                }else return '110%';
+                                //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
+                            })
+                            .style('fill', function(d){
+                                return  colors(d.layer);
+                            })
+                            .on('click', function(d){
+                                if(!$scope.higlighted)
+                                    $scope.highlighted = d;
+                                else $scope.highlighted = undefined;
+                            });
+            events
+                .transition()
+                .duration(100)
+                .attr('cx', function(d){
+                        return (100/nbCols)*d.column + colDisplay+'%';//center
+                            })
+                .attr('cy', function(d){
+
+                    return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
+                });
+        }
+
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
@@ -367,12 +430,12 @@ angular.module('moduloAnomaliesApp')
             axis.call(yAxis);
 
             //RENDERING
-        	var render = [],
-                nbCols = data.columns.length,
+        	var nbCols = data.columns.length,
                 colDisplay = (50/nbCols),
                 date;
 
             data.columns.forEach(function(column, i){
+                var render = [];
                 column.layers.forEach(function(layer, j){
                     layer.filteredData.forEach(function(d){
                         d.column = +i;
@@ -384,71 +447,10 @@ angular.module('moduloAnomaliesApp')
                                 render.push(d);
                             }
                         }
-                    })
-                })
-            });
-
-        	var events = mainContainer
-            				.selectAll('.modulo-timeline-event')
-            				.data(render, function(d){
-                                return d.id;
-                            });
-
-            var exit = events
-                            .exit()
-                            .attr('r', 5)
-                            .transition()
-                            .duration(100)
-                            .attr('cy', function(d){
-                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
-                                var distToEnd = $scope.extent.end - d.date.date.getTime();
-                                if(distToBegin < distToEnd){
-                                    return '-10%';
-                                }else return '100%';
-                                //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
-                            })
-                            .attr('r', 0.01)
-                            .remove();
-
-
-        	var enter = events
-        					.enter()
-        					.append('circle')
-        					.attr('class', 'modulo-timeline-event')
-        					.attr('cx', function(d){
-        						return (100/nbCols)*d.column + colDisplay+'%';//center
-        					})
-        					.attr('cy', function(d){
-                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
-                                var distToEnd = $scope.extent.end - d.date.date.getTime();
-                                if(distToBegin < distToEnd){
-                                    return '-10%';
-                                }else return '110%';
-        						//return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
-        					})
-                            .style('fill', function(d){
-                                return  colors(d.layer);
-                            })
-        					.on('click', function(d){
-        						if(!$scope.higlighted)
-        							$scope.highlighted = d;
-        						else $scope.highlighted = undefined;
-        					});
-            events
-                .transition()
-                .duration(100)
-                .attr('cx', function(d){
-                        return (100/nbCols)*d.column + colDisplay+'%';//center
-                            })
-                .attr('cy', function(d){
-
-                    return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
+                    });
                 });
-
-
-
-            //updateLiftSvg(render);
-
+                updateColumn(render, i, nbCols, colDisplay);
+            });
         };
 
         var updateLiftSvg = function(data){
@@ -519,6 +521,16 @@ angular.module('moduloAnomaliesApp')
         			console.info('timeline date processed, ', d);
 
         			$timeout(function(){
+                        var columns = mainContainer.selectAll('.timeline-column')
+                                        .data(d.columns);
+                        columns.exit().remove();
+                        columns.enter()
+                            .append('g')
+                            .attr('class', 'timeline-column')
+                            .attr('id', function(d,i){
+                                return 'timeline-column-' + i;
+                            });
+
         				$scope.data = d;
                         var id = 0;
                         d.columns.forEach(function(column, i){
@@ -527,8 +539,11 @@ angular.module('moduloAnomaliesApp')
                                     d.id = id;
                                     id++;
                                 })
-                            })
+                            });
                         });
+
+
+
         				$scope.msg = undefined;
                         setTimeout(function(){
                             $scope.$apply();
