@@ -61,7 +61,6 @@ angular.module('moduloAnomaliesApp')
 
 
           sX.domain([minX, maxX]);
-
           nodes = nodes.sort(function(a, b){
             var a1 = accessorY(a), b1 = accessorY(b);
             if(a1 > b1)
@@ -74,6 +73,7 @@ angular.module('moduloAnomaliesApp')
           remainder = minX%range;
 
           columnSize = size[1]/(range/span);
+
           colN = parseInt(1/columnSize)+1;
           displacement = sX(minX + remainder%(range/colN));
 
@@ -90,7 +90,6 @@ angular.module('moduloAnomaliesApp')
             columns[col].lastrank++;
             columns[col].count++;
             nodes[i].y = 0;
-
 
             if(accessorXNested){
               j = -1;
@@ -136,13 +135,13 @@ angular.module('moduloAnomaliesApp')
                 nodes[i].values[j].y = sY(relRank);
                 nodes[i].values[j].rely = nodes[i].values[j].y - py;
                 if(j > 0){
-              nodes[i].values[j].nextrelx =  nodes[i].values[j-1].relx -nodes[i].values[j].relx;
-              nodes[i].values[j].nextrely = nodes[i].values[j-1].rely -nodes[i].values[j].rely;
-            }else{
-              //if 0 connect to origin
-              nodes[i].values[j].nextrelx = -nodes[i].values[j].relx;
-              nodes[i].values[j].nextrely = -nodes[i].values[j].rely;
-            }
+                  nodes[i].values[j].nextrelx =  nodes[i].values[j-1].relx -nodes[i].values[j].relx;
+                  nodes[i].values[j].nextrely = nodes[i].values[j-1].rely -nodes[i].values[j].rely;
+                }else{
+                  //if 0 connect to origin
+                  nodes[i].values[j].nextrelx = -nodes[i].values[j].relx;
+                  nodes[i].values[j].nextrely = -nodes[i].values[j].rely;
+                }
               }
             }
           }

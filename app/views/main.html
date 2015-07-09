@@ -1,26 +1,26 @@
-<nav 
+<nav
   class="col-left animate"
   ng-class="setColClass('left')"
 >
 
   <!--left-col-wrapper : main content-->
-    <div 
+    <div
       class="left-col-wrapper col-xs-2 animate"
       ng-show="showCols.left"
     >
       <h1 ng-bind="documentTitle">Modulo</h1>
 
       <!--searchbox -->
-      <div class="searchbox flex-container">
+      <!--<div class="searchbox flex-container">
         <span class="btn btn-xs">
           <span class="glyphicon glyphicon-search"></span>
         </span>
         <input type="text">
-      </div> <!--end searchbox -->
+      </div>--> <!--end searchbox -->
 
       <!--table of contents-->
       <div class="toc" du-scroll-container="middle-col-container">
-        <div 
+        <div
           ng-repeat="el in contents.toc"
           ng-style="{'padding-left':(el.level * 5)+'px'}"
           du-scrollspy="#{{el.tag}}"
@@ -32,7 +32,7 @@
 
     </div><!--END left-colwrapper-->
 
-  <div 
+  <div
     class="btn col-handler col-handler-pullright"
     ng-click="showCols.left = false"
   >
@@ -40,14 +40,14 @@
   </div>
 </nav>
 
-<section 
+<section
   class="col-middle animate"
   ng-class="setColClass('middle')"
 >
 
 
   <!--middle-col-wrapper : main content-->
-  <div 
+  <div
     class="middle-col-wrapper col-xs-12 animate"
     id="middle-col-wrapper"
      du-scroll-container="middle-col-container"
@@ -58,7 +58,7 @@
       <div>
         <div class="middle-col-contents-main"   compile="contents.html"></div>
       </div>
-      
+
 
       <div class="middle-col-contents-bibliography">
         <h3>Generated bibliography</h3>
@@ -68,20 +68,20 @@
       </div>
     </div>
     <!--<div class="middle-col-container"  btf-markdown="contents.markdown">
-      
+
     </div>--> <!--END middle-col-container : contents-->
   </div>
   <!--END middle-col-wrapper : main content-->
 
 
-  <div 
+  <div
     class="btn col-handler col-handler-pullleft"
     ng-click="showCols.left = true"
     ng-show="!showCols.left"
   >
     <span class="glyphicon glyphicon-chevron-right animate"></span>
   </div>
-  <div 
+  <div
     class="btn col-handler col-handler-pullright"
     ng-click="showCols.right = true"
     ng-show="!showCols.right"
@@ -90,36 +90,36 @@
   </div>
 </section>
 
-<aside 
+<aside
   class="col-right animate"
   ng-class="setColClass('right')"
 >
-  <div 
+  <div
     class="aside-col-wrapper"
     ng-show="showCols.right"
     moduloasidemanager
     asidedata='{{asideData}}'
   >
   </div>
-  
-  <div 
+
+  <div
     class="btn col-handler col-handler-pullleft"
     ng-click="showCols.middle = !showCols.middle"
 
   >
-    <span 
+    <span
       class="glyphicon glyphicon-chevron-left animate"
       ng-style="{
         'transform' : (!showCols.middle)?'rotate(180deg)':''
       }"></span>
   </div>
 
-  <div 
+  <div
     class="btn col-handler col-handler-pullright"
     ng-click="showCols.right = false"
     ng-show='showCols.left || showCols.middle'
   >
-    <span 
+    <span
       class="glyphicon glyphicon-chevron-right animate"
       ></span>
   </div>

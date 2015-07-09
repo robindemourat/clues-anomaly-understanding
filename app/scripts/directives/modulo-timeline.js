@@ -109,7 +109,7 @@ Input data model with one source :
 
 //todo : harmonize d3 syntax
 angular.module('moduloAnomaliesApp')
-  .directive('moduloTimeline', function (TimelineModuloViewParser, $timeout, $window) {
+  .directive('moduloTimeline', function (TimelineModuloViewParser, $timeout, $window, nova) {
     return {
       restrict: 'AC',
       templateUrl : 'views/modulo-timeline.html',
@@ -137,7 +137,8 @@ angular.module('moduloAnomaliesApp')
             liftScale = d3.scale.linear().range([0,liftHeight]),
             liftTimeScale= d3.scale.linear().domain([0,1]),
             colors = d3.scale.category10(),
-            ticksScale = d3.time.scale();
+            ticksScale = d3.time.scale(),
+            nova = d3.layout.nova();
 
         var yAxis = d3.svg.axis();
 
@@ -268,11 +269,27 @@ angular.module('moduloAnomaliesApp')
             }
         }
 
+        //I try to make a coherent choice of which timespan to set for timeline bars regarding the length of the period of time that is being covered by the timeline
+        var defineTimeSpan = function(range){
+            if(range > 2 * month){
+                return day;
+            }else if(range > 6 * day){
+                return hour;
+            }else if(range > 1 * day){
+                return 10 * minute;
+            }else if(range > 2 * hour){
+                return 5 * minute;
+            }else if(range > minute*10){
+                return minute;
+            }else if(range > minute){
+                return second * 10;
+            }else return second;
+        }
+
+
         //I take a time span in absolute time format, return appropriate d3 ticks formatting settings
         var setTicks = function(time){
             var unit, span, format;
-
-
             if(time > year * 50){// > 50 years
                 unit = d3.time.year;
                 span = 50;
@@ -341,6 +358,18 @@ angular.module('moduloAnomaliesApp')
         //I update a timeline column
         var updateColumn = function(data, columnIndex, nbCols, colDisplay){
 
+            var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
+            console.log(span);
+            nova(data, function(d){
+                return d.date.date.getTime();
+            }, function(d){
+                return 1//d.date.date.getTime();
+            },
+            $scope.extent.begin,
+            $scope.extent.end,
+            span
+            );
+
             var id = '#timeline-column-' + columnIndex;
             var events = mainContainer
                             .select(id)
@@ -371,7 +400,8 @@ angular.module('moduloAnomaliesApp')
                             .append('circle')
                             .attr('class', 'modulo-timeline-event')
                             .attr('cx', function(d){
-                                return (100/nbCols)*d.column + colDisplay+'%';//center
+                                return ((100/nbCols) * d.y + (100/nbCols)* d.column) + '%';
+                                //return (100/nbCols)*d.column + colDisplay+'%';//center
                             })
                             .attr('cy', function(d){
                                 var distToBegin = d.date.date.getTime() - $scope.extent.begin;
@@ -393,11 +423,12 @@ angular.module('moduloAnomaliesApp')
                 .transition()
                 .duration(100)
                 .attr('cx', function(d){
-                        return (100/nbCols)*d.column + colDisplay+'%';//center
-                            })
+                    return ((100/nbCols) * d.y + (100/nbCols)* d.column) + '%';
+                    //return (100/nbCols)*d.column + colDisplay+'%';//center
+                })
                 .attr('cy', function(d){
-
-                    return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
+                    return d.x * 100 + '%';
+                   // return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
                 });
         }
 
