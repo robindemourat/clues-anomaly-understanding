@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
   var tableauembed = function(converter) {
     return [

@@ -1,3 +1,5 @@
+'use strict';
+
 (function(){
 
   var youtubeTemplate = ['<iframe width="100%" height="500px" src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>'];

@@ -144,10 +144,10 @@ angular.module('moduloAnomaliesApp')
 
                 var dif= $scope.extent.end - $scope.extent.begin;
                 dif = (delta > 0)?dif:-dif;
-                if($scope.extent.begin + dif * .1 >= $scope.data.minDate.abs && $scope.extent.end + dif * .1 <= $scope.data.maxDate.abs ){
+                if($scope.extent.begin + dif * .05 >= $scope.data.minDate.abs && $scope.extent.end + dif * .05 <= $scope.data.maxDate.abs ){
                     $scope.extent = {
-                        begin : $scope.extent.begin + dif * .1,
-                        end : $scope.extent.end + dif * .1
+                        begin : $scope.extent.begin + dif * .05,
+                        end : $scope.extent.end + dif * .05
                     }
                     setBrushExtent($scope.extent);
                     updateMainSvg($scope.data);
@@ -298,9 +298,25 @@ angular.module('moduloAnomaliesApp')
 
         	var events = mainContainer
             				.selectAll('.modulo-timeline-event')
-            				.data(render);
+            				.data(render, function(d){
+                                return d.id;
+                            });
 
-            var exit = events.exit().remove();
+            var exit = events
+                            .exit()
+                            .attr('r', 5)
+                            .transition()
+                            .duration(300)
+                            .attr('cy', function(d){
+                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
+                                var distToEnd = $scope.extent.end - d.date.date.getTime();
+                                if(distToBegin < distToEnd){
+                                    return 0;
+                                }else return '100%';
+                                //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
+                            })
+                            .attr('r', 0.01)
+                            .remove();
 
 
         	var enter = events
@@ -308,12 +324,15 @@ angular.module('moduloAnomaliesApp')
         					.append('circle')
         					.attr('class', 'modulo-timeline-event')
         					.attr('cx', function(d){
-
         						return (100/nbCols)*d.column + colDisplay+'%';//center
         					})
         					.attr('cy', function(d){
-
-        						return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
+                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
+                                var distToEnd = $scope.extent.end - d.date.date.getTime();
+                                if(distToBegin < distToEnd){
+                                    return 0;
+                                }else return '100%';
+        						//return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
         					})
                             .style('fill', function(d){
                                 return  colors(d.layer);
@@ -323,8 +342,9 @@ angular.module('moduloAnomaliesApp')
         							$scope.highlighted = d;
         						else $scope.highlighted = undefined;
         					});
-
             events
+                .transition()
+                .duration(300)
                 .attr('cx', function(d){
                         return (100/nbCols)*d.column + colDisplay+'%';//center
                             })
@@ -389,6 +409,15 @@ angular.module('moduloAnomaliesApp')
 
         			$timeout(function(){
         				$scope.data = d;
+                        var id = 0;
+                        d.columns.forEach(function(column, i){
+                            column.layers.forEach(function(layer, j){
+                                layer.filteredData.forEach(function(d){
+                                    d.id = id;
+                                    id++;
+                                })
+                            })
+                        });
         				$scope.msg = undefined;
         				if(!$scope.$$phase)
 	        				$scope.$apply();

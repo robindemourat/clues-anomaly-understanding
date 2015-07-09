@@ -146,6 +146,7 @@
 
 .modulo-timeline-event{
     r : 5;
+    cursor : pointer;
 }
 
 .modulo-timeline-lift-event{

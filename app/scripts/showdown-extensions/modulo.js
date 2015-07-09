@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
   var modulo = function(converter) {
     return [
