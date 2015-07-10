@@ -435,10 +435,23 @@ angular.module('moduloAnomaliesApp')
                                     .attr('fill', function(d,i){
                                         return colors(i);
                                     })
+                                    .on('mouseover', function(d){
+                                        var datum = d;
+                                        metricsContainer.selectAll('.modulo-timeline-area')
+                                            .filter(function(d){
+                                                return d[0].id != datum[0].id;
+                                            })
+                                            .attr('fill-opacity', .2);
+                                    })
+                                    .on('mouseout', function(d){
+                                        metricsContainer.selectAll('.modulo-timeline-area')
+                                            .attr('fill-opacity', 1)
+                                    })
                                     .append('title')
                                     .text(function(d){
                                         return d.key;
-                                    });
+                                    })
+
 
                 areas.datum(function(d){
                                 /*if(d.key === '#brunolatour'){
