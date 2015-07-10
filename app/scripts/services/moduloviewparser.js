@@ -168,13 +168,13 @@ angular.module('moduloAnomaliesApp')
               //setting the date
               datum.date = d[view.models.datesKey];
               //set the values (question/todo : allow to avoid values specification = keep all values ?)
-              if(typeof view.models.values != 'string'){
+              /*if(typeof view.models.values != 'string'){
                 view.models.values.forEach(function(value){
                   datum[value] = d[value];
                 })
-              }else{
+              }else{*/
                 datum[view.models.values] = d[view.models.values];
-              }
+             // }
 
               //set an identifier = either the specified objectsKey or each line of the spreadsheet correspond to the same object
               if(view.models.objectsKey)
