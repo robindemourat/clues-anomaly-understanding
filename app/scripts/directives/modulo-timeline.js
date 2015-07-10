@@ -309,7 +309,7 @@ angular.module('moduloAnomaliesApp')
         //I take a time span in absolute time format, return appropriate d3 ticks formatting settings
         var setTicks = function(time){
             var unit, span, format;
-            if(time > year * 50){// > 50 years
+            if(time > year * 100){// > 50 years
                 unit = d3.time.year;
                 span = 50;
                 format = '%Y';
@@ -459,8 +459,8 @@ angular.module('moduloAnomaliesApp')
                                 }*/
                                 return d.values;
                             })
-                            .transition()
-                            .duration(100)
+                            /*.transition()
+                            .duration(500)*/
                             .attr('d', area);
 
 
@@ -761,8 +761,10 @@ angular.module('moduloAnomaliesApp')
         				$scope.msg = undefined;
                         setTimeout(function(){
                             $scope.$apply();
+
                             updateMainSvg($scope.data);
                             updateLiftSvg($scope.data);
+                            setBrushExtent($scope.initialExtent)
                         });
 
         			});
