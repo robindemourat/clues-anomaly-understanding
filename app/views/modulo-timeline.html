@@ -1,8 +1,5 @@
 <div
 	class="modulo-timeline-main-wrapper animate"
-	ng-style="{
-	'height' : (highlighted)?'80%':'100%'
-	}"
 >
 	<div ng-bind="msg" class="animate" style="text-align : center" ng-show="data"></div>
 
@@ -15,6 +12,7 @@
 				<h2
 					ng-repeat="layer in column.layers track by $index"
 					ng-bind="layer.title"
+					ng-style="{'color' : layer.color}"
 				></h2>
 			</div>
 			<div class="modulo-timeline-column-layers-container">

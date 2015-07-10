@@ -304,7 +304,7 @@ angular.module('moduloAnomaliesApp')
     // Public API here
     return {
       parse: function (view, callback) {
-        //convertViewDates(view);
+        convertViewDates(view);
         fetchData(view, function(view, e){
           processFilters(view);
           alignModels(view);

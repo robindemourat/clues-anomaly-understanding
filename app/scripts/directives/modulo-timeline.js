@@ -143,6 +143,7 @@ angular.module('moduloAnomaliesApp')
             liftScale = d3.scale.linear().range([0,liftHeight]),
             liftTimeScale= d3.scale.linear().domain([0,1]),
             colors = d3.scale.category20(),
+            //colors = d3.scale.linear().range([0,255]),
             ticksScale = d3.time.scale(),
             nova = d3.layout.nova();
 
@@ -371,7 +372,7 @@ angular.module('moduloAnomaliesApp')
             nova(viewEvents, function(d){
                 return d.date.date.getTime();
             }, function(d){
-                return d.id;//d.date.date.getTime();
+                return d.id;
             },
             $scope.extent.begin,
             $scope.extent.end,
@@ -420,13 +421,17 @@ angular.module('moduloAnomaliesApp')
                                 //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
                             })
                             .style('fill', function(d){
-                                return  colors(d.layer);
+                                return d.color;
                             })
                             .on('click', function(d){
                                 if(!$scope.higlighted)
                                     $scope.highlighted = d;
                                 else $scope.highlighted = undefined;
-                            });
+                            })
+                            .append('title')
+                            .text(function(d){
+                                return d.title;
+                            })
             events
                 .transition()
                 .duration(100)
@@ -488,6 +493,7 @@ angular.module('moduloAnomaliesApp')
                         layer.filteredData.forEach(function(d){
                             d.column = +i;
                             d.layer = +j;
+                            d.color = layer.color;
                             //time filter
                             if(d.date.date){
                                 date = d.date.date.getTime();
@@ -497,10 +503,22 @@ angular.module('moduloAnomaliesApp')
                             }
                         });
                     }else{
+                        /*layer.filteredData.forEach(function(object){
+                            object.column = +i;
+                            object.layer = +j;
+                            object.values = object.values.map(function(d){
+                                 if(d.date.date){
+                                    date = d.date.date.getTime();
+                                    if(date >= $scope.extent.begin && date <= $scope.extent.end){
+                                        return d;
+                                    }
+                                }
+                            });
+                        });*/
                         console.log(layer);
                     }
                 });
-                updateColumn(events, i, nbCols, colDisplay);
+                updateColumn(events, i, nbCols, colDisplay, metrics);
             });
         };
 
@@ -586,12 +604,17 @@ angular.module('moduloAnomaliesApp')
 
         				$scope.data = d;
                         var id = 0;
+                        var colorIndex = 0;
                         d.columns.forEach(function(column, i){
                             column.layers.forEach(function(layer, j){
                                 layer.filteredData.forEach(function(d){
                                     d.id = id;
                                     id++;
-                                })
+                                });
+                                if(!layer.color){
+                                    layer.color = colors(colorIndex);
+                                }
+                                colorIndex++;
                             });
                         });
 
