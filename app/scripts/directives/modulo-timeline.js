@@ -149,6 +149,17 @@ angular.module('moduloAnomaliesApp')
 
         var yAxis = d3.svg.axis();
 
+
+        $scope.setDetailMode = function(bol){
+            setTimeout(function(){
+                $scope.detailMode = bol;
+                if(!bol){
+                    $scope.highlighted = undefined;
+                }
+                $scope.$apply();
+            })
+        }
+
         var brush = d3.svg.brush()
                     .y(liftScale)
                     .extent([.3, .3])
@@ -423,10 +434,20 @@ angular.module('moduloAnomaliesApp')
                             .style('fill', function(d){
                                 return d.color;
                             })
+                            .on('mouseover', function(d){
+                                $scope.highlighted = d;
+                                $scope.$apply();
+                            })
+                            .on('mouseout', function(d){
+                                if(!$scope.detailMode){
+                                    $scope.highlighted = undefined;
+                                    $scope.$apply();
+                                }
+                            })
                             .on('click', function(d){
-                                if(!$scope.higlighted)
-                                    $scope.highlighted = d;
-                                else $scope.highlighted = undefined;
+                                $scope.highlighted = d;
+                                $scope.detailMode = true;
+                                $scope.$apply();
                             })
                             .append('title')
                             .text(function(d){

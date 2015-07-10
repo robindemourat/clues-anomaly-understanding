@@ -138,8 +138,37 @@
     height: 0;
 
     color: white;
-    background: black;
+    background: rgba(0,0,0,.5);
+    pointer-events : none;
+    padding : 0;
+    text-align : center;
 }
+.modulo-timeline-additional-wrapper.highlighted{
+    padding : 1em;
+    height : 20%;
+}
+
+.modulo-timeline-additional-wrapper.expanded {
+    height : 90%;
+    background: rgba(0,0,0,.9);
+    text-align : left;
+    padding : 1em 2em 1em;
+    overflow-y : auto;
+    pointer-events : all;
+}
+
+.modulo-timeline-additional-wrapper .close-additional-button{
+    position: absolute;
+    right : 1em;
+    top : 1em;
+    cursor : pointer;
+}
+
+.modulo-timeline-additional-wrapper .content{
+    font-size : 3em;
+}
+
+
 
 
 /* graphical eleemnts */

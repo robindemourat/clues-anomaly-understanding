@@ -33,15 +33,18 @@
 
 <div
 	class="modulo-timeline-additional-wrapper animate"
-	ng-style="{
-	'height' : (highlighted)?'20%':'0'
-	}"
+	ng-class="{'highlighted' : highlighted, 'expanded' : detailMode}"
 >
 	<h4 ng-bind="highlighted.title"></h4>
 	<h5 ng-bind="highlighted.date.original"></h5>
+	<h6 ng-if="highlighted && !detailMode">Click to open details</h6>
+
+	<div class="content" ng-if="detailMode" ng-bind-html="highlighted.desc"></div>
+
 	<div
-		class="btn btn-xs"
-		ng-click="highlighted = undefined"
+		class="btn btn-xs close-additional-button animate"
+		ng-click="setDetailMode(false)"
+		ng-if="detailMode"
 	><span class="glyphicon glyphicon-remove"></span></div>
 </div>
 
