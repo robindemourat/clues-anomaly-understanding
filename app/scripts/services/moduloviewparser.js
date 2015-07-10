@@ -173,7 +173,7 @@ angular.module('moduloAnomaliesApp')
                   datum[value] = d[value];
                 })
               }else{*/
-                datum[view.models.values] = d[view.models.values];
+                datum[view.models.value] = d[view.models.value];
              // }
 
               //set an identifier = either the specified objectsKey or each line of the spreadsheet correspond to the same object

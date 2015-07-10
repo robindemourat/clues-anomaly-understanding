@@ -27,7 +27,7 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
                     "models" : {
                         "objectsKey" : "hash",
                         "datesKey" : "mm-dd-yyyy",
-                        "values" : "value"
+                        "value" : "value"
                     },
                     "dateformat" : "%m-%d-%Y",
                     "title" : "Hashtags"
