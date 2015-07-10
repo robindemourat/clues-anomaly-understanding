@@ -99,7 +99,8 @@
     overflow-y: auto;
     overflow-x : hidden;
     height: 100%;
-    padding-right: 2em;
+    padding-right: 12%;
+    width : 110%;
     padding-left: 2em;
     padding-top : 2em;
 }
