@@ -179,7 +179,7 @@ angular.module('moduloAnomaliesApp')
               //set an identifier = either the specified objectsKey or each line of the spreadsheet correspond to the same object
               if(view.models.objectsKey)
                 datum.id = d[view.models.objectsKey];
-              else datum.id = i;
+              else datum.id = 0;
 
               return datum;
             });
