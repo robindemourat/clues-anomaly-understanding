@@ -173,8 +173,12 @@ angular.module('moduloAnomaliesApp')
                   datum[value] = d[value];
                 })
               }else{*/
-                datum[view.models.value] = d[view.models.value];
+                datum.value = +d[view.models.value];
              // }
+
+             if(view.models.value){
+                datum.value = +d[view.models.value];
+             }
 
               //set an identifier = either the specified objectsKey or each line of the spreadsheet correspond to the same object
               if(view.models.objectsKey)
@@ -188,6 +192,28 @@ angular.module('moduloAnomaliesApp')
               return d.id;
             })
             .entries(view.filteredData);
+
+            //if no values count occurences for each featured date
+            if(!view.models.value){
+              view.filteredData = view.filteredData.map(function(obj){
+                var temp = d3.nest().key(function(d){
+                                        return d.date;
+                                      })
+                                      .entries(obj.values);
+                //obj.value = obj.values.length;
+                temp = temp.map(function(day){
+                  var nday = {};
+                  nday.date = day.key;
+                  nday.value = day.values.length;
+                  nday.id = obj.key;
+                  return nday;
+                });
+                obj.values = temp;
+                return obj;
+                //delete obj.values;
+                //console.log(obj);
+              });
+            }
           }
         })
       });

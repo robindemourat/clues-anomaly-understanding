@@ -181,6 +181,10 @@
 .modulo-timeline-lift-event{
 }
 
+.modulo-timeline-area{
+    opacity : .5;
+}
+
 .brush rect{
     width : 100%;
 }

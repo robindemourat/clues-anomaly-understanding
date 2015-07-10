@@ -16,8 +16,8 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
     "title" :"Test timeline",
     "type" : "timeline",
     "dateformat" : "%d/%m/%Y",
-    "begindate" : "01/01/2007",
-    "enddate" : "01/01/2015",
+    "begindate" : "01/01/2013",
+    "enddate" : "30/12/2015",
     "columns" : [
         {
             "layers" : [
@@ -26,8 +26,7 @@ Timeline : timeformatting with d3 : https://github.com/mbostock/d3/wiki/Time-For
                     "type" : "metrics",
                     "models" : {
                         "objectsKey" : "hash",
-                        "datesKey" : "mm-dd-yyyy",
-                        "value" : "value"
+                        "datesKey" : "mm-dd-yyyy"
                     },
                     "dateformat" : "%m-%d-%Y",
                     "title" : "Hashtags"

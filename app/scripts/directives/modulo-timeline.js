@@ -35,7 +35,7 @@ Minimum model for a metrics view :
 - (if different types of objects) objectKey (string) : the column containing the identifier of objects
 - datesKey (string) : the column that contains the dates
 - dateFormat (string) : the d3 formatting instruction for dates
-- values (string | array<string>) : the column(s) that contain the metrics to be displayed
+- value (not mandatory) that contain the metrics to be displayed - if not specified it counts
 */
 
 /*
@@ -136,6 +136,7 @@ angular.module('moduloAnomaliesApp')
 
         var mainContainer = d3.select($element[0]).select('.modulo-timeline-main-timeline'),
             liftContainer = d3.select($element[0]).select('.modulo-timeline-lift-content'),
+            liftWidth = angular.element(liftContainer[0][0]).width(),
             liftHeight = angular.element(liftContainer[0][0]).height(),
             axis = mainContainer.append("g").attr("class", "axis"),
             globalScale = d3.scale.linear().range([0,100]),
@@ -374,10 +375,100 @@ angular.module('moduloAnomaliesApp')
         }
 
         //I update a timeline column
-        var updateColumn = function(viewEvents, columnIndex, nbCols, colDisplay){
+        var updateColumn = function(viewEvents, columnIndex, nbCols, colDisplay, viewMetrics){
+
+            var id = '#timeline-column-' + columnIndex,
+                columnContainer = mainContainer.select(id);
+
+            /*
+                metrics update
+            */
+            if(viewMetrics.length > 0){
+                var metricsContainer = columnContainer.select('.metrics');
+                if(metricsContainer.empty()){
+                    metricsContainer = columnContainer.append('g').attr('class', 'metrics');
+                }
 
 
-            //events update
+
+                var max = -Infinity;
+                viewMetrics.forEach(function(object){
+                    var localMax = d3.max(object.values, function(d){
+                        return d.value;
+                    });
+                    if(localMax > max)
+                        max = localMax;
+                });
+                var width = (angular.element($element).width() * .9);
+                var colWidth = width/nbCols;
+                var areaScale = d3.scale.linear().domain([0, max]).range([0, width/nbCols]);
+                var areaY = d3.scale.linear()
+                                    .domain([$scope.extent.begin, $scope.extent.end])
+                                    .range([0, liftHeight]);
+
+
+                var area = d3.svg.area()
+                    .interpolate("linear")
+                    .y(function(d) {
+                        return (d.date.date) ? areaY(d.date.date.getTime()): 0;
+                    })
+                    .x0(function(d){
+                        return colWidth * columnIndex + colWidth/2 - areaScale(d.value)/2;
+                    })
+                    .x1(function(d) {
+                        return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
+                    });
+
+                var areas = metricsContainer.selectAll('.modulo-timeline-area')
+                                .data(viewMetrics, function(d){
+                                    return d.id;
+                                });
+
+                areas.exit().remove();
+
+               var enterAreas = areas.enter()
+                                    .append('path')
+                                    .attr('class', 'modulo-timeline-area')
+                                    .attr('id', function(d){
+                                        return 'modulo-timeline-area-'+d.id;
+                                    })
+                                    .attr('fill', function(d,i){
+                                        return colors(i);
+                                    })
+                                    .append('title')
+                                    .text(function(d){
+                                        return d.key;
+                                    });
+
+                areas.datum(function(d){
+                                /*if(d.key === '#brunolatour'){
+                                    console.log(d.values.length);
+                                }*/
+                                return d.values;
+                            })
+                            .transition()
+                            .duration(100)
+                            .attr('d', area);
+
+
+
+
+
+                /*viewMetrics.forEach(function(object){
+                                  .datum(object.values)
+
+                });*/
+
+            }
+
+            /*
+                events update
+            */
+            var eventsContainer = columnContainer.select('.events');
+                if(eventsContainer.empty()){
+                    eventsContainer = eventsContainer.append('g').attr('class', 'events');
+                }
+
             var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
             //console.log(span);
             nova(viewEvents, function(d){
@@ -390,9 +481,7 @@ angular.module('moduloAnomaliesApp')
             span * 50
             );
 
-            var id = '#timeline-column-' + columnIndex;
-            var events = mainContainer
-                            .select(id)
+            var events = columnContainer
                             .selectAll('.modulo-timeline-event')
                             .data(viewEvents, function(d){
                                 return d.id;
@@ -449,10 +538,10 @@ angular.module('moduloAnomaliesApp')
                                 $scope.detailMode = true;
                                 $scope.$apply();
                             })
-                            .append('title')
+                            /*.append('title')
                             .text(function(d){
                                 return d.title;
-                            })
+                            })*/
             events
                 .transition()
                 .duration(100)
@@ -524,19 +613,23 @@ angular.module('moduloAnomaliesApp')
                             }
                         });
                     }else{
-                        /*layer.filteredData.forEach(function(object){
+                        layer.filteredData.forEach(function(object, n){
                             object.column = +i;
                             object.layer = +j;
-                            object.values = object.values.map(function(d){
-                                 if(d.date.date){
+                            object.color = layer.color;
+                            object.values = object.initialValues.filter(function(d, n){
+                                var dtest = d && d.date && d.date.date;
+                                 if(dtest){
                                     date = d.date.date.getTime();
                                     if(date >= $scope.extent.begin && date <= $scope.extent.end){
-                                        return d;
+                                        return true;
                                     }
                                 }
+                                return false;
                             });
-                        });*/
-                        console.log(layer);
+
+                        });
+                        metrics = metrics.concat(layer.filteredData.slice());
                     }
                 });
                 updateColumn(events, i, nbCols, colDisplay, metrics);
@@ -551,7 +644,7 @@ angular.module('moduloAnomaliesApp')
                 column.layers.forEach(function(layer, j){
                     if(layer.type == 'events'){
                         layer.filteredData.forEach(function(d){
-                            d.layer = +j;
+                            d.color = layer.color;
                             render.push(d);
                         });
                     }
@@ -577,7 +670,7 @@ angular.module('moduloAnomaliesApp')
                                 return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
                             })
                             .attr('stroke', function(d){
-                                return colors(d.layer);
+                                return d.color;
                             });
             //update
             //exit
@@ -628,10 +721,21 @@ angular.module('moduloAnomaliesApp')
                         var colorIndex = 0;
                         d.columns.forEach(function(column, i){
                             column.layers.forEach(function(layer, j){
-                                layer.filteredData.forEach(function(d){
+                                layer.filteredData = layer.filteredData.map(function(d){
                                     d.id = id;
                                     id++;
+                                     if(layer.type === 'metrics'){
+                                        d.values.sort(function(a,b){
+                                            return a.date.date - b.date.date;
+                                        });
+                                        d.initialValues = d.values.slice();
+                                       // d.forEach(function())
+                                    }
+                                    return d;
                                 });
+
+
+
                                 if(!layer.color){
                                     layer.color = colors(colorIndex);
                                 }
