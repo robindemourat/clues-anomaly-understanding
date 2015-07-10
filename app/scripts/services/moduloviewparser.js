@@ -162,17 +162,32 @@ angular.module('moduloAnomaliesApp')
 
             }
           }else if(view.models && view.type === "metrics"){
-            if(view.models.objectsKey){
-              view.filteredData.forEach(function(d){
-                d.date = d[view.models.datesKey];
-              });
+            //cleaning datum object with only the values necessary to the view
+            view.filteredData = view.filteredData.map(function(d, i){
+              var datum = {};
+              //setting the date
+              datum.date = d[view.models.datesKey];
+              //set the values (question/todo : allow to avoid values specification = keep all values ?)
+              if(typeof view.models.values != 'string'){
+                view.models.values.forEach(function(value){
+                  datum[value] = d[value];
+                })
+              }else{
+                datum[view.models.values] = d[view.models.values];
+              }
 
-              view.filteredData = d3.nest().key(function(d){
-                return d[view.models.objectsKey];
-              })
-              .entries(view.filteredData);
-              //view.datesKey = view.models.datesKey;
-            }
+              //set an identifier = either the specified objectsKey or each line of the spreadsheet correspond to the same object
+              if(view.models.objectsKey)
+                datum.id = d[view.models.objectsKey];
+              else datum.id = i;
+
+              return datum;
+            });
+
+            view.filteredData = d3.nest().key(function(d){
+              return d.id;
+            })
+            .entries(view.filteredData);
           }
         })
       });
