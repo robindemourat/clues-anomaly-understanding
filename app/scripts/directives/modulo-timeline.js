@@ -142,7 +142,7 @@ angular.module('moduloAnomaliesApp')
         	relativeScale = d3.scale.linear().range([0,100]),
             liftScale = d3.scale.linear().range([0,liftHeight]),
             liftTimeScale= d3.scale.linear().domain([0,1]),
-            colors = d3.scale.category10(),
+            colors = d3.scale.category20(),
             ticksScale = d3.time.scale(),
             nova = d3.layout.nova();
 
@@ -371,7 +371,7 @@ angular.module('moduloAnomaliesApp')
             nova(viewEvents, function(d){
                 return d.date.date.getTime();
             }, function(d){
-                return 1//d.date.date.getTime();
+                return d.id;//d.date.date.getTime();
             },
             $scope.extent.begin,
             $scope.extent.end,
@@ -448,14 +448,15 @@ angular.module('moduloAnomaliesApp')
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
             liftTimeScale.range([data.minDate.abs, data.maxDate.abs]);
 
-            parseOriginalBrush(data);//todo : just at view change
+
+
 
             if(!$scope.extent){
                 $scope.extent = {
                     begin : $scope.initialExtent.begin,
                     end : $scope.initialExtent.end
                 };
-                setBrushExtent($scope.extent);
+                //setBrushExtent($scope.extent);
             }
             relativeScale.domain([$scope.extent.begin, $scope.extent.end]);
 
@@ -594,7 +595,7 @@ angular.module('moduloAnomaliesApp')
                             });
                         });
 
-
+                        parseOriginalBrush($scope.data);//todo : just at view change
 
         				$scope.msg = undefined;
                         setTimeout(function(){
