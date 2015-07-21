@@ -235,9 +235,10 @@ angular.module('moduloAnomaliesApp')
       output.toc = makeToc(text);
       output.title = extractTitle(text);
       output.html = markdownConverter.makeHtml(output.markdown);
-      var zotero = fetchZoteroRefs(output.html);
-      output.html = zotero.html;
-      return callback(output, zotero.toFetch);
+      //var zotero = fetchZoteroRefs(output.html);
+      //output.html = zotero.html;
+      //return callback(output, zotero.toFetch);
+      return callback(output);
     }
 
     // Public API here
@@ -245,7 +246,7 @@ angular.module('moduloAnomaliesApp')
       process: function (text, callback, callback2) {
         updateMarkdown(text, function(output, zoteroToFetch){
           extractSpreadsheets(text, callback2);//launching non-blocking spreadsheet fetching
-          zoteroFetchingHandler(zoteroToFetch, 0, []);
+          //for now disabling zotero fetching//zoteroFetchingHandler(zoteroToFetch, 0, []);
           return callback(output, callback2);
         })
       }

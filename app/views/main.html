@@ -19,14 +19,14 @@
       </div>--> <!--end searchbox -->
 
       <!--table of contents-->
-      <div class="toc" du-scroll-container="middle-col-container">
+      <div class="toc" du-scroll-container="middle-col-container" scrollspy-points>
         <div
           ng-repeat="el in contents.toc"
           ng-style="{'padding-left':(el.level * 5)+'px'}"
           du-scrollspy="#{{el.tag}}"
+          scrollspy="#{{el.tag}}"
         >
           <a ng-href="#{{el.tag}}" du-smooth-scroll ng-bind="el.title"></a>
-
         </div>
       </div><!--end table of contents-->
 
@@ -60,12 +60,13 @@
       </div>
 
 
-      <div class="middle-col-contents-bibliography">
+      <!-- bibliography disabled for the moment -->
+      <!--<div class="middle-col-contents-bibliography">
         <h3>Generated bibliography</h3>
         <p ng-repeat="bib in contents.bibliography track by $index" id="zotero-ref-element-{{$index+1}}">
           <a ng-href="#zotero-ref-pointer-{{$index+1}}" du-smooth-scroll>[{{$index+1}}]</a> {{bib.data.title}} by {{bib.data.creators[0].firstName}} {{bib.data.creators[0].lastName}}
         </p>
-      </div>
+      </div>-->
     </div>
     <!--<div class="middle-col-container"  btf-markdown="contents.markdown">
 

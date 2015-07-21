@@ -26,7 +26,8 @@ angular
   .config(function (markdownConverterProvider) {
 
     markdownConverterProvider.config({
-      extensions: ['glyphicon',
+      extensions: [
+                    'glyphicon',
                     'moduloaside',
                     'modulohref',
                     'grid',
@@ -37,7 +38,8 @@ angular
                     'twittermsgembed',
                     'pdfembed',
                     'tableauembed',
-                    'iframe'
+                    'iframe',
+                    'footnotes'
                   ]
     });
 

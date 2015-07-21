@@ -413,9 +413,11 @@ angular.module('moduloAnomaliesApp')
                         return (d.date.date) ? areaY(d.date.date.getTime()): 0;
                     })
                     .x0(function(d){
-                        return colWidth * columnIndex + colWidth/2 - areaScale(d.value)/2;
+                        return colWidth * columnIndex + colWidth/2;
+                        //return colWidth * columnIndex + colWidth/2 - areaScale(d.value)/2;
                     })
                     .x1(function(d) {
+                        //return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
                         return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
                     });
 
@@ -714,7 +716,7 @@ angular.module('moduloAnomaliesApp')
         	};
         	if($scope.temp){
         		TimelineModuloViewParser.parse($scope.temp, function(d, e){
-        			console.info('timeline date processed, ', d);
+        			//console.info('timeline date processed, ', d);
 
         			$timeout(function(){
 
@@ -771,8 +773,6 @@ angular.module('moduloAnomaliesApp')
         		});
         	}
         });
-
-
 
       }
     };

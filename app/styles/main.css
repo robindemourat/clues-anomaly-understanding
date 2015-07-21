@@ -53,14 +53,14 @@
 .left-col-wrapper
 {
     position: fixed;
+    z-index: 2;
+
+    overflow: auto;
 
     height: 100%;
     padding: 2em;
 
-    overflow : auto;
-
-    z-index : 2;
-    background : white;
+    background: white;
 }
 
 .middle-col-wrapper
@@ -68,23 +68,23 @@
     overflow: hidden;
 
     height: 100%;
-    padding : 0;
+    padding: 0;
 }
 
 .aside-col-wrapper
 {
+    right: 0;
+
     overflow: hidden;
 
     height: 100%;
-    padding : 0;
-
-    right : 0;
+    padding: 0;
 }
 
 
 .col-xs-6 .middle-col-wrapper
 {
-    padding-left: 15%;
+    /*padding-left: 15%;*/
 }
 
 .col-xs-10 .middle-col-wrapper,
@@ -96,18 +96,21 @@
 
 .middle-col-container
 {
+    overflow-x: hidden;
     overflow-y: auto;
-    overflow-x : hidden;
+
+    width: 110%;
     height: 100%;
+    padding-top: 2em;
     padding-right: 12%;
-    width : 110%;
-    padding-left: 2em;
-    padding-top : 2em;
+    /*padding-left: 2em;*/
 }
 
 /*
   TERTIARY LAYOUT
 */
+
+
 
 .col-handler
 {
@@ -125,23 +128,37 @@
     right: 0;
 }
 
-.aside-header{
-    width : 100%;
-    padding-left : 20%;
-    padding-right : 20%;
-    height : 10%;
-    text-align : center;
-    overflow:hidden;
+.aside-header
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 10%;
+    padding-right: 20%;
+    padding-left: 20%;
+
+    text-align: center;
+
     background: rgba(0,0,0,.01);
 }
 
-.aside-contents-container{
-    width : 100%;
-    height : 90%;
-    background : white;
-    overflow : auto;
+.aside-contents-container
+{
+    overflow: auto;
+
+    width: 100%;
+    height: 90%;
+
+    background: white;
 }
 
+
+.middle-col-contents-main
+{
+    position: relative;
+
+    padding-left: 12em;
+}
 
 /*
   GENERIC COMPONENTS
@@ -153,24 +170,29 @@ a:active,
 a:visited,
 a:link
 {
+    font-weight: 800;
+
     text-decoration: none;
-  font-weight : 800;
+
     color: inherit;
 }
 
 a.active
 {
-    background : black;
-    color : white;
+    color: white;
+    background: black;
 }
 
-iframe{
-    border : none;
-    width : 100%;
+iframe
+{
+    width: 100%;
+
+    border: none;
 }
 
-.middle-col-container .free-embed-iframe{
-    height : 1000px;
+.middle-col-container .free-embed-iframe
+{
+    height: 1000px;
 }
 
 table
@@ -187,6 +209,57 @@ table
 {
     display: flex;
 }
+
+.modulo-href-trigger
+{
+    font-weight: 800;
+
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modulo-href-trigger:hover
+{
+    text-decoration: none;
+}
+
+.modulo-footnote-pointer
+{
+    font-size: .8em;
+    line-height: .8em;
+
+    position: relative;
+    bottom: 1px;
+
+    cursor: pointer;
+    vertical-align: super;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+.modulo-footnote-item
+{
+    position: absolute;
+    top: 0;
+    left: 1em;
+
+    width: 10em;
+    text-align: right;
+    -webkit-transition: background .5s ease;
+       -moz-transition: background .5s ease;
+        -ms-transition: background .5s ease;
+         -o-transition: background .5s ease;
+}
+
+.modulo-footnote-item.active,
+.modulo-footnote-pointer.active
+{
+    background : grey;
+}
+
+/*
+TRANSITIONS
+*/
 
 .animate
 {
@@ -248,18 +321,22 @@ table
 */
 
 
-.aside-header h1{
-    padding: 0;
-    margin: 0;
+.aside-header h1
+{
     font-size: 1.3em;
-    text-transform: uppercase;
+
+    margin: 0;
     margin-top: 1em;
+    padding: 0;
+
+    text-transform: uppercase;
 }
 
-.aside-header .close-popup{
+.aside-header .close-popup
+{
     position: absolute;
+    top: 0;
     right: 0;
-    top : 0;
 }
 
 
@@ -267,30 +344,38 @@ table
 carousel
 */
 
-.carousel{
-    height : 500px;
+.carousel
+{
+    height: 500px;
+
     background: black;
 }
 
-.carousel img {
+.carousel img
+{
+    position: absolute;
+    top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    margin: auto;
-    max-height: 100%;
+
     max-width: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
+    max-height: 100%;
+    margin: auto;
 }
-.carousel li {
-    height: 500px;
-    overflow: hidden;
+.carousel li
+{
     position: relative;
+
+    overflow: hidden;
+
+    height: 500px;
+
     text-align: center;
 }
 
-.pdf-viewer-embed{
-    width : 100%;
-    height : 500px;
+.pdf-viewer-embed
+{
+    width: 100%;
+    height: 500px;
 }
-

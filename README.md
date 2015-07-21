@@ -3,6 +3,13 @@ Modulo - *make a complex and media-rich publication from a simple text file*
 
 #Todo
 
+##Markdown
+
+* add index entry support
+* read (markua spec)[https://leanpub.com/markua/read] and possibly add some cool stuff
+* implement change tracking ? (http://criticmarkup.com/)
+* implement comments support (and making ? ) --> http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax
+
 ##Global
 
 ###TODO
@@ -14,6 +21,7 @@ Modulo - *make a complex and media-rich publication from a simple text file*
 
 ##Timeline
 ###TODO
+* data source gspreadsheet not working
 
 ###DONE
 * set adaptative time axis
