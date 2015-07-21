@@ -245,6 +245,7 @@ table
 
     width: 10em;
     text-align: right;
+    cursor : pointer;
     -webkit-transition: background .5s ease;
        -moz-transition: background .5s ease;
         -ms-transition: background .5s ease;

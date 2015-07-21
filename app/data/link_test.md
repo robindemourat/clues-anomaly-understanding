@@ -5,7 +5,10 @@ Introduction to Modulo
 #What is modulo ?
 
 
-This is a plain view. Here is a link to [a first timeline](^^modulo-href:Test timeline).
+This is a plain view. Here is a link to [a first timeline](^^modulo-href:Test timeline 2).
+
+^^modulo-aside:Test timeline
+
 
 And here is a note for readers[#][Gilster, Paul. *Digital Literacy*. New Ed. New York, NY: John Wiley & Sons, 1998.] and a second right after [#][Gilster, Paul. *Digital Literacy*. New Ed. New York, NY: John Wiley & Sons, 1998.].
 

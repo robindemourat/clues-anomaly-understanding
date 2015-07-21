@@ -16,6 +16,7 @@ angular.module('moduloAnomaliesApp')
 	    	middle : true,
 	    	right : true
 	    };
+      $scope.popupAside = false;
   	}
 
   	var initWatchers = function(){
@@ -51,7 +52,9 @@ angular.module('moduloAnomaliesApp')
               var height = wrapper.height(),
                   scrollTop = container.scrollTop(),
                   screenYCenter=scrollTop + height/2;
-              updateAside(screenYCenter);
+              if(!$scope.popupAside){
+                updateAside(screenYCenter);
+              }
             });
           }, function(data){//second callback for asynchronous updates
             $scope.contents.html = data.html;
@@ -64,6 +67,7 @@ angular.module('moduloAnomaliesApp')
   		});
   	};
 
+    //I parse the library of views and set the one which is the closest to screen's y center and define it as aside data
     var updateAside = function(screenYCenter){
       if($scope.contents.library){
         var min = Infinity, wining;
@@ -84,16 +88,43 @@ angular.module('moduloAnomaliesApp')
         }
         if(wining && $scope.contents.library[wining]){
           $scope.asideData = $scope.contents.library[wining];
-          if(!$scope.$$phase)
+          setTimeout(function(){
             $scope.$apply();
+          })
         }
-
-
-
-
       }
     }
 
+    $scope.setAside = function(title){
+      if($scope.asideData){
+        if($scope.asideData.title === title){
+          $scope.resetAside();
+          return;
+        }
+      }
+      if($scope.contents.library){
+        for(var i in $scope.contents.library){
+          var view = $scope.contents.library[i];
+          if(view.title == title){
+            $scope.previousAside = $scope.asideData;
+            $scope.asideData = view;
+            $scope.popupAside = true;
+            setTimeout(function(){
+              $scope.$apply();
+            });
+          }
+        }
+      }
+    }
+
+    $scope.resetAside = function(){
+      $scope.popupAside = false;
+
+      $scope.asideData = $scope.previousAside;
+      setTimeout(function(){
+        $scope.$apply();
+      });
+    }
 
     $scope.setColClass = function(col){
     	var cols = $scope.showCols;

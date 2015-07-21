@@ -50,9 +50,8 @@
   <div
     class="middle-col-wrapper col-xs-12 animate"
     id="middle-col-wrapper"
-     du-scroll-container="middle-col-container"
+    du-scroll-container="middle-col-container"
   >
-
     <!--middle-col-container : contents-->
     <div class="middle-col-container"  id="middle-col-container">
       <div>
@@ -94,6 +93,7 @@
 <aside
   class="col-right animate"
   ng-class="setColClass('right')"
+  ng-show="asideData"
 >
   <div
     class="aside-col-wrapper"
@@ -103,7 +103,7 @@
   >
   </div>
 
-  <div
+  <!--<div
     class="btn col-handler col-handler-pullleft"
     ng-click="showCols.middle = !showCols.middle"
 
@@ -123,5 +123,17 @@
     <span
       class="glyphicon glyphicon-chevron-right animate"
       ></span>
+  </div>-->
+
+  <div
+    class="btn col-handler col-handler-pullright"
+    ng-click="resetAside()"
+    ng-show="popupAside"
+  >
+    <span
+      class="glyphicon glyphicon-remove animate"
+    >
+
+    </span>
   </div>
 </aside>

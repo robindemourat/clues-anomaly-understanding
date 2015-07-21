@@ -42,22 +42,18 @@ angular.module('moduloAnomaliesApp')
           reposition();
         }, 1000);
 
-        var handleClickOnPointer = function(){
+        var handleClick = function(){
           note.addClass('active');
-          setTimeout(function(){
-            note.removeClass('active');
-          }, 2000);
-        }
-        var handleClickOnNote = function(){
           angular.element(element).addClass('active');
           setTimeout(function(){
+            note.removeClass('active');
             angular.element(element).removeClass('active');
+
           }, 2000);
         }
 
-
-        element.bind('click', handleClickOnPointer);
-        note.bind('click', handleClickOnNote);
+        element.bind('click', handleClick);
+        note.bind('click', handleClick);
 
       }
     };

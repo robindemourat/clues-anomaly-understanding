@@ -32,7 +32,6 @@
         var rep = '<span class="modulo-footnote-pointer" id="'+ref+'">'+i+'</span>';
         //text = text.replace(match[0], rep);
         text = text.substr(0, match.index) + rep + text.substr(match.index + match[0].length, text.length);
-        console.log(text);
       }
 
       return text;

@@ -16,14 +16,13 @@ angular.module('moduloAnomaliesApp')
       },
       link: function postLink(scope, element, attrs) {
 
-      	scope.popupMode = false;
       	scope.first = true;
 
       	scope.$watch('newdata', function(n, o){
       		try{
       			n = JSON.parse(n);
       		}catch(e){
-
+            return;
       		}
 
       		try{
@@ -32,10 +31,10 @@ angular.module('moduloAnomaliesApp')
 
       		}
 
-  			if(scope.first || n.title != o.title){
-  				scope.first = false;
-  				scope.data = n;
-  			}
+    			if(scope.first || n.title != o.title){
+    				scope.first = false;
+    				scope.data = n;
+    			}
       	})
 
       }
