@@ -14,16 +14,15 @@ angular.module('moduloAnomaliesApp')
 
         var containerClass= attrs.duScrollContainer,
             targetContainer = angular.element('.'+containerClass),
-            targets = [];
+            targets = [],
+            els;
 
         scope.$watch(function(){
           return angular.element(element)[0].children;
         }, function(elements){
           $timeout(function(){
-            var els = angular.element(elements).find('div[scrollspy]');
+            els = angular.element(element).find('div[scrollspy]');
             angular.forEach(els, function(el){
-             // if(angular.element(el).attr('du-scrollspy')){
-                console.log(angular.element(el).attr('du-scrollspy'));
                 targets.push(angular.element(el).attr('du-scrollspy'));
               //}
             });
@@ -33,14 +32,24 @@ angular.module('moduloAnomaliesApp')
 
 
         targetContainer.bind('scroll', function(){
-          var y = (angular.element(this).scrollTop()),
-              smallestDist = Infinity;
-          //console.log(targets);
-          /*console.log(els.length);
-          for(var i in els){
-            var el = els[i];
-            console.log(angular.element(el).attr('scrollspy'));
-          }*/
+          $timeout(function(){
+            var y = (targetContainer.scrollTop()),
+                smallestDist = Infinity,
+                target;
+            for(var i in targets){
+              var otherY = targetContainer.find(targets[i]).position().top;
+              //console.log(otherY, y);
+              if(otherY <= y){
+                smallestDist = otherY - y;
+                target = targets[i];
+              }
+            }
+            els.removeClass('active');
+            var selector = 'div[scrollspy="'+target+'"]';
+            angular.element(selector).addClass('active');
+          })
+
+
         })
       }
     };

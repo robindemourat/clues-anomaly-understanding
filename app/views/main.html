@@ -25,6 +25,7 @@
           ng-style="{'padding-left':(el.level * 5)+'px'}"
           du-scrollspy="#{{el.tag}}"
           scrollspy="#{{el.tag}}"
+          class="toc-element"
         >
           <a ng-href="#{{el.tag}}" du-smooth-scroll ng-bind="el.title"></a>
         </div>

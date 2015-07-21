@@ -258,6 +258,10 @@ table
     background : grey;
 }
 
+.toc-element.active{
+    text-decoration : underline;
+}
+
 /*
 TRANSITIONS
 */

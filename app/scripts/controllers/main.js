@@ -34,7 +34,7 @@ angular.module('moduloAnomaliesApp')
   	}
 
   	var initFunctions = function(){
-  		reloadMarkdown('data/link_test.md');
+  		reloadMarkdown('data/bigtest.md');
   	}
 
     //I load and then process a modulo-markdown file and apply changes

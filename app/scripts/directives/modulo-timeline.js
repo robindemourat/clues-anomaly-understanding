@@ -575,6 +575,8 @@ angular.module('moduloAnomaliesApp')
 
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
+            if(!data)return;
+
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
             liftTimeScale.range([data.minDate.abs, data.maxDate.abs]);
 
