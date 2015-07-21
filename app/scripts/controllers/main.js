@@ -119,8 +119,11 @@ angular.module('moduloAnomaliesApp')
 
     $scope.resetAside = function(){
       $scope.popupAside = false;
-
-      $scope.asideData = $scope.previousAside;
+      if($scope.asideData.title != $scope.previousAside.title){
+        $scope.asideData = $scope.previousAside;
+      }else{
+        $scope.asideData = undefined;
+      }
       setTimeout(function(){
         $scope.$apply();
       });

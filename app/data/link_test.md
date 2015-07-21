@@ -16,7 +16,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laboriosam neces
 
 Here is a link to the second timeline, and here a web page which is interesting.
 
-And here is a second note for readers[#][Gilster, Paul. Digital Literacy. New Ed. New York, NY: John Wiley & Sons, 1998. ibid 2].
+And here is a second note for readers[#][Gilster, Paul. Digital Literacy. New Ed. New York, NY: John Wiley & Sons, 1998. ibid 2]. 
+Check out [this webpage](^^modulo-href:Terence Blake).
 
 <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate, quidem aspernatur, tempore enim minima saepe numquam natus ratione eum vero? Cupiditate dolor explicabo labore veniam, nisi ab architecto consequuntur.</div>
 <div>Quo adipisci sapiente voluptatum, nostrum quibusdam ipsa excepturi tempora dolore eum nam. Dolor odio, minima deleniti dicta obcaecati impedit perferendis, ipsum doloremque incidunt rerum similique architecto veritatis nemo eum officiis.</div>
