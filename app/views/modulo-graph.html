@@ -1,0 +1,23 @@
+<div class="graph-wrapper">
+  <div class="graph-container"></div>
+</div>
+
+<div
+  class="graph-footer animate"
+  ng-init="comment = false"
+  ng-style="{
+    height : (comment)?'90%':'auto'
+  }"
+>
+  <div class="filters-container"
+    ng-if="newD.filters"
+  >
+    <button class="animate" ng-repeat="filter in newD.filters track by $index" ng-class="{'active':filter.active}" ng-click="switchFilter(filter, $index)">
+      <span ng-if="filter.active" ng-bind="filter.nameActive"></span>
+      <span ng-if="!filter.active" ng-bind="filter.nameInactive"></span>
+    </button>
+
+  </div>
+   <p ng-bind="data.comment" class="comment" ng-if="data.comment"></p>
+</div>
+

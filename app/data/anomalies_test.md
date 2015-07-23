@@ -16,13 +16,81 @@ In this presentation, the moments of hesitation are clear, the moments when the 
 
 # What AIME did: an anomalous hypothesis for Digital Humanities
 
-Observing how people identified and described AIME is enlightening. By analysing 39 web pages retrieved by employing five  different search-engine queries and selected according to their relevance and pertinence, almost all the pages mentioned the book[#][ On the basis of the AIME set-up, the first community-oriented instance of the project is a printed artifact called "preliminary report" in the project’s jargon, that one could also call a philosophical book. However, the latter appellation may be dangerously misleading, as this book does not present the expected conventional cognitive and cultural features one could expect from a contemporary “philosophical book” : it features neither footnotes nor a glossary, nor any critical apparatus helping the reader to verify author’s the statements even as it presents additional characteristics atypical of  philosophical book templates, like a large margin and a report-like index that provides the reader a very precise overview of the contents. This first printed instance is therefore not a self-sufficient, incomplete and defective version of a “philosophical book”. This incompleteness is intentional; it is a call for reworking the project along with the other instantiations of the inquiry, and especially the digital interfaces of the project.
-] but only few of them called it a report: while it is easy to label a published academic artifact as a book, “the very best ‘interface’ ever designed”[#][ As we will describe lately the connection between the printed matter and the digital environment it has been difficult to produce and endorse, regarding the first aspect apparently we did a great job.
-] to convey arguments, it has been fairly impossible to reinforce its unstable nature by associating it with the word “report”. It is a kind of **_{mismatching of lexical references}_**, where the labels used for an established artifact didn’t fit with the “new” device’s experimentation as it was experimented.
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Counting of book mentions",
+    "type" : "image",
+    "background":"#D5D8C8",
+    "url" : "https://lh5.googleusercontent.com/O7fRsgosuIGCnLXuZmhWhRhz5LGCNeN9BUgjQ---dGhSPxOjmZQq1N3gE_Z8vUZwUEIXEBsPFyqJ3xM=w1857-h805-rw"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"The report",
+    "type" : "iframe",
+    "url" : "http://www.modesofexistence.org/#the-tools/report"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Twitter reactions: before and after",
+    "type" : "html",
+    "url" : "data/html-modules/twitter-before-after.html"
+}
+```
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Graph of hashtags around AIME",
+    "comment" : "protocol : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis delectus iure ratione error, officiis atque eius esse adipisci suscipit in optio totam sunt fugit culpa, accusamus libero labore consectetur consequuntur.",
+    "type" : "graph",
+    "background" : "#d4d9c7",
+    "data" : "data-nogit/user-hash-2.gexf",
+    "colors" : {
+        "keyAttribute" : "hash/user",
+        "specialColors" :{
+                "events": "#923626",
+                "hash" : "#999999"
+            },
+        "default" : "#2a2b28"
+    },
+    "filters" : [
+        {
+            "nameActive" : "Show the two main nodes",
+            "nameInactive" : "Hide the two main nodes",
+            "hide" : [
+            {
+               "keyType" : "attribute",
+               "keyAttribute" : "hash/user",
+               "value" : "mega"
+            }
+            ],
+            "active" : false,
+            "settings" : {
+              "labelThreshold": 5,
+              "drawEdges": true,
+              "drawNodes" : true,
+              "labelSizeRatio" : 2
+          }
+        }
+    ]
+}
+```
+
+Observing how people identified and described AIME is enlightening. By analysing 39 web pages retrieved by employing five  different search-engine queries and selected according to their relevance and pertinence, almost all the [pages mentioned the book](^^modulo-href:Counting of book mentions). [#][On the basis of the AIME set-up, the first community-oriented instance of the project is a printed artifact called 'preliminary report' in the project’s jargon, that one could also call a philosophical book. However, the latter appellation may be dangerously misleading, as this book does not present the expected conventional cognitive and cultural features one could expect from a contemporary “philosophical book” : it features neither footnotes nor a glossary, nor any critical apparatus helping the reader to verify author’s the statements even as it presents additional characteristics atypical of  philosophical book templates, like a large margin and a report-like index that provides the reader a very precise overview of the contents. This first printed instance is therefore not a self-sufficient, incomplete and defective version of a “philosophical book”. This incompleteness is intentional; it is a call for reworking the project along with the other instantiations of the inquiry, and especially the digital interfaces of the project.] but only few of them [called it a report](^^modulo-href:The report) : while it is easy to label a published academic artifact as a book, “the very best ‘interface’ ever designed”[#][ As we will describe lately the connection between the printed matter and the digital environment it has been difficult to produce and endorse, regarding the first aspect apparently we did a great job.] to convey arguments, it has been fairly impossible to reinforce its unstable nature by associating it with the word “report”. It is a kind of **_{mismatching of lexical references}_**, where the labels used for an established artifact didn’t fit with the “new” device’s experimentation [as it was experimented](^^modulo-href:Twitter reactions: before and after).
 
 Another interesting element of reflection emerge emergedfrom the relatively reduced quantity of pages mentioning AIME as an experiment in DH although looking at the twitter activity during the DH2014 meeting, Latour’s keynote speech received a great deal of attention. Attention anticipated by great expectations and then frustration caused by the clumpiness of the first version of the on-line platform and by the type of DH activities conducted. Aren’t these clues of a kind of **_{misaligned set-up practices}_** for DH, where data visualization and large datasets are supposed to be the "new" norm whereas the reading of large numbers of documents is not?
 Almost all the pages mentioned the AIME collaborative aspects of the digital platform[#][The digital interfaces of the project find their unity in a shared URL (modesofexistence.org). Once passed through a first blog-like home website, a first interface to the inquiry, named “book entry”, features the elements of the project through a layout composed of four columns : the first presents the preliminary report (TXT), then comes aan vocabulary discussion and definition column (VOC), contextual documents along with bibliographical references (DOC), and last but not least collective contributions pointing at elements from the three previous columns (CONT). The reader is then left free to navigate through a non-linear logic by clickingjumping through the links bounding the diverse elements of the inquiry, reassembled through specific visual agencies depending on the main element read by the visitor.
-The second interface of the project, called “crossings entry”, displays the elements of the inquiry as sorted through the theoretical framework of the MoE argument, that is modes and their crossings. It allows the tracingdrawing ofto draw several paths into the network of elements (called “scenarios”), in order to propose and draw representative sequences  of inquiry network's elements proposing a certain way of describing and accounting for the specified mode.] but only a few cited the face-to-face meetings[#][ Another instantiation of the project consisted ofin physical meetings gathering various people interested in specific modes and responding to a call for contributions on the digital version of the inquiry.] that had been widely announced and communicated. This is in marked  contrast to the other digital methods analysis that we conducted by using twitter. Having a look at the graph produced by connecting hashtags and users certainly gives the impression of a complete contrast.
+The second interface of the project, called “crossings entry”, displays the elements of the inquiry as sorted through the theoretical framework of the MoE argument, that is modes and their crossings. It allows the tracingdrawing ofto draw several paths into the network of elements (called “scenarios”), in order to propose and draw representative sequences  of inquiry network's elements proposing a certain way of describing and accounting for the specified mode.] but only a few cited the face-to-face meetings[#][ Another instantiation of the project consisted ofin physical meetings gathering various people interested in specific modes and responding to a call for contributions on the digital version of the inquiry.] that had been widely announced and communicated. This is in marked  contrast to the other digital methods analysis that we conducted by using twitter. Having a look at the [graph produced](^^modulo-href:Graph of hashtags around AIME) by connecting hashtags and users certainly gives the impression of a complete contrast.
+
+^^modulo-aside:Graph of hashtags around AIME
 
 Evident at first glance is a polarization between AIME and its PI. It is probably a reflection of a **_{personality and status refraction}_** where the reputation/perception of a specific project actor multiplies the point of view on the project itself.If we remove the two main nodes a clearer view of the discussion around AIME arises. Are discussions that are revolving around the issues of DH (#digitalhumanities) and clustered around the many AIME workshops and side events (#thatcamplyon)?. Clearly appearing are the usual fields of study with which the PI is associated (#sociology, #ANT, #sts) as well as the other projects conducted by him (#mooc, #cop21). Here we can see a sort of **_{amalgamation of heterogeneous public}_**, where composition and scale of the communities being formed do not fit with the expected one. The publics that are supposed to be reached by the project exceed a specific discipline/community, thereby leading to misunderstandings.
 

@@ -105,8 +105,10 @@ angular.module('moduloAnomaliesApp')
       if($scope.contents.library){
         for(var i in $scope.contents.library){
           var view = $scope.contents.library[i];
+          console.log(view.title);
           if(view.title == title){
             $scope.previousAside = $scope.asideData;
+            console.log($scope.asideData);
             $scope.asideData = view;
             $scope.popupAside = true;
             setTimeout(function(){
@@ -119,7 +121,8 @@ angular.module('moduloAnomaliesApp')
 
     $scope.resetAside = function(){
       $scope.popupAside = false;
-      if($scope.asideData.title != $scope.previousAside.title){
+      var previous = $scope.asideData && $scope.previousData && $scope.asideData.title != $scope.previousAside.title;
+      if(previous){
         $scope.asideData = $scope.previousAside;
       }else{
         $scope.asideData = undefined;

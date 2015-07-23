@@ -1,0 +1,16 @@
+<div ng-if="!data">Loading website ....</div>
+<iframe ng-src="{{trustSrc(data.url)}}"></iframe>
+
+<div
+  class="iframe-footer animate"
+  ng-init="iframeOut = false"
+  ng-style="{
+    height : (iframeOut)?'100%':'auto'
+  }"
+>
+  <p ng-bind="data.comment" class="comment" ng-if="data.comment"></p>
+
+  <div class="iframe-link animate">
+    <a ng-href="{{data.url}}" target="_blank">Go to the website ({{data.url}}</a>
+  </div>
+</div>

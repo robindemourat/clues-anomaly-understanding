@@ -9,7 +9,7 @@
 angular.module('moduloAnomaliesApp')
   .directive('moduloIframe', function ($sce) {
     return {
-      template: '<div ng-if="!data">Loading website ....</div><iframe ng-src="{{trustSrc(data.url)}}"></iframe>',
+      templateUrl: 'views/modulo-iframe.html',
       restrict: 'AC',
       scope : {
       	newdata : '@moduloContent'

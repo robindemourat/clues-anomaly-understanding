@@ -3,10 +3,82 @@
     width: 100%;
     height: 100%;
 }
-.modulo-html
+
+
+
+/*modulo-graph*/
+.modulo-graph
 {
+    width: 100%;
+    height: 100%;
 }
 
+.modulo-graph .graph-container,
+.modulo-graph .graph-wrapper
+{
+    width: 100%;
+    height: 100%;
+}
+
+.modulo-graph .graph-footer
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+
+    text-align: center;
+
+    color: white;
+    background: rgba(0,0,0,.2);
+}
+
+.modulo-graph:hover .graph-footer
+{
+    background: rgba(0,0,0,.3);
+}
+
+.modulo-graph .graph-footer .comment
+{
+    font-style: italic;
+}
+
+.modulo-graph .graph-footer:hover
+{
+    background: rgba(0,0,0,.9);
+}
+
+.modulo-graph .graph-footer .filters-container{
+    display : flex;
+}
+
+.modulo-graph .graph-footer .filters-container button{
+    flex-grow : 1;
+    background : rgba(255,255,255,.1);
+    border : none!important;
+    outline:none!important;
+}
+
+.modulo-graph .graph-footer .filters-container button:hover{
+    background : rgba(255,255,255,.3);
+}
+
+.modulo-graph .graph-footer .filters-container button.active{
+    background : rgba(255,255,255,.7);
+    color : black;
+}
+
+.modulo-graph .graph-footer .filters-container button.active:hover{
+    background : rgba(255,255,255,.9);
+    color : black;
+}
+
+
+
+/*modulo-iframe*/
 .modulo-iframe,
 .modulo-iframe iframe
 {
@@ -16,6 +88,43 @@
     border: none;
 }
 
+.modulo-iframe .iframe-footer
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+
+    text-align: center;
+
+    color: white;
+    background: rgba(0,0,0,.1);
+}
+
+.modulo-iframe:hover .iframe-footer
+{
+    background: rgba(0,0,0,.3);
+}
+
+.modulo-iframe .iframe-footer .comment
+{
+    font-style: italic;
+}
+
+.modulo-iframe .iframe-footer:hover
+{
+    background: rgba(0,0,0,.9);
+}
+
+
+/*modulo-image*/
+.modulo-image img
+{
+    width: 100%;
+}
 /*modulo-timeline*/
 .modulo-timeline
 {
@@ -40,7 +149,8 @@
 
     width: 90%;
     height: 100%;
-    pointer-events : none;
+
+    pointer-events: none;
 }
 
 .modulo-timeline-lift-wrapper
@@ -52,9 +162,11 @@
     height: 100%;
 }
 
-.modulo-timeline-lift-content{
-    width : 100%;
-    height : 90%;
+.modulo-timeline-lift-content
+{
+    width: 100%;
+    height: 90%;
+
     background: lightgrey;
 }
 
@@ -69,11 +181,15 @@
 
 .modulo-timeline-column-header
 {
-    overflow-y: auto;
-    background: rgba(255,255,255,0.9);
     z-index: 2;
+
+    overflow-y: auto;
+
     height: 10%;
-    pointer-events : all;
+
+    pointer-events: all;
+
+    background: rgba(255,255,255,.9);
 }
 
 .modulo-timeline-column-header h2
@@ -138,36 +254,45 @@
 
     width: 100%;
     height: 0;
+    padding: 0;
+
+    text-align: center;
+    pointer-events: none;
 
     color: white;
     background: rgba(0,0,0,.5);
-    pointer-events : none;
-    padding : 0;
-    text-align : center;
 }
-.modulo-timeline-additional-wrapper.highlighted{
-    padding : 1em;
-    height : 20%;
+.modulo-timeline-additional-wrapper.highlighted
+{
+    height: 20%;
+    padding: 1em;
 }
 
-.modulo-timeline-additional-wrapper.expanded {
-    height : 90%;
+.modulo-timeline-additional-wrapper.expanded
+{
+    overflow-y: auto;
+
+    height: 90%;
+    padding: 1em 2em 1em;
+
+    text-align: left;
+    pointer-events: all;
+
     background: rgba(0,0,0,.9);
-    text-align : left;
-    padding : 1em 2em 1em;
-    overflow-y : auto;
-    pointer-events : all;
 }
 
-.modulo-timeline-additional-wrapper .close-additional-button{
+.modulo-timeline-additional-wrapper .close-additional-button
+{
     position: absolute;
-    right : 1em;
-    top : 1em;
-    cursor : pointer;
+    top: 1em;
+    right: 1em;
+
+    cursor: pointer;
 }
 
-.modulo-timeline-additional-wrapper .content{
-    font-size : 3em;
+.modulo-timeline-additional-wrapper .content
+{
+    font-size: 3em;
 }
 
 
@@ -175,52 +300,62 @@
 
 /* graphical eleemnts */
 
-.modulo-timeline-event{
-    r : 5;
-    cursor : pointer;
+.modulo-timeline-event
+{
+    cursor: pointer;
+
+    r: 5;
 }
 
-.modulo-timeline-lift-event{
+
+
+.modulo-timeline-area
+{
+    opacity: .5;
 }
 
-.modulo-timeline-area{
-    opacity : .5;
+.brush rect
+{
+    width: 100%;
 }
-
-.brush rect{
-    width : 100%;
-}
-.brush .background{
+.brush .background
+{
     /*height : 100%;*/
 }
 
-.selecting circle {
-  fill-opacity: .2;
+.selecting circle
+{
+    fill-opacity: .2;
 }
 
-.selecting circle.selected {
-  stroke: #f00;
+.selecting circle.selected
+{
+    stroke: #f00;
 }
 
-.resize path {
-  fill: #666;
-  fill-opacity: .8;
-  stroke: #000;
-  stroke-width: 1.5px;
+.resize path
+{
+    fill: #666;
+    fill-opacity: .8;
+    stroke: #000;
+    stroke-width: 1.5px;
 }
 
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+.axis line
+{
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
-.axis path{
-    opacity : 0;
+.axis path
+{
+    opacity: 0;
 }
 
 
-.brush .extent {
-  fill-opacity: .125;
-  shape-rendering: crispEdges;
+.brush .extent
+{
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
 }

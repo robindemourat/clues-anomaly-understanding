@@ -33,6 +33,9 @@ angular.module('moduloAnomaliesApp')
 
                 var otherTop = el.position().top,
                     otherHeight = el.innerHeight();
+                if(top < otherTop){
+                  top = otherTop + otherHeight + 10;
+                }
                 if(otherTop >0 && top >= otherTop && top <= otherTop + otherHeight){
                   //console.log(otherId, noteId);
                   //console.log(noteId, otherId, top, otherTop, top + (otherHeight));

@@ -15,20 +15,37 @@ angular.module('moduloAnomaliesApp')
       	data : '@moduloContent'
       },
       link: function postLink(scope, element, attrs) {
-
+        var retries = 0, retriesLimit = 5;
       	scope.first = true;
+
+        var getTwitter = /http:\/\/twitter.com\/(.*)\/statuses\/(.*)/;
+
+        var parseTwitterRefs = function(d){
+          var match;
+
+          while(match = getTwitter.exec(d)){
+            console.log(match);
+            var embedUrl = 'https://api.twitter.com/1/statuses/oembed.json?url=https://twitter.com/'+match[1]+'/status/'+ match[2];
+            console.log(embedUrl);
+          }
+          return d;
+        }
+
       	var update = function(data){
           console.log(data);
           if(data.url){
             $http
             .get(data.url)
             .error(function(d){
-              //todo : improve that (number of trials ? dependent on error type ?)
-              $timeout(function(){
-                update(data);
-              }, 500);
+              if(retries < retriesLimit){
+                retries ++;
+                $timeout(function(){
+                  update(data);
+                }, 500);
+              }
             })
             .success(function(d){
+              //d = parseTwitterRefs(d);
               scope.html = d;
             });
           }else scope.html = $sce.trustAsHtml(data.html);
@@ -39,7 +56,6 @@ angular.module('moduloAnomaliesApp')
             //todo : wrap in try/catch
         		n = JSON.parse(n);
         		o = JSON.parse(o);
-            console.log(n.html, o.html);
             if(n.html && n.html != o.html){
               scope.html = $sce.trustAsHtml(n.html);
             }else if(scope.first || n.url != o.url){

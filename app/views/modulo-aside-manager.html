@@ -10,12 +10,16 @@
 
 <div class="aside-contents-container">
 
-  <div ng-switch="data.type" class="aside-contents-switcher">
+  <div ng-switch="data.type" class="aside-contents-switcher" ng-style="{background:(data.background)?data.background:'inherit'}">
     <div ng-switch-when="html" modulo-content='{{data}}' class='modulo-html'>
+    </div>
+    <div ng-switch-when="image" modulo-content='{{data}}' class='modulo-image'>
     </div>
     <div ng-switch-when="timeline"  class="modulo-timeline" modulo-content='{{data}}'>
     </div>
     <div ng-switch-when="iframe"  class="modulo-iframe" modulo-content='{{data}}'>
+    </div>
+    <div ng-switch-when="graph"  class="modulo-graph" modulo-content='{{data}}'>
     </div>
   </div>
 </div>

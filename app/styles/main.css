@@ -232,12 +232,21 @@ SPECIFIC COMPONENTS
     font-size : 1.4em;
 }
 
+.middle-col-container h1:not(:first-child){
+    margin-top : 2em;
+    margin-bottom : 1em;
+}
+
 .modulo-href-trigger
 {
-    font-weight: 800;
-
     cursor: pointer;
-    text-decoration: underline;
+    font-style : italic;
+}
+
+.modulo-href-trigger::after,
+.modulo-href-trigger::before{
+    content: '•';
+    font-size : 1.2em;
 }
 
 .modulo-href-trigger:hover
