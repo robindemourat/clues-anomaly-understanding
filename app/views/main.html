@@ -8,7 +8,7 @@
       class="left-col-wrapper col-xs-2 animate"
       ng-show="showCols.left"
     >
-      <h1 ng-bind="documentTitle">Modulo</h1>
+      <h1 class="doc-title" du-scroll-container="middle-col-container" scroll-to-top ng-bind="documentTitle">Modulo</h1>
 
       <!--searchbox -->
       <!--<div class="searchbox flex-container">
@@ -25,7 +25,7 @@
           ng-style="{'padding-left':(el.level * 5)+'px'}"
           du-scrollspy="#{{el.tag}}"
           scrollspy="#{{el.tag}}"
-          class="toc-element"
+          class="toc-element animate"
         >
           <a ng-href="#{{el.tag}}" du-smooth-scroll ng-bind="el.title"></a>
         </div>

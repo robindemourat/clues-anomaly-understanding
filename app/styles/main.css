@@ -198,6 +198,19 @@ iframe
 table
 {
     width: 100%;
+    padding : 1em;
+    margin-bottom : 2em;
+    font-size : .8em;
+
+}
+
+td{
+    padding : 1em;
+    border : 1px dashed black;
+}
+
+tbody tr:first-child{
+    font-weight : 800;
 }
 
 .grid
@@ -208,6 +221,15 @@ table
 .flex-container
 {
     display: flex;
+}
+
+
+/*
+SPECIFIC COMPONENTS
+*/
+
+.middle-col-container{
+    font-size : 1.4em;
 }
 
 .modulo-href-trigger
@@ -243,23 +265,43 @@ table
     top: 0;
     left: 1em;
 
-    width: 10em;
+    font-size:.7em;
+    overflow:hidden;
+
+    width: 15em;
     text-align: right;
     cursor : pointer;
     -webkit-transition: background .5s ease;
        -moz-transition: background .5s ease;
         -ms-transition: background .5s ease;
          -o-transition: background .5s ease;
+
+    opacity : .5;
+}
+
+.modulo-footnote-item:hover{
+    opacity : 1!important;
 }
 
 .modulo-footnote-item.active,
 .modulo-footnote-pointer.active
 {
-    background : grey;
+    background : rgba(0,0,0,.2);
+}
+
+
+.doc-title{
+    cursor : pointer;
+}
+
+.toc-element{
+    opacity : .5;
+    margin-bottom : 1em;
 }
 
 .toc-element.active{
     text-decoration : underline;
+    opacity : 1;
 }
 
 /*

@@ -38,8 +38,8 @@ angular.module('moduloAnomaliesApp')
                 target;
             for(var i in targets){
               var otherY = targetContainer.find(targets[i]).position().top;
-              //console.log(otherY, y);
-              if(otherY <= y){
+              //console.log(therY, y);
+              if(otherY <= y + window.innerHeight/2){
                 smallestDist = otherY - y;
                 target = targets[i];
               }
@@ -51,6 +51,21 @@ angular.module('moduloAnomaliesApp')
 
 
         })
+      }
+    };
+  })
+  //I scroll to top of document when I'm clicked
+  .directive('scrollToTop', function () {
+    return {
+      restrict: 'A',
+      link: function postLink(scope, element, attrs) {
+
+        var scrollToTop = function(){
+          var targetClass = attrs.duScrollContainer;
+          angular.element('.'+targetClass).animate({scrollTop : 0})
+        }
+
+        angular.element(element).bind('click', scrollToTop);
       }
     };
   });
