@@ -18,7 +18,7 @@ Detecting divergent practices in the Digital Humanities through the AIME project
 }
 ```
 
-^^modulo-aside:Users activity on the platform
+^^modulo-aside:Story of the AIME project
 
 
 ```json
@@ -111,6 +111,9 @@ An Inquiry into Modes of Existence (AIME) is a huge, probably incomplete, experi
 To make this projection towards the future relevant and to understand the role of AIME in the field of DH as well as what has to be retained as a good practice and what should be avoided in similar future projects, we propose a thoroughgoing observation. It is an empirical observation -to this extent we will try to adopt the same research posture as the AIME inquiry itself- based on the collection of the different public reactions collected with heterogeneous strategies: from digital methods of research to web analytics; from qualitative interviews to on-line questionnaire. 
 
 Johanna Drucker stated that finding a vocabulary -and we would also add the meaning (what it is) and the sense (what it does)- of a new technology (and here the new technology is the entire AIME set-up) takes time. During the development of the AIME set-up, just a few elements were self-evident and apparent, with a clearly identifiable name. One of these is the AIME principal investigator (PI): Bruno Latour. In one of the first public presentations, in late 2011, he defined it as a collective procedure triggered by a series of troublesome anthropological and philosophical questions. AIME’s ambition was to invent a medium for an empirical[#][ It is empirical in the sense that the demonstration and discussion of the philosophical arguments are grounded on anthropological experiences fostered by diverse types of documents (iconic, audio visual, textual… ).] inquiry concerned with ontological pluralism. The inquiry started 25 years before as a personal endeavour. Given the huge scope and topic, it now has to be opened to other researchers willing to use the AIME protocol, its method and style (borrowed from William James) to validate and expand the results. 
+
+
+^^modulo-aside:Users activity on the platform
 
 In this presentation, the moments of hesitation are clear, the moments when the names for designating technologies and procedure were trembling, signaling something still to invent. Leaving it to the philosophical community to judge the relevance and the quality of the arguments produced by AIME, in this paper we dedicate ourselves to the evolution of these hesitations. All the hesitations evolved into a chimera, one of the "strange beasts" described by Alessandro Ludovico whose component parts do not have a clear identity: a collaborative inquiry presenting some results before the collaboration was even started; an academic book without footnotes and references; an open, on- and off-line platform to collaborate with peers where you must subscribe to a strict protocol. It is a composed network that we had to produce before being able to describe it[#][ Obviously this does not mean that we had no plan, no strategy. We had them as the  expression of a final philosophical achievement. This picture is among the very first comprehensive depictions of the project. https://drive.google.com/open?id=0B36QS0G92XjseHVLTmQ4OThFNmM
 ]. Eventually we produced a sort of **_{format and template dissonance}_** where the produced artifacts didn’t present all of the features expected from the broader type of media they belonged to. The  series acts of remediation of the original text implied new rules and incomplete materials.

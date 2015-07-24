@@ -111,7 +111,7 @@ angular.module('moduloAnomaliesApp')
         };
 
         var commentOnLink = function(d) {
-          var perc = parseInt((d.value/totalValues)*100);
+          var perc = parseFloat((d.value/totalValues)*100).toFixed(1);
           var text = "";
           if($scope.temp.sankeytype === 'questionnaire'){
             text = "" + d.value;
@@ -120,17 +120,17 @@ angular.module('moduloAnomaliesApp')
             text +='"'+d.source.name+'" to the question : '+d.source.key+',\n';
             text += 'and "'+d.target.name+'" to the question : '+d.target.key+'\n';
           }else{
-            text += d.value + ' ('+perc+'%)';
+            text += d.value + ' ('+perc+'%)' + 'for '+d.source.name+' and ' + d.target.name;
           }
 
           return text;
          };
 
         var commentOnNode = function(d) {
-          var perc = parseInt((d.value/totalValues)*100);
+          var perc = parseFloat((d.value/totalValues)*100).toFixed(1);
           if($scope.temp.sankeytype === 'questionnaire'){
             return d.value + ' respondents answered "'+d.name + '" ('+perc+'%)';
-          }else return d.value + ' ('+perc+'%)';
+          }else return d.value + ' ('+perc+'%): '+d.name;
         }
 
         var updateVis = function(data){
