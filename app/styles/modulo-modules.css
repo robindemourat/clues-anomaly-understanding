@@ -36,17 +36,19 @@
 
 }
 
-.modulo-sankey .label-wrapper p{
-    padding-right : 1em;
+.modulo-sankey .label-wrapper{
+    display : flex;
 }
 
-.modulo-sankey .label-wrapper{
-    padding-top : 60%;
+.modulo-sankey .label-wrapper p{
+    padding-right : 1em;
+    align-self : center;
 }
 
 .modulo-sankey .label-wrapper:first-child,
 .modulo-sankey .label-wrapper:last-child{
     padding-top : 0;
+    display : block;
 }
 
 .modulo-sankey .label-wrapper:last-child p{

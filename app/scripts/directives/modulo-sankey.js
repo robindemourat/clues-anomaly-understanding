@@ -32,6 +32,7 @@ angular.module('moduloAnomaliesApp')
         }
 
         var prepareData = function(data, callback){
+          if(!data.keys)return;
           var visData = {
             nodes : [],
             links : []
@@ -74,6 +75,15 @@ angular.module('moduloAnomaliesApp')
             return callback(visData);
           });
         };
+
+        var resize = function(){
+          width = visA.width();
+          height = visA.height();
+          d3.select(element[0]).select('.global-group')
+            .attr('transform', function(){
+                      return 'translate('+width+')rotate(90)';
+                    });
+        }
 
         //sankey invariant params
         var sankey = d3.sankey()
@@ -122,6 +132,9 @@ angular.module('moduloAnomaliesApp')
             .nodes(data.nodes)
             .links(data.links)
             .layout(32);
+
+
+          console.log(width, height);
 
           maxStep = d3.max(data.nodes, function(d){
             return d.step;
@@ -194,7 +207,6 @@ angular.module('moduloAnomaliesApp')
                 return "translate(" + d.x + "," + d.y + ")";
               }
               else if(d.step == maxStep){
-                console.log('ok');
                 return "translate(" + (d.x - heightFromTag(d)) + "," + d.y + ")";
               }
               else return "translate(" + (d.x - heightFromTag(d)/2) + "," + d.y + ")";
@@ -281,6 +293,7 @@ angular.module('moduloAnomaliesApp')
 
           if($scope.temp){
             prepareData($scope.temp, function(d){
+              resize();
               $scope.visData = d;
               updateVis($scope.visData);
             });
@@ -288,12 +301,7 @@ angular.module('moduloAnomaliesApp')
         });
 
         angular.element($window).bind('resize', function(){
-          width = visA.width();
-          height = visA.height();
-          d3.select(element[0]).select('.global-group')
-            .attr('transform', function(){
-                      return 'translate('+width+')rotate(90)';
-                    });
+          resize();
           updateVis($scope.visData);
         })
       }
