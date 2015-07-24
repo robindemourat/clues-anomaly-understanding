@@ -117,7 +117,6 @@ angular.module('moduloAnomaliesApp')
       if($scope.contents.library){
         for(var i in $scope.contents.library){
           var view = $scope.contents.library[i];
-          console.log(view.title);
           if(view.title == title){
             $scope.previousAside = $scope.asideData;
             console.log($scope.asideData);

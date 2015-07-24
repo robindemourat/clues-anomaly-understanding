@@ -9,7 +9,7 @@ Detecting divergent practices in the Digital Humanities through the AIME project
     "title" :"Story of the AIME project",
     "type" : "timeline",
     "begindate" : "01/10/2013",
-    "enddate" : "01/05/2015",
+    "enddate" : "01/07/2015",
     "dateformat" : "%d/%m/%Y",
     "columns" : [
         {

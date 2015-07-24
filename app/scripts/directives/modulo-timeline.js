@@ -150,6 +150,13 @@ angular.module('moduloAnomaliesApp')
 
         var yAxis = d3.svg.axis();
 
+        var brush = d3.svg.brush()
+                    .y(liftScale)
+                    .extent([.3, .3])
+                    .on("brushstart", brushstart)
+                    .on("brush", brushmove)
+                    .on("brushend", brushend);
+
 
         $scope.setDetailMode = function(bol){
             setTimeout(function(){
@@ -161,12 +168,7 @@ angular.module('moduloAnomaliesApp')
             })
         }
 
-        var brush = d3.svg.brush()
-                    .y(liftScale)
-                    .extent([.3, .3])
-                    .on("brushstart", brushstart)
-                    .on("brush", brushmove)
-                    .on("brushend", brushend);
+
 
         var onWheel = function(){
             var delta = (d3.event.wheelDelta);
@@ -464,15 +466,6 @@ angular.module('moduloAnomaliesApp')
                             .duration(500)*/
                             .attr('d', area);
 
-
-
-
-
-                /*viewMetrics.forEach(function(object){
-                                  .datum(object.values)
-
-                });*/
-
             }
 
             /*
@@ -585,6 +578,10 @@ angular.module('moduloAnomaliesApp')
         var updateMainSvg = function(data){
             if(!data)return;
 
+            liftWidth = angular.element(liftContainer[0][0]).width();
+            liftHeight = angular.element(liftContainer[0][0]).height();
+            liftScale = d3.scale.linear().range([0,liftHeight]);
+
         	globalScale.domain([data.minDate.abs, data.maxDate.abs]);
             liftTimeScale.range([data.minDate.abs, data.maxDate.abs]);
 
@@ -662,6 +659,10 @@ angular.module('moduloAnomaliesApp')
         };
 
         var updateLiftSvg = function(data){
+
+            brush = d3.svg.brush()
+                    .y(liftScale)
+                    .extent([.3, .3]);
 
 
             var render = [];
@@ -777,7 +778,7 @@ angular.module('moduloAnomaliesApp')
 
                             updateMainSvg($scope.data);
                             updateLiftSvg($scope.data);
-                            setBrushExtent($scope.initialExtent)
+                            setBrushExtent($scope.initialExtent);
                         });
 
         			});
