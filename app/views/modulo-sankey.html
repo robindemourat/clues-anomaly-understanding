@@ -1,0 +1,22 @@
+<div class="sankey-container">
+  <div class="labels-container">
+    <div
+      class="label-wrapper"
+      ng-repeat ="label in data.keys track by $index"
+      ng-style="{
+        height : (100/data.keys.length)+'%'
+      }"
+    >
+      <p ng-bind="label" key="label"></p>
+    </div>
+  </div>
+  <div class="vis-container">
+    <svg class="vis"></svg>
+  </div>
+</div>
+<div class="sankey-footer animate">
+  <div class="comments-info" ng-if="info">
+    <p ng-if="info" ng-bind="info" ng-click="info = undefined"></p>
+  </div>
+  <p ng-bind="data.comment" class="comment" ng-if="data.comment"></p>
+</div>

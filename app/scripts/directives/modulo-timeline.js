@@ -714,7 +714,7 @@ angular.module('moduloAnomaliesApp')
 
         	}catch(e){
         		console.error('invalid json data for timeline :',nouv);
-        		scope.msg = 'Failed to load due to badly formatted json !'
+        		$scope.msg = 'Failed to load due to badly formatted json !'
         	};
         	if($scope.temp){
         		TimelineModuloViewParser.parse($scope.temp, function(d, e){

@@ -5,6 +5,107 @@
 }
 
 
+/*modulo-sankey*/
+.modulo-sankey{
+    width : 100%;
+    height : 100%;
+    overflow : hidden;
+}
+
+.modulo-sankey .sankey-container,
+.modulo-sankey .comments-container{
+    width : 100%;
+}
+
+.modulo-sankey .sankey-container{
+    height : 100%;
+}
+.modulo-sankey .labels-container,
+.modulo-sankey .vis-container{
+    height : 90%;
+    position : absolute;
+    top :10%;
+}
+.modulo-sankey .labels-container{
+    width : 20%;
+    text-align : right;
+    left : 0;
+}
+
+.modulo-sankey .labels-container{
+
+}
+
+.modulo-sankey .label-wrapper p{
+    padding-right : 1em;
+}
+
+.modulo-sankey .label-wrapper{
+    padding-top : 60%;
+}
+
+.modulo-sankey .label-wrapper:first-child,
+.modulo-sankey .label-wrapper:last-child{
+    padding-top : 0;
+}
+
+.modulo-sankey .label-wrapper:last-child p{
+    position : absolute;
+    bottom : 0;
+    left : 0;
+}
+
+.modulo-sankey .vis-container{
+    width : 80%;
+    right : 0;
+    padding-right : 2em;
+}
+
+.modulo-sankey .vis{
+    width : 100%;
+    height : 100%;
+}
+
+.modulo-sankey .node rect{
+    stroke-width : 0;
+    cursor : pointer;
+}
+
+.modulo-sankey .sankey-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    margin : 0em;
+
+    text-align: center;
+
+    color: white;
+    background: rgba(0,0,0,.4);
+}
+
+.modulo-sankey .sankey-footer p{
+    padding : 1em;
+}
+
+.modulo-sankey .sankey-footer:hover{
+    background: rgba(0,0,0,.9);
+}
+
+.modulo-sankey .link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .5;
+  opacity : .2;
+  cursor : pointer;
+}
+
+.modulo-sankey .link:hover {
+  stroke-opacity: .9;
+}
+
+
 
 /*modulo-graph*/
 .modulo-graph
