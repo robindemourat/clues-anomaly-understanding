@@ -283,7 +283,6 @@ angular.module('moduloAnomaliesApp')
                     end : data.maxDate.abs
                 }
 
-
             //brush.extent([globalScale($scope.extent.begin)/100, globalScale($scope.extent.end)/100]);
             }
         }
@@ -539,10 +538,19 @@ angular.module('moduloAnomaliesApp')
                                 return d.color;
                             })
                             .on('mouseover', function(d){
+
+                                d3.select(this)
+                                    .transition()
+                                    .duration(100)
+                                    .style('r', 15);
                                 $scope.highlighted = d;
                                 $scope.$apply();
                             })
                             .on('mouseout', function(d){
+                                d3.select(this)
+                                    .transition()
+                                    .duration(100)
+                                    .style('r', 5);
                                 if(!$scope.detailMode){
                                     $scope.highlighted = undefined;
                                     $scope.$apply();
@@ -717,6 +725,7 @@ angular.module('moduloAnomaliesApp')
         		$scope.msg = 'Failed to load due to badly formatted json !'
         	};
         	if($scope.temp){
+                console.log($scope.temp);
         		TimelineModuloViewParser.parse($scope.temp, function(d, e){
         			//console.info('timeline date processed, ', d);
 

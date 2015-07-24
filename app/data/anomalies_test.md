@@ -3,6 +3,38 @@ Clues. Anomalies. Understanding.
 Detecting divergent practices in the Digital Humanities through the AIME project.
 
 
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Story of the AIME project",
+    "type" : "timeline",
+    "begindate" : "01/10/2013",
+    "enddate" : "01/05/2015",
+    "dateformat" : "%d/%m/%Y",
+    "columns" : [
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/AIME_timeline.csv",
+                    "type" : "events",
+                    "models" : {
+                        "date" : "Start Date",
+                        "end" : "End Date",
+                        "title" : "Headline",
+                        "desc" : "Text"
+                    },
+                    "dateformat" : "%m/%d/%Y",
+                    "title" : "An Inquiry into Modes of Existence : restrospective events"
+                }
+            ]
+        }
+    ]
+}
+```
+
+^^modulo-aside:Story of the AIME project
+
+
 An Inquiry into Modes of Existence (AIME) is a huge, probably incomplete, experiment in both humanities and digital humanities (DH). In a four year timespan, a vast and diversified *set-up* of technologies[#][Here the term set-up refers to the network of complementary instances of the project. They are media instances  (print, web interfaces, meetings) supporting an ecosystem of practices distributed all along the nodes of the network.] has been conceived, developed, tested, and modified. Some of them clearly achieved the foreseen objectives, some others not. For most of the set-up elements, we struggled to design their features and to understand their agency. Although painful from a management and scholarly point of view, this was not completely unexpected. AIME has provided the rare opportunity to craft at the same time a new method of inquiry in philosophy, its own content, its format, and its way to communicate and disseminate the result while striving to build a new relationship with a diversified spectrum of the publicpublic redefining the author-reader connection. In a more than chaotic trajectory, design practices played a major role acting as critical and speculative agent:
 
 "Speculative design is an approach to design that emphasizes inquiry, experimentation, and expression, over usability, usefulness or desirability. A particular characteristic of speculative design is that it tends to be future-oriented." 
@@ -211,7 +243,6 @@ Comparing events agenda with the rhythm of contributions on the platform, a simi
 Looking, then, at project reading metrics with more details, it can be seen how the "contributions column" was more and more consulted as the project developed and multiplied workshops. These correlations show that the co-inquirers subscribed rather well to the proposed sequence of activities. Accordingly, while looking at the questionnaire sent to platform subscribers it can be seen that [people participating to workshops were more likely to be published and to write contributions](^^modulo-href:Workshops and contributions). Furthermore, most of those who declared to have actually read the report, owned and used a hard-copy of the inquiry and read also the document of the project (VOC and DOC). These is a good indication of AIME multimodal plan of action. It seems that this multimodal awareness was the main condition to have people successfully engaged in the project methodology.
 
 
-^^modulo-aside:Workshops and contributions
 
 ```json
 {
