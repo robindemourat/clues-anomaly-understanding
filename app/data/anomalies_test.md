@@ -18,7 +18,17 @@ Detecting divergent practices in the Digital Humanities through the AIME project
 }
 ```
 
-^^modulo-aside:Story of the AIME project
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Bruno Latour presents the project",
+    "type" : "dicto",
+    "data" : "data-nogit/bruno-latour-speap.srt"
+}
+```
+
+^^modulo-aside:Bruno Latour presents the project
 
 
 ```json

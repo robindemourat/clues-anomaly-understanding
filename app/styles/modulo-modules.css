@@ -4,6 +4,30 @@
     height: 100%;
 }
 
+/*modulo-dicto*/
+.modulo-dicto{
+    width: 100%;
+    height: 100%;
+    overflow : hidden;
+}
+.modulo-dicto .vimeo-video{
+    position : absolute;
+    width : 100%;
+}
+
+.modulo-dicto .text-container-temp{
+    overflow-y : auto;
+    height : 100%;
+}
+
+.modulo-dicto .text-container-temp blockquote{
+    cursor : pointer;
+}
+
+.modulo-dicto .text-container-temp blockquote:hover{
+    background : rgba(0,0,0,.3);
+}
+
 
 /*modulo-sankey*/
 .modulo-sankey{

@@ -1,0 +1,20 @@
+<vimeo-embed-mini
+  class="vimeo-video"
+  videourl = "https://vimeo.com/36089028"
+  playerId="modulo-dicto"
+  goto="goto"
+>
+
+</vimeo-embed-mini>
+
+
+<div class="text-container-temp" fitprevious>
+  <h2 ng-bind="data.metadata.title" ></h2>
+
+  <blockquote
+    ng-repeat="paragraph in data.data track by $index"
+    ng-bind = "paragraph.content"
+    ng-click="goTo(paragraph.begin)"
+    class="animate"
+  ></blockquote>
+</div>
