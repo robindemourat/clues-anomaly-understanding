@@ -569,8 +569,8 @@ angular.module('moduloAnomaliesApp')
                 .transition()
                 .duration(100)
                 .attr('cx', function(d){
-                    return ((100/nbCols) * d.y + (100/nbCols)* d.column) + '%';
-                    //return (100/nbCols)*d.column + colDisplay+'%';//center
+                    //DIRTY POWER
+                    return 25+((100/nbCols) * d.y + (100/nbCols)* d.column)/2 + '%';
                 })
                 .attr('cy', function(d){
                     return d.x * 100 + '%';

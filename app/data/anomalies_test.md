@@ -24,7 +24,7 @@ Detecting divergent practices in the Digital Humanities through the AIME project
                         "desc" : "Text"
                     },
                     "dateformat" : "%m/%d/%Y",
-                    "title" : "An Inquiry into Modes of Existence : restrospective events"
+                    "title" : "An Inquiry into Modes of Existence : restrospective of events"
                 }
             ]
         }
