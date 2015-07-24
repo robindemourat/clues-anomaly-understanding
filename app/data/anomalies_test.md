@@ -3,6 +3,24 @@ Clues. Anomalies. Understanding.
 Detecting divergent practices in the Digital Humanities through the AIME project.
 
 
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Users activity on the platform",
+    "type" : "sankey",
+    "data" : "data-nogit/users_activity.csv",
+    "keys" : [
+        "Declared type of activity",
+        "Total number of bookmarks",
+        "Total number of contributions"
+    ]
+}
+```
+
+^^modulo-aside:Users activity on the platform
+
+
 ```json
 {
     "role" : "modulo-view",
@@ -15,6 +33,16 @@ Detecting divergent practices in the Digital Humanities through the AIME project
         {
             "layers" : [
                 {
+                    "data" : "data-nogit/AIME_db_f_time.csv",
+                    "type" : "metrics",
+                    "models" : {
+                            "datesKey" : "date",
+                            "value" : "total"
+                        },
+                    "dateformat" : "%d/%m/%Y",
+                    "title" : "AIME total activity"
+                },
+                {
                     "data" : "data-nogit/AIME_timeline.csv",
                     "type" : "events",
                     "models" : {
@@ -24,7 +52,49 @@ Detecting divergent practices in the Digital Humanities through the AIME project
                         "desc" : "Text"
                     },
                     "dateformat" : "%m/%d/%Y",
-                    "title" : "An Inquiry into Modes of Existence : restrospective of events"
+                    "title" : "restrospective of events"
+                }
+            ]
+        },
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/AIME_db_f_time.csv",
+                    "type" : "metrics",
+                    "models" : {
+                            "datesKey" : "date",
+                            "value" : "bookmarks"
+                        },
+                    "dateformat" : "%d/%m/%Y",
+                    "title" : "AIME bookmarks activity"
+                }
+            ]
+        },
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/AIME_db_f_time.csv",
+                    "type" : "metrics",
+                    "models" : {
+                            "datesKey" : "date",
+                            "value" : "contributions"
+                        },
+                    "dateformat" : "%d/%m/%Y",
+                    "title" : "AIME contributions activity"
+                }
+            ]
+        },
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/AIME_analytics_f_time.csv",
+                    "type" : "metrics",
+                    "models" : {
+                            "datesKey" : "date",
+                            "value" : "globaltimeonpage"
+                        },
+                    "dateformat" : "%Y-%m-%d",
+                    "title" : "AIME reading stats"
                 }
             ]
         }
@@ -32,7 +102,6 @@ Detecting divergent practices in the Digital Humanities through the AIME project
 }
 ```
 
-^^modulo-aside:Story of the AIME project
 
 
 An Inquiry into Modes of Existence (AIME) is a huge, probably incomplete, experiment in both humanities and digital humanities (DH). In a four year timespan, a vast and diversified *set-up* of technologies[#][Here the term set-up refers to the network of complementary instances of the project. They are media instances  (print, web interfaces, meetings) supporting an ecosystem of practices distributed all along the nodes of the network.] has been conceived, developed, tested, and modified. Some of them clearly achieved the foreseen objectives, some others not. For most of the set-up elements, we struggled to design their features and to understand their agency. Although painful from a management and scholarly point of view, this was not completely unexpected. AIME has provided the rare opportunity to craft at the same time a new method of inquiry in philosophy, its own content, its format, and its way to communicate and disseminate the result while striving to build a new relationship with a diversified spectrum of the publicpublic redefining the author-reader connection. In a more than chaotic trajectory, design practices played a major role acting as critical and speculative agent:
@@ -249,6 +318,7 @@ Looking, then, at project reading metrics with more details, it can be seen how 
     "role" : "modulo-view",
     "title" :"Workshops and contributions",
     "type" : "sankey",
+    "sankeytype":"questionnaire",
     "data" : "data-nogit/AIME_questionnaire.csv",
     "keys" : [
         "Are you registered on the digital platform ?",

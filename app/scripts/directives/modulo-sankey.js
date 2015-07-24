@@ -112,18 +112,26 @@ angular.module('moduloAnomaliesApp')
 
         var commentOnLink = function(d) {
           var perc = parseInt((d.value/totalValues)*100);
-          var text = "" + d.value;
-          text += (d.value > 1)?' respondents ':' respondent ';
-          text += '('+perc+'%) answered both\n';
-          text +='"'+d.source.name+'" to the question : '+d.source.key+',\n';
-          text += 'and "'+d.target.name+'" to the question : '+d.target.key+'\n';
+          var text = "";
+          if($scope.temp.sankeytype === 'questionnaire'){
+            text = "" + d.value;
+            text += (d.value > 1)?' respondents ':' respondent ';
+            text += '('+perc+'%) answered both\n';
+            text +='"'+d.source.name+'" to the question : '+d.source.key+',\n';
+            text += 'and "'+d.target.name+'" to the question : '+d.target.key+'\n';
+          }else{
+            text += d.value + ' ('+perc+'%)';
+          }
+
           return text;
          };
 
-         var commentOnNode = function(d) {
-                var perc = parseInt((d.value/totalValues)*100);
-                return d.value + ' respondents answered "'+d.name + '" ('+perc+'%)'//' to the question '+d.key;
-              }
+        var commentOnNode = function(d) {
+          var perc = parseInt((d.value/totalValues)*100);
+          if($scope.temp.sankeytype === 'questionnaire'){
+            return d.value + ' respondents answered "'+d.name + '" ('+perc+'%)';
+          }else return d.value + ' ('+perc+'%)';
+        }
 
         var updateVis = function(data){
 

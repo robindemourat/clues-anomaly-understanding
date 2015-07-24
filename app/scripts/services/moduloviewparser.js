@@ -185,6 +185,8 @@ angular.module('moduloAnomaliesApp')
                 datum.id = d[view.models.objectsKey];
               else datum.id = 0;
 
+
+
               return datum;
             });
 

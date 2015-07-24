@@ -181,9 +181,10 @@ angular.module('moduloAnomaliesApp')
                         begin : $scope.extent.begin + dif * .05,
                         end : $scope.extent.end + dif * .05
                     }
-                    setBrushExtent($scope.extent);
-                    updateMainSvg($scope.data);
                 }
+                setBrushExtent($scope.extent);
+                updateMainSvg($scope.data);
+
 
             }
         }
@@ -284,9 +285,12 @@ angular.module('moduloAnomaliesApp')
                     begin : data.minDate.abs,
                     end : data.maxDate.abs
                 }
-
-            //brush.extent([globalScale($scope.extent.begin)/100, globalScale($scope.extent.end)/100]);
             }
+
+            if($scope.initialExtent.end > data.maxDate.abs)
+                $scope.initialExtent.end = data.maxDate.abs;
+            if($scope.initialExtent.begin < data.minDate.abs)
+                $scope.initialExtent.begin = data.minDate.abs;
         }
 
         //I try to make a coherent choice of which timespan to set for timeline bars regarding the length of the period of time that is being covered by the timeline
@@ -436,7 +440,7 @@ angular.module('moduloAnomaliesApp')
                                         return 'modulo-timeline-area-'+d.id;
                                     })
                                     .attr('fill', function(d,i){
-                                        return colors(i);
+                                        return d.color;
                                     })
                                     .on('mouseover', function(d){
                                         var datum = d;
@@ -563,7 +567,7 @@ angular.module('moduloAnomaliesApp')
                 .duration(100)
                 .attr('cx', function(d){
                     //DIRTY POWER
-                    return 25+((100/nbCols) * d.y + (100/nbCols)* d.column)/2 + '%';
+                    return (100/nbCols)/4 + ((100/nbCols) * d.y + (100/nbCols)* d.column)/2 + '%';
                 })
                 .attr('cy', function(d){
                     return d.x * 100 + '%';
@@ -660,9 +664,7 @@ angular.module('moduloAnomaliesApp')
 
         var updateLiftSvg = function(data){
 
-            brush = d3.svg.brush()
-                    .y(liftScale)
-                    .extent([.3, .3]);
+            brush.y(liftScale);
 
 
             var render = [];
