@@ -30,7 +30,8 @@ angular
                     'glyphicon',
                     'moduloaside',
                     'modulohref',
-                    'grid',
+                    /*'grid',*/
+                    'table',
                     'vimeo',
                     'slideshare',
                     'youtube',

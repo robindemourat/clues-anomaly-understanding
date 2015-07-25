@@ -108,7 +108,9 @@ angular.module('moduloAnomaliesApp')
         })
 
         scope.$watch('videoUrl', function(d){
-          reload();
+          if(d && typeof d === 'string'){
+            reload();
+          }
         });
 
       }

@@ -40,9 +40,11 @@ angular.module('moduloAnomaliesApp')
           };
 
           if($scope.temp){
+
             $http
               .get($scope.temp.data)
               .success(function(d){
+
                 $scope.data = dictoModuloViewParser.parseSrtTranscription(d);
               })
               .error(function(err){

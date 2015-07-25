@@ -4,6 +4,20 @@
     height: 100%;
 }
 
+
+/*modulo-vimeo*/
+.modulo-vimeo{
+    width: 100%;
+    height: 100%;
+    overflow : hidden;
+}
+
+.modulo-vimeo .vimeo-video{
+    width: 100%;
+    height: 100%;
+}
+
+
 /*modulo-dicto*/
 .modulo-dicto{
     width: 100%;
@@ -311,6 +325,7 @@
     z-index: 2;
 
     overflow-y: auto;
+    overflow-x : hidden;
 
     height: 10%;
 

@@ -1,16 +1,19 @@
 
-body{
+body
+{
     -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */
+       -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+            user-select: none;          /* Likely future */
 }
 
-::selection {
-  background: #ffb7b7; /* WebKit/Blink Browsers */
+::selection
+{
+    background: #ffb7b7; /* WebKit/Blink Browsers */
 }
-::-moz-selection {
-  background: #ffb7b7; /* Gecko Browsers */
+::-moz-selection
+{
+    background: #ffb7b7; /* Gecko Browsers */
 }
 /*
   PRIMARY LAYOUT
@@ -171,13 +174,13 @@ body{
 {
     position: relative;
 
+    padding-bottom: 12em;
     padding-left: 12em;
 
-
-      -webkit-user-select: all;  /* Chrome all / Safari all */
-  -moz-user-select: all;     /* Firefox all */
-  -ms-user-select: all;      /* IE 10+ */
-  user-select: all;          /* Likely future */
+    -webkit-user-select: all;  /* Chrome all / Safari all */
+       -moz-user-select: all;     /* Firefox all */
+        -ms-user-select: all;      /* IE 10+ */
+            user-select: all;          /* Likely future */
 }
 
 /*
@@ -217,20 +220,23 @@ iframe
 
 table
 {
+    font-size: .8em;
+
     width: 100%;
-    padding : 1em;
-    margin-bottom : 2em;
-    font-size : .8em;
-
+    margin-bottom: 2em;
+    padding: 1em;
 }
 
-td{
-    padding : 1em;
-    border : 1px dashed black;
+td, th
+{
+    padding: 1em;
+
+    border: 1px dashed black;
 }
 
-tbody tr:first-child{
-    font-weight : 800;
+tbody tr:first-child
+{
+    /*font-weight: 800;*/
 }
 
 .grid
@@ -248,25 +254,30 @@ tbody tr:first-child{
 SPECIFIC COMPONENTS
 */
 
-.middle-col-container{
-    font-size : 1.4em;
+.middle-col-container
+{
+    font-size: 1.4em;
 }
 
-.middle-col-container h1:not(:first-child){
-    margin-top : 2em;
-    margin-bottom : 1em;
+.middle-col-container h1:not(:first-child)
+{
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .modulo-href-trigger
 {
+    font-style: italic;
+
     cursor: pointer;
-    font-style : italic;
 }
 
 .modulo-href-trigger::after,
-.modulo-href-trigger::before{
+.modulo-href-trigger::before
+{
+    font-size: 1.2em;
+
     content: '•';
-    font-size : 1.2em;
 }
 
 .modulo-href-trigger:hover
@@ -290,47 +301,55 @@ SPECIFIC COMPONENTS
 
 .modulo-footnote-item
 {
+    font-size: .7em;
+
     position: absolute;
     top: 0;
     left: 1em;
 
-    font-size:.7em;
-    overflow:hidden;
+    overflow: hidden;
 
     width: 15em;
-    text-align: right;
-    cursor : pointer;
+
+    cursor: pointer;
     -webkit-transition: background .5s ease;
        -moz-transition: background .5s ease;
         -ms-transition: background .5s ease;
          -o-transition: background .5s ease;
+    text-align: right;
 
-    opacity : .5;
+    opacity: .5;
 }
 
-.modulo-footnote-item:hover{
-    opacity : 1!important;
+.modulo-footnote-item:hover
+{
+    opacity: 1!important;
 }
 
 .modulo-footnote-item.active,
 .modulo-footnote-pointer.active
 {
-    background : rgba(0,0,0,.2);
+    background: rgba(0,0,0,.2);
 }
 
 
-.doc-title{
-    cursor : pointer;
+.doc-title
+{
+    cursor: pointer;
 }
 
-.toc-element{
-    opacity : .5;
-    margin-bottom : 1em;
+.toc-element
+{
+    margin-bottom: 1em;
+
+    opacity: .5;
 }
 
-.toc-element.active{
-    text-decoration : underline;
-    opacity : 1;
+.toc-element.active
+{
+    text-decoration: underline;
+
+    opacity: 1;
 }
 
 /*

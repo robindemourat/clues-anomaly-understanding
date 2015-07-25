@@ -4,7 +4,7 @@
   var modulohref = function(converter) {
     return [
       { type: 'lang',
-        regex : '\\[([^\\]]*)\\]\\(\\^\\^modulo-href:([^\\)]*)',
+        regex : '\\[([^\\]]*)\\]\\(\\^\\^modulo-href:([^\\)]*)\\)',
         replace : '<span class="modulo-href-trigger" ng-click="setAside(\''+'$2'+'\')" id="'+'$2'+'">'+'$1'+'</span>'
       }
     ];

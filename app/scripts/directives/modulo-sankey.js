@@ -62,7 +62,8 @@ angular.module('moduloAnomaliesApp')
                   visData.links.push({
                     source : i,
                     target : j,
-                    value : 0
+                    value : 0,
+                    id : node1.id + '_'+node2.id
                   });
                   objects.forEach(function(object){
                     if(object[node1.key] === node1.name && object[node2.key] === node2.name){
@@ -72,6 +73,12 @@ angular.module('moduloAnomaliesApp')
                 }
               })
             });
+
+            for(var i = visData.links.length - 1; i>= 0 ; i--){
+              if(visData.links[i].value === 0)
+                visData.links.splice(i, 1);
+            }
+
             return callback(visData);
           });
         };
@@ -142,7 +149,6 @@ angular.module('moduloAnomaliesApp')
             .layout(32);
 
 
-          console.log(width, height);
 
           maxStep = d3.max(data.nodes, function(d){
             return d.step;
@@ -160,7 +166,9 @@ angular.module('moduloAnomaliesApp')
 
           //select links
           var link = vis.select(".links").selectAll(".link")
-                      .data(data.links);
+                      .data(data.links, function(d){
+                        return d.id;
+                      });
 
           //enter links
           var enterLink = link
@@ -188,13 +196,14 @@ angular.module('moduloAnomaliesApp')
               $scope.info = commentOnLink(d);
             else delete $scope.info;
             setTimeout(function(){$scope.$apply()});
-
           });
 
 
           //select nodes
           var node = vis.select(".nodes").selectAll(".node")
-              .data(data.nodes)
+              .data(data.nodes, function(d){
+                return d.id;
+              })
 
           //enter nodes
           var enterNode = node.enter().append("g")
@@ -245,7 +254,16 @@ angular.module('moduloAnomaliesApp')
               .attr("transform", function(d){
                 return 'translate('+heightFromTag(d)/2+','+d.dy/2+')'+'rotate(-90)';
               })
-              .text(function(d) { return d.name; })
+              .text(function(d) {
+                var t = d.name, nbShort = 0;
+                d3.select(this).text(d.name);
+                while(d3.select(this)[0][0].getBBox().width > d.dy && nbShort <= d.name.length-1){
+                  nbShort++;
+                  t = d.name.substr(0, d.name.length - nbShort) + '...';
+                  d3.select(this).text(t);
+                }
+                return t//d.name;
+              })
               .style('display', function(d, i, e){
                 var width = d3.select(this)[0][0].getBBox().width;
                 if(width > d.dy)

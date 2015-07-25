@@ -18,8 +18,8 @@ angular.module('moduloAnomaliesApp')
 
       	scope.first = true;
       	scope.trustSrc = function(src) {
-		    return $sce.trustAsResourceUrl(src);
-		  }
+  		    return $sce.trustAsResourceUrl(src);
+  		  }
 
         scope.$watch('newdata', function(n,o){
         		n = JSON.parse(n);

@@ -46,7 +46,7 @@ angular.module('moduloAnomaliesApp')
   	}
 
   	var initFunctions = function(){
-  		reloadMarkdown('data/anomalies_test.md');
+  		reloadMarkdown('data/clues-anomalies-understanding.md');
   	}
 
     //I load and then process a modulo-markdown file and apply changes
@@ -65,7 +65,7 @@ angular.module('moduloAnomaliesApp')
                   scrollTop = container.scrollTop(),
                   screenYCenter=scrollTop + height/2;
               if(!$scope.popupAside){
-                updateAside(screenYCenter);
+                updateAside(screenYCenter, scrollTop, height);
               }
             });
           }, function(data){//second callback for asynchronous updates
@@ -80,7 +80,7 @@ angular.module('moduloAnomaliesApp')
   	};
 
     //I parse the library of views and set the one which is the closest to screen's y center and define it as aside data
-    var updateAside = function(screenYCenter){
+    var updateAside = function(screenYCenter, scrollTop, height){
       if($scope.contents.library){
         var min = Infinity, wining;
         for(var i in $scope.contents.library){
@@ -89,12 +89,13 @@ angular.module('moduloAnomaliesApp')
           var el = $('[title="'+vis.title+'"]');//angular.element(document.querySelector('title', vis.title));
           //get scroll top
           if(el.offset()){
-            vis.top = el.offset().top;
+            vis.top = el.position().top;
             //defining closest to screen's center
             var dist = Math.abs(vis.top - screenYCenter);
-            if(dist < min){
+            if(dist < min && screenYCenter >= vis.top){
               min = dist;
               wining = i;
+              console.log(vis.top, el.offset().top, vis.title);
             }
           }
         }
