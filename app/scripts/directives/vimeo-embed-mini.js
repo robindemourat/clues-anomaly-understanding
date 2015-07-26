@@ -7,7 +7,7 @@
  * # vimeoEmbedMini
  */
 angular.module('moduloAnomaliesApp')
-    .directive('vimeoEmbedMini', function (VimeoService) {
+    .directive('vimeoEmbedMini', function (VimeoService, $rootScope) {
 
     return {
       restrict: 'EA',
@@ -38,7 +38,7 @@ angular.module('moduloAnomaliesApp')
         }
 
         var onPlayProgress = function(d){
-          console.log('play progress', d);
+          $rootScope.$emit('playprogress', d);
         }
 
         var onFinish = function(){
@@ -101,7 +101,6 @@ angular.module('moduloAnomaliesApp')
 
 
         scope.$watch('goto', function(d){
-          console.log('go to ', d);
           if(activePlayer){
             activePlayer.api('seekTo', d);
           }

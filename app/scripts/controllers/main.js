@@ -95,7 +95,6 @@ angular.module('moduloAnomaliesApp')
             if(dist < min && screenYCenter >= vis.top){
               min = dist;
               wining = i;
-              console.log(vis.top, el.offset().top, vis.title);
             }
           }
         }
