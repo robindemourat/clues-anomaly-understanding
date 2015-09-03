@@ -423,7 +423,6 @@ SPECIFIC COMPONENTS
 .index-toggler{
     text-transform : uppercase;
     font-family : 'NovelSansPro-SemiBold';
-    margin : 0;
     padding : 0;
     opacity : .5;
 }
@@ -437,7 +436,7 @@ SPECIFIC COMPONENTS
     opacity : 1;
     font-size : 1.2em;
     border-bottom : 1px solid black;
-    margin-bottom : 1em;
+    margin : 1em 0 1em 0;
 }
 
 .index-toggler button{

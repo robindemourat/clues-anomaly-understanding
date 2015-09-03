@@ -102,7 +102,6 @@ angular.module('moduloAnomaliesApp')
         }
         if(wining && $scope.contents.library[wining]){
           $scope.asideData = $scope.contents.library[wining];
-          console.log($scope.asideData);
           setTimeout(function(){
             $scope.$apply();
           })
