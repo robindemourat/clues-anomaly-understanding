@@ -1,3 +1,52 @@
+@font-face
+{
+    font-family: NovelPro-Light;
+
+    src: url(/fonts/237E72_2_0.eot);
+    src: url(/fonts/237E72_2_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_2_0.woff) format('woff'),url(/fonts/237E72_2_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelPro-SemiBoldIt;
+
+    src: url(/fonts/237E72_4_0.eot);
+    src: url(/fonts/237E72_4_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_4_0.woff) format('woff'),url(/fonts/237E72_4_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelSansPro-Light;
+
+    src: url(/fonts/237E72_E_0.eot);
+    src: url(/fonts/237E72_E_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_E_0.woff) format('woff'),url(/fonts/237E72_E_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelSansPro-Regular;
+
+    src: url(/fonts/237E72_12_0.eot);
+    src: url(/fonts/237E72_12_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_12_0.woff) format('woff'),url(/fonts/237E72_12_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelSansPro-SemiBold;
+
+    src: url(/fonts/237E72_11_0.eot);
+    src: url(/fonts/237E72_11_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_11_0.woff) format('woff'),url(/fonts/237E72_11_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelMonoPro-Bold;
+
+    src: url(/fonts/237E72_1B_0.eot);
+    src: url(/fonts/237E72_1B_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_1B_0.woff) format('woff'),url(/fonts/237E72_1B_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelPro-It;
+
+    src: url(/fonts/237E72_B_0.eot);
+    src: url(/fonts/237E72_B_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_B_0.woff) format('woff'),url(/fonts/237E72_B_0.ttf) format('truetype');
+}@font-face
+{
+    font-family: NovelPro-SemiBold;
+    src: url(/fonts/237E72_5_0.eot);
+    src: url(/fonts/237E72_5_0.eot?#iefix) format('embedded-opentype'),url(/fonts/237E72_5_0.woff) format('woff'),url(/fonts/237E72_5_0.ttf) format('truetype');
+}
+
 
 body
 {
@@ -20,7 +69,8 @@ body
 */
 .container
 {
-    font-family: 'Vollkorn', serif;
+    font-family: "NovelPro-Light", serif;
+    font-size : 1.1em;
 
     position: fixed;
 
@@ -227,7 +277,8 @@ table
     padding: 1em;
 }
 
-td, th
+td,
+th
 {
     padding: 1em;
 
@@ -268,9 +319,8 @@ SPECIFIC COMPONENTS
 .modulo-href-trigger
 {
     /*font-style: italic;*/
-
     cursor: pointer;
-    text-decoration : underline;
+    text-decoration: underline;
 }
 
 /*.modulo-href-trigger::after,

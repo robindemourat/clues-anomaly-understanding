@@ -54,7 +54,6 @@ angular.module('moduloAnomaliesApp')
 
         setTimeout(function(){
           reposition();
-
         }, 1000);
 
         var handleClick = function(){
@@ -67,8 +66,18 @@ angular.module('moduloAnomaliesApp')
           }, 2000);
         }
 
-        element.bind('click', handleClick);
-        note.bind('click', handleClick);
+
+
+        element.on('click', handleClick);
+        note.on('click', handleClick);
+
+        angular.element(window).on('resize', reposition);
+
+        scope.$on('$destroy', function(){
+          elemen.off(handleClick);
+          note.off(handleClick);
+          angular.element(window).off('resize', reposition);
+        })
 
       }
     };

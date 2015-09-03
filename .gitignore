@@ -5,3 +5,4 @@ dist
 bower_components
 app/data-nogit
 .DS_Store
+app/fonts
