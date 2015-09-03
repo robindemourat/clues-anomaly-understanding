@@ -139,7 +139,6 @@ From an ethical point of view, we have seen that the complex process of constitu
 
 # Qualifying anomalies for better (understanding of) digital humanities projects
 
-^^modulo-aside:Visual summary of the methodology
 
 By collecting clues and spotting anomalies our AIME critical review helped us to get a better understanding of the reaction coming from different communities of users. In this last part we will focus on operationalising these anomalies to debrief and assess the AIME project itself. Hopefully, transforming the anomalies into recommendations, warnings or observational remarks will inform future projects. 
 
@@ -231,17 +230,6 @@ Adema, Janneke. "On Open Books and Fluid Humanities." *Scholarly and Research Co
 Andersen, Christian Ulrik, and Soren Bro Pold, eds. *Interface Criticism: Aesthetics Beyond the Buttons*. Aarhus Denmark: Aarhus University Press, 2011.
 
 Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
-
-
-
-```json
-{
-    "role" : "modulo-view",
-    "title" :"Visual summary of the methodology",
-    "type" : "image",
-    "url" : "data/images/visual-summary.png"
-}
-```
 
 
 ```json
@@ -870,7 +858,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
     "role" : "modulo-view",
     "title" :"Evaluing AIME",
     "type" : "iframe",
-    "url" : "https://www.academia.edu/10903264/EVALUING_BRUNO_LATOURs_AIME_PROJECT"
+    "url" : "https://terenceblake.wordpress.com/2015/02/18/evaluing-latours-aime-diplomacy-originality-testability-digitality-democracy/"
 }
 ```
 

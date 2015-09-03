@@ -165,7 +165,7 @@
     text-align: center;
 
     color: white;
-    background: rgba(0,0,0,.4);
+    background: rgba(0,0,0,.8);
 }
 
 .modulo-sankey .sankey-footer p
@@ -223,12 +223,12 @@
     text-align: center;
 
     color: white;
-    background: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.8);
 }
 
 .modulo-graph:hover .graph-footer
 {
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.9);
 }
 
 .modulo-graph .graph-footer .comment
@@ -250,20 +250,20 @@
 {
     border: none!important;
     outline: none!important;
-    background: rgba(255,255,255,.1);
+    background: rgba(255,255,255,.3);
 
     flex-grow: 1;
 }
 
 .modulo-graph .graph-footer .filters-container button:hover
 {
-    background: rgba(255,255,255,.3);
+    background: rgba(255,255,255,.6);
 }
 
 .modulo-graph .graph-footer .filters-container button.active
 {
     color: black;
-    background: rgba(255,255,255,.7);
+    background: rgba(255,255,255,.8);
 }
 
 .modulo-graph .graph-footer .filters-container button.active:hover
@@ -297,12 +297,12 @@
     text-align: center;
 
     color: white;
-    background: rgba(0,0,0,.1);
+    background: rgba(0,0,0,.8);
 }
 
 .modulo-iframe:hover .iframe-footer
 {
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.8);
 }
 
 .modulo-iframe .iframe-footer .comment
@@ -329,8 +329,9 @@
 .modulo-image .comment
 {
     padding: 1em;
+    color : white;
 
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.8);
 }
 
 .modulo-image .comment:hover

@@ -116,20 +116,25 @@ angular.module('moduloAnomaliesApp')
     };
 })
 
-.factory('VimeoService', function ($q, $http) {
+.factory('VimeoService', function ($q, $http, $window) {
   var endpoint = 'https://www.vimeo.com/api/oembed.json';
+
+
 
   return {
     oEmbed: function (params) {
-      //console.log(endpoint + params);
       var d = $q.defer();
 
       $http.jsonp(endpoint + params).success(function(data) {
+        //console.log(data);
         d.resolve(data);
       }).error(function(error) {
-        console.log(error);
+        //console.log(error);
         d.reject('Oops! It looks like there was an error with the vimeo video!');
       });
+
+
+
 
       return d.promise;
     }

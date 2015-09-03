@@ -17,6 +17,7 @@ angular
     'ngTouch',
     'angular-loading-bar',
     'btford.markdown',
+    'hc.downloader',
     'ui.grid',
     'times.tabletop',
     'duScroll',

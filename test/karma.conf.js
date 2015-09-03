@@ -41,6 +41,8 @@ module.exports = function(config) {
       'bower_components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js',
       'bower_components/d3/d3.js',
       'bower_components/froogaloop/froogaloop.js',
+      'bower_components/FileSaver/FileSaver.js',
+      'bower_components/angular-downloadsvg-directive/angular-downloadsvg-directive.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
