@@ -5,7 +5,7 @@
     return [
       { type: 'lang',
         regex : '\\[([^\\]]*)\\]\\(\\^\\^modulo-href:([^\\)]*)\\)',
-        replace : '<span class="modulo-href-trigger" ng-click="setAside(\''+'$2'+'\')" id="'+'$2'+'">'+'$1'+'</span>'
+        replace : '<span class="modulo-href-trigger animate" ng-click="setAside(\''+'$2'+'\')"  ng-class="{\'active\' : asideData.title == \''+'$2'+'\'}"  id="'+'$2'+'">'+'$1'+'</span>'
       }
     ];
   }

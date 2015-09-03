@@ -102,9 +102,12 @@ angular.module('moduloAnomaliesApp')
         }
         if(wining && $scope.contents.library[wining]){
           $scope.asideData = $scope.contents.library[wining];
+          console.log($scope.asideData);
           setTimeout(function(){
             $scope.$apply();
           })
+        }else{
+          $scope.asideData = undefined;
         }
       }
     }
@@ -121,7 +124,6 @@ angular.module('moduloAnomaliesApp')
           var view = $scope.contents.library[i];
           if(view.title == title){
             $scope.previousAside = $scope.asideData;
-            console.log($scope.asideData);
             $scope.asideData = view;
             $scope.popupAside = true;
             setTimeout(function(){
@@ -134,7 +136,8 @@ angular.module('moduloAnomaliesApp')
 
     $scope.resetAside = function(){
       $scope.popupAside = false;
-      var previous = $scope.asideData && $scope.previousData && $scope.asideData.title != $scope.previousAside.title;
+      var previous = $scope.asideData && $scope.previousAside && $scope.asideData.title != $scope.previousAside.title;
+      console.log('reset to previous', $scope.previousAside);
       if(previous){
         $scope.asideData = $scope.previousAside;
       }else{

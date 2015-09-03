@@ -325,6 +325,29 @@ SPECIFIC COMPONENTS
     margin-bottom: 1em;
 }
 
+.modulo-aside-trigger{
+    font-family : 'NovelSansPro-Light';
+    margin : 2em 0 2em 0;
+    font-size : .6em;
+    padding : .2em 1em .2em 1em;
+    background: brown;
+    border-radius : .8em;
+    display : inline-block;
+    color : white;
+    overflow : hidden;
+}
+
+.modulo-aside-trigger.inactive:not(:hover){
+    max-width : 10px;
+    max-height : 10px;
+    color : brown;
+    padding : 0;
+}
+
+.modulo-href-trigger.active{
+    color : brown;
+}
+
 .modulo-href-trigger
 {
     /*font-style: italic;*/
@@ -332,17 +355,9 @@ SPECIFIC COMPONENTS
     text-decoration: underline;
 }
 
-/*.modulo-href-trigger::after,
-.modulo-href-trigger::before
-{
-    font-size: 1.2em;
-
-    content: '•';
-}*/
-
 .modulo-href-trigger:hover
 {
-    text-decoration: none;
+    font-weight : 800;
 }
 
 .modulo-footnote-pointer
@@ -362,6 +377,7 @@ SPECIFIC COMPONENTS
 .modulo-footnote-item
 {
     font-size: .7em;
+    font-family : 'NovelSansPro-Light';
 
     position: absolute;
     top: 0;
