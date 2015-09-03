@@ -17,6 +17,7 @@ angular.module('moduloAnomaliesApp')
 	    	right : true
 	    };
       $scope.popupAside = false;
+      $scope.indexVisible = true;
   	}
 
 
@@ -42,6 +43,7 @@ angular.module('moduloAnomaliesApp')
       $rootScope.$on('zoteroBibliography', function(e,data){
         $scope.contents.bibliography = data;
       });
+
 
   	}
 
@@ -185,6 +187,10 @@ angular.module('moduloAnomaliesApp')
     		break;
     	}
     };
+
+    $scope.topScrollToggle = function(top){
+      $scope.indexVisible = top;
+    }
 
 
     initVariables();

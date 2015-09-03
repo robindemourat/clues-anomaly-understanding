@@ -6,9 +6,10 @@
   <!--left-col-wrapper : main content-->
     <div
       class="left-col-wrapper col-xs-2 animate"
+      ng-class="{'col-xs-2':indexVisible,'col-xs-1':!indexVisible}"
       ng-show="showCols.left"
     >
-      <h1 class="doc-title" du-scroll-container="middle-col-container" scroll-to-top ng-bind="documentTitle">Modulo</h1>
+      <h1 class="doc-title animate" du-scroll-container="middle-col-container" scroll-to-top ng-bind="documentTitle">Modulo</h1>
 
       <!--searchbox -->
       <!--<div class="searchbox flex-container">
@@ -18,8 +19,23 @@
         <input type="text">
       </div>--> <!--end searchbox -->
 
+      <div
+          class="index-toggler animate"
+          ng-class="{'active':indexVisible}"
+      >
+        <button
+          ng-click="indexVisible = !indexVisible"
+        >Index</button>
+      </div>
+
       <!--table of contents-->
-      <div class="toc" du-scroll-container="middle-col-container" scrollspy-points>
+      <div
+        class="toc animate"
+        du-scroll-container="middle-col-container"
+        scrollspy-points
+        ng-if="indexVisible"
+        fit-screen-height
+      >
         <div
           ng-repeat="el in contents.toc"
           ng-style="{'padding-left':(el.level * 5)+'px'}"
@@ -33,12 +49,14 @@
 
     </div><!--END left-colwrapper-->
 
+  <!--
   <div
     class="btn col-handler col-handler-pullright"
     ng-click="showCols.left = false"
   >
     <span class="glyphicon glyphicon-chevron-left animate"></span>
   </div>
+  -->
 </nav>
 
 <section
@@ -54,7 +72,7 @@
     du-scroll-container="middle-col-container"
   >
     <!--middle-col-container : contents-->
-    <div class="middle-col-container"  id="middle-col-container">
+    <div class="middle-col-container"  id="middle-col-container" top-scroll-trigger="topScrollToggle(top)">
       <div>
         <div class="middle-col-contents-main"   compile="contents.html"></div>
       </div>

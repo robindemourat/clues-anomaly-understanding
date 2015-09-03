@@ -68,4 +68,32 @@ angular.module('moduloAnomaliesApp')
         angular.element(element).bind('click', scrollToTop);
       }
     };
-  });
+  })
+  //I modify a model when I'm scrolled at top
+  .directive('topScrollTrigger', function () {
+    return {
+      restrict: 'A',
+      scope :{
+        topScrollTrigger : '&'
+      },
+      link: function postLink(scope, element, attrs) {
+        var top = false, s;
+
+        angular.element(element).on('scroll', function(e, d){
+          s = angular.element(element).scrollTop();
+
+          if(s == 0){
+            top = true;
+            scope.topScrollTrigger({
+              top : true
+            })
+          }else if(s > 0 && top){
+            top = false;
+            scope.topScrollTrigger({
+              top : false
+            })
+          }
+        });
+      }
+    };
+  })

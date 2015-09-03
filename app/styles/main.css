@@ -80,6 +80,8 @@ body
     padding: 0;
 }
 
+
+
 .col-left,
 .col-middle,
 .col-right
@@ -95,7 +97,7 @@ body
 
 .col-left
 {
-    background: rgba(0,0,0,.01);
+    /*background: rgba(0,0,0,.01);*/
 }
 
 .col-middle
@@ -106,6 +108,7 @@ body
 .col-right
 {
     background: rgba(0,0,0,.02);
+    font-family : 'NovelSansPro-Regular';
 }
 
 .col-0
@@ -122,12 +125,18 @@ body
     position: fixed;
     z-index: 2;
 
-    overflow: auto;
+    overflow: hidden;
 
     height: 100%;
     padding: 2em;
+    padding-right : 0;
 
     background: white;
+}
+
+.left-col-wrapper.col-xs-1{
+    padding-top : 0.5em;
+    padding-left :0.5em;
 }
 
 .middle-col-wrapper
@@ -387,6 +396,47 @@ SPECIFIC COMPONENTS
 .doc-title
 {
     cursor: pointer;
+    padding : 0;
+    margin : 0;
+}
+
+.col-xs-1 .doc-title{
+    font-size : 1em;
+}
+
+.index-toggler{
+    text-transform : uppercase;
+    font-family : 'NovelSansPro-SemiBold';
+    margin : 0;
+    padding : 0;
+    opacity : .5;
+}
+
+.index-toggler:hover{
+    opacity : .8;
+    border-bottom : 1px solid black;
+}
+
+.index-toggler.active{
+    opacity : 1;
+    font-size : 1.2em;
+    border-bottom : 1px solid black;
+    margin-bottom : 1em;
+}
+
+.index-toggler button{
+    background : none;
+    outline : none;
+    border : none;
+    padding : 0;
+    margin : 0;
+}
+
+.toc{
+    overflow-y : auto;
+    overflow-x : hidden;
+    width : 110%;
+    padding-right : 10%;
 }
 
 .toc-element
