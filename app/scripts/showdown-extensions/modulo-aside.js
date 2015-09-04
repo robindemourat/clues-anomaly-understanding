@@ -6,7 +6,7 @@
     return [
       { type: 'lang',
         regex : '\\^\\^modulo-aside:(.*)',
-        replace : '<div class="modulo-aside-trigger animate" ng-class="{\'inactive\' : asideData.title != \''+'$1'+'\'}" title="'+'$1'+'">'+'$1'+'</div>'
+        replace : '<div class="modulo-aside-trigger animate" ng-class="{\'inactive\' : asideData.title != \''+'$1'+'\'}" id="'+'$1'+'">'+'$1'+'</div>'
       }
     ];
   }

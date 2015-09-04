@@ -335,9 +335,16 @@ SPECIFIC COMPONENTS
     display : inline-block;
     color : white;
     overflow : hidden;
+    cursor : pointer;
+    opacity : 1;
+}
+
+.modulo-aside-trigger.inactive:hover{
+    opacity : .7;
 }
 
 .modulo-aside-trigger.inactive:not(:hover){
+    opacity : .7;
     max-width : 10px;
     max-height : 10px;
     color : brown;

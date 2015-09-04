@@ -5,7 +5,7 @@
 
   <!--left-col-wrapper : main content-->
     <div
-      class="left-col-wrapper col-xs-2 animate"
+      class="left-col-wrapper animate"
       ng-class="{'col-xs-2':indexVisible,'col-xs-1':!indexVisible}"
       ng-show="showCols.left"
     >
@@ -24,7 +24,7 @@
           ng-class="{'active':indexVisible}"
       >
         <button
-          ng-click="indexVisible = !indexVisible"
+          ng-click="toggleIndex()"
         >Index</button>
       </div>
 

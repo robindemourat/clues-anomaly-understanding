@@ -8,7 +8,7 @@
  * Controller of the moduloAnomaliesApp
  */
 angular.module('moduloAnomaliesApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $window, $sce, $http, markdownProcessor, $timeout) {
+  .controller('MainCtrl', function ($scope, $rootScope, $location, $window, $sce, $http, markdownProcessor, $timeout) {
 
   	var initVariables = function(){
   		$scope.showCols = {
@@ -49,6 +49,25 @@ angular.module('moduloAnomaliesApp')
 
   	var initFunctions = function(){
   		reloadMarkdown('data/clues-anomalies-understanding.md');
+
+      var loc = $location.search().aside;
+      //yes, yes, it should be done in a directive ...
+      setTimeout(function(){
+        if(loc && loc.length > 0){
+          loc = decodeURIComponent(loc);
+          var el = angular.element('[id="'+loc+'"]');//angular.element(document.querySelector('title', vis.title));
+
+          if(el.offset()){
+            var parent = angular.element('.middle-col-container'),
+                offsetY = el.offset().top,
+                scrollTop = parent.scrollTop(),
+                h = angular.element(window).height(),
+                to = (scrollTop + offsetY - h/2);
+            parent.animate({scrollTop : to}, '500');
+          }
+
+        }
+      }, 1000);
   	}
 
     //I load and then process a modulo-markdown file and apply changes
@@ -88,7 +107,7 @@ angular.module('moduloAnomaliesApp')
         for(var i in $scope.contents.library){
           var vis = $scope.contents.library[i];
           //get element
-          var el = $('[title="'+vis.title+'"]');//angular.element(document.querySelector('title', vis.title));
+          var el = angular.element('.modulo-aside-trigger[id="'+vis.title+'"]');//angular.element(document.querySelector('title', vis.title));
           //get scroll top
           if(el.offset()){
             vis.top = el.position().top;
@@ -102,11 +121,15 @@ angular.module('moduloAnomaliesApp')
         }
         if(wining && $scope.contents.library[wining]){
           $scope.asideData = $scope.contents.library[wining];
+          $location.search('aside', encodeURIComponent($scope.asideData.title));
+
           setTimeout(function(){
             $scope.$apply();
           })
         }else{
           $scope.asideData = undefined;
+          $location.search('aside', null);
+
         }
       }
     }
@@ -124,6 +147,7 @@ angular.module('moduloAnomaliesApp')
           if(view.title == title){
             $scope.previousAside = $scope.asideData;
             $scope.asideData = view;
+            $location.search('aside', encodeURIComponent(view.title));
             $scope.popupAside = true;
             setTimeout(function(){
               $scope.$apply();
@@ -139,8 +163,10 @@ angular.module('moduloAnomaliesApp')
       console.log('reset to previous', $scope.previousAside);
       if(previous){
         $scope.asideData = $scope.previousAside;
+        $location.search('aside', encodeURIComponent($scope.previousAside.title));
       }else{
         $scope.asideData = undefined;
+        $location.search('aside', null);
       }
       setTimeout(function(){
         $scope.$apply();
@@ -156,14 +182,20 @@ angular.module('moduloAnomaliesApp')
     	}else switch(col){
 
     		case 'left':
-    			if(cols[col])
+          if(col == 'left' && !$scope.indexVisible){
+            return 'col-xs-1';
+          }
+    			else if(cols[col]){
     				return 'col-xs-2';
+          }
     		break;
 
     		case 'middle':
-    			if(cols.left && cols.right){
+    			if(cols.left && cols.right && $scope.indexVisible){
     				return 'col-xs-6 col-xs-offset-2';
-    			}else if(!cols.left && cols.right){
+    			}else if(cols.left && cols.right && !$scope.indexVisible){
+            return 'col-xs-7 col-xs-offset-1';
+          }else if(!cols.left && cols.right){
     				return 'col-xs-6';
     			}else if(cols.left && !cols.right){
     				return 'col-xs-10 col-xs-offset-2';
@@ -192,6 +224,13 @@ angular.module('moduloAnomaliesApp')
 
     $scope.topScrollToggle = function(top){
       $scope.indexVisible = top;
+    }
+
+    $scope.toggleIndex = function(){
+      $scope.indexVisible = !$scope.indexVisible;
+      setTimeout(function(){
+        $scope.$apply();
+      })
     }
 
 
