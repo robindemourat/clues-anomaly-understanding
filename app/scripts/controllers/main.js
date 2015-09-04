@@ -64,6 +64,10 @@ angular.module('moduloAnomaliesApp')
                 h = angular.element(window).height(),
                 to = (scrollTop + offsetY - h/2);
             parent.animate({scrollTop : to}, '500');
+            //handling href triggers
+            if(el.attr('class').indexOf('modulo-href-trigger') > -1){
+              $scope.setAside(loc);
+            };
           }
 
         }
