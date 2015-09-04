@@ -64,6 +64,8 @@ angular.module('moduloAnomaliesApp')
 
 
         $scope.$watch('newdata', function(nouv, old){
+          if(nouv.trim().length == 0)
+            return;
           try{
             var nouvJ = JSON.parse(nouv);
             var oldJ;
@@ -78,7 +80,7 @@ angular.module('moduloAnomaliesApp')
             }
 
           }catch(e){
-            console.error('invalid json data for timeline :',nouv);
+            console.error('invalid json data for dicto :',nouv);
             $scope.msg = 'Failed to load due to badly formatted json !'
           };
           var okTemp = $scope.temp && $scope.temp.data;
