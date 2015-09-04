@@ -37,7 +37,7 @@ angular.module('moduloAnomaliesApp')
     var fetchData = function(view, callback){
         var toDownload = [];
         if(view.data){
-          console.info('fetching', this.data);
+          console.info('fetching', view.data);
         }else{
           if(!view.columns){
             view.data = undefined;

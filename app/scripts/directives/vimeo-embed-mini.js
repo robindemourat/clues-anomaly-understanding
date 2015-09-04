@@ -47,6 +47,12 @@ angular.module('moduloAnomaliesApp')
 
 
         var reload = function(){
+          if(!scope.videoId && !scope.videoUrl){
+            setTimeout(function(){
+              reload();
+            }, 100)
+            return;
+          }
           var videoUrl = scope.videoId ? 'https://vimeo.com/' + scope.videoId : scope.videoUrl,
               params = '?url=' + encodeURIComponent(videoUrl) + '&callback=JSON_CALLBACK' + '&player_id=' + playerId,
               options = scope.playerOpts || null;
@@ -62,7 +68,7 @@ angular.module('moduloAnomaliesApp')
             }
           }
 
-          params += '&badge=0&byline=0&portrait=0&title=0';
+          params += '&badge=0&byline=0&portrait=0&title=0' + '&_=' + (new Date().getTime());
 
 
           VimeoService.oEmbed(params).then(function (data) {
@@ -116,7 +122,7 @@ angular.module('moduloAnomaliesApp')
     };
 })
 
-.factory('VimeoService', function ($q, $http, $window) {
+.factory('VimeoService', function ($q, $http, $window, $timeout) {
   var endpoint = 'https://www.vimeo.com/api/oembed.json';
 
 
@@ -126,15 +132,10 @@ angular.module('moduloAnomaliesApp')
       var d = $q.defer();
 
       $http.jsonp(endpoint + params).success(function(data) {
-        //console.log(data);
         d.resolve(data);
       }).error(function(error) {
-        //console.log(error);
         d.reject('Oops! It looks like there was an error with the vimeo video!');
       });
-
-
-
 
       return d.promise;
     }
