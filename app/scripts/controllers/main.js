@@ -127,7 +127,6 @@ angular.module('moduloAnomaliesApp')
         if(wining && $scope.contents.library[wining]){
           $scope.asideData = $scope.contents.library[wining];
           $location.search('aside', encodeURIComponent($scope.asideData.title));
-
           setTimeout(function(){
             $scope.$apply();
           })

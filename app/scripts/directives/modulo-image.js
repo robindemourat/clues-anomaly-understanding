@@ -12,7 +12,10 @@ angular.module('moduloAnomaliesApp')
       template: '<img ng-src="{{data.url}}"></img><div class="comment-container" ng-if="data.comment"><p ng-bind="data.comment" class="comment animate" ng-if="data.comment"></p></div>',
       restrict: 'C',
       link: function postLink(scope, element, attrs) {
-        //element.text('this is the moduloImage directive');
+
+        /*scope.$watch('data.url', function(d){
+          console.log()
+        })*/
       }
     };
   });
