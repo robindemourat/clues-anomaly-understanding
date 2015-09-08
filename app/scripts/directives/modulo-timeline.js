@@ -148,6 +148,7 @@ angular.module('moduloAnomaliesApp')
             liftScale = d3.scale.linear().range([0,liftHeight]),
             liftTimeScale= d3.scale.linear().domain([0,1]),
             colors = d3.scale.category20(),
+            globalMax = -Infinity, //for view metrics, max value
             //colors = d3.scale.linear().range([0,255]),
             ticksScale = d3.time.scale(),
             nova = d3.layout.nova();
@@ -401,15 +402,140 @@ angular.module('moduloAnomaliesApp')
             var colWidth = width/nbCols;
             var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
 
+            var metricsContainer = columnContainer.select('.metrics');
+            if(metricsContainer.empty()){
+                metricsContainer = columnContainer.append('g').attr('class', 'metrics');
+            }
 
+            var eventsContainer = columnContainer.select('.events');
+            if(eventsContainer.empty()){
+                eventsContainer = columnContainer.append('g').attr('class', 'events');
+            }
+
+
+            if(viewMetrics.length > 0){
+
+
+
+                var max = globalMax;
+                //var max = -Infinity;
+                /*viewMetrics.forEach(function(object){
+                    var localMax = d3.max(object.values, function(d){
+                        return d.value;
+                    });
+                    if(localMax > max)
+                        max = localMax;
+                });*/
+
+                var areaScale = d3.scale.linear().domain([0, max]).range([0, width/nbCols]);
+
+               /* if(metricsContainer.select('.bg-cache').empty()){
+                    metricsContainer
+                        .append('rect')
+                        .attr('class', 'bg-cache')
+                }
+                metricsContainer.select('.bg-cache')
+                    .attr('x', function(){
+                            return colWidth * columnIndex;
+                        })
+                        .attr('y', function(){
+                            return 0;
+                        })
+                        .attr('height', function(){
+                            return liftHeight;
+                        })
+                        .attr('width', function(){
+                            return colWidth;
+                        })
+                        .attr('fill', function(){
+                            return 'rgba(255,255,255,.8)'
+                        });*/
+
+                var area = d3.svg.area()
+                    .interpolate("linear")
+                    .y(function(d) {
+                        return (d.date.date) ? areaY(d.date.date.getTime()): 0;
+                    })
+                    .x0(function(d){
+                        return colWidth * columnIndex + colWidth/2;
+                        //return colWidth * columnIndex + colWidth/2 - areaScale(d.value)/2;
+                    })
+                    .x1(function(d) {
+                        //return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
+                        return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
+                    });
+
+                var areas = metricsContainer.selectAll('.modulo-timeline-area')
+                                .data(viewMetrics, function(d){
+                                    return d.id;
+                                });
+
+                areas.exit().remove();
+
+               var enterAreas = areas.enter()
+                                    .append('path')
+                                    .attr('class', 'modulo-timeline-area')
+                                    .attr('id', function(d){
+                                        return 'modulo-timeline-area-'+d.id;
+                                    })
+                                    .attr('fill', function(d,i){
+                                        return d.color;
+                                    })
+                                    .on('mousemove', function(d, i){
+                                        var datum = d;
+                                        //console.log(liftY, d3.event.offsetY);
+                                        var date = new Date(areaYReverse(d3.event.offsetY));
+
+                                        var closer = Infinity, winning;
+                                        datum.forEach(function(dot){
+                                            var date2 = dot.date.date.getTime();
+                                            if(Math.abs(date2 - date.getTime()) < closer){
+                                                closer = Math.abs(date2 - date.getTime());
+                                                winning = dot;
+                                            }
+                                        })
+
+                                        winning = JSON.parse(JSON.stringify(winning));
+                                        winning.title = winning.date.original + '\t-\t' + winning.value + (winning.tooltip?winning.tooltip:'');
+                                        delete winning.date;
+                                        $scope.highlighted = winning;
+                                        $scope.$apply();
+
+
+                                        metricsContainer.selectAll('.modulo-timeline-area')
+                                            .filter(function(d){
+                                                return d[0].id != datum[0].id;
+                                            })
+                                            .attr('fill-opacity', .2);
+                                    })
+                                    .on('mouseout', function(d){
+                                        $scope.highlighted = undefined;
+                                        $scope.$apply();
+                                        metricsContainer.selectAll('.modulo-timeline-area')
+                                            .attr('fill-opacity', 1)
+                                    })
+                                    /*.append('title')
+                                    .text(function(d){
+                                        return d.key;
+                                    })*/
+
+
+                areas.datum(function(d){
+                                /*if(d.key === '#brunolatour'){
+                                    console.log(d.values.length);
+                                }*/
+                                return d.values;
+                            })
+                            .transition()
+                            .duration(500)
+                            .attr('d', area);
+
+            }
             if(viewEvents.length > 0){
                 /*
                     events update
                 */
-                var eventsContainer = columnContainer.select('.events');
-                if(eventsContainer.empty()){
-                    eventsContainer = eventsContainer.append('g').attr('class', 'events');
-                }
+
 
                 //console.log(span);
 
@@ -435,7 +561,7 @@ angular.module('moduloAnomaliesApp')
 
 
                 //update circled events
-                var eventsCircles = columnContainer
+                var eventsCircles = eventsContainer
                                 .selectAll('.modulo-timeline-event .circle')
                                 .data(circles, function(d){
                                     return d.id;
@@ -520,7 +646,7 @@ angular.module('moduloAnomaliesApp')
 
 
                 //update line events
-                var eventsLines = columnContainer
+                var eventsLines = eventsContainer
                                 .selectAll('.modulo-timeline-event.line')
                                 .data(lines, function(d){
                                     return d.id;
@@ -580,6 +706,75 @@ angular.module('moduloAnomaliesApp')
                         return colWidth * columnIndex;
                     })
                     .attr('x2', function(d){
+                        return colWidth * columnIndex + colWidth;
+                    })
+                    .attr('y1', function(d){
+                        return areaY(d.date.date.getTime());
+                    })
+                    .attr('y2', function(d){
+                        return areaY(d.date.date.getTime());
+                    });
+
+                var eventsLines2 = eventsContainer
+                                .selectAll('.modulo-timeline-event.line2')
+                                .data(lines, function(d){
+                                    return d.id;
+                                });
+
+                var exitLines2 = eventsLines2
+                                .exit()
+                                .transition()
+                                .duration(100)
+                                .attr('x2', function(){
+                                    return colWidth * columnIndex;
+                                })
+                                .remove();
+
+
+                var enterLines2 = eventsLines2
+                                .enter()
+                                .append('line')
+                                .attr('class', 'modulo-timeline-event line2')
+                                .attr('x1', function(d){
+                                    return colWidth * columnIndex + colWidth;
+                                })
+                                .attr('x2', function(d){
+                                    return colWidth * columnIndex + colWidth;
+                                })
+                                .attr('y1', function(d){
+                                    return areaY(d.date.date.getTime());
+                                })
+                                .attr('y2', function(d){
+                                    return areaY(d.date.date.getTime());
+                                })
+                                .style('stroke', function(d){
+                                    return d.color;
+                                })
+                                /*.on('mouseover', function(d){
+
+                                    $scope.highlighted = d;
+                                    $scope.$apply();
+                                })
+                                .on('mouseout', function(d){
+                                    if(!$scope.detailMode){
+                                        $scope.highlighted = undefined;
+                                        $scope.$apply();
+                                    }
+                                })
+                                .on('click', function(d){
+                                    $scope.highlighted = d;
+                                    $scope.detailMode = true;
+                                    $scope.$apply();
+                                })*/
+
+
+                eventsLines2
+                    .transition()
+                    .duration(100)
+                    .attr('x1', function(d){
+                        return colWidth * columnIndex + colWidth;
+                    })
+                    .attr('x2', function(d){
                         return width;
                     })
                     .attr('y1', function(d){
@@ -589,133 +784,13 @@ angular.module('moduloAnomaliesApp')
                         return areaY(d.date.date.getTime());
                     });
             }
-
-            if(viewMetrics.length > 0){
-                var metricsContainer = columnContainer.select('.metrics');
-                if(metricsContainer.empty()){
-                    metricsContainer = columnContainer.append('g').attr('class', 'metrics');
-                }
-
-
-
-                var max = -Infinity;
-                viewMetrics.forEach(function(object){
-                    var localMax = d3.max(object.values, function(d){
-                        return d.value;
-                    });
-                    if(localMax > max)
-                        max = localMax;
-                });
-
-                var areaScale = d3.scale.linear().domain([0, max]).range([0, width/nbCols]);
-
-                if(metricsContainer.select('.bg-cache').empty()){
-                    metricsContainer
-                        .append('rect')
-                        .attr('class', 'bg-cache')
-                }
-                metricsContainer.select('.bg-cache')
-                    .attr('x', function(){
-                            return colWidth * columnIndex;
-                        })
-                        .attr('y', function(){
-                            return 0;
-                        })
-                        .attr('height', function(){
-                            return liftHeight;
-                        })
-                        .attr('width', function(){
-                            return colWidth;
-                        })
-                        .attr('fill', function(){
-                            return 'rgba(255,255,255,.8)'
-                        });
-
-                var area = d3.svg.area()
-                    .interpolate("linear")
-                    .y(function(d) {
-                        return (d.date.date) ? areaY(d.date.date.getTime()): 0;
-                    })
-                    .x0(function(d){
-                        return colWidth * columnIndex + colWidth/2;
-                        //return colWidth * columnIndex + colWidth/2 - areaScale(d.value)/2;
-                    })
-                    .x1(function(d) {
-                        //return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
-                        return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
-                    });
-
-                var areas = metricsContainer.selectAll('.modulo-timeline-area')
-                                .data(viewMetrics, function(d){
-                                    return d.id;
-                                });
-
-                areas.exit().remove();
-
-               var enterAreas = areas.enter()
-                                    .append('path')
-                                    .attr('class', 'modulo-timeline-area')
-                                    .attr('id', function(d){
-                                        return 'modulo-timeline-area-'+d.id;
-                                    })
-                                    .attr('fill', function(d,i){
-                                        return d.color;
-                                    })
-                                    .on('mousemove', function(d, i){
-                                        var datum = d;
-                                        //console.log(liftY, d3.event.offsetY);
-                                        var date = new Date(areaYReverse(d3.event.offsetY));
-
-                                        var closer = Infinity, winning;
-                                        datum.forEach(function(dot){
-                                            var date2 = dot.date.date.getTime();
-                                            if(Math.abs(date2 - date.getTime()) < closer){
-                                                closer = Math.abs(date2 - date.getTime());
-                                                winning = dot;
-                                            }
-                                        })
-
-                                        winning = JSON.parse(JSON.stringify(winning));
-                                        winning.title = winning.date.original + '\t-\t' + winning.value + (winning.tooltip?winning.tooltip:'');
-                                        delete winning.date;
-                                        $scope.highlighted = winning;
-                                        $scope.$apply();
-
-
-                                        metricsContainer.selectAll('.modulo-timeline-area')
-                                            .filter(function(d){
-                                                return d[0].id != datum[0].id;
-                                            })
-                                            .attr('fill-opacity', .2);
-                                    })
-                                    .on('mouseout', function(d){
-                                        $scope.highlighted = undefined;
-                                        $scope.$apply();
-                                        metricsContainer.selectAll('.modulo-timeline-area')
-                                            .attr('fill-opacity', 1)
-                                    })
-                                    /*.append('title')
-                                    .text(function(d){
-                                        return d.key;
-                                    })*/
-
-
-                areas.datum(function(d){
-                                /*if(d.key === '#brunolatour'){
-                                    console.log(d.values.length);
-                                }*/
-                                return d.values;
-                            })
-                            .transition()
-                            .duration(500)
-                            .attr('d', area);
-
-            }
         }
 
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
             if(!data)return;
+
+            globalMax = -Infinity;//reinit max
 
 
             liftWidth = angular.element(liftContainer[0][0]).width();
@@ -761,8 +836,25 @@ angular.module('moduloAnomaliesApp')
             var gWidth = $element.find('.modulo-timeline-columns-wrapper').width();
             $element.find('.modulo-timeline-column').each(function(i){
                 angular.element(this).width(gWidth/nbCols);
-            })
+            });
 
+            //find globalMax
+            data.columns.forEach(function(column, i){
+                var metrics = [];
+                column.layers.forEach(function(layer, j){
+                    if(layer.type === 'metrics'){
+                        layer.filteredData.forEach(function(object, n){
+                            object.initialValues.forEach(function(o){
+                                if(o.value > globalMax)
+                                    globalMax = o.value;
+                            })
+
+                        });
+                    }
+                });
+            });
+
+            //update columns
             data.columns.forEach(function(column, i){
                 var events = [], metrics = [];
                 column.layers.forEach(function(layer, j){
@@ -787,9 +879,6 @@ angular.module('moduloAnomaliesApp')
                             object.column = +i;
                             object.layer = +j;
                             object.color = layer.color;
-                            if(layer.tooltip){
-                                object.tooltip = layer.tooltip;
-                            }
                             object.values = object.initialValues.filter(function(d, n){
                                 var dtest = d && d.date && d.date.date;
                                  if(dtest){
@@ -801,11 +890,11 @@ angular.module('moduloAnomaliesApp')
                                 return false;
                             });
 
-                            if(layer.tooltip){
-                               object.values.forEach(function(o){
-                                o.tooltip = layer.tooltip;
-                               })
-                            }
+                            object.values.forEach(function(o){
+                                if(layer.tooltip)
+                                    o.tooltip = layer.tooltip;
+                            })
+
                         });
                         metrics = metrics.concat(layer.filteredData.slice());
                     }

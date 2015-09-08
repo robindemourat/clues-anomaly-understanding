@@ -512,7 +512,7 @@
 
 .modulo-timeline-additional-wrapper .content
 {
-    font-size: 3em;
+    font-size: 2em;
 }
 
 
@@ -531,12 +531,24 @@
 
 .modulo-timeline-event.line{
     /*stroke-dasharray:10,3;*/
-    stroke-width : 1;
+    stroke-width : 3;
+    opacity : .4;
 }
 
 .modulo-timeline-event.line:hover{
     /*stroke-dasharray:none;*/
     stroke-width : 5;
+}
+
+.modulo-timeline-event.line2{
+    /*stroke-dasharray:10,3;*/
+    stroke-width : 1;
+    opacity : .1;
+}
+
+.modulo-timeline-event.line2:hover{
+    /*stroke-dasharray:none;*/
+    stroke-width : 3;
 }
 
 
