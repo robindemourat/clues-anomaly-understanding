@@ -16,8 +16,13 @@
       <span ng-if="filter.active" ng-bind="filter.nameActive"></span>
       <span ng-if="!filter.active" ng-bind="filter.nameInactive"></span>
     </button>
-
   </div>
+
    <p ng-bind="data.comment" class="comment" ng-if="data.comment"></p>
+
+   <span class="glyphicon glyphicon-download"
+              ng-init="exportOrder = false;"
+              ng-click="export()";
+  ></span>
 </div>
 

@@ -1,8 +1,12 @@
 <div class="aside-header">
       <h1 style="display:inline" ng-bind="data.title"></h1>
+
       <span class="glyphicon glyphicon-download"
-            svg-download=".aside-contents-container svg"
+              ng-if="data.type == 'timeline'"
+            svg-download=".aside-contents-container .modulo-timeline-main-timeline"
       ></span>
+
+
       <span
         class="close-popup btn btn-xs"
         ng-show="popupMode"
@@ -27,7 +31,7 @@
     <div ng-switch-when="iframe"  class="modulo-iframe" modulo-content='{{data}}'>
     </div>
 
-    <div ng-switch-when="graph"  class="modulo-graph" modulo-content='{{data}}'>
+    <div ng-switch-when="graph"  class="modulo-graph" modulo-content='{{data}}' export-order="{{exportOrder}}">
     </div>
 
     <div ng-switch-when="sankey"  class="modulo-sankey" modulo-content='{{data}}'></div>

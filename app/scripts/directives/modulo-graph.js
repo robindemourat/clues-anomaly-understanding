@@ -63,11 +63,10 @@ angular.module('moduloAnomaliesApp')
 
             defaultNodeBorderColor: "#ffffff",
 
-            borderSize: "2",
             edgeColor: 'default',
             defaultEdgeColor: '#999999',
 
-            labelSize: "proportional",
+            labelSize: "proportional"
           }
         });
 
@@ -205,6 +204,10 @@ angular.module('moduloAnomaliesApp')
             $scope.msg = 'Failed to load due to badly formatted json !'
           };
         });
+
+        $scope.export = function(){
+            sigInst.toSVG({download: true, labels : true, filename: 'mygraph.svg', size: 1000});
+        }
       }
     };
   });

@@ -249,7 +249,6 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
     "role" : "modulo-view",
     "title" :"Counting AIME appelations",
     "type" : "image",
-    "background":"#D5D8C8",
     "url" : "data/images/pages-mentionning-the-book.png",
     "comment" : "Count of the pages mentioning the different components and naming of the aime projects."
 }
@@ -279,13 +278,13 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
     "role" : "modulo-view",
     "title" :"Graph of correlations between hashtags and users around AIME",
     "type" : "graph",
-    "background" : "#d4d9c7",
+    "background" : "#FFFFFF",
     "data" : "data-nogit/user-hash-2.gexf",
     "colors" : {
         "keyAttribute" : "hash/user",
         "specialColors" :{
                 "events": "#923626",
-                "hash" : "#999999"
+                "hash" : "#828BD1"
             },
         "default" : "#2a2b28"
     },
