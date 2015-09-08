@@ -662,13 +662,14 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
     "role" : "modulo-view",
     "title" :"A few digitally committed co-inquirers",
     "type" : "sankey",
-    "data" : "data-nogit/users_activity.csv",
+    "data" : "data-nogit/users_activity_actives.csv",
     "keys" : [
-        "Total number of bookmarks",
-        "Total number of contributions"
+                "Total number of bookmarks (>0)",
+                "Total number of contributions (>0)"
     ]
 }
 ```
+
 
 ```json
 {

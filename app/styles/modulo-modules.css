@@ -282,6 +282,12 @@
     height: 100%;
 
     border: none;
+    overflow : hidden;
+}
+
+.modulo-iframe .iframe-header{
+    width : 100%;
+    margin-bottom : 2em;
 }
 
 .modulo-iframe .iframe-footer
@@ -300,20 +306,28 @@
     background: rgba(0,0,0,.8);
 }
 
-.modulo-iframe:hover .iframe-footer
+/*.modulo-iframe:hover .iframe-footer
 {
     background: rgba(0,0,0,.8);
-}
+}*/
 
-.modulo-iframe .iframe-footer .comment
+.modulo-iframe .iframe-header .comment
 {
-    font-style: italic;
+    font-style : italic;
 }
 
-.modulo-iframe .iframe-footer:hover
+.modulo-iframe .iframe-header .iframe-link
+{
+    padding : 0 10px 0 30px;
+    width : 100%;
+    font-size : .8em;
+    text-align : center;
+}
+
+/*.modulo-iframe .iframe-header:hover
 {
     background: rgba(0,0,0,.9);
-}
+}*/
 
 
 /*modulo-image*/

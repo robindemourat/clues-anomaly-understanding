@@ -7,7 +7,7 @@
         height : (100/data.keys.length)+'%'
       }"
     >
-      <p ng-bind="label" key="label"></p>
+      <p ng-bind="(label.name)?label.name:label" id="(label.id)?label.id:label"></p>
     </div>
   </div>
   <div class="vis-container">

@@ -38,23 +38,40 @@ angular.module('moduloAnomaliesApp')
             links : []
           };
           d3.csv(data.data, function(objects){
+
             data.keys.forEach(function(key, i){
+              var k = (key.key)?key.key:key;
+              var n = (key.name)?key.name:key;
+
               objects.forEach(function(object){
-                var name = object[key];
-                var node = findNode(visData.nodes, key, name);
-                if(!node){
+                var name = object[k];
+                var node = findNode(visData.nodes, n, name);
+                var ok = true
+                if(key.filter){
+                  //console.log(eval(+object[k]+key.filter));
+                  if(!eval(+object[k]+key.filter)){
+                    ok = false;
+                  }
+                }
+                if(!node && ok){
+
                   visData.nodes.push({
                     step : i,
                     name : name,
-                    key : key,
-                    id : name + key,
+                    key : n,
+                    id : name + k,
                     value : 0
                   });
-                }else{
+                }else if(ok){
                   node.value++;
                 }
+                /*if(key.filter){
+                  console.log(key, node);
+                }*/
               });
+              key = (key.key)?key.key:key;
             });
+           // console.log(visData.nodes);
 
             visData.nodes.forEach(function(node1, i){
               visData.nodes.forEach(function(node2, j){
@@ -326,9 +343,14 @@ angular.module('moduloAnomaliesApp')
           }
         });
 
-        angular.element($window).bind('resize', function(){
+        var onResize = function(){
           resize();
           updateVis($scope.visData);
+        }
+        angular.element($window).on('resize', onResize);
+
+        $scope.$on('$destroy', function(){
+          angular.element($window).off('resize', onResize)
         })
       }
     };
