@@ -1,5 +1,8 @@
 <div class="aside-header">
-      <h1 ng-bind="data.title"></h1>
+      <h1 style="display:inline" ng-bind="data.title"></h1>
+      <span class="glyphicon glyphicon-download"
+            svg-download=".aside-contents-container svg"
+      ></span>
       <span
         class="close-popup btn btn-xs"
         ng-show="popupMode"

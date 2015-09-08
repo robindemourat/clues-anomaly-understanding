@@ -2,6 +2,8 @@ Clues. Anomalies. Understanding.
 ==============
 Detecting divergent practices in the Digital Humanities through the AIME project.
 
+^^modulo-aside:Reading the four columns of the book entry
+
 ## Abstract
 
 Imagine a shared inquiry presenting its results before the collaboration has even started; an academic book without footnotes and references; an open, on- and off-line, platform to collaborate with peers where you must subscribe to a strict protocol to express your ideas. This is the AIME (An Inquiry into Modes of Existence) project, a chimera, an experimental intertwining of analog and digital objects which often contradicted the diverse norms and formats they belonged to. AIME tried to substitute and recombine new techniques with usual intellectual technologies, creating different interests and expectations from different communities: philosophers, designers, Digital Humanities researchers, etc. Along with this result, a wide range of frustrations and protestations emerged, unveiling the different communities’ expectations, habits and values.
@@ -587,7 +589,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                         "desc" : "Text"
                     },
                     "dateformat" : "%m/%d/%Y",
-                    "title" : "restrospective of events"
+                    "title" : "events"
                 }
             ]
         },
@@ -601,7 +603,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "texttimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "Time passed on the text column"
+                    "title" : "Time spent on text"
                 }
             ]
         },
@@ -615,7 +617,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "voctimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "Time passed on the vocabulary column"
+                    "title" : "Time spent on vocabulary"
                 }
             ]
         },
@@ -629,7 +631,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "doctimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "Time passed on the documents column"
+                    "title" : "Time spent on documents"
                 }
             ]
         },
@@ -643,7 +645,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "conttimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "Time passed on the contribution column"
+                    "title" : "Time spent on contributions"
                 }
             ]
         }

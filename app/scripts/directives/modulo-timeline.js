@@ -189,16 +189,6 @@ angular.module('moduloAnomaliesApp')
             }
         }
 
-        mainContainer
-            .on("mousewheel.zoom", onWheel)
-            .on("DOMMouseScroll.zoom", onWheel) // disables older versions of Firefox
-            .on("wheel.zoom", onWheel) // disables newer versions of Firefox
-
-        liftContainer
-            .on("mousewheel.zoom", onWheel)
-            .on("DOMMouseScroll.zoom", onWheel) // disables older versions of Firefox
-            .on("wheel.zoom", onWheel) // disables newer versions of Firefox
-
         function resizeBrush(){
             liftContainer.select('.background')
                 .attr('height', function(){
@@ -329,27 +319,36 @@ angular.module('moduloAnomaliesApp')
             }else if(time > year){//1-3 years
                 unit = d3.time.month;
                 span = 6;
-                format = '%B %Y';
+                //format = '%B %Y';
+                format = '%m/%Y'
             }else if(time > month * 6){//6-12 months
                 unit = d3.time.month;
                 span = 1;
-                format = '%B %Y';
+                //format = '%B %Y';
+                format = '%m/%Y'
             }else if(time > month){//1-6 months
                 unit = d3.time.day;
                 span = 15;
-                format = '%e %B %Y';
+                //format = '%e %B %Y';
+                format = '%m/%d/%Y'
             }else if(time > 15 * day){//15-30 days
                 unit = d3.time.day;
                 span = 3;
-                format = '%e %B %Y';
+                //format = '%e %B %Y';
+                format = '%m/%d/%Y'
+
             }else if(time > day){//1-15 days
                 unit = d3.time.day;
                 span = 1;
-                format = '%e %B %Y';
+                //format = '%e %B %Y';
+                format = '%m/%d/%Y'
+
             }else if(time > 6 * hour){//6-24 hours
                 unit = d3.time.hour;
                 span = 1;
-                format = '%e %B, %I %p';
+                //format = '%e %B, %I %p';
+                format = '%m/%d/%Y, %I %p'
+
             }else if(time > hour){//1-6 hours
                 unit = d3.time.minute;
                 span = 30;
@@ -622,6 +621,11 @@ angular.module('moduloAnomaliesApp')
                 colDisplay = (50/nbCols),
                 date;
 
+            var gWidth = $element.find('.modulo-timeline-columns-wrapper').width();
+            $element.find('.modulo-timeline-column').each(function(i){
+                angular.element(this).width(gWidth/nbCols);
+            })
+
             data.columns.forEach(function(column, i){
                 var events = [], metrics = [];
                 column.layers.forEach(function(layer, j){
@@ -706,18 +710,49 @@ angular.module('moduloAnomaliesApp')
             setBrushExtent($scope.extent);
         }
 
+
+        var onWindowResize = function(){
+            liftHeight = angular.element(liftContainer[0][0]).height();
+            liftScale.range([0, liftHeight]);
+            ticksScale.range([0, liftHeight]);
+            resizeBrush();
+            updateMainSvg($scope.data);
+            updateLiftSvg($scope.data);
+        }
+
         /*
         TRIGGERS
         */
 
-        angular.element($window).bind('resize', function() {
-               liftHeight = angular.element(liftContainer[0][0]).height();
-               liftScale.range([0, liftHeight]);
-               ticksScale.range([0, liftHeight]);
-               resizeBrush();
-               updateMainSvg($scope.data);
-               updateLiftSvg($scope.data);
-        });
+        mainContainer
+            .on("mousewheel.zoom", onWheel)
+            .on("DOMMouseScroll.zoom", onWheel) // disables older versions of Firefox
+            .on("wheel.zoom", onWheel) // disables newer versions of Firefox
+
+        liftContainer
+            .on("mousewheel.zoom", onWheel)
+            .on("DOMMouseScroll.zoom", onWheel) // disables older versions of Firefox
+            .on("wheel.zoom", onWheel) // disables newer versions of Firefox
+
+
+        angular.element($window).on('resize', onWindowResize);
+
+        //unbinding events on aside change
+        $scope.$on('$destroy', function(){
+            mainContainer
+                .on("mousewheel.zoom", null)
+                .on("DOMMouseScroll.zoom", null) // disables older versions of Firefox
+                .on("wheel.zoom", null) // disables newer versions of Firefox
+
+            liftContainer
+                .on("mousewheel.zoom", null)
+                .on("DOMMouseScroll.zoom", null) // disables older versions of Firefox
+                .on("wheel.zoom", null) // disables newer versions of Firefox
+
+
+            angular.element($window).off('resize', onWindowResize);
+
+        })
 
         $scope.$watch('newdata', function(nouv, old){
         	try{

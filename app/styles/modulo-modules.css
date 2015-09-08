@@ -361,6 +361,7 @@
     position: absolute;
 
     display: flex;
+    left : 10%;
 
     width: 90%;
     height: 100%;
@@ -371,7 +372,7 @@
 .modulo-timeline-lift-wrapper
 {
     position: absolute;
-    right: 0;
+    left: 0;
 
     width: 10%;
     height: 100%;
@@ -394,6 +395,7 @@
     flex-grow: 1;
 }
 
+
 .modulo-timeline-column-header
 {
     z-index: 2;
@@ -404,6 +406,8 @@
     height: 10%;
 
     pointer-events: all;
+
+    font-size : .8em;
 
     background: rgba(255,255,255,.9);
 }
@@ -453,6 +457,7 @@
 {
     position: absolute;
     top: 0;
+    left : 10%;
 
     width: 90%;
     height: 100%;
@@ -566,6 +571,11 @@
 .axis path
 {
     opacity: 0;
+}
+
+.axis text
+{
+    font-size : .5em;
 }
 
 
