@@ -141,6 +141,7 @@ angular.module('moduloAnomaliesApp')
             liftContainer = d3.select($element[0]).select('.modulo-timeline-lift-content'),
             liftWidth = angular.element(liftContainer[0][0]).width(),
             liftHeight = angular.element(liftContainer[0][0]).height(),
+            liftY = angular.element(liftContainer[0][0]).offset().top,
             axis = mainContainer.append("g").attr("class", "axis"),
             globalScale = d3.scale.linear().range([0,100]),
         	relativeScale = d3.scale.linear().range([0,100]),
@@ -393,8 +394,13 @@ angular.module('moduloAnomaliesApp')
             var areaY = d3.scale.linear()
                                     .domain([$scope.extent.begin, $scope.extent.end])
                                     .range([0, liftHeight]);
+            var areaYReverse = d3.scale.linear()
+                                    .range([$scope.extent.begin, $scope.extent.end])
+                                    .domain([0, liftHeight]);
             var width = (angular.element($element).width() * .9);
             var colWidth = width/nbCols;
+            var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
+
 
             if(viewEvents.length > 0){
                 /*
@@ -405,7 +411,6 @@ angular.module('moduloAnomaliesApp')
                     eventsContainer = eventsContainer.append('g').attr('class', 'events');
                 }
 
-                var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
                 //console.log(span);
 
 
@@ -601,13 +606,16 @@ angular.module('moduloAnomaliesApp')
                     if(localMax > max)
                         max = localMax;
                 });
+
                 var areaScale = d3.scale.linear().domain([0, max]).range([0, width/nbCols]);
 
                 if(metricsContainer.select('.bg-cache').empty()){
                     metricsContainer
                         .append('rect')
                         .attr('class', 'bg-cache')
-                        .attr('x', function(){
+                }
+                metricsContainer.select('.bg-cache')
+                    .attr('x', function(){
                             return colWidth * columnIndex;
                         })
                         .attr('y', function(){
@@ -622,7 +630,6 @@ angular.module('moduloAnomaliesApp')
                         .attr('fill', function(){
                             return 'rgba(255,255,255,.8)'
                         });
-                }
 
                 var area = d3.svg.area()
                     .interpolate("linear")
@@ -654,8 +661,27 @@ angular.module('moduloAnomaliesApp')
                                     .attr('fill', function(d,i){
                                         return d.color;
                                     })
-                                    .on('mouseover', function(d){
+                                    .on('mousemove', function(d, i){
                                         var datum = d;
+                                        //console.log(liftY, d3.event.offsetY);
+                                        var date = new Date(areaYReverse(d3.event.offsetY));
+
+                                        var closer = Infinity, winning;
+                                        datum.forEach(function(dot){
+                                            var date2 = dot.date.date.getTime();
+                                            if(Math.abs(date2 - date.getTime()) < closer){
+                                                closer = Math.abs(date2 - date.getTime());
+                                                winning = dot;
+                                            }
+                                        })
+
+                                        winning = JSON.parse(JSON.stringify(winning));
+                                        winning.title = winning.date.original + '\t-\t' + winning.value + (winning.tooltip?winning.tooltip:'');
+                                        delete winning.date;
+                                        $scope.highlighted = winning;
+                                        $scope.$apply();
+
+
                                         metricsContainer.selectAll('.modulo-timeline-area')
                                             .filter(function(d){
                                                 return d[0].id != datum[0].id;
@@ -663,13 +689,15 @@ angular.module('moduloAnomaliesApp')
                                             .attr('fill-opacity', .2);
                                     })
                                     .on('mouseout', function(d){
+                                        $scope.highlighted = undefined;
+                                        $scope.$apply();
                                         metricsContainer.selectAll('.modulo-timeline-area')
                                             .attr('fill-opacity', 1)
                                     })
-                                    .append('title')
+                                    /*.append('title')
                                     .text(function(d){
                                         return d.key;
-                                    })
+                                    })*/
 
 
                 areas.datum(function(d){
@@ -678,8 +706,8 @@ angular.module('moduloAnomaliesApp')
                                 }*/
                                 return d.values;
                             })
-                            /*.transition()
-                            .duration(500)*/
+                            .transition()
+                            .duration(500)
                             .attr('d', area);
 
             }
@@ -759,6 +787,9 @@ angular.module('moduloAnomaliesApp')
                             object.column = +i;
                             object.layer = +j;
                             object.color = layer.color;
+                            if(layer.tooltip){
+                                object.tooltip = layer.tooltip;
+                            }
                             object.values = object.initialValues.filter(function(d, n){
                                 var dtest = d && d.date && d.date.date;
                                  if(dtest){
@@ -770,6 +801,11 @@ angular.module('moduloAnomaliesApp')
                                 return false;
                             });
 
+                            if(layer.tooltip){
+                               object.values.forEach(function(o){
+                                o.tooltip = layer.tooltip;
+                               })
+                            }
                         });
                         metrics = metrics.concat(layer.filteredData.slice());
                     }

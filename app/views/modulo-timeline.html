@@ -38,8 +38,8 @@
 	ng-class="{'highlighted' : highlighted, 'expanded' : detailMode}"
 >
 	<h4 ng-bind="highlighted.title"></h4>
-	<h5 ng-bind="highlighted.date.original"></h5>
-	<h6 ng-if="highlighted && !detailMode">Click to open details</h6>
+	<h5 ng-if="highlighted.date" ng-bind="highlighted.date.original"></h5>
+	<h6 ng-if="highlighted && !detailMode && highlighted.desc">Click to open details</h6>
 
 	<div class="content" ng-if="detailMode" ng-bind-html="highlighted.desc"></div>
 

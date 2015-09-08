@@ -603,7 +603,8 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "texttimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "Time spent on text"
+                    "title" : "Time spent on text",
+                    "tooltip" : " hours spent on text"
                 }
             ]
         },
@@ -617,6 +618,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "voctimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
+                    "tooltip" : " hours spent on vocabulary",
                     "title" : "Time spent on vocabulary"
                 }
             ]
@@ -631,6 +633,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "doctimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
+                    "tooltip" : " hours spent on documents",
                     "title" : "Time spent on documents"
                 }
             ]
@@ -645,6 +648,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "conttimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
+                    "tooltip" : " hours spent on contribution column",
                     "title" : "Time spent on contributions"
                 }
             ]
