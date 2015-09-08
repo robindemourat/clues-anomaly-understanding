@@ -523,8 +523,20 @@
 .modulo-timeline-event
 {
     cursor: pointer;
+}
 
+.modulo-timeline-event.circle{
     r: 5;
+}
+
+.modulo-timeline-event.line{
+    /*stroke-dasharray:10,3;*/
+    stroke-width : 1;
+}
+
+.modulo-timeline-event.line:hover{
+    /*stroke-dasharray:none;*/
+    stroke-width : 5;
 }
 
 

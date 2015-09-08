@@ -31,6 +31,9 @@ Minimum model for an event view :
 - tags
 - desc
 
+Optional models for an event view :
+- display : circles|''|lines
+
 Minimum model for a metrics view :
 - (if different types of objects) objectKey (string) : the column containing the identifier of objects
 - datesKey (string) : the column that contains the dates
@@ -387,6 +390,201 @@ angular.module('moduloAnomaliesApp')
             /*
                 metrics update
             */
+            var areaY = d3.scale.linear()
+                                    .domain([$scope.extent.begin, $scope.extent.end])
+                                    .range([0, liftHeight]);
+            var width = (angular.element($element).width() * .9);
+            var colWidth = width/nbCols;
+
+            if(viewEvents.length > 0){
+                /*
+                    events update
+                */
+                var eventsContainer = columnContainer.select('.events');
+                if(eventsContainer.empty()){
+                    eventsContainer = eventsContainer.append('g').attr('class', 'events');
+                }
+
+                var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
+                //console.log(span);
+
+
+
+                var circles = viewEvents.filter(function(d){
+                    return d.display && d.display === 'circles';
+                });
+
+                var lines = viewEvents.filter(function(d){
+                    return d.display != 'circles';
+                });
+
+                nova(circles, function(d){
+                    return d.date.date.getTime();
+                }, function(d){
+                    return d.id;
+                },
+                $scope.extent.begin,
+                $scope.extent.end,
+                span * 50
+                );
+
+
+                //update circled events
+                var eventsCircles = columnContainer
+                                .selectAll('.modulo-timeline-event .circle')
+                                .data(circles, function(d){
+                                    return d.id;
+                                });
+
+                var exitCircles = eventsCircles
+                                .exit()
+                                .attr('r', 5)
+                                .transition()
+                                .duration(100)
+                                .attr('cy', function(d){
+                                    var distToBegin = d.date.date.getTime() - $scope.extent.begin;
+                                    var distToEnd = $scope.extent.end - d.date.date.getTime();
+                                    if(distToBegin < distToEnd){
+                                        return '-10%';
+                                    }else return '100%';
+                                    //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
+                                })
+                                .attr('r', 0.01)
+                                .remove();
+
+
+                var enterCircles = eventsCircles
+                                .enter()
+                                .append('circle')
+                                .attr('class', 'modulo-timeline-event circle')
+                                .attr('cx', function(d){
+                                    return ((100/nbCols) * d.y + (100/nbCols)* d.column) + '%';
+                                    //return (100/nbCols)*d.column + colDisplay+'%';//center
+                                })
+                                .attr('cy', function(d){
+                                    var distToBegin = d.date.date.getTime() - $scope.extent.begin;
+                                    var distToEnd = $scope.extent.end - d.date.date.getTime();
+                                    if(distToBegin < distToEnd){
+                                        return '-10%';
+                                    }else return '110%';
+                                    //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
+                                })
+                                .style('fill', function(d){
+                                    return d.color;
+                                })
+                                .on('mouseover', function(d){
+
+                                    d3.select(this)
+                                        .transition()
+                                        .duration(100)
+                                        .style('r', 15);
+                                    $scope.highlighted = d;
+                                    $scope.$apply();
+                                })
+                                .on('mouseout', function(d){
+                                    d3.select(this)
+                                        .transition()
+                                        .duration(100)
+                                        .style('r', 5);
+                                    if(!$scope.detailMode){
+                                        $scope.highlighted = undefined;
+                                        $scope.$apply();
+                                    }
+                                })
+                                .on('click', function(d){
+                                    $scope.highlighted = d;
+                                    $scope.detailMode = true;
+                                    $scope.$apply();
+                                })
+
+
+                eventsCircles
+                    .transition()
+                    .duration(100)
+                    .attr('cx', function(d){
+                        //DIRTY POWER
+                        return (100/nbCols)/4 + ((100/nbCols) * d.y + (100/nbCols)* d.column)/2 + '%';
+                    })
+                    .attr('cy', function(d){
+                        return d.x * 100 + '%';
+                       // return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
+                    })
+                    .style('r', function(){
+                        return 5//(liftHeight * nova.nodeSize()[0] * .5) + 'px';
+                    });
+
+
+                //update line events
+                var eventsLines = columnContainer
+                                .selectAll('.modulo-timeline-event.line')
+                                .data(lines, function(d){
+                                    return d.id;
+                                });
+
+                var exitLines = eventsLines
+                                .exit()
+                                .transition()
+                                .duration(100)
+                                .attr('x2', function(){
+                                    return colWidth * columnIndex;
+                                })
+                                .remove();
+
+
+                var enterLines = eventsLines
+                                .enter()
+                                .append('line')
+                                .attr('class', 'modulo-timeline-event line')
+                                .attr('x1', function(d){
+                                    return colWidth * columnIndex;
+                                })
+                                .attr('x2', function(d){
+                                    return colWidth * columnIndex;
+                                })
+                                .attr('y1', function(d){
+                                    return areaY(d.date.date.getTime());
+                                })
+                                .attr('y2', function(d){
+                                    return areaY(d.date.date.getTime());
+                                })
+                                .style('stroke', function(d){
+                                    return d.color;
+                                })
+                                .on('mouseover', function(d){
+
+                                    $scope.highlighted = d;
+                                    $scope.$apply();
+                                })
+                                .on('mouseout', function(d){
+                                    if(!$scope.detailMode){
+                                        $scope.highlighted = undefined;
+                                        $scope.$apply();
+                                    }
+                                })
+                                .on('click', function(d){
+                                    $scope.highlighted = d;
+                                    $scope.detailMode = true;
+                                    $scope.$apply();
+                                })
+
+
+                eventsLines
+                    .transition()
+                    .duration(100)
+                    .attr('x1', function(d){
+                        return colWidth * columnIndex;
+                    })
+                    .attr('x2', function(d){
+                        return width;
+                    })
+                    .attr('y1', function(d){
+                        return areaY(d.date.date.getTime());
+                    })
+                    .attr('y2', function(d){
+                        return areaY(d.date.date.getTime());
+                    });
+            }
+
             if(viewMetrics.length > 0){
                 var metricsContainer = columnContainer.select('.metrics');
                 if(metricsContainer.empty()){
@@ -403,13 +601,28 @@ angular.module('moduloAnomaliesApp')
                     if(localMax > max)
                         max = localMax;
                 });
-                var width = (angular.element($element).width() * .9);
-                var colWidth = width/nbCols;
                 var areaScale = d3.scale.linear().domain([0, max]).range([0, width/nbCols]);
-                var areaY = d3.scale.linear()
-                                    .domain([$scope.extent.begin, $scope.extent.end])
-                                    .range([0, liftHeight]);
 
+                if(metricsContainer.select('.bg-cache').empty()){
+                    metricsContainer
+                        .append('rect')
+                        .attr('class', 'bg-cache')
+                        .attr('x', function(){
+                            return colWidth * columnIndex;
+                        })
+                        .attr('y', function(){
+                            return 0;
+                        })
+                        .attr('height', function(){
+                            return liftHeight;
+                        })
+                        .attr('width', function(){
+                            return colWidth;
+                        })
+                        .attr('fill', function(){
+                            return 'rgba(255,255,255,.8)'
+                        });
+                }
 
                 var area = d3.svg.area()
                     .interpolate("linear")
@@ -470,116 +683,12 @@ angular.module('moduloAnomaliesApp')
                             .attr('d', area);
 
             }
-
-            /*
-                events update
-            */
-            var eventsContainer = columnContainer.select('.events');
-                if(eventsContainer.empty()){
-                    eventsContainer = eventsContainer.append('g').attr('class', 'events');
-                }
-
-            var span = defineTimeSpan($scope.extent.end - $scope.extent.begin);
-            //console.log(span);
-            nova(viewEvents, function(d){
-                return d.date.date.getTime();
-            }, function(d){
-                return d.id;
-            },
-            $scope.extent.begin,
-            $scope.extent.end,
-            span * 50
-            );
-
-            var events = columnContainer
-                            .selectAll('.modulo-timeline-event')
-                            .data(viewEvents, function(d){
-                                return d.id;
-                            });
-
-            var exit = events
-                            .exit()
-                            .attr('r', 5)
-                            .transition()
-                            .duration(100)
-                            .attr('cy', function(d){
-                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
-                                var distToEnd = $scope.extent.end - d.date.date.getTime();
-                                if(distToBegin < distToEnd){
-                                    return '-10%';
-                                }else return '100%';
-                                //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
-                            })
-                            .attr('r', 0.01)
-                            .remove();
-
-
-            var enter = events
-                            .enter()
-                            .append('circle')
-                            .attr('class', 'modulo-timeline-event')
-                            .attr('cx', function(d){
-                                return ((100/nbCols) * d.y + (100/nbCols)* d.column) + '%';
-                                //return (100/nbCols)*d.column + colDisplay+'%';//center
-                            })
-                            .attr('cy', function(d){
-                                var distToBegin = d.date.date.getTime() - $scope.extent.begin;
-                                var distToEnd = $scope.extent.end - d.date.date.getTime();
-                                if(distToBegin < distToEnd){
-                                    return '-10%';
-                                }else return '110%';
-                                //return (d.date.date) ? globalScale(d.date.date.getTime())+'%' : 0;
-                            })
-                            .style('fill', function(d){
-                                return d.color;
-                            })
-                            .on('mouseover', function(d){
-
-                                d3.select(this)
-                                    .transition()
-                                    .duration(100)
-                                    .style('r', 15);
-                                $scope.highlighted = d;
-                                $scope.$apply();
-                            })
-                            .on('mouseout', function(d){
-                                d3.select(this)
-                                    .transition()
-                                    .duration(100)
-                                    .style('r', 5);
-                                if(!$scope.detailMode){
-                                    $scope.highlighted = undefined;
-                                    $scope.$apply();
-                                }
-                            })
-                            .on('click', function(d){
-                                $scope.highlighted = d;
-                                $scope.detailMode = true;
-                                $scope.$apply();
-                            })
-                            /*.append('title')
-                            .text(function(d){
-                                return d.title;
-                            })*/
-            events
-                .transition()
-                .duration(100)
-                .attr('cx', function(d){
-                    //DIRTY POWER
-                    return (100/nbCols)/4 + ((100/nbCols) * d.y + (100/nbCols)* d.column)/2 + '%';
-                })
-                .attr('cy', function(d){
-                    return d.x * 100 + '%';
-                   // return (d.date.date) ? relativeScale(d.date.date.getTime())+'%' : 0;
-                })
-                .style('r', function(){
-                    return 5//(liftHeight * nova.nodeSize()[0] * .5) + 'px';
-                });
         }
 
         //I redraw a timeline basing on input data
         var updateMainSvg = function(data){
             if(!data)return;
+
 
             liftWidth = angular.element(liftContainer[0][0]).width();
             liftHeight = angular.element(liftContainer[0][0]).height();
@@ -634,6 +743,9 @@ angular.module('moduloAnomaliesApp')
                             d.column = +i;
                             d.layer = +j;
                             d.color = layer.color;
+                            if(layer.display){
+                                d.display = layer.display;
+                            }
                             //time filter
                             if(d.date.date){
                                 date = d.date.date.getTime();
