@@ -457,12 +457,12 @@ angular.module('moduloAnomaliesApp')
                         return (d.date.date) ? areaY(d.date.date.getTime()): 0;
                     })
                     .x0(function(d){
-                        return colWidth * columnIndex + colWidth/2;
+                        return colWidth * columnIndex + colWidth * .1;
                         //return colWidth * columnIndex + colWidth/2 - areaScale(d.value)/2;
                     })
                     .x1(function(d) {
                         //return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
-                        return colWidth * columnIndex + colWidth/2 + areaScale(d.value)/2;
+                        return colWidth * columnIndex + colWidth * .1 + areaScale(d.value) * .9;
                     });
 
                 var areas = metricsContainer.selectAll('.modulo-timeline-area')
@@ -493,10 +493,32 @@ angular.module('moduloAnomaliesApp')
                                                 closer = Math.abs(date2 - date.getTime());
                                                 winning = dot;
                                             }
-                                        })
+                                        });
+
 
                                         winning = JSON.parse(JSON.stringify(winning));
-                                        winning.title = winning.date.original + '\t-\t' + winning.value + (winning.tooltip?winning.tooltip:'');
+                                        var value = winning.value;
+                                        if(winning.unit){
+                                            switch(winning.unit){
+                                                case 'seconds':
+                                                var hours = parseInt(value/3600);
+                                                var minutes = parseInt(value/60) - hours * 60;
+                                                var seconds = value  - hours * 3600 - minutes * 60;
+                                                value = (hours > 0 ? hours + 'h ' : '') + ((minutes == 0 && hours == 0)?'':minutes + 'm ') + seconds + 's ';
+                                                break;
+
+                                                case 'minutes':
+                                                break;
+
+
+                                                case 'hours':
+                                                break;
+
+                                                default:
+                                                break;
+                                            }
+                                        }
+                                        winning.title = winning.date.original + '\t-\t' + value + (winning.tooltip?winning.tooltip:'');
                                         delete winning.date;
                                         $scope.highlighted = winning;
                                         $scope.$apply();
@@ -893,6 +915,9 @@ angular.module('moduloAnomaliesApp')
                             object.values.forEach(function(o){
                                 if(layer.tooltip)
                                     o.tooltip = layer.tooltip;
+                                if(layer.unit){
+                                    o.unit = layer.unit;
+                                }
                             })
 
                         });

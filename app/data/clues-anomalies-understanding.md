@@ -421,7 +421,9 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "globaltimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "AIME website: global time spent by visitors (Google Analytics data)"
+                    "title" : "AIME website: global time spent by visitors (Google Analytics data)",
+                    "unit" : "seconds",
+                    "tooltip" : " cumulated time spent by visitors on this day"
                 }
             ]
         }
@@ -514,7 +516,9 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "globaltimeonpage"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "AIME website: global time spent by visitors (Google Analytics data)"
+                    "title" : "AIME website: global time spent by visitors (Google Analytics data)",
+                    "tooltip" : " cumulated time spent by visitors on this day",
+                    "unit" : "seconds"
                 }
             ]
         }
@@ -599,11 +603,11 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                     "type" : "metrics",
                     "models" : {
                             "datesKey" : "date",
-                            "value" : "texttimeonpage"
+                            "value" : "textpageviews"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "title" : "Time spent on text",
-                    "tooltip" : " hours spent on text"
+                    "title" : "Reading activities on text",
+                    "tooltip" : " items read on text column <br> <img src='data/images/aime_mini_textcol.png'></img>"
                 }
             ]
         },
@@ -614,11 +618,11 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                     "type" : "metrics",
                     "models" : {
                             "datesKey" : "date",
-                            "value" : "voctimeonpage"
+                            "value" : "vocpageviews"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "tooltip" : " hours spent on vocabulary",
-                    "title" : "Time spent on vocabulary"
+                    "tooltip" : " items read on vocabulary column <br>  <img src='data/images/aime_mini_voccol.png'></img>",
+                    "title" : "Reading activities on vocabulary"
                 }
             ]
         },
@@ -629,11 +633,11 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                     "type" : "metrics",
                     "models" : {
                             "datesKey" : "date",
-                            "value" : "doctimeonpage"
+                            "value" : "docpageviews"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "tooltip" : " hours spent on documents",
-                    "title" : "Time spent on documents"
+                    "tooltip" : " items read on documents column <br> <img src='data/images/aime_mini_doccol.png'></img>",
+                    "title" : "Reading activities on documents"
                 }
             ]
         },
@@ -644,11 +648,11 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                     "type" : "metrics",
                     "models" : {
                             "datesKey" : "date",
-                            "value" : "conttimeonpage"
+                            "value" : "contpageviews"
                         },
                     "dateformat" : "%Y-%m-%d",
-                    "tooltip" : " hours spent on contribution column",
-                    "title" : "Time spent on contributions"
+                    "tooltip" : " items read on contribution column <br> <img src='data/images/aime_mini_contcol.png'></img>",
+                    "title" : "Reading activities on contributions"
                 }
             ]
         }

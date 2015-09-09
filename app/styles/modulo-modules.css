@@ -496,6 +496,13 @@
     color: white;
     background: rgba(0,0,0,.5);
 }
+
+
+.modulo-timeline-additional-wrapper h4 img{
+    width : 5em;
+}
+
+
 .modulo-timeline-additional-wrapper.highlighted
 {
     height: 20%;

@@ -37,7 +37,7 @@
 	class="modulo-timeline-additional-wrapper animate"
 	ng-class="{'highlighted' : highlighted, 'expanded' : detailMode}"
 >
-	<h4 ng-bind="highlighted.title"></h4>
+	<h4 ng-bind-html="highlighted.title"></h4>
 	<h5 ng-if="highlighted.date" ng-bind="highlighted.date.original"></h5>
 	<h6 ng-if="highlighted && !detailMode && highlighted.desc">Click to open details</h6>
 
