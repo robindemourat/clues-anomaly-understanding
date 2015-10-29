@@ -5,11 +5,11 @@
 
   <!--left-col-wrapper : main content-->
     <div
-      class="left-col-wrapper animate"
-      ng-class="{'col-xs-2':indexVisible,'col-xs-1':!indexVisible}"
+      class="left-col-wrapper col-xs-12 col-sm-2 animate"
+      ng-class="{'active': indexVisible}"
       ng-show="showCols.left"
     >
-      <h1 class="doc-title animate" du-scroll-container="middle-col-container" scroll-to-top ng-bind="documentTitle">Modulo</h1>
+      <h1 class="doc-title animate" du-scroll-container="middle-col-container" scroll-to-top ng-bind-html="documentTitle.replace('.', '.<br>')">Modulo</h1>
 
       <!--searchbox -->
       <!--<div class="searchbox flex-container">
@@ -25,7 +25,10 @@
       >
         <button
           ng-click="toggleIndex()"
-        >Index</button>
+        >
+        <span class="glyphicon glyphicon-remove" ng-if="indexVisible"></span>
+        Index
+        </button>
       </div>
 
       <!--table of contents-->
@@ -33,17 +36,27 @@
         class="toc animate"
         du-scroll-container="middle-col-container"
         scrollspy-points
-        ng-if="indexVisible"
+        ng-class="{'shown':indexVisible}"
         fit-screen-height
       >
         <div
           ng-repeat="el in contents.toc"
-          ng-style="{'padding-left':(el.level * 5 - 5)+'px'}"
+          ng-style="{'padding-left':((el.level-1) * 5 - 5)+'px'}"
           du-scrollspy="#{{el.tag}}"
           scrollspy="#{{el.tag}}"
           class="toc-element animate"
         >
-          <a ng-href="#{{el.tag}}" du-smooth-scroll ng-bind="el.title"></a>
+          <a ng-href="#{{el.tag}}" du-smooth-scroll>
+            <span class="toc-element-bullet"
+              ng-click="toggleIndex(true)"
+              title="{{el.title}}"
+            ></span>
+            <span
+              class="toc-element-title animate"
+              ng-click="toggleIndex(false)"
+              ng-bind="el.title"
+            ></span>
+          </a>
         </div>
       </div><!--end table of contents-->
 
@@ -63,8 +76,6 @@
   class="col-middle animate"
   ng-class="setColClass('middle')"
 >
-
-
   <!--middle-col-wrapper : main content-->
   <div
     class="middle-col-wrapper col-xs-12 animate"
@@ -109,6 +120,15 @@
   </div>
 </section>
 
+
+<button
+  class="xs-col-toggler animate"
+  title="toggle aside view"
+  ng-click="toggleCol('middle')"
+  ng-class="{'pull-left':!showCols.middle}"
+  ng-show="asideData"
+>></button>
+
 <aside
   class="col-right animate"
   ng-class="setColClass('right')"
@@ -121,28 +141,6 @@
     asidedata='{{asideData}}'
   >
   </div>
-
-  <!--<div
-    class="btn col-handler col-handler-pullleft"
-    ng-click="showCols.middle = !showCols.middle"
-
-  >
-    <span
-      class="glyphicon glyphicon-chevron-left animate"
-      ng-style="{
-        'transform' : (!showCols.middle)?'rotate(180deg)':''
-      }"></span>
-  </div>
-
-  <div
-    class="btn col-handler col-handler-pullright"
-    ng-click="showCols.right = false"
-    ng-show='showCols.left || showCols.middle'
-  >
-    <span
-      class="glyphicon glyphicon-chevron-right animate"
-      ></span>
-  </div>-->
 
   <div
     class="btn col-handler col-handler-pullright"

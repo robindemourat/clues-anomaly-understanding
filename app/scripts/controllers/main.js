@@ -44,6 +44,11 @@ angular.module('moduloAnomaliesApp')
         $scope.contents.bibliography = data;
       });
 
+      $scope.$watch('asideData', function(d){
+        if(!angular.isDefined(d)){
+          $scope.showCols.middle = true;
+        }
+      });
 
   	}
 
@@ -186,16 +191,22 @@ angular.module('moduloAnomaliesApp')
     	}else switch(col){
 
     		case 'left':
-          if(col == 'left' && !$scope.indexVisible){
+          return 'col-xs-12 col-sm-2'
+          /*if(col == 'left' && !$scope.indexVisible){
             return 'col-xs-1';
           }
     			else if(cols[col]){
     				return 'col-xs-2';
-          }
+          }*/
     		break;
 
     		case 'middle':
-    			if(cols.left && cols.right && $scope.indexVisible){
+          if(cols.middle){
+            return 'col-xs-12 col-sm-8';
+          }else{
+            return 'col-xs-12 col-xs-offset--12';
+          }
+    			/*if(cols.left && cols.right && $scope.indexVisible){
     				return 'col-xs-6 col-xs-offset-2';
     			}else if(cols.left && cols.right && !$scope.indexVisible){
             return 'col-xs-7 col-xs-offset-1';
@@ -205,19 +216,24 @@ angular.module('moduloAnomaliesApp')
     				return 'col-xs-10 col-xs-offset-2';
     			}else{
     				return 'col-xs-12'
-    			}
+    			}*/
     		break;
 
     		case 'right':
-    			if(cols.left && cols.middle){
-    				return 'col-xs-4 col-xs-offset-8';
+          if(!cols.middle && $scope.asideData){
+            return 'col-xs-12 col-sm-4';
+          }else{
+            return 'col-xs-12 col-xs-offset-12 col-sm-4 col-sm-offset-8';
+          }
+    			/*if(cols.left && cols.middle){
+    				return 'col-xs-12 col-xs-offset-12';
     			}else if(!cols.left && cols.middle){
-    				return 'col-xs-6 col-xs-offset-6'
+    				return 'col-xs-12 col-xs-offset-12'
     			}else if(cols.left && !cols.middle){
-    				return 'col-xs-10 col-xs-offset-2'
+    				return 'col-xs-12 col-xs-offset-12'
     			}else{
     				return 'col-xs-12';
-    			}
+    			}*/
     		break;
 
     		default:
@@ -230,8 +246,19 @@ angular.module('moduloAnomaliesApp')
       $scope.indexVisible = top;
     }
 
-    $scope.toggleIndex = function(){
-      $scope.indexVisible = !$scope.indexVisible;
+    $scope.toggleCol = function(key, val){
+      if(angular.isDefined(val)){
+        $scope.showCols[key] = val;
+      }else{
+        $scope.showCols[key] = !$scope.showCols[key];
+      }
+    }
+
+    $scope.toggleIndex = function(val){
+      if(angular.isDefined(val)){
+        $scope.indexVisible = val;
+      }else
+        $scope.indexVisible = !$scope.indexVisible;
       setTimeout(function(){
         $scope.$apply();
       })
