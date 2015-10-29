@@ -812,6 +812,8 @@ angular.module('moduloAnomaliesApp')
         var updateMainSvg = function(data){
             if(!data)return;
 
+            console.log('updating main svg');
+
             globalMax = -Infinity;//reinit max
 
 
@@ -860,6 +862,8 @@ angular.module('moduloAnomaliesApp')
                 angular.element(this).width(gWidth/nbCols);
             });
 
+            console.log('evaluating global max');
+
             //find globalMax
             data.columns.forEach(function(column, i){
                 var metrics = [];
@@ -875,6 +879,7 @@ angular.module('moduloAnomaliesApp')
                     }
                 });
             });
+            console.log('global max', globalMax);
 
             //update columns
             data.columns.forEach(function(column, i){
@@ -1025,7 +1030,7 @@ angular.module('moduloAnomaliesApp')
         		$scope.msg = 'Failed to load due to badly formatted json !'
         	};
         	if($scope.temp){
-                console.log($scope.temp);
+                //console.log($scope.temp);
         		TimelineModuloViewParser.parse($scope.temp, function(d, e){
         			//console.info('timeline date processed, ', d);
 

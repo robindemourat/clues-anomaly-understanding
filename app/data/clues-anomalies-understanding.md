@@ -2,7 +2,6 @@ Clues. Anomalies. Understanding.
 ==============
 Detecting divergent practices in the Digital Humanities through the AIME project.
 
-^^modulo-aside:Reading the four columns of the book entry
 
 ## Abstract
 
@@ -562,7 +561,7 @@ Fallen, Camille. *L’anomalie créatrice*. Paris: Kimé, 2012.
                             "value" : "contributions"
                         },
                     "dateformat" : "%d/%m/%Y",
-                    "title" : "Number of contributions submitted per day"
+                    "title" : "Number of contributions created per day"
                 }
             ]
         }

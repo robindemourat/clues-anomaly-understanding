@@ -3,7 +3,6 @@
 (function(){
 
   var replaceCarousel = function(a,b,c){
-    console.log('ok');
     console.log(this);
   }
 
