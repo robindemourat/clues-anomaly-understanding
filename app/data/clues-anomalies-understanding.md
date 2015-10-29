@@ -1,23 +1,9 @@
-Clues. Anomalies. Understanding.
+[Clues. Anomalies. Understanding.](^^classed:titre)
 ==============
-Detecting divergent practices in the Digital Humanities through the AIME project.
 
+[Detecting underlying assumptions and expected practices in the Digital Humanities through the AIME project.](^^classed:baseline)
 
-## Abstract
-
-Imagine a shared inquiry presenting its results before the collaboration has even started; an academic book without footnotes and references; an open, on- and off-line, platform to collaborate with peers where you must subscribe to a strict protocol to express your ideas. This is the AIME (An Inquiry into Modes of Existence) project, a chimera, an experimental intertwining of analog and digital objects which often contradicted the diverse norms and formats they belonged to. AIME tried to substitute and recombine new techniques with usual intellectual technologies, creating different interests and expectations from different communities: philosophers, designers, Digital Humanities researchers, etc. Along with this result, a wide range of frustrations and protestations emerged, unveiling the different communities’ expectations, habits and values.
-
-Adopting a critical position toward our own creature, we multiplied our **_listening devices_** to collect the accusations that the various aime communities were emitting: tweets, e-mails, interviews, users activity-logs and reappropriation of the project. We propose to reframe these different accusations as **_clues_** allowing us to detect different **_analogous practices_** and representations at work in philosophy, collaboration based projects, design and digital humanities communities. This paper details the methodical activity of collecting the more or less explicit clues about the project’s diverse feedbacks, grouping them in specific **_anomalies_**, then justify the nature of the technical and intellectual choices that generated them.
-
-In a situation where the Digital Humanities are still delineating their position, shape and role in the wider academic environment, our way to study the AIME project will help reframe and enrich the role of experiments in the digital humanities. Conceived (and equipped) as an anomaly-making practice, the AIME experiment enabled a wider **_understanding_** of some underlying assumptions and expectations about Digital Humanities.
-
-## Keywords
-
-*Digital Humanities, Critical and Speculative Design, anomalies, close reading, collaborative frameworks in humanities, academic digital publishing, on- off-line multimodal set-ups, projects assessment & evaluation, interface criticism, interface-driven methodology.*
-
-
-
-# Clues. Anomalies. Understanding
+[Donato Ricci,](^^classed:author)[Robin de Mourat,](^^classed:author)[Christophe Leclercq,](^^classed:author)[Bruno Latour.](^^classed:author)
 
 An Inquiry into Modes of Existence (AIME) is a huge, probably incomplete, experiment in both humanities and digital humanities (DH). Over a four year timespan, a vast and diversified *set-up* of technologies[#][ Here the term set-up refers to the network of complementary instances of the project. They are media components (print, web interfaces, meetings) supporting an ecosystem of practices distributed all along the nodes of the network.] has been conceived, developed, tested, and modified. Some of them clearly achieved the foreseen objectives, whereas others did not. For most of the set-up components, we struggled to design their features and to understand their agency. Although challenging from a management and scholarly point of view, this was not completely unexpected. AIME has provided the rare opportunity to craft all at once a new method of inquiry in philosophy, its own content, its format, and its way to disseminate its results, all the while striving to build an innovative relationship with a diversified spectrum of readers, thereby redefining the author-reader connection. In a more than chaotic trajectory, design practices played a major role, acting as critical and speculative agent:
 

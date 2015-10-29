@@ -55,6 +55,7 @@ body
        -moz-user-select: none;     /* Firefox all */
         -ms-user-select: none;      /* IE 10+ */
             user-select: none;          /* Likely future */
+    color : black;
 }
 
 ::selection
@@ -140,6 +141,8 @@ body
 
     overflow : visible;
     pointer-events : none;
+
+    width : 20.5%;
 }
 
 .left-col-wrapper.active{
@@ -244,7 +247,7 @@ body
     /*padding-left: 12em;*/
     padding-left : 33.3333333%;
 
-    padding-right: 2em;
+    padding-right: 3em;
     padding-bottom: 12em;
 
     -webkit-user-select: all;  /* Chrome all / Safari all */
@@ -256,6 +259,74 @@ body
 /*
   GENERIC COMPONENTS
 */
+
+::-webkit-scrollbar
+{
+    width: 1em;
+}
+::-webkit-scrollbar-button
+{
+    /* 2 */
+}
+::-webkit-scrollbar-track
+{
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: rgba(0,0,0,.1);
+}
+::-webkit-scrollbar-corner
+{
+    /* 6 */
+}
+::-webkit-resizer
+{
+    /* 7 */
+}
+
+scrollbar
+{
+    /*  clear useragent default style*/
+    -moz-appearance: none !important;
+}
+/* buttons at two ends */
+scrollbarbutton
+{
+    -moz-appearance: none !important;
+}
+/* the sliding part*/
+thumb
+{
+    -moz-appearance: none !important;
+}
+scrollcorner
+{
+    resize: both;
+
+    -moz-appearance: none !important;
+}
+/* vertical or horizontal */
+scrollbar[orient='vertical']
+{
+    color: silver;
+}
+
+
+aside h1, aside h2{
+    font-family : 'NovelPro-SemiBold';
+}
+
+aside h1{
+    font-size : 1em;
+}
+
+aside h2{
+    font-size : 1.1em;
+}
+
 
 a,
 a:hover,
@@ -327,7 +398,15 @@ SPECIFIC COMPONENTS
 
 .left-col-wrapper h1{
     background : rgba(255,255,255,.7);
-    margin-bottom : 1em;
+    margin-bottom : 2em;
+    /*opacity : 1;*/
+}
+
+/*.left-col-wrapper h1.scrollAtTop,
+.left-col-wrapper .index-toggler*/
+.scrollAtTop
+{
+    opacity : 0;
 }
 
 .left-col-wrapper.active h1{
@@ -336,7 +415,7 @@ SPECIFIC COMPONENTS
 
 .middle-col-container
 {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 .middle-col-container h1:not(:first-child)
@@ -412,13 +491,14 @@ SPECIFIC COMPONENTS
 
 .modulo-footnote-item
 {
-    font-family: 'NovelSansPro-Light';
-    font-size: .7em;
+    font-family: 'NovelSansPro-Regular';
+    font-size: .8em;
 
     position: absolute;
     top: 0;
     /*left: 1em;*/
-    right : 74.5%;
+    /*right : 74.5%;*/
+    right : 68%;
 
     overflow: hidden;
 
@@ -470,26 +550,29 @@ SPECIFIC COMPONENTS
 
     text-transform: uppercase;
 
-    opacity: .5;
     pointer-events : all;
+}
 
+.index-toggler:not(.scrollAtTop){
+    opacity: .5;
 }
 
 .index-toggler:hover
 {
     opacity: .8;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
 }
 
-.index-toggler.active
+.index-toggler.active:not(.scrollAtTop)
 {
     /*font-size: 1.2em;*/
 
     /*margin: 1em 0 1em 0;*/
-
     opacity: .8;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
 }
+
+
 
 .index-toggler button
 {
@@ -510,7 +593,9 @@ SPECIFIC COMPONENTS
     position : relative;
     height : 100%;
     width : 100%;
-    padding-top : 1em;
+    padding-top : 2em;
+
+    font-family : 'NovelSansPro-Regular';
 
     /*opacity : 0;*/
 
@@ -537,6 +622,30 @@ SPECIFIC COMPONENTS
     /*text-decoration: underline;*/
 
     opacity: 1;
+}
+
+/*
+TEXT BODY
+*/
+.middle-col-contents-main .titre{
+    font-size : 6pc;
+}
+
+.middle-col-contents-main .baseline{
+    font-size : 3pc;
+    display : block;
+    margin-bottom : 2em;
+}
+
+.middle-col-contents-main .author{
+    font-size : 1.2pc;
+    font-family : 'NovelPro-It';
+    display : block;
+    margin-left : 2em;
+}
+
+.middle-col-contents-main .author:last-of-type{
+    margin-bottom : 3em;
 }
 
 /*
@@ -609,7 +718,7 @@ Table of contents
     position : relative;
 }
 
-.toc.shown .toc-element{
+.toc.shown{
     pointer-events : all;
 }
 
@@ -677,6 +786,7 @@ Table of contents
 
     width: 2em;
     height: 2em;
+    outline : none;
 
     -webkit-transition: all .5s ease;
        -moz-transition: all .5s ease;
@@ -687,8 +797,12 @@ Table of contents
     border: none;
     border-radius: 50%;
     background: brown;
+    opacity : .6;
 }
 
+.xs-col-toggler:hover{
+    opacity : 1;
+}
 .xs-col-toggler.pull-left
 {
     right: 90%;
@@ -748,11 +862,82 @@ carousel
 media
 */
 
+
+
+/*col-md*/
+@media (max-width:1300px){
+    .middle-col-contents-main .titre{
+        font-size : 4pc;
+    }
+
+    .middle-col-contents-main .baseline{
+        font-size : 1.5pc;
+        margin-bottom : 2em;
+    }
+
+    .middle-col-contents-main .author{
+        font-size : .8pc;
+    }
+}
+
+/*col-sm*/
+@media (max-width:992px){
+    .middle-col-contents-main .titre{
+        font-size : 6pc;
+    }
+
+    .middle-col-contents-main .baseline{
+        font-size : 3pc;
+        margin-bottom : 2em;
+    }
+
+    .middle-col-contents-main .author{
+        font-size : 1.2pc;
+    }
+}
+
 /* col-xs */
-@media (max-width :768px)
-{
+@media (max-width :768px){
     .xs-col-toggler
     {
         display: inline-block;
+    }
+
+    .left-col-wrapper h1{
+        opacity : 0;
+        height : 0;
+        margin : 0;
+        padding : 0;
+    }
+
+    .left-col-wrapper.active h1{
+        opacity : 1;
+        height : auto;
+        margin-bottom : 1em;
+    }
+
+    .middle-col-contents-main .titre{
+        font-size : 1.6pc;
+    }
+
+    .middle-col-contents-main .baseline{
+        font-size : 1.3pc;
+        margin-bottom : 2em;
+    }
+
+    .middle-col-contents-main .author{
+        font-size : 1pc;
+        margin-left : 0;
+    }
+    .left-col-wrapper{
+        width : 100%;
+    }
+
+    .middle-col-contents-main{
+        padding-right : 0;
+    }
+
+    .middle-col-container{
+        font-size : .8em;
     }
 }

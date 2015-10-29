@@ -191,7 +191,7 @@ angular.module('moduloAnomaliesApp')
     var extractTitle = function(text){
       var match, title="";
       while(match = matchTitle.exec(text)){
-        title = match[1];
+        title = angular.element(markdownConverter.makeHtml(match[1])).text();
       }
       return title;
     }

@@ -243,6 +243,7 @@ angular.module('moduloAnomaliesApp')
     };
 
     $scope.topScrollToggle = function(top){
+      $scope.scrollAtTop = top;
       $scope.indexVisible = top;
     }
 

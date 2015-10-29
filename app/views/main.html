@@ -9,7 +9,12 @@
       ng-class="{'active': indexVisible}"
       ng-show="showCols.left"
     >
-      <h1 class="doc-title animate" du-scroll-container="middle-col-container" scroll-to-top ng-bind-html="documentTitle.replace('.', '.<br>')">Modulo</h1>
+      <h1
+        ng-class="{'scrollAtTop':scrollAtTop}"
+        class="doc-title animate"
+        du-scroll-container="middle-col-container"
+        scroll-to-top ng-bind-html="documentTitle.split('.').join('.<br>')"
+      >Modulo</h1>
 
       <!--searchbox -->
       <!--<div class="searchbox flex-container">
@@ -21,7 +26,7 @@
 
       <div
           class="index-toggler animate"
-          ng-class="{'active':indexVisible}"
+          ng-class="{'active':indexVisible,'scrollAtTop':scrollAtTop}"
       >
         <button
           ng-click="toggleIndex()"
