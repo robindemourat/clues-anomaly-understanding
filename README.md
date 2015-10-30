@@ -1,4 +1,4 @@
-Modulo - *make a complex and media-rich publication from a simple text file*
+Modulo - *make a multimodal academic publication from a simple text file*
 ==========
 
 Modulo is a rendering engine for multimodal publishing projects - built with flexibility, extensibility and lightness as core values.
