@@ -13,9 +13,16 @@ angular.module('moduloAnomaliesApp')
       link: function postLink(scope, element, attrs) {
         var noteId = +element.text();
         var noteContent = noteId +'.\n' + element.attr('id');
-        var note = angular.element(markdownConverter.makeHtml(noteContent))
+        var content = markdownConverter.makeHtml(element.attr('id'));
+        var marker = angular.element('<span></span>').addClass('modulo-footnote-marker')
+                      .text(noteId + '.');
+        var note = angular.element(content)
+                          .addClass('modulo-footnote-item')
+                          .attr('id', noteId)
+                          .prepend(marker);
+        /*var note = angular.element(markdownConverter.makeHtml(noteContent))
                       .addClass('modulo-footnote-item')
-                      .attr('id', noteId);
+                      .attr('id', noteId);*/
         note.css('display', 'none');
 
         angular.element('.middle-col-contents-main').append(note);
@@ -77,7 +84,31 @@ angular.module('moduloAnomaliesApp')
           elemen.off(handleClick);
           note.off(handleClick);
           angular.element(window).off('resize', reposition);
-        })
+        });
+
+        //reposition when printing
+        (function() {
+            var beforePrint = function() {
+              reposition();
+            };
+            /*var afterPrint = function() {
+                console.log('Functionality to run after printing');
+            };*/
+
+            if (window.matchMedia) {
+                var mediaQueryList = window.matchMedia('print');
+                mediaQueryList.addListener(function(mql) {
+                    if (mql.matches) {
+                        beforePrint();
+                    } else {
+                        //afterPrint();
+                    }
+                });
+            }
+
+            window.onbeforeprint = beforePrint;
+            //window.onafterprint = afterPrint;
+        }());
 
       }
     };

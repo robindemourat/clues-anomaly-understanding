@@ -10,3 +10,5 @@ Moteur modulo:
 Positionnement :
 * changement du positionnement du menu et ajouts de puces d'aide au repérage dans le document
 * responsive design --> mode 1 colonne sur petits écrans
+
+Divers :

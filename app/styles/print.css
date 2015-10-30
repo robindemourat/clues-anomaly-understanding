@@ -1,0 +1,71 @@
+/* fix for chrome preview bug */
+body
+{
+  margin : 1px;
+  width: auto!important;
+  height : auto;
+}
+
+nav, aside,
+.xs-col-toggler,
+.col-handler
+
+{
+  display : none;
+}
+
+.col-middle,
+.middle-col-wrapper,
+.middle-col-container{
+  width : 100%;
+  padding : 0;
+  position : relative;
+  margin : 0;
+}
+
+.container{
+  position : relative;
+}
+
+.modulo-href-trigger{
+  text-decoration : underline;
+}
+
+.modulo-href-trigger:after{
+  content:" (+)";
+  font-family : "NovelPro-Light";
+  font-size : 6px;
+  vertical-align :super;
+  text-decoration : none!important;
+}
+
+.modulo-aside-trigger{
+  display : none;
+}
+
+.middle-col-contents-main p{
+  font-size : 12px;
+  line-height : 24px;
+  page-break-inside: avoid;
+
+}
+
+.middle-col-contents-main .modulo-footnote-item{
+  font-family : "NovelPro-Light";
+  font-size : 9px;
+  page-break-inside: avoid;
+}
+
+.middle-col-contents-main h1{
+  font-size : 24px;
+}
+
+blockquote{
+  border : none;
+  margin-left : 20px;
+}
+
+blockquote p{
+  font-size : 9px!important;
+  line-height : 13.5px!important;
+}

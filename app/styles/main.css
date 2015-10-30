@@ -111,7 +111,7 @@ body
 {
     font-family: 'NovelSansPro-Regular';
 
-    background: rgba(0,0,0,.02);
+    /*background: rgba(0,0,0,.02);*/
 }
 
 .col-0
@@ -227,7 +227,7 @@ body
 
     text-align: center;
 
-    background: rgba(0,0,0,.01);
+    /*background: rgba(0,0,0,.01);*/
 }
 
 .aside-contents-container
@@ -427,7 +427,7 @@ SPECIFIC COMPONENTS
 .modulo-aside-trigger
 {
     font-family: 'NovelSansPro-Light';
-    font-size: .6em;
+    font-size: 1.2em;
 
     display: inline-block;
     overflow: hidden;
@@ -437,10 +437,22 @@ SPECIFIC COMPONENTS
 
     cursor: pointer;
 
-    opacity: 1;
+    opacity: .7;
     color: white;
-    border-radius: .8em;
+    border-radius: .3em;
+    height : 1.8em;
     background: brown;
+
+    width : 100%;
+    text-align : center;
+}
+
+.modulo-aside-trigger:hover{
+    opacity : .9;
+}
+
+.modulo-aside-trigger.inactive{
+    width : auto;
 }
 
 .modulo-aside-trigger.inactive:hover
@@ -487,6 +499,33 @@ SPECIFIC COMPONENTS
     vertical-align: super;
     text-decoration: none;
     text-decoration: underline;
+
+    -webkit-transition: background .5s ease;
+       -moz-transition: background .5s ease;
+        -ms-transition: background .5s ease;
+         -o-transition: background .5s ease;
+    border-radius : 50%;
+}
+
+
+.modulo-footnote-marker{
+    -webkit-transition: background .5s ease;
+       -moz-transition: background .5s ease;
+        -ms-transition: background .5s ease;
+         -o-transition: background .5s ease;
+    border-radius : 50%;
+}
+
+.modulo-footnote-pointer.active,
+.modulo-footnote-item.active .modulo-footnote-marker
+{
+    background : brown;
+    width : 20px;
+    height : 20px;
+    line-height : 20px;
+    color : white;
+    display : inline-block;
+    padding-left : 5px;
 }
 
 .modulo-footnote-item
@@ -511,7 +550,8 @@ SPECIFIC COMPONENTS
          -o-transition: background .5s ease;
     text-align: right;
 
-    opacity: .5;
+    /*opacity: .5;*/
+    opacity : 1;
 }
 
 .modulo-footnote-item:hover
@@ -522,7 +562,7 @@ SPECIFIC COMPONENTS
 .modulo-footnote-item.active,
 .modulo-footnote-pointer.active
 {
-    background: rgba(0,0,0,.2);
+    /*background: rgba(0,0,0,.2);*/
 }
 
 
