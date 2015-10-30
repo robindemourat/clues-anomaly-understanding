@@ -72,7 +72,6 @@ body
 .container
 {
     font-family: 'NovelPro-Light', serif;
-    font-size: 1.1em;
 
     position: fixed;
 
@@ -667,6 +666,16 @@ SPECIFIC COMPONENTS
 /*
 TEXT BODY
 */
+
+.middle-col-contents-main{
+    font-size: 1.1em;
+}
+
+.middle-col-contents-main p{
+    line-height : 2em;
+    margin-bottom : 2em;
+}
+
 .middle-col-contents-main .titre{
     font-size : 6pc;
 }
@@ -675,14 +684,22 @@ TEXT BODY
     font-size : 3pc;
     display : block;
     margin-bottom : 2em;
+    line-height : 4pc;
+}
+
+.middle-col-contents-main .author,
+.middle-col-contents-main .authorinline
+{
+    font-size : 1.2pc;
+    font-family : 'NovelPro-It';
 }
 
 .middle-col-contents-main .author{
-    font-size : 1.2pc;
-    font-family : 'NovelPro-It';
     display : block;
     margin-left : 2em;
 }
+
+
 
 .middle-col-contents-main .author:last-of-type{
     margin-bottom : 3em;
