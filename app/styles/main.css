@@ -255,10 +255,12 @@ body
 ::selection
 {
     background: #ffb7b7; /* WebKit/Blink Browsers */
+    color : white;
 }
 ::-moz-selection
 {
     background: #ffb7b7; /* Gecko Browsers */
+    color : white;
 }
 /*
   PRIMARY LAYOUT
@@ -541,11 +543,14 @@ a:active,
 a:visited,
 a:link
 {
-    font-weight: 800;
+    /*font-weight: 800;*/
 
     text-decoration: none;
 
     color: inherit;
+
+    font-family : 'NovelPro-It';
+
 }
 
 a.active
@@ -871,6 +876,10 @@ SPECIFIC COMPONENTS
     opacity: .5;
 }
 
+.toc-element a{
+    font-family : 'NovelSansPro-Regular';
+}
+
 .toc-element.active
 {
     /*text-decoration: underline;*/
@@ -1010,7 +1019,7 @@ Table of contents
     line-height : .4em;
     display : inline-block;
     background : black;
-    border-radius : 50%;
+    border-radius : 66.6666%;
     left : 0;
     opacity : .7;
     pointer-events : all;
@@ -1142,7 +1151,7 @@ carousel
 .anomaly{
     word-spacing: 0.25em;
     font-variant : small-caps;
-    padding-right : .5em;
+    padding : 0 .2em 0 .2em;
     font-family : NovelPro-Semibold;
     font-size : 1.05em;
 }
@@ -1174,10 +1183,16 @@ media
     .middle-col-contents-main .author{
         font-size : .8pc;
     }
+
+    .left-col-wrapper{
+        width : 18.5%;
+    }
 }
 
 /*col-sm*/
 @media (max-width:992px){
+
+
 
     .xs-col-toggler
     {

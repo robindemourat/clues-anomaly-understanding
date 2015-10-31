@@ -1,17 +1,3 @@
-```json
-{
-    "role" : "modulo-view",
-    "title" :"A few digitally committed co-inquirers",
-    "type" : "sankey",
-    "data" : "data-nogit/users_activity_actives.csv",
-    "keys" : [
-                "Total number of bookmarks (>0)",
-                "Total number of contributions (>0)"
-    ]
-}
-```
-
-
 [Clues. Anomalies. Understanding.](^^classed:titre)
 ==============
 
@@ -25,9 +11,6 @@ Imagine a collective inquiry presenting its results before the collaboration has
 
 Keywords: anomalies, close reading, collaborative frameworks, critical and speculative design, digital humanities
 
-^^modulo-aside:A few digitally committed co-inquirers
-
-
 # Introduction
 
 An Inquiry into Modes of Existence (AIME) project tried to explore the many discrepancies between the description that the Moderns are offering of their values and the ways they are defended in practice. For instance, there is a huge gap between Science capital S and the scientific institutions. There is almost no relationship between Technology as it is hyped and the ways technical artifacts are actually produced. This gap also exists in law, politics, religion, etc. Such discrepancies raise the question of deciding which version of their values the Moderns are ready to defend: the official one or the more practical ones? In order to pursue such a vast inquiry, we needed to transform the inquiry of a lone ethnographer into a collective undertaking of a community of co-inquirers. In order to achieve this transformation, in addition to the publication of a book, we produced a series of workshops and meetings and the design of a digital platform with the intention of testing and expanding the preliminary results of the inquiry.
@@ -38,12 +21,23 @@ online questionnaire.
 # AIME and its Digital Humanities set-up
 
 Johanna Drucker (2013) stated that finding a vocabulary — and we would also add
-finding the meaning (*what it is*) and the sense (*what it does*) — of a new technology (and here the new technology is the entire AIME set-up) takes time. During the initial
+finding the meaning (*what it is*) and the sense (*what it does*) — of a new technology (and here the new technology is the entire AIME set-up) takes time. During the initial development of AIME set-up, only a few components were presupposed and could be identified via a specific nomenclature. One of these is the principal investigator (PI): Bruno Latour. In one of the first public presentations of AIME, delivered in late 2011, he defined AIME as a collective procedure triggered by a series of troublesome anthropological and philosophical questions. AIME’s ambition was to invent a specific medium for an empirical 3 inquiry. The inquiry had started 25 years earlier as a personal endeavor 4 . Given the huge scope and topic, it now had to be opened to other researchers willing to use the AIME protocol and method (borrowed from William James) in order to validate and expand the results. In this presentation, the moments of hesitation about the medium are clear, and the names for designating technologies and procedure are shaky, signaling something still to invent. Leaving the philosophical community to judge the relevance and quality of the AIME arguments, in this paper we dedicate ourselves, instead, to describing the evolution of these hesitations. They evolved into a chimera whose body parts do not have a clear identity, becoming one of the “strange beasts” described by Ludovico (2012). Thus, here was a collaborative inquiry presenting some results before the collaboration was even started; an academic book without footnotes and references; an open, on-and
+off-line platform to collaborate with peers where subscribing to a strict protocol was required. It is a set-up that was composed before it was able to be described. Eventually, we identified some [built-in expectations](^^classed:anomaly) where the produced artifacts did not present all of the features required from the general type of media they belonged to.
 
+Observing how people described AIME is enlightening. By analyzing 39 web
+pages retrieved by employing five different search-engine queries, selected according to their relevance and pertinence (Rogers, 2009), almost all the pages mentioned the book, but only a few of them called it a report. While it is easy to label a printed academic artifact as a book, “the very best ‘interface’ ever designed” (Ludovico, 2012) to convey arguments, it has been fairly impossible to reinforce its unstable nature by associating it with the word “report”. It is a kind of [mismatching of lexical references](^^classed:anomaly) where the labels used for an established artifact didn’t fit with “new” experimentation. Another interesting element of reflection emerged from the relatively small number of pages mentioning AIME as an experiment in DH, even though, looking at Twitter activity during the DH2014 meeting, Latour’s keynote speech received a great deal of attention. These initially high expectations were quickly frustrated by the clumsiness of the first version of the online platform and by the type of DH activities conducted on it. Aren’t these clues of a kind of [misaligned set-up practices](^^classed:anomaly) for DH, where data visualization and large datasets are supposed to be the “new” norm, whereas the close reading of large numbers of documents is not?
+
+Almost all the pages retrieved above mentioned the AIME collaborative aspects
+of the digital platform, 7 but only a few cited the face-to-face meetings 8 that had been widely communicated. This lack of citation is in marked contrast to the other digital methods analysis (Rogers, 2013) that we conducted using Twitter. Having a look at the graph produced by connecting hashtags and users certainly gives the impression of a complete contrast.
+
+Evident at first glance is a polarization between AIME and its PI. It is probably the clue of a [personality and status refraction](^^classed:anomaly) where the reputation of a specific project actor multiplies engagements with the project itself. If we remove the two main nodes, a clearer view of the discussion around AIME arises. Some discussions are shown to be revolving around DH memes (eg. #digitalhumanities) and are clustered around the various AIME workshops and side events (eg. #thatcamplyon). As would be expected, discussions appear around the usual fields of study with which the PI is associated (#sociology, #ANT 9 , #STS) as well as other projects conducted by him (#mooc, #cop21). Here we can see a sort of amalgamation of heterogeneous public, where the composition and scale of the communities being formed do not
+fit with what had been expected. The projected audience did not conform to a
+single discipline/community, which engendered some confusion, thereby leading
+to misunderstandings.
 
 # About the authors
 
-[Donato Ricci,](^^classed:authorinline) is design lead and Post-Doc researcher at médialab | SciencesPo.
+[Donato Ricci](^^classed:authorinline) is design lead and Post-Doc researcher at médialab | SciencesPo.
 He conducts research concerning the role of design practices in human and social sciences. He followed all the design aspects of the AIME project. Furthermore, he is involved in projects using visual models, tools, and approaches for observing social phenomena through digital traces. Since 2005, he has been part of the development of the DensityDesign Lab where he deepened his interest in exploring the role of visual languages to foster public engagement in complex social issues. He is Assistant Professor of Representação e Conhecimento at Universidade de Aveiro and teaches Data & Information Visualization at Parsons Paris.
 
 [Robin de Mourat](^^classed:authorinline) is Ph.D. student in Aesthetics & Digital Humanities at Université Rennes 2 (France), under the direction of Nicolas Thély. He is also involved as a designer in various experiments exploring the intersection between humanities practices and digital tools design. His Ph.D. research aims at exploring the contemporary forms of design practice in academic publishing. Inside this frame, he has conducted a one year-long field study about the AIME project.

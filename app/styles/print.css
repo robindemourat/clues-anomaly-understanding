@@ -1,9 +1,14 @@
+
 /* fix for chrome preview bug */
 body
 {
-  margin : 1px;
+  margin : 20px;
   width: auto!important;
   height : auto;
+}
+
+@page {
+  margin : 2cm;
 }
 
 nav, aside,
@@ -17,7 +22,7 @@ nav, aside,
 .col-middle,
 .middle-col-wrapper,
 .middle-col-container{
-  width : 100%;
+  width : 100%!important;
   padding : 0;
   position : relative;
   margin : 0;
@@ -46,8 +51,11 @@ nav, aside,
 .middle-col-contents-main p{
   font-size : 12px;
   line-height : 24px;
-  page-break-inside: avoid;
+  width : 100%!important;
+}
 
+.author, .authorinline{
+  font-size : 12px!important;
 }
 
 .middle-col-contents-main .modulo-footnote-item{
@@ -55,9 +63,18 @@ nav, aside,
   font-size : 9px;
   page-break-inside: avoid;
 }
+.middle-col-contents-main h1,
+.middle-col-contents-main h2,
+.middle-col-contents-main h3,
+.middle-col-contents-main h4,
+.middle-col-contents-main h5
+{
+  page-break-after : avoid;
+}
 
 .middle-col-contents-main h1{
   font-size : 24px;
+
 }
 
 blockquote{
