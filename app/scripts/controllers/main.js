@@ -202,9 +202,9 @@ angular.module('moduloAnomaliesApp')
 
     		case 'middle':
           if(cols.middle){
-            return 'col-xs-12 col-sm-8';
+            return 'col-xs-12 col-md-10 col-lg-8';
           }else{
-            return 'col-xs-12 col-xs-offset--12';
+            return 'col-xs-12 col-xs-offset--12  col-md-10 col-lg-8';
           }
     			/*if(cols.left && cols.right && $scope.indexVisible){
     				return 'col-xs-6 col-xs-offset-2';
@@ -221,9 +221,9 @@ angular.module('moduloAnomaliesApp')
 
     		case 'right':
           if(!cols.middle && $scope.asideData){
-            return 'col-xs-12 col-sm-4';
+            return 'col-xs-12 col-md-2 col-lg-4';
           }else{
-            return 'col-xs-12 col-xs-offset-12 col-sm-4 col-sm-offset-8';
+            return 'col-xs-12 col-xs-offset-12 col-md-2 col-md-offset-10 col-lg-4 col-lg-offset-8';
           }
     			/*if(cols.left && cols.middle){
     				return 'col-xs-12 col-xs-offset-12';

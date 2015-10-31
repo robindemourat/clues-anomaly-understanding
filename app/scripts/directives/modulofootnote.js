@@ -11,11 +11,13 @@ angular.module('moduloAnomaliesApp')
     return {
       restrict: 'C',
       link: function postLink(scope, element, attrs) {
+
+        var displaceY = 10;
         var noteId = +element.text();
-        var noteContent = noteId +'.\n' + element.attr('id');
-        var content = markdownConverter.makeHtml(element.attr('id'));
+        // var noteContent = noteId +'.\n' + element.attr('id');
+        var content = markdownConverter.makeHtml('. '+element.attr('id'));
         var marker = angular.element('<span></span>').addClass('modulo-footnote-marker')
-                      .text(noteId + '.');
+                      .text(noteId);
         var note = angular.element(content)
                           .addClass('modulo-footnote-item')
                           .attr('id', noteId)
@@ -27,7 +29,7 @@ angular.module('moduloAnomaliesApp')
 
         angular.element('.middle-col-contents-main').append(note);
         var reposition = function(){
-          var top = angular.element(element).position().top,
+          var top = angular.element(element).position().top + displaceY,
               height = angular.element(element).innerHeight();
           //checking and updating regarding overlaps
           $timeout(function(){
@@ -41,12 +43,12 @@ angular.module('moduloAnomaliesApp')
                 var otherTop = el.position().top,
                     otherHeight = el.innerHeight();
                 if(top < otherTop){
-                  top = otherTop + otherHeight + 10;
+                  top = otherTop + otherHeight + displaceY;
                 }
                 if(otherTop >0 && top >= otherTop && top <= otherTop + otherHeight){
                   //console.log(otherId, noteId);
                   //console.log(noteId, otherId, top, otherTop, top + (otherHeight));
-                  top = otherTop + otherHeight + 10;
+                  top = otherTop + otherHeight + displaceY;
                 }
               }
               var topPx = top + 'px';
