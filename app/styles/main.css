@@ -785,8 +785,13 @@ table
     font-size: .8em;
 
     width: 100%;
-    margin-bottom: 2em;
+    /*margin-bottom: 2em;*/
+    margin-bottom : 0;
     padding: 1em;
+}
+
+table+table{
+    margin-bottom: 2em;
 }
 
 td,
@@ -971,6 +976,9 @@ SPECIFIC COMPONENTS
 
     line-height : 20px;
     display : inline-block;
+
+    width : 20px;
+    height : 20px;
 }
 
 .modulo-footnote-pointer
@@ -981,10 +989,14 @@ SPECIFIC COMPONENTS
     position: relative;
     bottom: 1px;
 
-
-
     cursor: pointer;
     vertical-align: super;
+
+    bottom : 0;
+    text-decoration : none;
+    padding-top : 7px;
+
+    padding-left : 3.5px;
     /*text-decoration: underline;*/
 }
 
@@ -1000,16 +1012,17 @@ SPECIFIC COMPONENTS
 
 }
 
-.modulo-footnote-pointer.active
+/*.modulo-footnote-pointer.active
 {
     bottom : 0;
     text-decoration : none;
     padding-top : 7px;
 
-    padding-left : 6.5px;
-}
+    padding-left : 4.5px;
+}*/
 
-.modulo-footnote-item.active .modulo-footnote-marker
+/*.modulo-footnote-item.active .modulo-footnote-marker*/
+.modulo-footnote-marker
 {
     text-align : center;
 }
@@ -1147,6 +1160,22 @@ TEXT BODY
     line-height : 1.5em;
 }
 
+.middle-col-contents-main table{
+    font-size : .8em;
+}
+
+.middle-col-contents-main thead{
+    font-family: 'NovelSansPro-Bold';
+}
+
+.middle-col-contents-main tr{
+    font-family: 'NovelSansPro-Regular';
+}
+
+.middle-col-contents-main table p{
+    margin : 0;
+}
+
 
 .middle-col-contents-main h1:first-of-type{
     margin-bottom : .6em;
@@ -1168,7 +1197,7 @@ TEXT BODY
 .middle-col-contents-main .author,
 .middle-col-contents-main .authorinline
 {
-    font-size : 1.2pc;
+    /*font-size : 1.2pc;*/
     font-family : 'NovelPro-It';
 }
 
@@ -1294,10 +1323,25 @@ Table of contents
 
 .toc.shown .toc-element-title,
 .toc-element:hover .toc-element-title
+
 {
     left : 1em;
     background : rgba(255,255,255,.8);
 }
+
+
+.toc-element:hover .toc-element-title
+{
+    background : white;
+    font-size : 1.1em;
+    z-index : 5;
+}
+
+/*.toc:not(.shown) .toc-element.active .toc-element-title
+{
+    font-size : .8em;
+    opacity : .8;
+}*/
 
 .aside-header h1
 {
@@ -1411,7 +1455,7 @@ carousel
 
 
 /*
-media
+media queries
 */
 
 
@@ -1419,7 +1463,9 @@ media
 /*col-md*/
 @media (max-width:1500px){
 
-    .middle-col-contents-main p{
+    .middle-col-contents-main p,
+    .middle-col-contents-main li
+    {
         font-size : .8em;
     }
 
@@ -1459,8 +1505,14 @@ media
     .modulo-footnote-item{
         right : 81%;
         width : 15%;
-        font-size : .7em!important;
+        /*font-size : .7em!important;*/
         line-height : 1.3em!important;
+    }
+
+    .modulo-footnote-item,
+    .middle-col-contents-main table
+    {
+        font-size : .7em!important;
     }
 
     .middle-col-contents-main .titre{
@@ -1485,7 +1537,9 @@ media
 /* col-xs */
 @media (max-width :768px){
 
-    .middle-col-contents-main p{
+    .middle-col-contents-main p,
+    .middle-col-contents-main li
+    {
         font-size : 1.2em;
     }
 

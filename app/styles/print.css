@@ -57,7 +57,9 @@ nav, aside,
 }
 
 .middle-col-contents-main p,
-.middle-col-contents-main li{
+.middle-col-contents-main li,
+.middle-col-contents-main table
+{
   font-size : 12px;
   line-height : 24px;
   width : 100%!important;

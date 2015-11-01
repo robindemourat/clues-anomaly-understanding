@@ -47,10 +47,8 @@ angular.module('moduloAnomaliesApp')
             els.removeClass('active');
             var selector = 'div[scrollspy="'+target+'"]';
             angular.element(selector).addClass('active');
-          })
-
-
-        })
+          });
+        });
       }
     };
   })
