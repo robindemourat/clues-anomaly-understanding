@@ -18,8 +18,8 @@ angular.module('moduloAnomaliesApp')
         //var content = markdownConverter.makeHtml('. '+element.attr('id'));
         var noteId = element.attr('id');
         var noteNumber = noteId.split('-')[noteId.split('-').length - 1];
+        element.find('.modulo-footnote-pointer-placeholder').find('a').attr('target', '_blank');
         var content = element.find('.modulo-footnote-pointer-placeholder').html();
-        console.log(element);
         var marker = angular.element('<span></span>').addClass('modulo-footnote-marker')
                       .text(noteNumber);
         var note = angular.element('<aside></aside>')
@@ -50,10 +50,12 @@ angular.module('moduloAnomaliesApp')
           $timeout(function(){
             angular.forEach(angular.element('.modulo-footnote-item'), function(el, key){
               el = angular.element(el);
-              var otherId = +el.attr('id');
+
+              var otherId = +el.attr('id').split('-')[el.attr('id').split('-').length-1];
+              //var otherId = +el.attr('id');
               //console.log(otherId, el.height(), el.innerHeight());
 
-              if(noteId > otherId){
+              if(noteNumber > otherId){
 
                 var otherTop = el.position().top,
                     otherHeight = el.innerHeight();

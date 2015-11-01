@@ -19,7 +19,9 @@
 (function () {
 
   // var footnotesPattern = /\[#\]\[([^\]]*)\]/gi, match;
-  var footnotesPattern = /\[#\]\[([^\]]*(?:(?!\\)\])*.*)\]/gi, match;
+  // var footnotesPattern = /\[#\]\[([^\]]*(?:(?!\\)\])*.*)\]/gi, match;
+  //var footnotesPattern = /\[#\]\[([^\]]*)\]/gi, match;
+  var footnotesPattern = /\[#\]\[(([^\]\[]*)|(.*\[.*))\]/gi, match;
 
   var footnotes = function (converter) {
 
