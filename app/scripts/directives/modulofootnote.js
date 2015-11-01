@@ -13,23 +13,38 @@ angular.module('moduloAnomaliesApp')
       link: function postLink(scope, element, attrs) {
 
         var displaceY = 10;
-        var noteId = +element.text();
+        // var noteId = +element.text();
         // var noteContent = noteId +'.\n' + element.attr('id');
-        var content = markdownConverter.makeHtml('. '+element.attr('id'));
+        //var content = markdownConverter.makeHtml('. '+element.attr('id'));
+        var noteId = element.attr('id');
+        var noteNumber = noteId.split('-')[noteId.split('-').length - 1];
+        var content = element.find('.modulo-footnote-pointer-placeholder').html();
+        console.log(element);
         var marker = angular.element('<span></span>').addClass('modulo-footnote-marker')
-                      .text(noteId);
-        var note = angular.element(content)
+                      .text(noteNumber);
+        var note = angular.element('<aside></aside>')
                           .addClass('modulo-footnote-item')
                           .attr('id', noteId)
-                          .prepend(marker);
+                          .append(marker)
+                          .append(angular.element('<span class="modulo-footnote-separator"> . </span>'))
+                          .append(content);
         /*var note = angular.element(markdownConverter.makeHtml(noteContent))
                       .addClass('modulo-footnote-item')
                       .attr('id', noteId);*/
         note.css('display', 'none');
 
+        var printNote = angular.element('<p></p>')
+                                .addClass('modulo-footnote-for-print')
+                                .addClass('printonly')
+                                .attr('id', noteId)
+                                .append('<span>'+noteNumber+'. </span>')
+                                .append(content);
+
+
         angular.element('.middle-col-contents-main').append(note);
+        angular.element('.middle-col-contents-main').append(printNote);
         var reposition = function(){
-          var top = angular.element(element).position().top + displaceY,
+          var top = angular.element(element).position().top,
               height = angular.element(element).innerHeight();
           //checking and updating regarding overlaps
           $timeout(function(){

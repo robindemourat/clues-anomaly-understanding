@@ -18,7 +18,8 @@
 
 (function () {
 
-  var footnotesPattern = /\[#\]\[([^\]]*)\]/gi, match;
+  // var footnotesPattern = /\[#\]\[([^\]]*)\]/gi, match;
+  var footnotesPattern = /\[#\]\[([^\]]*(?:(?!\\)\])*.*)\]/gi, match;
 
   var footnotes = function (converter) {
 
@@ -29,7 +30,8 @@
       while(match = footnotesPattern.exec(text)){
         i++;
         var ref = match[1];
-        var rep = '<span class="modulo-footnote-pointer" id="'+ref+'">'+i+'</span>';
+        //var rep = '<span class="modulo-footnote-pointer" id="'+ref+'">'+i+'</span>';
+        var rep = '<span class="modulo-footnote-pointer" id="modulo-footnote-pointer-'+i+'"><sup class="modulo-footnote-pointer-number">'+i+'</sup><span class="modulo-footnote-pointer-placeholder">'+ref+'</span></span>';
         //text = text.replace(match[0], rep);
         text = text.substr(0, match.index) + rep + text.substr(match.index + match[0].length, text.length);
       }

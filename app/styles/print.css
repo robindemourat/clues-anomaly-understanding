@@ -7,6 +7,14 @@ body
   height : auto;
 }
 
+.printonly{
+  display : block;
+}
+
+*{
+  transition:none!important;
+}
+
 @page {
   margin : 2cm;
 }
@@ -48,7 +56,8 @@ nav, aside,
   display : none;
 }
 
-.middle-col-contents-main p{
+.middle-col-contents-main p,
+.middle-col-contents-main li{
   font-size : 12px;
   line-height : 24px;
   width : 100%!important;
@@ -59,10 +68,48 @@ nav, aside,
 }
 
 .middle-col-contents-main .modulo-footnote-item{
+  display : none!important;
+}
+
+/*.modulo-footnote-pointer{
+  float : footnote!important;
+}*/
+
+
+.modulo-footnote-for-print#modulo-footnote-pointer-1:before{
+  font-family: 'NovelPro-Semibold';
+  content : 'Notes';
+  font-size : 24px;
+  display : block;
+  margin-bottom : 24px;
+  page-break-before : always;
+}
+
+.modulo-footnote-for-print
+{
+    font-family: 'NovelSansPro-Regular';
+    font-size : 12px;
+}
+
+.modulo-footnote-for-print a,
+.modulo-footnote-for-print em{
+  font-family: 'NovelSansPro-It';
+}
+
+.modulo-footnote-for-print strong{
+  font-family : 'NovelSansPro-Bold';
+}
+
+.modulo-footnote-for-print strong>em{
+  font-family : 'NovelSansPro-Bold-It';
+}
+
+
+/*.middle-col-contents-main .modulo-footnote-item{
   font-family : "NovelPro-Light";
   font-size : 9px;
   page-break-inside: avoid;
-}
+}*/
 .middle-col-contents-main h1,
 .middle-col-contents-main h2,
 .middle-col-contents-main h3,
@@ -70,11 +117,14 @@ nav, aside,
 .middle-col-contents-main h5
 {
   page-break-after : avoid;
+  line-height : auto!important;
 }
 
-.middle-col-contents-main h1{
+.middle-col-contents-main h1,
+.middle-col-contents-main .title,
+{
   font-size : 24px;
-
+  line-height : 24px!important;
 }
 
 blockquote{

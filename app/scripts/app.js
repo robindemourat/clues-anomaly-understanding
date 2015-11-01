@@ -41,9 +41,9 @@ angular
                     'pdfembed',
                     'tableauembed',
                     'iframe',
-                    'footnotes',
                     'classed',
-                    'moduloend'
+                    'moduloend',
+                    'footnotes'
                   ]
     });
 
