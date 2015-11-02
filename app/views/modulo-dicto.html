@@ -7,10 +7,8 @@
 
 </vimeo-embed-mini>
 
-
 <div class="text-container-temp" fitprevious>
   <h2 ng-bind="data.metadata.title" ></h2>
-
   <blockquote
     ng-repeat="paragraph in data.data track by $index"
     ng-bind = "paragraph.content"

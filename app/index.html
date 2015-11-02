@@ -148,7 +148,7 @@ In a situation where the Digital Humanities are still delineating their position
 
 
 
-    <div class="container" ng-include="'views/main.html'">
+    <div class="container" ng-include="'views/main.html'" before-print="beforePrint()" after-print="afterPrint()">
     </div>
 
 
@@ -242,6 +242,8 @@ In a situation where the Digital Humanities are still delineating their position
         <script src="scripts/directives/modulo-vimeo.js"></script>
         <script src="scripts/directives/fitscreenheight.js"></script>
         <script src="scripts/directives/moduloasidetrigger.js"></script>
+        <script src="scripts/directives/beforeprint.js"></script>
+        <script src="scripts/directives/moduloasidefigure.js"></script>
         <!-- endbuild -->
 
 

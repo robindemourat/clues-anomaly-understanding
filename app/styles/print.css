@@ -138,3 +138,52 @@ blockquote p{
   font-size : 9px!important;
   line-height : 13.5px!important;
 }
+
+
+/* FIGURES */
+
+figure h1,
+figure h2,
+figure h3,
+figure h4{
+    font-family : 'NovelPro-SemiBold';
+}
+
+figure h1{
+  font-size : 16px;
+}
+
+
+figcaption{
+  font-family : 'NovelSansPro-Regular';
+  font-size : 9px!important;
+  line-height : 13.5px;
+  margin-top : 10px;
+}
+
+figcaption p{
+  margin-bottom : .1em!important;
+}
+
+figcaption .figcaption-header{
+  font-variant : small-caps;
+  font-size : 14px;
+}
+
+figure .aside-header{
+  display : none;
+}
+
+figure .aside-contents-container{
+  padding : 0;
+}
+
+figure{
+  page-break-before : always;
+  page-break-after : always;
+}
+
+figure .figure-content{
+  border : 1px solid #333;
+  padding : 1em;
+}

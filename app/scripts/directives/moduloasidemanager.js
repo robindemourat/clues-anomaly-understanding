@@ -34,6 +34,11 @@ angular.module('moduloAnomaliesApp')
     			if(scope.first || n.title != o.title){
     				scope.first = false;
     				scope.data = n;
+            scope.$parent.data = n;
+            setTimeout(function(){
+              scope.$apply();
+            });
+            console.log('manager data', scope.data);
     			}
       	})
 

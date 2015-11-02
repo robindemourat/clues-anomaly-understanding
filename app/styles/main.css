@@ -638,6 +638,8 @@ body
     height: 90%;
 
     background: white;
+
+    padding : 0 1em 1em 1em;
 }
 
 
@@ -737,12 +739,16 @@ aside h1, aside h2{
     font-family : 'NovelPro-SemiBold';
 }
 
-aside h1{
-    font-size : 1em;
+aside h1,
+figure h1
+{
+    font-size : 1.3em;
 }
 
-aside h2{
-    font-size : 1.1em;
+aside h2,
+figure h2
+{
+    font-size : 1.3em;
 }
 
 
@@ -853,7 +859,6 @@ SPECIFIC COMPONENTS
 .modulo-aside-trigger
 {
     font-family: 'NovelSansPro-Light';
-    font-size: 1.2em;
 
     display: inline-block;
     overflow: hidden;
@@ -863,29 +868,40 @@ SPECIFIC COMPONENTS
 
     cursor: pointer;
 
-    opacity: .7;
     color: white;
-    border-radius: .3em;
     height : 1.8em;
-    background: brown;
+    background : transparent;
+    opacity : .8;
+
+    border-top : 1px solid brown;
+    border-bottom : 1px solid brown;
+    color : brown;
 
     width : 100%;
     text-align : center;
+    max-height : 300px;
+}
+
+
+
+.modulo-aside-trigger.inactive
+{
+    max-height : 10px;
+    min-width : 100%;
+    opacity : .3;
 }
 
 .modulo-aside-trigger:hover{
-    opacity : .9;
-}
-
-.modulo-aside-trigger.inactive{
-    width : auto;
+    max-height : 300px;
+    opacity : 1;
 }
 
 .modulo-aside-trigger.inactive:hover
 {
-    opacity: .7;
-}
+    opacity: .5;
 
+}
+/*
 .modulo-aside-trigger.inactive:not(:hover)
 {
     max-width: 10px;
@@ -894,7 +910,7 @@ SPECIFIC COMPONENTS
 
     opacity: .7;
     color: brown;
-}
+}*/
 
 .modulo-href-trigger.active
 {
@@ -1012,14 +1028,16 @@ SPECIFIC COMPONENTS
 
 }
 
-/*.modulo-footnote-pointer.active
+.modulo-footnote-pointer.active
 {
-    bottom : 0;
+    /*bottom : 0;
     text-decoration : none;
     padding-top : 7px;
 
-    padding-left : 4.5px;
-}*/
+    padding-left : 4.5px;*/
+    text-align : center;
+    padding-left : 0;
+}
 
 /*.modulo-footnote-item.active .modulo-footnote-marker*/
 .modulo-footnote-marker
@@ -1027,10 +1045,8 @@ SPECIFIC COMPONENTS
     text-align : center;
 }
 
-.modulo-footnote-item.active,
-.modulo-footnote-pointer.active
-{
-    /*background: rgba(0,0,0,.2);*/
+.modulo-footnote-item.active .modulo-footnote-marker{
+    font-size : .5em;
 }
 
 
@@ -1161,7 +1177,7 @@ TEXT BODY
 }
 
 .middle-col-contents-main table{
-    font-size : .8em;
+    font-size : .6em;
 }
 
 .middle-col-contents-main thead{
@@ -1345,8 +1361,6 @@ Table of contents
 
 .aside-header h1
 {
-    font-size: 1.3em;
-
     margin: 0;
     margin-top: 1em;
     padding: 0;
@@ -1372,6 +1386,8 @@ Table of contents
 
     display: none;
 
+    line-height : -1em;
+
     width: 2em;
     height: 2em;
     outline : none;
@@ -1381,19 +1397,30 @@ Table of contents
         -ms-transition: all .5s ease;
          -o-transition: all .5s ease;
 
-    color: white;
+    color: brown;
     border: none;
     border-radius: 50%;
-    background: brown;
+    border: 3px solid brown;
+    background : transparent;
     opacity : .6;
+
+    vertical-align : super;
+}
+
+.xs-col-toggler .glyphicon{
+    position : absolute;
+    left : .3em;
+    top : .2em;
 }
 
 .xs-col-toggler:hover{
     opacity : 1;
+    background : brown;
+    color : white;
 }
 .xs-col-toggler.pull-left
 {
-    right: 90%;
+    right: 95%;
 
     -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
         -ms-transform: rotate(-180deg); /* IE 9 */
@@ -1498,6 +1525,10 @@ media queries
         display: inline-block;
     }
 
+    .aside-contents-container{
+        padding-left : 10%;
+    }
+
     .middle-col-contents-main{
         padding-left : 20%;
     }
@@ -1560,9 +1591,17 @@ media queries
         margin-bottom : 1em;
     }
 
+    .middle-col-contents-main h1{
+        font-size : 1.4pc;
+        line-height : 2pc;
+    }
+
     .middle-col-contents-main .titre{
         font-size : 1.6pc;
+        line-height : 2pc;
     }
+
+
 
     .middle-col-contents-main .baseline{
         font-size : 1.3pc;
@@ -1579,7 +1618,7 @@ media queries
     }
 
     .middle-col-contents-main{
-        /*padding-right : 0;*/
+        padding-right : 10%;
     }
 
     .middle-col-container{
@@ -1590,3 +1629,4 @@ media queries
         font-size : 1.2em;
     }
 }
+

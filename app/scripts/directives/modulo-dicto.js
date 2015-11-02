@@ -27,6 +27,10 @@ angular.module('moduloAnomaliesApp')
             $scope.$apply();
           });
 
+          if(!$scope.temp){
+            return;
+          }
+
           //cut mode
           if(!$scope.temp.cut|| $scope.temp.cut !== 'no'){
             var active;
@@ -64,14 +68,21 @@ angular.module('moduloAnomaliesApp')
 
 
         $scope.$watch('newdata', function(nouv, old){
-          if(nouv.trim().length == 0)
+          var ok = nouv && nouv.trim && nouv.trim().length > 0;
+          if(!ok)
             return;
+          var nouvJ;
           try{
-            var nouvJ = JSON.parse(nouv);
+            nouvJ = JSON.parse(nouv);
+
             var oldJ;
 
             if(old){
               oldJ = JSON.parse(old);
+            }
+
+            if(!nouvJ || !oldJ){
+              return;
             }
             if(nouvJ.title != oldJ.title || !$scope.visData){
               $scope.temp = JSON.parse(nouv);
@@ -80,7 +91,7 @@ angular.module('moduloAnomaliesApp')
             }
 
           }catch(e){
-            console.error('invalid json data for dicto :',nouv);
+            console.error('invalid json data for dicto :',nouv, e);
             $scope.msg = 'Failed to load due to badly formatted json !'
           };
           var okTemp = $scope.temp && $scope.temp.data;
@@ -90,6 +101,11 @@ angular.module('moduloAnomaliesApp')
               .success(function(d){
 
                 $scope.data = dictoModuloViewParser.parseSrtTranscription(d);
+                // $scope.content = dictoModuloViewParser.parseSrtTranscription(d);
+                // console.log($scope.data);
+                setTimeout(function(){
+                  $scope.$apply();
+                });
               })
               .error(function(err){
 

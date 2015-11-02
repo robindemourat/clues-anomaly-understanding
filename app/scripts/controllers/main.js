@@ -138,7 +138,6 @@ angular.module('moduloAnomaliesApp')
         }else{
           $scope.asideData = undefined;
           $location.search('aside', null);
-
         }
       }
     }
@@ -263,6 +262,33 @@ angular.module('moduloAnomaliesApp')
       setTimeout(function(){
         $scope.$apply();
       })
+    }
+
+    //I am triggered when printing function is prompted
+    $scope.beforePrint = function(){
+      // console.log('scope before print');
+      $scope.printMode = true;
+      $scope.$apply();
+    }
+
+    //I am triggered when printing is launched/cancelled
+    $scope.afterPrint = function(){
+      // console.log('scope after print');
+      $scope.printMode = false;
+      $scope.$apply();
+    }
+
+    //I feed a inline modulo-figure to replace a modulo-aside (default : triggered when printing)
+    $scope.feedFigure = function(id, callback){
+      if($scope.contents.library){
+        $scope.contents.library.forEach(function(view, index){
+          if(view.title == id){
+            view.index = index;
+            return callback(view);
+          }
+        });
+      }
+      return callback(undefined);
     }
 
 

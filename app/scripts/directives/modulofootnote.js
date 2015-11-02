@@ -44,7 +44,7 @@ angular.module('moduloAnomaliesApp')
         angular.element('.middle-col-contents-main').append(note);
         angular.element('.middle-col-contents-main').append(printNote);
         var reposition = function(){
-          var top = angular.element(element).position().top,
+          var top = angular.element(element).position().top + displaceY,
               height = angular.element(element).innerHeight();
           //checking and updating regarding overlaps
           $timeout(function(){
@@ -104,31 +104,6 @@ angular.module('moduloAnomaliesApp')
           note.off(handleClick);
           angular.element(window).off('resize', reposition);
         });
-
-        //reposition when printing
-        (function() {
-            var beforePrint = function() {
-              reposition();
-            };
-            /*var afterPrint = function() {
-                console.log('Functionality to run after printing');
-            };*/
-
-            if (window.matchMedia) {
-                var mediaQueryList = window.matchMedia('print');
-                mediaQueryList.addListener(function(mql) {
-                    if (mql.matches) {
-                        beforePrint();
-                    } else {
-                        //afterPrint();
-                    }
-                });
-            }
-
-            window.onbeforeprint = beforePrint;
-            //window.onafterprint = afterPrint;
-        }());
-
       }
     };
   });

@@ -7,7 +7,7 @@
     <div
       class="left-col-wrapper col-xs-12 col-sm-2 animate"
       ng-class="{'active': indexVisible}"
-      ng-show="showCols.left"
+      ng-show="showCols.left && showCols.middle"
     >
       <h1
         ng-class="{'scrollAtTop':scrollAtTop}"
@@ -129,11 +129,13 @@
 
 <button
   class="xs-col-toggler animate"
-  title="toggle aside view"
+  title="{{(showCols.middle)?asideData.title:'Come back to main text'}}"
   ng-click="toggleCol('middle')"
   ng-class="{'pull-left':!showCols.middle}"
   ng-show="asideData"
->></button>
+>
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</button>
 
 <aside
   class="col-right animate"
