@@ -37,7 +37,7 @@ angular.module('moduloAnomaliesApp')
                 smallestDist = Infinity,
                 target;
             for(var i in targets){
-              var otherY = targetContainer.find(targets[i]).position().top;
+              var otherY = (targetContainer.find(targets[i]).position())?targetContainer.find(targets[i]).position().top:0;
               //console.log(therY, y);
               if(otherY <= y + window.innerHeight/2){
                 smallestDist = otherY - y;

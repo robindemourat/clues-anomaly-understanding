@@ -619,10 +619,10 @@ body
     overflow: hidden;
 
     width: 100%;
-    padding-top: 1em;
+    padding-top: 2em;
     /*height: 10%;*/
     padding-right: 20%;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     padding-left: 20%;
 
     text-align: center;
@@ -811,6 +811,11 @@ th
 tbody tr:first-child
 {
     /*font-weight: 800;*/
+}
+
+
+blockquote{
+    border : none;
 }
 
 .grid
@@ -1365,6 +1370,8 @@ Table of contents
     margin-top: 1em;
     padding: 0;
 
+    padding-right : 1em;
+
     text-transform: uppercase;
 }
 
@@ -1420,7 +1427,7 @@ Table of contents
 }
 .xs-col-toggler.pull-left
 {
-    right: 95%;
+    right: 93.5%;
 
     -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
         -ms-transform: rotate(-180deg); /* IE 9 */
@@ -1530,12 +1537,12 @@ media queries
     }
 
     .middle-col-contents-main{
-        padding-left : 20%;
+        padding-left : 30%;
     }
 
     .modulo-footnote-item{
-        right : 81%;
-        width : 15%;
+        right : 71%;
+        width : 25%;
         /*font-size : .7em!important;*/
         line-height : 1.3em!important;
     }
@@ -1602,7 +1609,6 @@ media queries
     }
 
 
-
     .middle-col-contents-main .baseline{
         font-size : 1.3pc;
         line-height : 1.9pc;
@@ -1627,6 +1633,10 @@ media queries
 
     .toc{
         font-size : 1.2em;
+    }
+
+    .modulo-footnote-item{
+        font-size : 1.1em!important;
     }
 }
 

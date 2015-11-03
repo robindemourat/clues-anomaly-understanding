@@ -15,8 +15,8 @@
   </div>
 </div>
 <div class="sankey-footer animate">
-  <div class="comments-info" ng-if="info">
-    <p ng-if="info" ng-bind="info" ng-click="info = undefined"></p>
+  <div class="comments-info" ng-if="info != undefined">
+    <p ng-bind="info" ng-click="info = undefined"></p>
   </div>
   <p ng-bind="data.comment" class="comment" ng-if="data.comment"></p>
 </div>

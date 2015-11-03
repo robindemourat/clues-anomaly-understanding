@@ -153,7 +153,7 @@ angular.module('moduloAnomaliesApp')
         var commentOnNode = function(d) {
           var perc = parseFloat((d.value/totalValues)*100).toFixed(1);
           if($scope.temp.sankeytype === 'questionnaire'){
-            return d.value + ' respondents answered "'+d.name + '" ('+perc+'%)';
+            return d.value + ' respondents answered "'+d.name + '" ('+perc+'%) to the question '+d.key;
           }else return d.value + ' ('+perc+'%): '+d.name;
         }
 
@@ -250,7 +250,9 @@ angular.module('moduloAnomaliesApp')
 
           node.select('rect')
               .transition().duration(duration)
-              .attr("height", function(d) { return d.dy; })
+              .attr("height", function(d, i) {
+                  return d.dy;
+              })
               //.attr("width", sankey.nodeWidth())
               .attr('width', heightFromTag)
                               //return sankey.nodeWidth();
@@ -303,8 +305,9 @@ angular.module('moduloAnomaliesApp')
             if(!d.displayInfo){
               d.displayInfo = true;
             }else d.displayInfo = !d.displayInfo;
-            if(d.displayInfo)
+            if(d.displayInfo){
               $scope.info = commentOnNode(d);
+            }
             else delete $scope.info;
             setTimeout(function(){$scope.$apply()});
           });

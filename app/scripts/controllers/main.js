@@ -114,6 +114,8 @@ angular.module('moduloAnomaliesApp')
     var updateAside = function(screenYCenter, scrollTop, height){
       if($scope.contents.library){
         var min = Infinity, wining;
+        var stoppers= angular.element('.modulo-aside-clear');
+
         for(var i in $scope.contents.library){
           var vis = $scope.contents.library[i];
           //get element
@@ -124,17 +126,31 @@ angular.module('moduloAnomaliesApp')
             //defining closest to screen's center
             var dist = Math.abs(vis.top - screenYCenter);
             if(dist < min && screenYCenter >= vis.top){
-              min = dist;
-              wining = i;
+              //check for end spans
+              var goodToGo = true;
+
+
+              stoppers.each(function(i){
+                var top = angular.element(this).position().top;
+                if(top > vis.top && screenYCenter > top){
+                  goodToGo = false;
+                }
+              });
+
+              if(goodToGo == true){
+                min = dist;
+                wining = i;
+              }
             }
           }
         }
         if(wining && $scope.contents.library[wining]){
+
           $scope.asideData = $scope.contents.library[wining];
           $location.search('aside', encodeURIComponent($scope.asideData.title));
           setTimeout(function(){
             $scope.$apply();
-          })
+          });
         }else{
           $scope.asideData = undefined;
           $location.search('aside', null);
