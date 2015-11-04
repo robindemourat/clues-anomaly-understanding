@@ -1,11 +1,6 @@
 
 /* fix for chrome preview bug */
-body
-{
-  margin : 20px;
-  width: auto!important;
-  height : auto;
-}
+
 
 .printonly{
   display : block;
@@ -15,6 +10,13 @@ body
   transition:none!important;
 }
 
+/* LAYOUT */
+
+body
+{
+  margin : 20px;
+  height : auto;
+}
 
 @page {
   margin : 2cm;
@@ -35,26 +37,24 @@ nav, aside,
   padding : 0;
   position : relative;
   margin : 0;
+  padding : 0!important;
 }
 
 .container{
   position : relative;
 }
 
+
 .modulo-href-trigger{
   text-decoration : underline;
 }
 
-.modulo-href-trigger:after{
-  content:" (+)";
-  font-family : "NovelPro-Light";
-  font-size : 6px;
-  vertical-align :super;
-  text-decoration : none!important;
-}
-
 .modulo-aside-trigger{
   display : none;
+}
+
+.middle-col-contents-main{
+  padding : 0!important;
 }
 
 .middle-col-contents-main p,
@@ -66,6 +66,7 @@ nav, aside,
   width : 100%!important;
 }
 
+
 .author, .authorinline{
   font-size : 12px!important;
 }
@@ -73,11 +74,6 @@ nav, aside,
 .middle-col-contents-main .modulo-footnote-item{
   display : none!important;
 }
-
-/*.modulo-footnote-pointer{
-  float : footnote!important;
-}*/
-
 
 .modulo-footnote-for-print#modulo-footnote-pointer-1:before{
   font-family: 'NovelPro-Semibold';
@@ -107,12 +103,6 @@ nav, aside,
   font-family : 'NovelSansPro-Bold-It';
 }
 
-
-/*.middle-col-contents-main .modulo-footnote-item{
-  font-family : "NovelPro-Light";
-  font-size : 9px;
-  page-break-inside: avoid;
-}*/
 .middle-col-contents-main h1,
 .middle-col-contents-main h2,
 .middle-col-contents-main h3,
@@ -138,6 +128,11 @@ blockquote{
 blockquote p{
   font-size : 9px!important;
   line-height : 13.5px!important;
+}
+
+table
+{
+  font-size : 9px!important;
 }
 
 
@@ -188,3 +183,4 @@ figure .figure-content{
   border : 1px solid #333;
   padding : 1em;
 }
+

@@ -1,29 +1,32 @@
+<!--modulo aside switch
+I populate the aside with several types of div (and related directives) regarding the type of the resource to display-->
+
 <div
     ng-switch="data.type"
     class="aside-contents-switcher"
     ng-style="{background:(data.background)?data.background:'inherit'}"
 >
-    <div ng-switch-when="html" modulo-content='{{data}}' class='modulo-html'>
+    <div ng-switch-when="html" modulo-content='{{data}}' class='modulo-view modulo-html'>
     </div>
 
-    <div ng-switch-when="image" modulo-content='{{data}}' class='modulo-image'>
+    <div ng-switch-when="image" modulo-content='{{data}}' class='modulo-view modulo-image'>
     </div>
 
-    <div ng-switch-when="timeline"  class="modulo-timeline" modulo-content='{{data}}'>
+    <div ng-switch-when="timeline"  class="modulo-view modulo-timeline" modulo-content='{{data}}'>
     </div>
 
-    <div ng-switch-when="iframe"  class="modulo-iframe" modulo-content='{{data}}'>
+    <div ng-switch-when="iframe"  class="modulo-view modulo-iframe" modulo-content='{{data}}'>
     </div>
 
-    <div ng-switch-when="graph"  class="modulo-graph" modulo-content='{{data}}' export-order="{{exportOrder}}">
+    <div ng-switch-when="graph"  class="modulo-view modulo-graph" modulo-content='{{data}}' export-order="{{exportOrder}}">
     </div>
 
-    <div ng-switch-when="sankey"  class="modulo-sankey" modulo-content='{{data}}'></div>
+    <div ng-switch-when="sankey"  class="modulo-view modulo-sankey" modulo-content='{{data}}'></div>
 
 
-    <div ng-switch-when="dicto"  class="modulo-dicto" modulo-content='{{data}}'></div>
+    <div ng-switch-when="dicto"  class="modulo-view modulo-dicto" modulo-content='{{data}}'></div>
 
-    <div ng-switch-when="vimeo" modulo-content='{{data}}' class='modulo-vimeo'>
+    <div ng-switch-when="vimeo" modulo-content='{{data}}' class='modulo-view modulo-vimeo'>
     </div>
 
     </div>
