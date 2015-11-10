@@ -21,14 +21,10 @@ angular.module('moduloAnomaliesApp')
         var onNewData = function(data){
           if(data){
             scope.localData = data;
+
             console.log('data update', scope.localData);
           }
         }
-
-       /* scope.feedFn({
-              id : id,
-              callback : onNewData
-        });*/
 
         scope.$watch('visible', function(visible){
           if(visible){

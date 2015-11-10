@@ -38,7 +38,6 @@ angular.module('moduloAnomaliesApp')
             setTimeout(function(){
               scope.$apply();
             });
-            console.log('manager data', scope.data);
     			}
       	})
 

@@ -32,6 +32,9 @@ angular.module('moduloAnomaliesApp')
       alert('Warning ! for now this e-publication is developped for firefox or chrome latest versions, you may encounter some bugs if visiting it with this browser!');
     }
 
+
+
+
   	var initWatchers = function(){
       //gspreadsheet update deactivated for now, because updating everything breaks scroll-related interactions
       //todo : diff update only on changed elements
@@ -50,9 +53,9 @@ angular.module('moduloAnomaliesApp')
         }
       });
 
-  	}
+  }
 
-  	var initFunctions = function(){
+  var initFunctions = function(){
   		reloadMarkdown('data/clues-anomalies-understanding.md');
 
       var loc = $location.search().aside;
@@ -97,6 +100,13 @@ angular.module('moduloAnomaliesApp')
                   screenYCenter=scrollTop + height/2;
               if(!$scope.popupAside){
                 updateAside(screenYCenter, scrollTop, height);
+              }else{
+                var marker = angular.element(".modulo-href-trigger.active");
+                var y = marker.offset().top;
+                if(y < 0 || y > height){
+                  $scope.popupAside = false;
+                  updateAside(screenYCenter, scrollTop, height);
+                }
               }
             });
           }, function(data){//second callback for asynchronous updates

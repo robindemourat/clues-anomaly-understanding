@@ -15,7 +15,7 @@ angular.module('moduloAnomaliesApp')
       	data : '@moduloContent'
       },
       link: function postLink(scope, element, attrs) {
-        var retries = 0, retriesLimit = 5;
+        var retries = 0, retriesLimit = 5, twitterLoaded;
       	scope.first = true;
 
         var getTwitter = /http:\/\/twitter.com\/(.*)\/statuses\/(.*)/;
@@ -32,7 +32,13 @@ angular.module('moduloAnomaliesApp')
         }
 
       	var update = function(data){
-          console.log(data);
+
+          //twitter embeds init
+          if(!twitterLoaded){
+            $timeout(function() {
+                $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+            }, 1000);
+          }
           if(data.url){
             $http
             .get(data.url)

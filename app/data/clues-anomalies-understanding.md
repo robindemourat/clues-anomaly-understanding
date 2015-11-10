@@ -19,25 +19,25 @@ This is where AIME project overlaps with innovative practices in Digital Humanit
 
 # AIME and its Digital Humanities set-up
 
-^^modulo-aside:Bruno Latour presents the project
+^^modulo-aside:Bruno Latour presents the project in its early phase
 
 Johanna Drucker (2013) stated that finding a vocabulary — and we would also add finding the meaning (*what it is*) and the sense (*what it does*) — of a new technology (and here the new technology is the entire AIME set-up) takes time. During the initial development of AIME set-up, only a few components were presupposed and could be identified via a specific nomenclature. One of these is the principal investigator (PI): Bruno Latour. In one of the first public presentations of AIME, delivered in late 2011, he defined AIME as a collective procedure triggered by a series of troublesome anthropological and philosophical questions. AIME’s ambition was to invent a specific medium for an empirical [#][It is empirical in the sense that the demonstration and discussion of the philosophical arguments are grounded on anthropological experiences fostered by diverse types of documents (iconic, audio visual, textual...).] inquiry. The inquiry had started 25 years earlier as a personal endeavor [#][For an historical account of the project see (Latour, 2013).]. Given the huge scope and topic, it now had to be opened to other researchers willing to use the AIME protocol and method (borrowed from William James) in order to validate and expand the results. In this presentation, the moments of hesitation about the medium are clear, and the names for designating technologies and procedure are shaky, signaling something still to invent. Leaving the philosophical community to judge the relevance and quality of the AIME arguments, in this paper we dedicate ourselves, instead, to describing the evolution of these hesitations. They evolved into a chimera whose body parts do not have a clear identity, becoming one of the “strange beasts” described by Ludovico (2012). Thus, here was a collaborative inquiry presenting some results before the collaboration was even started; an academic book without footnotes and references; an open, on-and off-line platform to collaborate with peers where subscribing to a strict protocol was required. It is a set-up that was composed before it was able to be described[#][Obviously this does not mean that we had no plan or strategy. It is simply that these were anticipated as achievements of the philosophy itself. Figure 2 is among the very first comprehensive depictions of the project.]. Eventually, we identified some [built-in expectations](^^classed:anomaly) where the produced artifacts did not present all of the features required from the general type of media they belonged to.
 
 ^^modulo-aside:Counting AIME appelations
 
-Observing how people described AIME is enlightening. By analyzing 39 web pages retrieved by employing five different search-engine queries, selected according to their relevance and pertinence (Rogers, 2009), almost all the pages mentioned the book[#][The first community-oriented instance of the project is a printed artifact called “preliminary report”. However, designating it as a philosophical book may be dangerously misleading. It does not present the expected conventional cognitive and cultural features expected from a philosophical book. It features neither footnotes or glossary, nor any critical apparatus. It presents additional characteristics atypical of philosophical book templates, such as expanded margins and a report-like index that provides the reader with a very precise overview of the contents. This first printed instance is, therefore, an incomplete or defective version of a philosophical book. This incompleteness is intentional; it is a call for reworking the project along with the other instantiations of the inquiry, and especially the digital interfaces of the project.], but only a few of them called it a report. While it is easy to label a printed academic artifact as a book, “the very best ‘interface’ ever designed” (Ludovico, 2012) to convey arguments, it has been fairly impossible to reinforce its unstable nature by associating it with the word “report”. It is a kind of [mismatching of lexical references](^^classed:anomaly) where the labels used for an established artifact didn’t fit with “new” experimentation. Another interesting element of reflection emerged from the relatively small number of pages mentioning AIME as an experiment in DH, even though, looking at Twitter activity during the DH2014 meeting, Latour’s keynote speech received a great deal of attention. These initially high expectations were quickly frustrated by the clumsiness of the first version of the online platform and by the type of DH activities conducted on it. Aren’t these clues of a kind of [misaligned set-up practices](^^classed:anomaly) for DH, where data visualization and large datasets are supposed to be the “new” norm, whereas the close reading of large numbers of documents is not?
+Observing how people described AIME is enlightening. By analyzing 39 web pages retrieved by employing five different search-engine queries, selected according to their relevance and pertinence (Rogers, 2009), almost all the pages mentioned the book[#][The first community-oriented instance of the project is a printed artifact called “preliminary report”. However, designating it as a philosophical book may be dangerously misleading. It does not present the expected conventional cognitive and cultural features expected from a philosophical book. It features neither footnotes or glossary, nor any critical apparatus. It presents additional characteristics atypical of philosophical book templates, such as expanded margins and a report-like index that provides the reader with a very precise overview of the contents. This first printed instance is, therefore, an incomplete or defective version of a philosophical book. This incompleteness is intentional; it is a call for reworking the project along with the other instantiations of the inquiry, and especially the digital interfaces of the project.], but only a [few of them called it a report](^^modulo-href:The report). While it is easy to label a printed academic artifact as a book, “the very best ‘interface’ ever designed” (Ludovico, 2012) to convey arguments, it has been fairly impossible to reinforce its unstable nature by associating it with the word “report”. It is a kind of [mismatching of lexical references](^^classed:anomaly) where the labels used for an established artifact didn’t fit with “new” experimentation. Another interesting element of reflection emerged from the relatively small number of pages mentioning AIME as an experiment in DH, even though, looking at Twitter activity during the DH2014 meeting, Latour’s keynote speech received a great deal of attention. These initially high expectations were quickly frustrated by the clumsiness of the first version of the online platform and by the type of DH activities conducted on it. Aren’t these clues of a kind of [misaligned set-up practices](^^classed:anomaly) for DH, where data visualization and large datasets are supposed to be the “new” norm, whereas the close reading of large numbers of documents is not?
 
-Almost all the pages retrieved above mentioned the AIME collaborative aspects of the digital platform[#][The digital interfaces of the project find their unity in a shared URL: [modesofexistence.org](http://modesofexistence.org/). This accesses a blog-like home page and two interfaces for the inquiry contents. The first interface ([modesofexistence.org/inquiry](http://modesofexistence.org/inquiry)), named “book entry,” features the elements of the project in a layout composed of four columns: the first presents the preliminary report (txt), then comes a vocabulary discussion and definition column (voc), then contextual documents along with bibliographical references (doc), and, last but not least, collective contributions pointing at elements from the three previous columns (cont). The reader is then left free to navigate through a non-linear logic by clicking through the links bounding the diverse elements of the inquiry, reassembled through specific visual agencies depending on the main element read by the visitor. The second interface ([modesofexistence.org/crossings](http://modesofexistence.org/crossings)), called “crossings entry,”,displays the elements of the investigation as sorted through the theoretical framework of the project, that is modes and their crossings. It allows for the building of alternative and nonexclusive pathways, called scenarios, into the network of contents (book paragraphs, vocabulary entry, documents), each scenario intended to shed new light on the meaning of modes and their crossings.], but only a few cited the face-to-face meetings[#][Another instantiation of the project consisted of physical meetings gathering various people interested in specific modes and responding to a call for contributions on the digital version of the inquiry.] that had been widely communicated. This lack of citation is in marked contrast to the other digital methods analysis (Rogers, 2013) that we conducted using Twitter. Having a look at the graph produced by connecting hashtags and users certainly gives the impression of a complete contrast.
+Almost all the pages retrieved above mentioned the AIME collaborative aspects of the digital platform[#][The digital interfaces of the project find their unity in a shared URL: [modesofexistence.org](http://modesofexistence.org/). This accesses a blog-like home page and two interfaces for the inquiry contents. The first interface ([modesofexistence.org/inquiry](http://modesofexistence.org/inquiry)), named “book entry,” features the elements of the project in a layout composed of four columns: the first presents the preliminary report (txt), then comes a vocabulary discussion and definition column (voc), then contextual documents along with bibliographical references (doc), and, last but not least, collective contributions pointing at elements from the three previous columns (cont). The reader is then left free to navigate through a non-linear logic by clicking through the links bounding the diverse elements of the inquiry, reassembled through specific visual agencies depending on the main element read by the visitor. The second interface ([modesofexistence.org/crossings](http://modesofexistence.org/crossings)), called “crossings entry,”,displays the elements of the investigation as sorted through the theoretical framework of the project, that is modes and their crossings. It allows for the building of alternative and nonexclusive pathways, called scenarios, into the network of contents (book paragraphs, vocabulary entry, documents), each scenario intended to shed new light on the meaning of modes and their crossings.], but only a few cited the [face-to-face meetings](^^modulo-href:The meetings)[#][Another instantiation of the project consisted of physical meetings gathering various people interested in specific modes and responding to a call for contributions on the digital version of the inquiry.] that had been widely communicated. This lack of citation is in marked contrast to the other digital methods analysis (Rogers, 2013) that we conducted using Twitter. Having a look at the graph produced by connecting hashtags and users certainly gives the impression of a complete contrast.
 
 ^^modulo-aside:Graph of correlations between hashtags and users around AIME
 
-Evident at first glance is a polarization between AIME and its PI. It is probably the clue of a [personality and status refraction](^^classed:anomaly) where the reputation of a specific project actor multiplies engagements with the project itself. If we remove the two main nodes, a clearer view of the discussion around AIME arises. Some discussions are shown to be revolving around DH memes (eg. #digitalhumanities) and are clustered around the various AIME workshops and side events (eg. #thatcamplyon). As would be expected, discussions appear around the usual fields of study with which the PI is associated (#sociology, #ANT, #STS[#][ANT stands for Actor-Network Theory, white STS stands for Science and Technology Studies]) as well as other projects conducted by him (#mooc, #cop21). Here we can see a sort of [amalgamation of heterogeneous public](^^classed:anomaly), where the composition and scale of the communities being formed do not fit with what had been expected. The projected audience did not conform to a single discipline/community, which engendered some confusion, thereby leading to misunderstandings.
+Evident at first glance is a [polarization between AIME and its PI](^^modulo-href:Polarization clues through Twitter). It is probably the clue of a [personality and status refraction](^^classed:anomaly) where the reputation of a specific project actor multiplies engagements with the project itself. [If we remove the two main nodes, a clearer view of the discussion around AIME arises](^^modulo-href:AIME on twitter - without its main actors). Some discussions are shown to be revolving around DH memes (eg. #digitalhumanities) and are clustered around the various AIME workshops and side events (eg. #thatcamplyon). As would be expected, discussions appear around the usual fields of study with which the PI is associated (#sociology, #ANT, #STS[#][ANT stands for Actor-Network Theory, white STS stands for Science and Technology Studies]) as well as other projects conducted by him (#mooc, #cop21). Here we can see a sort of [amalgamation of heterogeneous public](^^classed:anomaly), where the composition and scale of the communities being formed do not fit with what had been expected. The projected audience did not conform to a single discipline/community, which engendered some confusion, thereby [leading to misunderstandings](^^modulo-href:Misunderstandings on Twitter).
 
 ^^modulo-aside-clear
 
 # Methodology: multiplying listening devices
 
-This is a shallow *understanding* of what the AIME project did, trying to recombine inventive and classic intellectual technologies. With different timing in each case, the project created different expectations from various communities[#][For a thorough, qualitative analysis of AIME project’s outsiders diverging expectations, see Nyrup and Thomsen (2015).], philosophers, designers, and DH researchers, as well as created a wide range of frustrations and protestations.
+This is a shallow *understanding* of what the AIME project did, trying to recombine inventive and classic intellectual technologies. [With different timing in each case](^^modulo-href:AIME-related hashtags over time), the project created different expectations from various communities[#][For a thorough, qualitative analysis of AIME project’s outsiders diverging expectations, see Nyrup and Thomsen (2015).], philosophers, designers, and DH researchers, as well as created a wide range of frustrations and protestations.
 
 We are proposing to reframe these different elements as *clues* allowing us to detect different *analogous*[#][Here the word analogous is in contraposition to the word anomalous as for the linguistic quarrel of ancient started in ancient Greece and then developed in Rome. While the doctrine of the analogy fostered the idea of a rational language stemming from regular fixed grammatical rules, the doctrine of the anomaly saw language as a spontaneous phenomenon crafted by its living use, evolving and modifying itself, thus admitting divergences and irregularity. The meaning of the term should not be taken in contraposition to digital.] practices and assumptions at work in philosophy, collaboration-based projects, design, and DH communities. In order to do so, this paper will:
 
@@ -62,7 +62,7 @@ an analysis of AIME-related twitter activity;
 * a questionnaire analysis, based on a study involving 249 out of the ~6000 users registered in the project’s platform at the time of collection;
 * a platform’s database analysis featuring recordings about enlisted co-inquirers and their writing and annotating activities;
 * an analysis of Google analytics data about the digital platform[#][Everything written by, addressed to or containing @AIMEproject, modesofexistence, modes_of_existence, “Bruno Latour”, brunolatour, modes?[_]?of[_]?existence|#brunolatour|aimeproject, aimeproject.org. Their relevance has been determined by a qualitative evaluation of them.];
-* a series of interviews with team members conducted by an external researcher during the most active phase of the project.
+* a series of interviews with team members conducted during the most active phase of the project.
 
 The above-mentioned devices allow us to make use of quantitative and qualitative, enunciative and practical, and insiders’ and outsiders’ data. We analyzed each of these sources, considering all the traces collected after the passage of the project as clues requiring an inferential explanation.
 
@@ -82,7 +82,7 @@ Since its objective was to test the same theoretical hypothesis within diverse m
 
 ^^modulo-aside:Comparisons to wikipedia - an example
 
-Another source of displacement in the understanding of the project came from [built-in expectations](^^classed:anomaly) and the deceptive, although natural, comparisons they made explicitly or implicitly between AIME specific artifacts and more widespread new media formats[#][Namely social media platforms, blogging platforms, wiki websites, academic documents, online repositories, and digital archives.] with which they shared some features or methodological resonances. Indeed, while the printed artifact has been criticized for being flawed as a defective version of a “philosophical book” due to its lack of critical apparatus, more subtle analogies were made regarding the digital instances.
+Another source of displacement in the understanding of the project came from [built-in expectations](^^classed:anomaly) and the deceptive, although natural, [comparisons they made explicitly or implicitly between AIME specific artifacts and more widespread new media formats](^^modulo-href:AIME - related wordings)[#][Namely social media platforms, blogging platforms, wiki websites, academic documents, online repositories, and digital archives.] with which they shared some features or methodological resonances. Indeed, while the printed artifact has been criticized for being flawed as a defective version of a “philosophical book” due to its lack of critical apparatus, more subtle analogies were made regarding the digital instances.
 
 ^^modulo-aside:Reflections about the absence of specific topics
 
@@ -96,7 +96,7 @@ Another recurrent comparison was with blogs, from the PI’s argument about blog
 
 ^^modulo-aside-clear
 
-We could try to explain the missed connections provoked by the project as a clash between the tradition of the humanities to use (one) text as the main (and only) medium for intellectual argument, and AIME multimodal shifts through several complementary instances. But if we then try to understand them in the specific context of DH experiments, some [media-related expectations](classed:^^anomaly) may also have been caused by the heterogeneity of the AIME set-up in terms of templates’ compliance or divergence: on the one hand various generic media and tools used for the project life (Twitter, AIME blog, mailing list, shared on-line meeting materials), and on the other hand the parts that were specifically designed for the inquiry. The latter presented a strong visual and organizational homogeneity (for instance, book and interfaces were presented with the same typesetting and colors, dialoguing with similar visual codes). It could be stated, firstly, that their peculiarity asked for some linking with existing templates, provoking the displacements that we have described. Secondly, the specifically new artifacts were perceived as designed to fulfill every cognitive and intellectual expectation of such a project, while some of them, like project discussion and scholarly debate, could and have also been fulfilled by more generic media such as twitter or blogs.
+We could try to explain the missed connections provoked by the project as a clash between the tradition of the humanities to use (one) text as the main (and only) medium for intellectual argument, and AIME multimodal shifts through several complementary instances. But if we then try to understand them in the specific context of DH experiments, some [media-related expectations](classed:^^anomaly) may also have been caused by the heterogeneity of the AIME set-up in terms of templates’ compliance or divergence: on the one hand various generic media and tools used for the project life (Twitter, AIME blog, mailing list, shared on-line meeting materials), and on the other hand the parts that were specifically designed for the inquiry. The latter presented a strong visual and organizational homogeneity (for instance, book and interfaces were presented with the same typesetting and colors, dialoguing with similar visual codes). It could be stated, firstly, that their peculiarity asked for some linking with existing templates, provoking the displacements that we have described. Secondly, the specifically new artifacts were perceived as designed to fulfill every cognitive and intellectual expectation of such a project, while some of them, like project discussion and scholarly debate, could and have also been fulfilled by more generic media such as twitter or [blogs](^^modulo-href:External blogs).
 
 # Anomaly family #2: interface-driven methodology and its encounters with scholarly publics
 
@@ -110,7 +110,7 @@ We could try to explain the missed connections provoked by the project as a clas
 
 ^^modulo-aside:Tutorial of the book entry
 
-Once the different reactions provoked by AIME were observed and analyzed, we could focus on the very activity of people engaged with it. The possibility of contributing to the inquiry was meant to be open to diverse practitioners and scholars able to witness the clashes between the “modes of existence”. This process required an [evolving set of skills](^^classed:anomaly): the co-inquirers should have known the main inquiry narrative by having read the report (traditional humanities literacy skills), then to have navigated through the extended contextual contents on the “book entry” (“digital literacy” skills). There, they could bookmark some excerpts through a specific functionality. Eventually, they were encouraged to propose a “contribution” to the inquiry by attaching to one part of existing content a production of their own in order to amend/expand the original PI work (philosophy and anthropology-related skills). In this process, a huge role was also played by the face-to-face meetings, mainly aimed at discussing, accompanying, and encouraging contributions on the platform. Comparing reading and contribution activity of the platform overall and the project events agenda, it seems that the digital platform activity was correlated with the AIME workshops and events agenda.
+Once the different reactions provoked by AIME were observed and analyzed, we could focus on the very activity of people engaged with it. The possibility of contributing to the inquiry was meant to be open to diverse practitioners and scholars able to witness the clashes between the “modes of existence”. This process required an [evolving set of skills](^^classed:anomaly): the co-inquirers should have known the main inquiry narrative by having read the report (traditional humanities literacy skills), then to have navigated through the extended contextual contents on the “book entry” (“digital literacy” skills). There, they could bookmark some excerpts through a specific functionality. Eventually, they were encouraged to propose a “contribution” to the inquiry by attaching to one part of existing content a production of their own in order to amend/expand the original PI work (philosophy and anthropology-related skills). In this process, a huge role was also played by the [face-to-face meetings](^^modulo-href:The meetings), mainly aimed at discussing, accompanying, and encouraging contributions on the platform. [Comparing reading and contribution activity of the platform overall and the project events agenda](^^modulo-href:Project event agenda and website consultation), it seems that the digital platform activity was correlated with the AIME workshops and events agenda.
 
 ^^modulo-aside:Reading the four columns of the book entry
 
@@ -149,26 +149,22 @@ While multimodal inquiry and composition seem to be one of the most discussed an
 | ========= | ======== | ======== | ========= |
 | Team’s interview analysis<br><br>Web pages reviews | People protested about the principle of contribution, both in its goal (helping Latour’s work) and modalities (a closed process) | [ethical disjunction](^^classed:anomaly)<br><br>[ambivalent status identification](^^classed:anomaly)<br><br>[middle-state publishing](^^classed:anomaly)<br><br>[personality and status refraction](^^classed:anomaly)<br><br> | The specificity of DH inquiries inside the Academia collided with the notions of academic contribution and authorship.<br><br>There are various distances and dissonances between the requirements of scholarly collaborative undertakings and web culture openness ethos. |
 
-^^modulo-aside:Divergent interests
+^^modulo-aside:Project reception by french DH community
 
 During a French Digital Humanities event[#][THATCamp Saint-Malo. Held in Saint-Malo (France) from 17th to 20th October 2013. See [books.openedition.org/editionsmsh/2203](http://books.openedition.org/editionsmsh/2203) ], the collective and collaborative nature of the AIME project was challenged as presenting a certain non-reciprocity between the main author and contributors: co-inquirers were asked to dedicate a huge amount of time while not being acknowledged clearly enough as genuine contributors to the inquiry. During the latter meeting, the very principle of contribution was under discussion as a matter of intellectual work reward.
 
-^^modulo-aside:Q&A about the contribution process
-
-
-If we compare the project idea of a contribution to that of the analogical academic publishing habitus, the AIME contribution activity is indeed somehow perturbing: it could be framed, on the one hand, as an open reviewing process where co-inquirers propose modifications and improvements, and, on the other hand, as a journal call for contributions through which accepted submitters get to the status of author. This hybrid, peculiar finality of the contribution activity, that fit with none of the established ways of recognizing and acknowledging scholarly work, has caused various aural and written protestations that we could frame as the sign of an [ambivalent status identification](^^classed:anomaly) anomaly. Besides the very format of the contributions, a sort of [middle-state publishing](^^classed:anomaly) [#][This expression is borrowed from “The New Everyday” experiment in academic publishing. See [mediacommons.futureofthebook.org/tne/about](http://mediacommons.futureofthebook.org/tne/about)] between traditional academic contribution and academic blog argumentation[#][See, for instance, the scientific blogging platform hypotheses.org] may have fed and complicated this latter anomaly.
+If we compare the project idea of a contribution to that of the analogical academic publishing habitus, the AIME contribution activity is indeed somehow perturbing: it could be framed, on the one hand, as an open reviewing process where co-inquirers propose modifications and improvements, and, on the other hand, as a journal call for contributions through which accepted submitters get to the status of author. This hybrid, peculiar finality of the contribution activity, that fit with none of the established ways of recognizing and acknowledging scholarly work, has caused various aural and [written protestations](^^modulo-href:Q&A about the contribution process) that we could frame as the sign of an [ambivalent status identification](^^classed:anomaly) anomaly. Besides the very format of the contributions, a sort of [middle-state publishing](^^classed:anomaly) [#][This expression is borrowed from “The New Everyday” experiment in academic publishing. See [mediacommons.futureofthebook.org/tne/about](http://mediacommons.futureofthebook.org/tne/about)] between traditional academic contribution and academic blog argumentation[#][See, for instance, the scientific blogging platform hypotheses.org] may have fed and complicated this latter anomaly.
 
 ^^modulo-aside:Negotiating the recognition of the contributors
 
-It has to be said that the PI considered contributors to have specific and autonomous interests in the project and a shared, though limited, status of author. Even if limited, this acknowledgement of the co-inquirers’ authorship has been emphasized by featuring them on platform credits. The contribution validation process itself has been under discussion as well. The contributions followed a definite process of mediation and review as a result of their compliance with a specific research methodology, strategy, and empirical protocol. They were evaluated and followed by a small collective of scholars acquainted with certain intellectual regions of the inquiry: these particular reviewers were labeled as *mediators*. This distribution provoked some concern. Some co-inquirers criticized the lack of transparency of the process[#][The AIME team published 2 ‘AIME leaks’ to inform users about the revision process. For instance, see [modesofexistence.org/answer-to-a-reader-reponse-a-un-lecteur/](http://modesofexistence.org/answer-to-a-reader-reponse-a-un-lecteur/) the disclosure of a non-published contribution and its justification, and at [modesofexistence.org/contribution-recognizing-the-risk-how-to-navigate-between-att-and-hab](http://modesofexistence.org/contribution-recognizing-the-risk-how-to-navigate-between-att-and-hab/) a successful contribution of email exchanges.] and questioned the “testability” of AIME methodology as a closed process. Here we face an intellectual critique highlighting an [ethical disjunction](^^classed:anomaly) between design project choices and an intellectual debate about philosophical inquiry.
+It has to be said that [the PI considered contributors to have specific and autonomous interests in the project and a shared, though limited, status of author](^^modulo-href:Divergent interests). Even if limited, this acknowledgement of the co-inquirers’ authorship has been emphasized by featuring them on [platform credits](^^modulo-href:Contributors on the platform). The contribution validation process itself has been under discussion as well. The contributions followed a definite process of mediation and review as a result of their compliance with a specific research methodology, strategy, and empirical protocol. They were evaluated and followed by a small collective of scholars acquainted with certain intellectual regions of the inquiry: these particular reviewers were labeled as *mediators*. This distribution provoked some concern. Some co-inquirers criticized the lack of transparency of the process[#][The AIME team published 2 ‘AIME leaks’ to inform users about the revision process. For instance, see [modesofexistence.org/answer-to-a-reader-reponse-a-un-lecteur/](http://modesofexistence.org/answer-to-a-reader-reponse-a-un-lecteur/) the disclosure of a non-published contribution and its justification, and at [modesofexistence.org/contribution-recognizing-the-risk-how-to-navigate-between-att-and-hab](http://modesofexistence.org/contribution-recognizing-the-risk-how-to-navigate-between-att-and-hab/) a successful contribution of email exchanges.] and questioned the “testability” of AIME methodology as a closed process. Here we face an intellectual critique highlighting an [ethical disjunction](^^classed:anomaly) between design project choices and an intellectual debate about philosophical inquiry.
 
-^^modulo-aside:Translating bookish focus
+^^modulo-aside:Closeness and the digital humanities
 
 Another similar [ethical disjunction](^^classed:anomaly) can be detected regarding the very discourse supporting the DH dimension of AIME, thanks to the reactions responding to some public presentations of the project to DH audiences that repeatedly framed closeness as one of the core values of the project. Closeness was presented as distance: a close arguments analysis also required a close reading activity rather than a distant one (Moretti, 2013). This first claim provoked reactions[#][In his book Berry (2015) states, “The use of the ‘digital’ in such a desiccated form points to the limitations of Latour’s ability to engage with the research program of investigating the digital, but also the way in which a theologically derived close-reading method derived from bookish practice may not be entirely appropriate for unpacking and ‘reading’ computational media and software structures.”] about the relevance of such an undertaking in the context of “post-digital” research, implicitly assuming that because the set-up of AIME was making use of digital instances, it should have specifically addressed the question of digitality in its very contents and intellectual scope, and thus used distant reading activities, most appropriate methodology for activities such as “unpacking and ‘reading’ computational media and software structures” (Berry, 2015)[#][The amalgamation of the PI’s discourse about AIME projects peculiar choices, and its broader positions about the philosophy of digital and software in general, while legitimate, could also be the sign of a personality and status refraction. See Berry (2015).].
 
 
-^^modulo-aside-clear
-
+^^modulo-aside:Translating bookish focus
 
 Closeness was also presented as *focus*: producing philosophical argument required a non-distracting environment[#][This concern has been expressed through design choices such as not pointing to external websites inside the digital instances of the project while allowing the embedding inside this protected workplace of a variety of media and contents coming from external sources.
 ]. This declaration provoked strong reactions inside DH communities since openness[#][“The digital is the realm of the open source, open resources. Anything that attempts to close this space should be recognized for what it is: the enemy.” The Digital Humanities Manifesto 2.0, manifesto.[humanities.ucla.edu/2009/05/29/the-digital-humanities-manifesto-20/](http://manifesto.humanities.ucla.edu/2009/05/29/the-digital-humanities-manifesto-20/).
@@ -275,7 +271,7 @@ Fallen, Camille. (2012) *L’anomalie créatrice*. Paris: Kimé.
 
 [Donato Ricci](^^classed:authorinline) is design lead and Post-Doc researcher at médialab | SciencesPo. He conducts research concerning the role of design practices in human and social sciences. He followed all the design aspects of the AIME project. Furthermore, he is involved in projects using visual models, tools, and approaches for observing social phenomena through digital traces. Since 2005, he has been part of the development of the DensityDesign Lab where he deepened his interest in exploring the role of visual languages to foster public engagement in complex social issues. He is Assistant Professor of Representação e Conhecimento at Universidade de Aveiro and teaches Data & Information Visualization at Parsons Paris.
 
-[Robin de Mourat](^^classed:authorinline) is Ph.D. student in Aesthetics & Digital Humanities at Université Rennes 2 (France), under the direction of Nicolas Thély. He is also involved as a designer in various experiments exploring the intersection between humanities practices and digital tools design. His Ph.D. research aims at exploring the contemporary forms of design practice in academic publishing. Inside this frame, he has conducted a one year-long field study about the AIME project.
+[Robin de Mourat](^^classed:authorinline) is Ph.D. student in Aesthetics & Digital Humanities at Université Rennes 2 (France), under the direction of Nicolas Thély. Holding a french "agrégation" in Applied Arts, and graduate in Design & informatics from École Normale Supérieure de Cachan, École Boulle and CNAM, he is now involved in various design research initiatives and projects exploring the intersection between humanities, computer science and design practices. His Ph.D. research aims at exploring the design-related stakes of contemporary academic publishing. Inside this frame, he has conducted a one year long participant observation study inside the AIME project team.
 
 [Christophe Leclercq](^^classed:authorinline) is an art historian, teacher, and project manager working at Sciences Po and The Ecole du Louvre, Paris. His research is based on the relationship between art and technology, and on digital archives in art history (the E.A.T. Datascape). He has collaborated with many engineers, artists and designers toward the development of experimental projects in art, and the promotion and diffusion of their research via exhibitions, workshops, lectures, and conferences. He has acted as project manager of the ‘médialab’ and AIME Project (‘An Inquiry into Modes ofExistence’), led by Bruno Latour.
 
@@ -283,15 +279,18 @@ Fallen, Camille. (2012) *L’anomalie créatrice*. Paris: Kimé.
 
 # About this document
 
-This document is the digital companion of the eponym article in the "Critical making: Design and the Digital Humanities" special issue of the "Visible Language" Journal. Learn more about Visible Language special issue : [http://visiblelanguagejournal.com/](http://visiblelanguagejournal.com/)
+This document is the digital companion of the eponym article in the "Critical making: Design and the Digital Humanities" special issue of the "Visible Language" Journal. 
+
+[Learn more about Visible Language special issue](http://visiblelanguagejournal.com/)
 
 It is generated [from a simple text file](/data/clues-anomalies-understanding.md) with the Modulo engine, a text-to-webpage tool aiming at facilitating the making of academic multimodal publications on the web.
-Learn more about Modulo: [https://github.com/robindemourat/modulo](https://github.com/robindemourat/modulo)
+
+[Learn more about Modulo](https://github.com/robindemourat/modulo)
 
 ```json
 {
     "role" : "modulo-view",
-    "title" :"Bruno Latour presents the project",
+    "title" :"Bruno Latour presents the project in its early phase",
     "type" : "dicto",
     "data" : "data-nogit/bruno-latour-speap.srt",
     "cut" : "no",
@@ -422,7 +421,7 @@ Learn more about Modulo: [https://github.com/robindemourat/modulo](https://githu
     "role" : "modulo-view",
     "title" :"Comparisons to wikipedia - an example",
     "type" : "iframe",
-    "url" : "http://web.mit.edu/anthropology/pdf/articles/fischer/fischer_Lightness_Existence.pdf",
+    "url" : "http://www.haujournal.org/index.php/hau/article/view/hau4.1.018/594",
     "comment" : "'An Inquiry into Modes of Existence (AIME) is a book and part of a web project (AIME project), including three books: a digital book (printable) at the launch; this book (Latour 2013a); and one that will accompany an August 2014 exhibition. The project has three phases: Latour’s conception; a Reaction Environment with trained “co-enquirers” closely moderating, filtering, and shaping inputs from anyone who registers to participate (a Wikipedia sort of model); and a final completed presentation.'"
 }
 ```
@@ -613,7 +612,7 @@ Learn more about Modulo: [https://github.com/robindemourat/modulo](https://githu
     "role" : "modulo-view",
     "title" :"Reflections about the absence of specific topics",
     "type" : "iframe",
-    "url" : "http://www.tulliajack.com/?p=702"
+    "url" : "http://haujournal.org/index.php/hau/article/view/hau4.1.017/661"
 }
 ```
 
@@ -665,6 +664,206 @@ Learn more about Modulo: [https://github.com/robindemourat/modulo](https://githu
     "title" :"Team views on openness and closeness",
     "type" : "dicto",
     "data" : "data-nogit/paul-girard-openness.srt"
+}
+```
+
+[//]: # (inline asides)
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Misunderstandings on Twitter",
+    "type" : "html",
+    "url" : "data/html-modules/twitter-misunderstandings.html"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"The report",
+    "type" : "iframe",
+    "url" : "http://www.modesofexistence.org/#the-tools/report"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"The meetings",
+    "type" : "iframe",
+    "url" : "http://www.modesofexistence.org/#the-phases/phase-two"
+}
+```
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Polarization clues through Twitter",
+    "type" : "html",
+    "url" : "data/html-modules/twitter-polarization.html"
+}
+```
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"AIME on twitter - without its main actors",
+    "type" : "image",
+    "url" : "data/images/aime_without_main_nodes.png",
+    "comment" : "Graph depicting the link between users (@) and hashtags (#) for the aime project. The nodes @aimeproject and #brunolatour have been removed to show how the network is organized around the events #, depicted in red."
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"AIME - related wordings",
+    "type" : "image",
+    "url" : "data/images/aime_wording.png",
+    "comment" : "Graph depicting the various names and adjectives used to address the digital platform of the aime project. The graph is based on a set of webpages harvest with different search-engines queries. The nodes are connected when two words appear in the same description. The size is propotional to the overall mention of a specific word."
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"AIME on Twitter",
+    "type" : "iframe",
+    "url" : "http://www.modesofexistence.org/tag/event/"
+}
+```
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Reflections about the absence of feminism",
+    "type" : "iframe",
+    "url" : "http://www.tulliajack.com/?p=702"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Reflections about the absence of petro-chemicals",
+    "type" : "iframe",
+    "url" : "http://haujournal.org/index.php/hau/article/view/hau4.1.017/661"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Contributors on the platform",
+    "type" : "iframe",
+    "url" : "http://www.modesofexistence.org/#the-network/contributors"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"The contribution process",
+    "type" : "image",
+    "url" : "data/images/mediation-process.png"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Closeness and the digital humanities",
+    "type" : "iframe",
+    "url" : "http://dh2014.org/videos/opening-night-bruno-latour/"
+}
+```
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"External blogs",
+    "type" : "iframe",
+    "url" : "https://aimegroup.wordpress.com/"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Evaluing AIME",
+    "type" : "iframe",
+    "url" : "https://terenceblake.wordpress.com/2015/02/18/evaluing-latours-aime-diplomacy-originality-testability-digitality-democracy/"
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Project reception by french DH community",
+    "type" : "iframe",
+    "url" : "http://books.openedition.org/editionsmsh/2203",
+    "comment" : "The debate centered essentially on the a priori contribution and moderation protocol [...], bringing the question of openness and closeness of the contributive platform. Some people pointed out the paradox of the principle of a collective inquiry envisaging an a priori moderation process. [...] Other mentionned what they perceived as a non reciprocity in the relation between the author (even qualified by one of the participants as a 'ghost') and contributors [...]"
+}
+```
+
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"Project event agenda and website consultation",
+    "type" : "timeline",
+    "begindate" : "01/10/2013",
+    "enddate" : "01/07/2015",
+    "dateformat" : "%d/%m/%Y",
+    "columns" : [
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/AIME_timeline.csv",
+                    "type" : "events",
+                    "models" : {
+                        "date" : "Start Date",
+                        "end" : "End Date",
+                        "title" : "Headline",
+                        "desc" : "Text"
+                    },
+                    "dateformat" : "%m/%d/%Y",
+                    "title" : "restrospective of events"
+                }
+            ]
+        },
+        {
+            "layers" : [
+                {
+                    "data" : "data-nogit/AIME_analytics_f_time.csv",
+                    "type" : "metrics",
+                    "models" : {
+                            "datesKey" : "date",
+                            "value" : "globaltimeonpage"
+                        },
+                    "dateformat" : "%Y-%m-%d",
+                    "title" : "AIME website: global time spent by visitors (Google Analytics data)",
+                    "tooltip" : " cumulated time spent by visitors on this day",
+                    "unit" : "seconds"
+                }
+            ]
+        }
+    ]
+}
+```
+
+```json
+{
+    "role" : "modulo-view",
+    "title" :"AIME-related hashtags over time",
+    "type" : "image",
+    "url" : "data/images/aime_hashtags.png",
+    "comment" : "Heatgraph depicting the relevance of the different # during the time. Besides the first 5 ones, present during all the time of the observation, all the others are clusterized in specific moments."
 }
 ```
 
