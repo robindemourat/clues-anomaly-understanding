@@ -334,7 +334,7 @@
     background: rgba(0,0,0,.8);
 }*/
 
-.modulo-iframe .iframe-header .comment
+.modulo-iframe blockquote
 {
     font-style : italic;
 }

@@ -931,7 +931,7 @@ SPECIFIC COMPONENTS
 
 .modulo-href-trigger:hover
 {
-    font-weight: 800;
+    font-family: 'NovelPro-Semibold';
 }
 
 
@@ -1149,6 +1149,8 @@ SPECIFIC COMPONENTS
 .toc-element a{
     font-family : 'NovelSansPro-Regular';
     outline : none;
+
+    /*text-transform : lowercase;*/
 }
 
 .toc-element.active
@@ -1156,7 +1158,9 @@ SPECIFIC COMPONENTS
     /*text-decoration: underline;*/
 
     opacity: 1;
+
 }
+
 
 /*
 TEXT BODY

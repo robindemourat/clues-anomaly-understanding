@@ -37,7 +37,9 @@ I populate the aside with several types of div regarding the figure resource typ
 
 <figcaption>
   <p class="figcaption-header">
-    <span>Figure <span ng-bind="data.index+1"></span> — </span><span ng-bind="data.title"></span>
+    <span>Figure <span ng-bind="data.index+1"></span> — </span>.<span style="padding-left:.5em;" ng-bind-html="data.title"></span>
   </p>
-  <p ng-if="data.comment" ng-bind="data.comment"></p>
+  <p ng-if="data.caption">
+    <span  ng-bind-html="data.caption"></span><span ng-if="data.url" ng-bind="data.url"></span>
+  </p>
 </figcaption>

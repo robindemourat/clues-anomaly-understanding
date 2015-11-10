@@ -18,6 +18,11 @@ body
   height : auto;
 }
 
+iframe
+{
+  display : none;
+}
+
 @page {
   margin : 2cm;
 }
@@ -82,6 +87,11 @@ nav, aside,
   display : block;
   margin-bottom : 24px;
   page-break-before : always;
+}
+
+.modulo-footnote-pointer{
+  width : auto;
+  padding : 0;
 }
 
 .modulo-footnote-for-print
@@ -166,7 +176,8 @@ figcaption .figcaption-header{
   font-size : 14px;
 }
 
-figure .aside-header{
+figure .aside-header,
+figure .iframe-link{
   display : none;
 }
 

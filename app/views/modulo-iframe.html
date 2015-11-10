@@ -8,11 +8,13 @@
     height : (iframeOut)?'100%':'auto'
   }"
 >
-  <blockquote ng-bind="data.comment" class="comment" ng-if="data.comment"></blockquote>
+  <blockquote ng-bind="data.quote" ng-if="data.quote"></blockquote>
 
   <div class="iframe-link animate">
     <a ng-href="{{data.url}}" target="_blank">Go to the website ({{data.url}}</a>
   </div>
+
+
 </div>
 
 <iframe fit-screen-height ng-src="{{trustSrc(data.url)}}"></iframe>

@@ -294,7 +294,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "type" : "dicto",
     "data" : "data-nogit/bruno-latour-speap.srt",
     "cut" : "no",
-    "comment" : "Video captation of Bruno Latour's conference about AIME ERC project in front of SciencesPo SPEAP (Programme d'expérimentations en art et politique) students, November 17th 2011. Captation : Simon Ripoll-Hurier"
+    "caption" : "Video captation of Bruno Latour's conference about AIME ERC project in front of SciencesPo SPEAP (Programme d'expérimentations en art et politique) students, November 17th 2011. Captation : Simon Ripoll-Hurier"
 }
 ```
 
@@ -304,7 +304,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"Counting AIME appelations",
     "type" : "image",
     "url" : "data/images/pages-mentionning-the-book.jpg",
-    "comment" : "Count of the pages mentioning the different components and naming of the aime projects."
+    "caption" : "Count of the pages mentioning the different components and naming of the aime projects."
 }
 ```
 
@@ -323,7 +323,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
             },
         "default" : "#2a2b28"
     },
-    "comment" : "Graph depicting the link between users (@) and hashtags (#) for the aime project. In red the # related to aime events.",
+    "caption" : "Graph depicting the link between users (@) and hashtags (#) for the aime project. In red the # related to aime events.",
     "filters" : [
         {
             "nameActive" : "Show the two main nodes",
@@ -422,17 +422,19 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"Comparisons to wikipedia - an example",
     "type" : "iframe",
     "url" : "http://www.haujournal.org/index.php/hau/article/view/hau4.1.018/594",
-    "comment" : "'An Inquiry into Modes of Existence (AIME) is a book and part of a web project (AIME project), including three books: a digital book (printable) at the launch; this book (Latour 2013a); and one that will accompany an August 2014 exhibition. The project has three phases: Latour’s conception; a Reaction Environment with trained “co-enquirers” closely moderating, filtering, and shaping inputs from anyone who registers to participate (a Wikipedia sort of model); and a final completed presentation.'"
+    "caption" : "FISCHER, Michael M. J.. The lightness of existence and the origami of “French” anthropology: Latour, Descola, Viveiros de Castro, Meillassoux, and their so-called ontological turn. HAU: Journal of Ethnographic Theory, [S.l.], v. 4, n. 1, p. 331-355, jun. 2014. ISSN 2049-1115.",
+    "quote" : "'An Inquiry into Modes of Existence (AIME) is a book and part of a web project (AIME project), including three books: a digital book (printable) at the launch; this book (Latour 2013a); and one that will accompany an August 2014 exhibition. The project has three phases: Latour’s conception; a Reaction Environment with trained “co-enquirers” closely moderating, filtering, and shaping inputs from anyone who registers to participate (a Wikipedia sort of model); and a final completed presentation.'"
 }
 ```
-
 
 ```json
 {
     "role" : "modulo-view",
     "title" :"Similarities with a blog",
     "type" : "iframe",
-    "url" : "http://www.boiteaoutils.info/2015/06/latour-humanites-numeriques/"
+    "url" : "http://www.boiteaoutils.info/2015/06/latour-humanites-numeriques/",
+    "caption" : "RUIZ, Émilien. À PROPOS D’UNE CONFÉRENCE DE « TRÈS TRÈS HAUT NIVEAU » SUR LES HUMANITÉS NUMÉRIQUES. <i>La boîte à outil des historiens</i>, Jun. 2015",
+    "quote" : "Every blog user, whether scientific or not, on Hypotheses [european scholarly blogging platform, T.N.] or elsewhere, will recognize the principle of a priori comments moderation ..."
 }
 ```
 
@@ -443,7 +445,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Tutorial of the book entry",
     "type" : "vimeo",
-    "url" : "https://vimeo.com/78155122"
+    "url" : "https://vimeo.com/78155122",
+    "caption" : "Tutorial of the book entry made by the AIME team, published Oct. 2013 on Vimeo platform."
 }
 ```
 
@@ -451,6 +454,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Reading the four columns of the book entry",
+    "caption" : "Visualization of reading metrics on the AIME platform over time - computed regarding each column consultation, detected through their related URL patterns - retrieved from Google Analytics.",
     "type" : "timeline",
     "begindate" : "01/10/2013",
     "enddate" : "01/07/2015",
@@ -541,6 +545,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Digital literacy and contributions",
+    "caption" : "Result of a questionnaire sent to the AIME participants open mailing list.",
     "type" : "sankey",
     "sankeytype":"questionnaire",
     "data" : "data-nogit/AIME_questionnaire.csv",
@@ -557,6 +562,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"A few digitally committed co-inquirers",
+    "caption" : "Result of a questionnaire sent to the AIME participants open mailing list.",
     "type" : "sankey",
     "data" : "data-nogit/users_activity_actives.csv",
     "keys" : [
@@ -570,6 +576,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 ```json
 {
     "role" : "modulo-view",
+    "caption" : "Bruno Latour, AIME principal investigator. Excerpt of a semi-structured interview conducted in June 2014.",
     "title" :"Divergent interests",
     "type" : "dicto",
     "data" : "data-nogit/bruno-latour-authors-interests.srt"
@@ -581,6 +588,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Platform intimidation",
+    "caption" : "Pierre-Laurent Boulanger, AIME mediators manager. Excerpt of a semi-structured interview conducted in August 2014.",
     "type" : "dicto",
     "data" : "data-nogit/plb-temple.srt"
 }
@@ -591,6 +599,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Translating bookish focus",
+    "caption" : "Bruno Latour, AIME principal investigator. Excerpt of a semi-structured interview conducted in June 2014.",
     "type" : "dicto",
     "data" : "data-nogit/bruno-latour-focus.srt"
 }
@@ -601,6 +610,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Negotiating the recognition of the contributors",
+    "caption" : "Christophe Leclercq, AIME project manager. Excerpt of a semi-structured interview conducted in June 2014.",
     "type" : "dicto",
     "data" : "data-nogit/christophe-leclercq-contributors.srt"
 }
@@ -612,7 +622,9 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Reflections about the absence of specific topics",
     "type" : "iframe",
-    "url" : "http://haujournal.org/index.php/hau/article/view/hau4.1.017/661"
+    "url" : "http://haujournal.org/index.php/hau/article/view/hau4.1.017/661",
+    "quote" : "Given the prominent role accorded to vocabulary in the AIME platform, I searched for a number of terms to get a sense of the discursive field enabled by it. Little came up on phenomena at the center of my concern. Petrochemicals, for example, were present only as they offer a Modern contrast to the traditional. On one page, the camel is figure, a petrochemical factory ground, with a wry commentary on the clichéd contrast. Petrochemicals were not otherwise part of the vocabulary, documentation, or commentary.",
+    "caption" : "FORTUN, Kim. From Latour to late industrialism. HAU: Journal of Ethnographic Theory, [S.l.], v. 4, n. 1, p. 309-329, jun. 2014. ISSN 2049-1115."
 }
 ```
 
@@ -621,6 +633,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Difficulties for contributing",
+    "caption" : "Pierre-Laurent Boulanger, AIME mediators manager. Excerpt of a semi-structured interview conducted in August 2014.",
     "type" : "dicto",
     "data" : "data-nogit/plb-philactere.srt"
 }
@@ -630,6 +643,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Formatting and engaging",
+    "caption" : "Pierre-Laurent Boulanger, AIME mediators manager. Excerpt of a semi-structured interview conducted in August 2014.",
     "type" : "dicto",
     "data" : "data-nogit/plb-formatting-contributions.srt"
 }
@@ -641,7 +655,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"The contribution process",
     "type" : "image",
-    "url" : "data/images/mediation-process.png"
+    "url" : "data/images/mediation-process.png",
+    "caption" : "Schematic representation of the contribution process. Made by the team in 2013."
 }
 ```
 
@@ -652,7 +667,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"Q&A about the contribution process",
     "type" : "iframe",
     "url" : "http://www.modesofexistence.org/reading-experiences/#comment-1139308648",
-    "comments" : "The function of the site has never been to limit, restrict or even define the conversations around the paper and digital text of the book. I fully expected the argument to be debated in the normal ways that is through old fashion reviews, new blog like sites, reading groups, pep talks and gossips. Philosophical discussions should proceed according to their normal ways. Whenever I can, I will answer, but it is not our primary goal. Let thousand flowers flourish. I don’t think we need any special device for that. We are all good at it."
+    "caption" : "An entry of the AIME blog about users' feedbacks and its related discussion.",
+    "quote" : "The function of the site has never been to limit, restrict or even define the conversations around the paper and digital text of the book. I fully expected the argument to be debated in the normal ways that is through old fashion reviews, new blog like sites, reading groups, pep talks and gossips. Philosophical discussions should proceed according to their normal ways. Whenever I can, I will answer, but it is not our primary goal. Let thousand flowers flourish. I don’t think we need any special device for that. We are all good at it."
 }
 ```
 
@@ -662,6 +678,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Team views on openness and closeness",
+    "caption" : "Paul Girard, AIME technical manager. Excerpt of a semi-structured interview conducted in June 2014.",
     "type" : "dicto",
     "data" : "data-nogit/paul-girard-openness.srt"
 }
@@ -683,7 +700,9 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"The report",
     "type" : "iframe",
-    "url" : "http://www.modesofexistence.org/#the-tools/report"
+    "caption" : "Original presentation and 'wording' of the AIME printed instance.",
+    "url" : "http://www.modesofexistence.org/#the-tools/report",
+    "quote" : "The hard-copy book is fairly unusual. It is written in the form of a “research report” in which one finds summarised, in the most condensed and undemanding form possible, fieldwork studies which were impossible to print in their entirety. So the book appears without any notes or references. This is why, even if the book holds up by itself, it only really makes sense through the proofs and developments that will test it on the site. "
 }
 ```
 
@@ -692,7 +711,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"The meetings",
     "type" : "iframe",
-    "url" : "http://www.modesofexistence.org/#the-phases/phase-two"
+    "url" : "http://www.modesofexistence.org/#the-phases/phase-two",
+    "caption" : "Presentation of the AIME physical meetings."
 }
 ```
 
@@ -713,7 +733,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"AIME on twitter - without its main actors",
     "type" : "image",
     "url" : "data/images/aime_without_main_nodes.png",
-    "comment" : "Graph depicting the link between users (@) and hashtags (#) for the aime project. The nodes @aimeproject and #brunolatour have been removed to show how the network is organized around the events #, depicted in red."
+    "caption" : "Graph depicting the link between users (@) and hashtags (#) for the aime project. The nodes @aimeproject and #brunolatour have been removed to show how the network is organized around the events #, depicted in red."
 }
 ```
 
@@ -723,7 +743,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"AIME - related wordings",
     "type" : "image",
     "url" : "data/images/aime_wording.png",
-    "comment" : "Graph depicting the various names and adjectives used to address the digital platform of the aime project. The graph is based on a set of webpages harvest with different search-engines queries. The nodes are connected when two words appear in the same description. The size is propotional to the overall mention of a specific word."
+    "caption" : "Graph depicting the various names and adjectives used to address the digital platform of the aime project. The graph is based on a set of webpages harvest with different search-engines queries. The nodes are connected when two words appear in the same description. The size is propotional to the overall mention of a specific word."
 }
 ```
 
@@ -732,53 +752,30 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"AIME on Twitter",
     "type" : "iframe",
-    "url" : "http://www.modesofexistence.org/tag/event/"
+    "url" : "http://www.modesofexistence.org/tag/event/",
+    "caption" : "Page featuring AIME events (presentations and workshops)."
 }
 ```
 
-
-```json
-{
-    "role" : "modulo-view",
-    "title" :"Reflections about the absence of feminism",
-    "type" : "iframe",
-    "url" : "http://www.tulliajack.com/?p=702"
-}
-```
-
-```json
-{
-    "role" : "modulo-view",
-    "title" :"Reflections about the absence of petro-chemicals",
-    "type" : "iframe",
-    "url" : "http://haujournal.org/index.php/hau/article/view/hau4.1.017/661"
-}
-```
 
 ```json
 {
     "role" : "modulo-view",
     "title" :"Contributors on the platform",
     "type" : "iframe",
-    "url" : "http://www.modesofexistence.org/#the-network/contributors"
+    "url" : "http://www.modesofexistence.org/#the-network/contributors",
+    "caption" : "AIME page featuring contributors in project's credits."
 }
 ```
 
-```json
-{
-    "role" : "modulo-view",
-    "title" :"The contribution process",
-    "type" : "image",
-    "url" : "data/images/mediation-process.png"
-}
-```
 
 ```json
 {
     "role" : "modulo-view",
     "title" :"Closeness and the digital humanities",
     "type" : "iframe",
-    "url" : "http://dh2014.org/videos/opening-night-bruno-latour/"
+    "url" : "http://dh2014.org/videos/opening-night-bruno-latour/",
+    "caption" : "Opening plenary lecture given by Bruno Latour for the DH2014 event, Jully 2014."
 }
 ```
 
@@ -788,7 +785,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"External blogs",
     "type" : "iframe",
-    "url" : "https://aimegroup.wordpress.com/"
+    "url" : "https://aimegroup.wordpress.com/",
+    "caption" : "AIME reading group blog, started in August 2013."
 }
 ```
 
@@ -797,7 +795,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Evaluing AIME",
     "type" : "iframe",
-    "url" : "https://terenceblake.wordpress.com/2015/02/18/evaluing-latours-aime-diplomacy-originality-testability-digitality-democracy/"
+    "url" : "https://terenceblake.wordpress.com/2015/02/18/evaluing-latours-aime-diplomacy-originality-testability-digitality-democracy/",
+    "caption" : "BLAKE, Terrence. EVALUING LATOUR’S AIME: diplomacy, originality, testability, digitality, democracy. Feb. <i>Agent Swarm</i>, 2015."
 }
 ```
 
@@ -807,7 +806,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"Project reception by french DH community",
     "type" : "iframe",
     "url" : "http://books.openedition.org/editionsmsh/2203",
-    "comment" : "The debate centered essentially on the a priori contribution and moderation protocol [...], bringing the question of openness and closeness of the contributive platform. Some people pointed out the paradox of the principle of a collective inquiry envisaging an a priori moderation process. [...] Other mentionned what they perceived as a non reciprocity in the relation between the author (even qualified by one of the participants as a 'ghost') and contributors [...]"
+    "quote" : "The debate centered essentially on the a priori contribution and moderation protocol [...], bringing the question of openness and closeness of the contributive platform. Some people pointed out the paradox of the principle of a collective inquiry envisaging an a priori moderation process. [...] Other mentionned what they perceived as a non reciprocity in the relation between the author (even qualified by one of the participants as a 'ghost') and contributors [...]",
+    "caption" : "Report on a session of THATCamp Saint-Malo event in which the AIME project was presented just after the release of the contribution functionalities. October 2014."
 }
 ```
 
@@ -817,6 +817,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Project event agenda and website consultation",
     "type" : "timeline",
+    "caption" : "Project events and overall website consultation metrics over time - retrieved through Google Analytics.",
     "begindate" : "01/10/2013",
     "enddate" : "01/07/2015",
     "dateformat" : "%d/%m/%Y",
@@ -863,7 +864,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"AIME-related hashtags over time",
     "type" : "image",
     "url" : "data/images/aime_hashtags.png",
-    "comment" : "Heatgraph depicting the relevance of the different # during the time. Besides the first 5 ones, present during all the time of the observation, all the others are clusterized in specific moments."
+    "caption" : "Heatgraph depicting the relevance of the different # during the time. Besides the first 5 ones, present during all the time of the observation, all the others are clusterized in specific moments."
 }
 ```
 
