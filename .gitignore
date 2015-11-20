@@ -7,3 +7,4 @@ app/data-nogit
 .DS_Store
 app/fonts
 app/styles/webfonts
+app/styles/webfonts/*
