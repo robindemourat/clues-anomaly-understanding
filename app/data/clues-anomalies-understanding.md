@@ -1,4 +1,4 @@
-[Clues. Anomalies. Understanding.](^^classed:titre)
+[Clues.<br> Anomalies.<br> Understanding.](^^classed:titre)
 ==============
 
 [Detecting underlying assumptions and expected practices in the Digital Humanities through the AIME project.](^^classed:baseline)
@@ -116,7 +116,6 @@ Once the different reactions provoked by AIME were observed and analyzed, we cou
 
 Looking, then, at project reading metrics in more detail, it can be seen that the “contributions column” was proportionally more and more consulted as workshops were deployed. These correlations show that the co-inquirers subscribed rather well to the proposed sequence of activities. Accordingly, when looking at the questionnaire sent to platform subscribers, it can be seen that people participating to workshops were more likely to write contributions and to get published. Furthermore, most of those who declared having actually read the report happened to own or use a hardcopy of the inquiry and also to have read the documentation of the project (voc and doc columns). These findings are a good indication of some success in the AIME multimodal plan of action. However, they also reveal that this multimodal awareness was the main condition for having people successfully engaged in the project methodology, whereas “single-medium” participants were left behind.
 
-^^modulo-aside:A few digitally committed co-inquirers
 
 The [unusual blend of practices](^^classed:anomaly) required by the project online contribution scenario asked the participants to pass through a series of particular steps designed to make their work become an empirical contribution fitting into the AIME methodology. To do so, following the suggestion to react to specific parts of the text rather than addressing general remarks, they were first supposed to select an anchor point, being a report or vocabulary word or paragraph, and then attach to it a “contribution”[#][In order to emphasize the role of empiricism, the “contribution” was a composite and constrained format composed of a short abstract and a series of slides presenting commented documents.]. It is clear that a first condition for being able to contribute was to know how to navigate and get acquainted with the contents available on the web. Users declaring to have the highest digital literacy level were also the ones who declared to have profited from the writing and bookmarking functionalities. But if we look more deeply into the platform database of co-inquirer activity[#][Collecting personal anonymized information declared at sign-up, and information related to bookmarking and annotation/contribution activity.], it can be noticed that the diverse, demanding practices were deployed by a rather small part of the community composed of participants who used most of the platform’s functionalities together: people who had discovered/used one of the website features were more likely to enter the complete scenario of use that was proposed to them.
 
@@ -553,21 +552,6 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
         "Have you ever participated to one of the AIME workshops ?",
         "How would you rate your digital litteracy ?",
         "Have you ever written a contribution to the inquiry ?"
-    ]
-}
-```
-
-
-```json
-{
-    "role" : "modulo-view",
-    "title" :"A few digitally committed co-inquirers",
-    "caption" : "Result of a questionnaire sent to the AIME participants open mailing list.",
-    "type" : "sankey",
-    "data" : "data-nogit/users_activity_actives.csv",
-    "keys" : [
-                "Total number of bookmarks (>0)",
-                "Total number of contributions (>0)"
     ]
 }
 ```

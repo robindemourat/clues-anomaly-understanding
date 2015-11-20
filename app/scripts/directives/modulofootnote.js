@@ -20,13 +20,15 @@ angular.module('moduloAnomaliesApp')
         var noteNumber = noteId.split('-')[noteId.split('-').length - 1];
         element.find('.modulo-footnote-pointer-placeholder').find('a').attr('target', '_blank');//quick and dirty href fix (to improve)
         var content = element.find('.modulo-footnote-pointer-placeholder').html();
-        var marker = angular.element('<span></span>').addClass('modulo-footnote-marker')
+        var marker = angular.element('<span></span>').addClass('modulo-footnote-marker');
+        var markerNumber = angular.element('<span></span>').addClass('modulo-footnote-marker-number').addClass('animate')
                       .text(noteNumber);
+        marker.append(markerNumber);
         var note = angular.element('<aside></aside>')
                           .addClass('modulo-footnote-item')
                           .attr('id', noteId)
                           .append(marker)
-                          .append(angular.element('<span class="modulo-footnote-separator"> . </span>'))
+                          .append(angular.element('<span class="modulo-footnote-separator"></span>'))
                           .append(content);
         /*var note = angular.element(markdownConverter.makeHtml(noteContent))
                       .addClass('modulo-footnote-item')
