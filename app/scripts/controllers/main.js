@@ -17,7 +17,7 @@ angular.module('moduloAnomaliesApp')
 	    	right : true
 	    };
       $scope.popupAside = false;
-      $scope.indexVisible = true;
+      $scope.indexVisible = false;
   	}
 
 
@@ -59,6 +59,7 @@ angular.module('moduloAnomaliesApp')
   		reloadMarkdown('data/clues-anomalies-understanding.md');
 
       var loc = $location.search().aside;
+      var part = $location.search().part;
       //yes, yes, it should be done in a directive ...
       setTimeout(function(){
         if(loc && loc.length > 0){
@@ -79,6 +80,10 @@ angular.module('moduloAnomaliesApp')
             };
           }
 
+        }else if(part){
+          var posT = angular.element('.middle-col-container '+part);
+          var pos = posT.offset().top;
+          angular.element('.middle-col-container').scrollTop(pos);
         }
       }, 1000);
   	}
@@ -165,6 +170,13 @@ angular.module('moduloAnomaliesApp')
           $scope.asideData = undefined;
           $location.search('aside', null);
         }
+      }
+      var activeTitle = angular.element('.toc-aside .active');
+      if(activeTitle.length > 0){
+        var activeTitleId = activeTitle.attr('scrollspy');
+        $location.search('part', activeTitleId);
+      }else{
+        $location.search('part', null);
       }
     }
 
@@ -316,7 +328,6 @@ angular.module('moduloAnomaliesApp')
       }
       return callback(undefined);
     }
-
 
     initVariables();
     initFunctions();

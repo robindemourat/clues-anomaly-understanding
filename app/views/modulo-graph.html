@@ -1,13 +1,14 @@
 <!-- modulo graph figure template -->
 <div class="graph-wrapper">
   <div class="graph-container"></div>
+  <img class="printonly" ng-src="{{data.printImage}}" ng-if="data.printImage" alt="">
 </div>
 
 <div
   class="graph-footer animate"
-  ng-init="comment = false"
+  ng-init="caption = false"
   ng-style="{
-    height : (comment)?'90%':'auto'
+    height : (caption)?'90%':'auto'
   }"
 >
   <div class="filters-container"
@@ -19,7 +20,7 @@
     </button>
   </div>
 
-   <p ng-bind="data.caption" class="comment" ng-if="data.caption"></p>
+   <p ng-bind="data.caption" class="caption" ng-if="data.caption"></p>
 
    <span class="glyphicon glyphicon-download"
               ng-init="exportOrder = false;"

@@ -43,7 +43,8 @@ angular
                     'iframe',
                     'classed',
                     'moduloend',
-                    'footnotes'
+                    'footnotes',
+                    'toc'
                   ]
     });
 

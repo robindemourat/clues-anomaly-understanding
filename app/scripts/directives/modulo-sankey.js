@@ -102,7 +102,9 @@ angular.module('moduloAnomaliesApp')
 
         var resize = function(){
           width = visA.width();
-          height = visA.height();
+          height = visA.height() - element.find('.sankey-footer').height();
+
+          element.find('.labels-container').height(height);
           d3.select(element[0]).select('.global-group')
             .attr('transform', function(){
                       return 'translate('+width+')rotate(90)';
@@ -319,6 +321,7 @@ angular.module('moduloAnomaliesApp')
         }
 
         $scope.$watch('newdata', function(nouv, old){
+          if(nouv.trim().length == 0)return;
           try{
             var nouvJ = JSON.parse(nouv);
             var oldJ;

@@ -9,7 +9,6 @@
 </vimeo-embed-mini>
 
 <div class="text-container-temp" fitprevious>
-  <h2 ng-bind="data.metadata.title" ></h2>
   <blockquote
     ng-repeat="paragraph in data.data track by $index"
     ng-bind = "paragraph.content"
@@ -17,4 +16,7 @@
     class="animate"
     ng-class="{'active':isActive(paragraph)}"
   ></blockquote>
+
+  <h2 class="modulo-dicto-caption" ng-bind="data.metadata.caption" ></h2>
+
 </div>

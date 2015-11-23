@@ -9,7 +9,7 @@
 angular.module('moduloAnomaliesApp')
   .directive('moduloImage', function () {
     return {
-      template: '<img ng-src="{{data.url}}"></img><div class="comment-container" ng-if="data.comment"><p ng-bind="data.comment" class="comment animate" ng-if="data.comment"></p></div>',
+      template: '<img ng-src="{{data.url}}"></img><div class="caption-container" ng-if="data.caption"><p ng-bind-html="data.caption" class="caption animate" ng-if="data.caption"></p></div>',
       restrict: 'C',
       link: function postLink(scope, element, attrs) {
 

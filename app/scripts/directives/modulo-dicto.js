@@ -84,6 +84,8 @@ angular.module('moduloAnomaliesApp')
             if(!nouvJ || !oldJ){
               return;
             }
+
+
             if(nouvJ.title != oldJ.title || !$scope.visData){
               $scope.temp = JSON.parse(nouv);
             }else{
@@ -100,7 +102,9 @@ angular.module('moduloAnomaliesApp')
               .get($scope.temp.data)
               .success(function(d){
 
+
                 $scope.data = dictoModuloViewParser.parseSrtTranscription(d);
+                $scope.data.metadata.caption = $scope.temp.caption;
                 // $scope.content = dictoModuloViewParser.parseSrtTranscription(d);
                 // console.log($scope.data);
                 setTimeout(function(){

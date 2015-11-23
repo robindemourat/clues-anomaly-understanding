@@ -1,3 +1,5 @@
+  <img class="printonly" ng-src="{{data.printImage}}" ng-if="data.printImage" alt="">
+
 <!-- modulo alluvial diagram template -->
 <div class="sankey-container">
   <div class="labels-container">
@@ -16,8 +18,8 @@
   </div>
 </div>
 <div class="sankey-footer animate">
-  <div class="comments-info" ng-if="info != undefined">
+  <div class="captions-info" ng-if="info != undefined">
     <p ng-bind="info" ng-click="info = undefined"></p>
   </div>
-  <p ng-bind="data.caption" class="comment" ng-if="data.caption"></p>
+  <p ng-bind="data.caption" class="caption" ng-if="data.caption"></p>
 </div>

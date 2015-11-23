@@ -189,6 +189,7 @@ angular.module('moduloAnomaliesApp')
 
 
         $scope.$watch('newdata', function(nouv, old){
+          if(nouv.trim().length == 0)return;
           try{
             var newD = JSON.parse(nouv), oldD;
             if(old){
@@ -200,7 +201,7 @@ angular.module('moduloAnomaliesApp')
               reload($scope.newD);
             }
           }catch(e){
-            console.error('invalid json data for timeline :',nouv);
+            console.error('invalid json data for graph :',nouv);
             $scope.msg = 'Failed to load due to badly formatted json !'
           };
         });

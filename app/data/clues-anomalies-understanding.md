@@ -11,6 +11,8 @@ Imagine a collective inquiry presenting its results before the collaboration has
 
 **Keywords**: anomalies, close reading, collaborative frameworks, critical and speculative design, digital humanities
 
+[TOC]
+
 # Introduction
 
 An Inquiry into Modes of Existence (AIME) project tried to explore the many discrepancies between the description that the Moderns are offering of their values and the ways they are defended in practice. For instance, there is a huge gap between Science capital S and the scientific institutions. There is almost no relationship between Technology as it is hyped and the ways technical artifacts are actually produced. This gap also exists in law, politics, religion, etc. Such discrepancies raise the question of deciding which version of their values the Moderns are ready to defend: the official one or the more practical ones? In order to pursue such a vast inquiry, we needed to transform the inquiry of a lone ethnographer into a collective undertaking of a community of co-inquirers. In order to achieve this transformation, in addition to the publication of a book, we produced a series of workshops and meetings and the design of a digital platform with the intention of testing and expanding the preliminary results of the inquiry.
@@ -282,6 +284,13 @@ This document is the digital companion of the eponym article in the "Critical ma
 
 [Learn more about Visible Language special issue](http://visiblelanguagejournal.com/)
 
+Cite this article :
+
+> [Ricci, D., De Mourat, R., Leclercq C., Latour B. (2015). Clues. Anomalies. Understanding. Detecting underlying assumptions and expected practices in the Digital Humanities through the AIME project. *Visible Language*, 49(3), 34–61.](^^classed:citation)
+
+
+
+
 It is generated [from a simple text file](/data/clues-anomalies-understanding.md) with the Modulo engine, a text-to-webpage tool aiming at facilitating the making of academic multimodal publications on the web.
 
 [Learn more about Modulo](https://github.com/robindemourat/modulo)
@@ -303,7 +312,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "title" :"Counting AIME appelations",
     "type" : "image",
     "url" : "data/images/pages-mentionning-the-book.jpg",
-    "caption" : "Count of the pages mentioning the different components and naming of the aime projects."
+    "caption" : "Count of the pages mentioning the different components and naming of the AIME project. <a href='https://docs.google.com/spreadsheets/d/1Jp3zQeQXi66Y715JiR-IuRYPo4jjHVf5I5gGGYDy7wo/pubhtml#' target='blank'>Browse constructed data</a>"
 }
 ```
 
@@ -312,6 +321,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Graph of correlations between hashtags and users around AIME",
     "type" : "graph",
+    "printImage" : "data/images/network_print.jpg",
     "background" : "#FFFFFF",
     "data" : "data-nogit/user-hash-2.gexf",
     "colors" : {
@@ -350,6 +360,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"The timespan of collect",
+    "noprint" : "true",
     "type" : "timeline",
     "begindate" : "01/09/2013",
     "enddate" : "01/07/2015",
@@ -411,7 +422,8 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Aligned depictions",
     "type" : "html",
-    "url" : "data/html-modules/well-aligned.html"
+    "url" : "data/html-modules/well-aligned.html",
+    "caption" : "Selection of excerpts from several reviews of the AIME project - collected through a systematic quantitative inquiry of project's online feedbacks."
 }
 ```
 
@@ -443,9 +455,10 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Tutorial of the book entry",
+    "printImage" : "data/images/aime_tutorial_screenshot.png",
     "type" : "vimeo",
     "url" : "https://vimeo.com/78155122",
-    "caption" : "Tutorial of the book entry made by the AIME team, published Oct. 2013 on Vimeo platform."
+    "caption" : "Tutorial of the book entry (version 2) made by the AIME team, published Oct. 2013 on Vimeo platform."
 }
 ```
 
@@ -453,6 +466,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Reading the four columns of the book entry",
+    "printImage" : "data/images/timeline_consultation_colonnes.jpg",
     "caption" : "Visualization of reading metrics on the AIME platform over time - computed regarding each column consultation, detected through their related URL patterns - retrieved from Google Analytics.",
     "type" : "timeline",
     "begindate" : "01/10/2013",
@@ -545,6 +559,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"Digital literacy and contributions",
     "caption" : "Result of a questionnaire sent to the AIME participants open mailing list.",
+    "printImage" : "data/images/sankey_literacy.jpg",
     "type" : "sankey",
     "sankeytype":"questionnaire",
     "data" : "data-nogit/AIME_questionnaire.csv",
@@ -757,6 +772,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Closeness and the digital humanities",
+    "noprint" : "true",
     "type" : "iframe",
     "url" : "http://dh2014.org/videos/opening-night-bruno-latour/",
     "caption" : "Opening plenary lecture given by Bruno Latour for the DH2014 event, Jully 2014."
@@ -769,6 +785,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
     "role" : "modulo-view",
     "title" :"External blogs",
     "type" : "iframe",
+    "alwaysVisible" : "true",
     "url" : "https://aimegroup.wordpress.com/",
     "caption" : "AIME reading group blog, started in August 2013."
 }

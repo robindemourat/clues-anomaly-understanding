@@ -6,6 +6,14 @@
   display : block;
 }
 
+img.printonly{
+  width : 100%;
+}
+
+.noprint{
+  display : none;
+}
+
 *{
   transition:none!important;
 }
@@ -136,13 +144,17 @@ blockquote{
 }
 
 blockquote p{
-  font-size : 9px!important;
+  font-size : 11px!important;
   line-height : 13.5px!important;
 }
 
 table
 {
   font-size : 9px!important;
+}
+
+.modulo-href-trigger{
+  text-decoration : none;
 }
 
 
@@ -193,5 +205,16 @@ figure{
 figure .figure-content{
   border : 1px solid #333;
   padding : 1em;
+}
+
+/* MODULO FIGURES */
+
+.modulo-dicto-caption,
+.caption,
+.iframe-toggler,
+.graph-footer,
+.sankey-container
+{
+  display : none;
 }
 

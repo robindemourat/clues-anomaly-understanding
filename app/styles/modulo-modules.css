@@ -18,7 +18,7 @@
 .modulo-vimeo .vimeo-video
 {
     width: 100%;
-    height: 100%;
+    height: 50%;
 }
 
 
@@ -72,6 +72,13 @@
     background: rgba(0,0,0,.15);
 }
 
+.modulo-dicto .modulo-dicto-caption{
+    color : white;
+    background: rgba(0,0,0,.6);
+    font-family:'NovelSansPro-It';
+    font-size : 1em;
+    padding : 1em;
+}
 
 
 /*modulo-sankey*/
@@ -84,7 +91,7 @@
 }
 
 .modulo-sankey .sankey-container,
-.modulo-sankey .comments-container
+.modulo-sankey .captions-container
 {
     width: 100%;
 }
@@ -255,7 +262,7 @@
     background: rgba(0,0,0,.9);
 }
 
-.modulo-graph .graph-footer .comment
+.modulo-graph .graph-footer .caption
 {
     font-style: italic;
 }
@@ -340,12 +347,20 @@
     font-style : italic;
 }
 
-.modulo-iframe .iframe-header .iframe-link
+.modulo-iframe .iframe-header .iframe-link,
+.modulo-iframe .iframe-header .iframe-toggler
 {
     padding : 0 10px 0 30px;
     width : 100%;
     font-size : .8em;
     text-align : center;
+}
+
+.modulo-iframe .iframe-header .iframe-toggler
+{
+    padding-top : 1em;
+    font-family : 'NovelSansPro-Bold-It';
+    cursor : pointer;
 }
 
 /*.modulo-iframe .iframe-header:hover
@@ -360,11 +375,17 @@
     width: 100%;
 }
 
-.modulo-image .comment-container{
-    margin-top : 1em;
+.modulo-image .caption-container,
+.modulo-vimeo .caption-container
+{
+    position :absolute;
+    bottom : 0;
+    left : 0;
+    width : 100%;
 }
 
-.modulo-image .comment
+.modulo-image .caption,
+.modulo-vimeo .caption
 {
     padding: 1em;
     color : white;
@@ -372,7 +393,8 @@
     background: rgba(0,0,0,.8);
 }
 
-.modulo-image .comment:hover
+.modulo-image .caption:hover,
+.modulo-vimeo .caption:hover
 {
     background: rgba(0,0,0,.9);
     color : white;
@@ -608,11 +630,10 @@
 }
 
 .modulo-timeline-event.line2{
-    /*stroke-dasharray:10,3;*/
+    stroke-dasharray:3,6;
     stroke-width : 1;
     opacity : .4;
     stroke : #807b78!important;
-    stroke-style : dashed;
 }
 
 .modulo-timeline-event.line2:hover{

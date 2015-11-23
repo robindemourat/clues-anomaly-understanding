@@ -76,21 +76,49 @@ angular.module('moduloAnomaliesApp')
       },
       link: function postLink(scope, element, attrs) {
         var top = false, s;
+        var target = angular.element('.toc-inline .toc-element:last-child');
+        var threshold;
 
         angular.element(element).on('scroll', function(e, d){
           s = angular.element(element).scrollTop();
 
-          if(s == 0){
+
+          if(target.length === 0){
+            target = angular.element('.toc-inline  .toc-element:last-child');
+            // console.log(target.text());
+          }
+
+          if(target){
+            // threshold = target.position().top;
+             threshold = target.offset().top;
+          }else{
+            threshold = 0;
+          }
+
+          if(threshold > 0){
             top = true;
             scope.topScrollTrigger({
               top : true
-            })
-          }else if(s > 0 && top){
+            });
+          }else{
             top = false;
             scope.topScrollTrigger({
               top : false
             })
           }
+
+
+          /*if(s <= threshold){
+            top = true;
+            scope.topScrollTrigger({
+              top : true
+            })
+          }else if(s > threshold && top){
+            top = false;
+            scope.topScrollTrigger({
+              top : false
+            })
+          }*/
         });
       }
     };

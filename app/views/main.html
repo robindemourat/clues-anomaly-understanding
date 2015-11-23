@@ -1,7 +1,9 @@
 <!-- modulo main template -->
 <nav
   class="col-left animate"
+  ng-class="{'scrollAtTop':scrollAtTop}"
   ng-class="setColClass('left')"
+  ng-show="!scrollAtTop"
 >
 
   <!--left-col-wrapper : main content-->
@@ -39,10 +41,10 @@
 
       <!--table of contents-->
       <div
-        class="toc animate"
+        class="toc animate toc-aside"
         du-scroll-container="middle-col-container"
         scrollspy-points
-        ng-class="{'shown':indexVisible}"
+        ng-class="{'shown':indexVisible,'scrollAtTop':scrollAtTop}"
         fit-screen-height
       >
         <div
@@ -53,11 +55,8 @@
           class="toc-element animate"
         >
           <a ng-href="#{{el.tag}}" du-smooth-scroll>
-            <span class="toc-element-bullet"
+            <span class="toc-element-bullet animate"
             ></span>
-            <!-- <span class="toc-element-bullet"
-              title="{{el.title}}"
-            ></span> -->
             <span
               class="toc-element-title animate"
               ng-click="toggleIndex(false)"
@@ -65,6 +64,11 @@
             ></span>
           </a>
         </div>
+
+        <lift
+          scroll-target=".middle-col-container"
+          update-on="{{indexVisible}}"
+        ></lift>
       </div><!--end table of contents-->
 
     </div><!--END left-colwrapper-->
@@ -92,7 +96,7 @@
     <!--middle-col-container : contents-->
     <div class="middle-col-container"  id="middle-col-container" top-scroll-trigger="topScrollToggle(top)">
       <div>
-        <div class="middle-col-contents-main"   compile="contents.html"></div>
+        <article class="middle-col-contents-main"   compile="contents.html"></article>
       </div>
 
 

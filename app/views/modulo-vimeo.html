@@ -5,5 +5,9 @@
   playerId="modulo-vimeo"
   goto="goto"
 >
-
 </vimeo-embed-mini>
+
+  <img class="printonly" ng-src="{{data.printImage}}" ng-if="data.printImage" alt="">
+
+
+<div class="caption-container" ng-if="data.caption"><p ng-bind-html="data.caption" class="caption animate" ng-if="data.caption"></p></div>

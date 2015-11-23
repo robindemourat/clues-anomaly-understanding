@@ -20,6 +20,9 @@ angular.module('moduloAnomaliesApp')
       	scope.trustSrc = function(src) {
   		    return $sce.trustAsResourceUrl(src);
   		  }
+        scope.toggleShowIframe = function(){
+          scope.showIframe= !scope.showIframe;
+        }
 
         scope.$watch('newdata', function(n,o){
         		n = JSON.parse(n);
@@ -27,6 +30,8 @@ angular.module('moduloAnomaliesApp')
         		if(scope.first || n.url != o.url){
         			scope.data = n;
         			scope.first = false;
+              scope.showIframe = (scope.data.alwaysVisible)?true: false;
+              scope.enableIframeToggling = (scope.data.alwaysVisible)?false: true;
         		}
       	});
       }

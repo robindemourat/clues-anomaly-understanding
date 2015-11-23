@@ -19,9 +19,14 @@ angular.module('moduloAnomaliesApp')
           playerHeight: '=',
           playerWidth: '=',
           api: '=',
+          printMode : '=printmode',
           goto : '='
       },
       link: function (scope, element, attrs, ctrl) {
+
+        scope.$watch('printMode', function(printMode){
+          console.log(printMode);
+        })
 
 
 
@@ -30,11 +35,11 @@ angular.module('moduloAnomaliesApp')
         element[0].id = playerId;
 
         var onPause = function(){
-          console.log('pause');
+          // console.log('pause');
         }
 
         var onPlayStart = function(){
-          console.log('play start');
+          // console.log('play start');
         }
 
         var onPlayProgress = function(d){
@@ -42,7 +47,7 @@ angular.module('moduloAnomaliesApp')
         }
 
         var onFinish = function(){
-          console.log('finish');
+          // console.log('finish');
         }
 
 
@@ -83,14 +88,14 @@ angular.module('moduloAnomaliesApp')
                     activePlayer = $f(player);
 
                     activePlayer.addEvent('ready', function(){
-                      console.log('ready');
+                      // console.log('ready');
                       activePlayer.addEvent('pause', onPause);
                       activePlayer.addEvent('finish', onFinish);
                       activePlayer.addEvent('play', onPlayStart);
                       activePlayer.addEvent('playProgress', onPlayProgress);
                       activePlayer.api('setVolume', 1);
                       activePlayer.api('getDuration', function(d){
-                        console.log('duration : ', d);
+                        // console.log('duration : ', d);
                       });
                     });
              });

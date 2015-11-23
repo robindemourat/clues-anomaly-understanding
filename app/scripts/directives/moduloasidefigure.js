@@ -22,7 +22,7 @@ angular.module('moduloAnomaliesApp')
           if(data){
             scope.localData = data;
 
-            console.log('data update', scope.localData);
+            // console.log('data update', scope.localData);
           }
         }
 
