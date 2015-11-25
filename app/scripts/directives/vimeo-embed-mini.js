@@ -7,7 +7,7 @@
  * # vimeoEmbedMini
  */
 angular.module('moduloAnomaliesApp')
-    .directive('vimeoEmbedMini', function (VimeoService, $rootScope) {
+    .directive('vimeoEmbedMini', function (VimeoService, $rootScope, $window) {
 
     return {
       restrict: 'EA',
@@ -24,14 +24,12 @@ angular.module('moduloAnomaliesApp')
       },
       link: function (scope, element, attrs, ctrl) {
 
-        scope.$watch('printMode', function(printMode){
-          console.log(printMode);
-        })
-
 
 
         var playerId = attrs.playerId || element[0].id,
-            iframe, activePlayer;
+            iframe, activePlayer,
+            width,
+            ratio;
         element[0].id = playerId;
 
         var onPause = function(){
@@ -77,6 +75,11 @@ angular.module('moduloAnomaliesApp')
 
 
           VimeoService.oEmbed(params).then(function (data) {
+            ratio = data.width / data.height;
+
+            console.log(data.width, data.height, ratio);
+
+
             element.html(data.html);
             /*angular.element(element).children().attr('id', attrs.playerId);
 
@@ -97,6 +100,7 @@ angular.module('moduloAnomaliesApp')
                       activePlayer.api('getDuration', function(d){
                         // console.log('duration : ', d);
                       });
+                      onResize();
                     });
              });
             //var player = $f(iframe);
@@ -104,6 +108,11 @@ angular.module('moduloAnomaliesApp')
             element.html('<div>' + data + '</div>');
           });
           //player = $f(element[0]);
+        }
+
+
+        var onResize = function(){
+          element.height(element.width()/ratio);
         }
 
 
@@ -122,6 +131,12 @@ angular.module('moduloAnomaliesApp')
             reload();
           }
         });
+
+        angular.element($window).on('resize', onResize);
+
+        scope.$watch('$destroy', function(){
+          angular.element($window).off('resize', onResize);
+        })
 
       }
     };

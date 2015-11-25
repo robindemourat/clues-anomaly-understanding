@@ -772,6 +772,7 @@ It is generated [from a simple text file](/data/clues-anomalies-understanding.md
 {
     "role" : "modulo-view",
     "title" :"Closeness and the digital humanities",
+    "alwaysVisible" : "true",
     "noprint" : "true",
     "type" : "iframe",
     "url" : "http://dh2014.org/videos/opening-night-bruno-latour/",

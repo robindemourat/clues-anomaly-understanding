@@ -1183,6 +1183,10 @@ SPECIFIC COMPONENTS
     font-size: 1.3em;
 }
 
+.middle-col-container h1{
+    font-size : 1.5em;
+}
+
 .middle-col-container h1:not(:first-child)
 {
     margin-top: 2em;
@@ -1241,7 +1245,8 @@ SPECIFIC COMPONENTS
 }
 
 
-.modulo-href-trigger.active
+.modulo-href-trigger.active,
+.modulo-href-trigger:hover
 {
     color: brown;
 }
@@ -1255,7 +1260,7 @@ SPECIFIC COMPONENTS
 
 .modulo-href-trigger:hover
 {
-    font-family: 'NovelPro-Semibold';
+    /*font-family: 'NovelPro-Semibold';*/
 }
 
 /* footnotes */
@@ -1503,7 +1508,7 @@ SPECIFIC COMPONENTS
 
 .toc-element
 {
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     padding: 0;
 
     opacity: .5;
@@ -1533,6 +1538,10 @@ SPECIFIC COMPONENTS
 {
     /*text-decoration: underline;*/
     opacity: 1;
+}
+
+.toc-inline .toc-element{
+    margin-bottom : 0.5em;
 }
 
 
@@ -1963,7 +1972,7 @@ media queries
 
     .left-col-wrapper
     {
-        width: 25.5%;
+        width: 20.6%
     }
 }
 
@@ -1978,6 +1987,10 @@ media queries
     .aside-contents-container
     {
         padding-left: 10%;
+    }
+
+    .aside-header{
+        padding-left : 10%;
     }
 
     .middle-col-contents-main
@@ -2028,6 +2041,16 @@ media queries
     {
         display : none;
     }
+
+    .middle-col-container h1{
+        font-size : 1.3em;
+    }
+
+    .left-col-wrapper
+    {
+        width: 28.3333333%;
+    }
+
 }
 
 /* col-xs */

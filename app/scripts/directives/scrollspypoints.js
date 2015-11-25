@@ -123,3 +123,39 @@ angular.module('moduloAnomaliesApp')
       }
     };
   })
+   //I center bullets
+  .directive('tocElement', function ($window) {
+    return {
+        restrict: 'C',
+        scope : {
+          updateOn : '@'
+        },
+        link: function postLink(scope, element, attrs) {
+
+              var content,
+                  contentHeight,
+                  bullet;
+
+
+              var onResize = function(){
+                contentHeight = element.height();
+                bullet = element.find('.toc-element-bullet');
+                console.log(contentHeight);
+                bullet.css({top : '-' + (contentHeight/2  - 5) + 'px'})
+              }
+
+              onResize();
+
+              angular.element($window).on('resize', onResize);
+
+              scope.$watch('updateOn', onResize);
+
+              scope.$watch('$destroy', function(){
+                angular.element($window).off('resize', onResize);
+
+              })
+
+
+            }
+    };
+  })

@@ -22,6 +22,10 @@
 }
 
 
+vimeo-embed-mini iframe{
+    height : 100%;
+}
+
 /*modulo-dicto*/
 .modulo-dicto
 {
@@ -50,6 +54,7 @@
 
 .modulo-dicto .text-container-temp blockquote
 {
+    font-family:'NovelSansPro-Regular';
     cursor: pointer;
     margin : .5em .5em .5em 0;
     border : none;

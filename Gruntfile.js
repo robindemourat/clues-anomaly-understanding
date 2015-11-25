@@ -346,7 +346,9 @@ module.exports = function (grunt) {
             'styles/fonts/{,*/}*.*',
             'data/{,*/}*.*',
             'fonts/{,*/}*.*',
-	           'data-nogit/{,*/}*.*'
+	           'data-nogit/{,*/}*.*',
+             "styles/{,*/}*.*",
+             "styles/webfonts/{,*/}*.*"
           ]
         }, {
           expand: true,
