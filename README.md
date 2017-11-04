@@ -1,4 +1,4 @@
-Clues, anomalies, Understanding - 🔥 Contextualization-oriented publication prototype
+Clues, anomalies, Understanding
 ===
 
 ![Screencast](https://github.com/robindemourat/clues-anomaly-understanding/blob/master/screencast-anomalies.gif?raw=true)
